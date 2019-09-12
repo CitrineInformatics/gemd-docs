@@ -6,3 +6,5 @@ markdown_extensions:
         toc_depth: "2-3"
         permalink: "#"
 
+extra:
+    version: 0.1
