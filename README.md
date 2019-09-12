@@ -1,5 +1,6 @@
 # Taurus data model documentation
 
+Deployed to [https://citrineinformatics.github.io/taurus-documentation/](https://citrineinformatics.github.io/taurus-documentation/).
 Built with [mkdocs](https://www.mkdocs.org/#mkdocs)
 
 You'll need a working python environment, with pip.
