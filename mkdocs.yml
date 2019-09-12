@@ -1,0 +1,10 @@
+site_name: Taurus Documentation
+theme: readthedocs
+markdown_extensions:
+    - toc:
+        baselevel: 1
+        toc_depth: "2-3"
+        permalink: "#"
+
+extra:
+    version: 0.1

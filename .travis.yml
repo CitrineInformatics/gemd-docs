@@ -1,0 +1,18 @@
+language: python
+python: 3.6
+install:
+- pip install mkdocs
+script:
+- mkdocs build --strict --verbose
+- touch ./site/.nojekyll
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: "$GH_SECRET_TOKEN"
+  keep_history: true
+  local_dir: "./site/"
+  on:
+    branch: master
+env:
+  global:
+    secure: wLRHN5nMkUrMX6UjQU57yIoUGLw9BEMEFYIwOr8NM71JmxvbqYgkkcIs4GhlLKoSBd/x3yuzo8NH2JuCma4Hlw10iUT59JwZdkM7Q+3QL0WBGD0xRTj1Yhw2nngfq9gu3GTGDnx2hRJB1iFXNHPTqpXoVTSEnF3AZHpJBR48AY3HA9gRSAYVDxnFi9bZ86GnpVN3eevRZBThxTD+fOmWkwBU+uANHolDbkVBGEhE7jlxlZKphkPhLDEIPGK5iZEMGeVA8zod7fWL0bkPgE5Tl3Y2swN0X1Ccoyn6CT72RQYIwP60lvSSOdyB2+l2dewkQfvx+OSod5dkS5ofkCuREfhzMsqius8cC/bbWteWIw9Ol9GXxuKGEFtHgVKSQ9AOQckM8bNFyzP+nNtcJKPOtcSPIk8l6nkLrx2trtbRcn3lktwruKIGyDHYjjP+g4urrSRHhCHGcgtOffDiz1Va6s3URl+EQD3ZGEVdt46ir6lA390cIHGteskc+j68kwULeKxsVCn74KL7OTDp6tIGQIzrdiKrPGTjPxzBZ6V10dMQel3olevq2gibp0SArJTg9HcdvEK6qYmLPYVb/W0w2Nhf0MKAimkTn2TGIA+lrmIqIpcA2UcUDqChx7TNm0DF3043JwWvlNvOdOYx2jAT/0rtgLXTyXNPmSfqXMcU1lc=
