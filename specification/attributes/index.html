@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Attributes - Taurus Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Attributes";
+    var mkdocs_page_input_path = "specification/attributes.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Taurus Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Taurus Data Model Documentation</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../faq/">FAQ</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../high-level-overview/">High Level Overview</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../philosophy/">Taurus Philosophy</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Specification</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../attribute-templates/">Attribute Templates and Bounds</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Attributes</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#property-condition-parameter">Property, Condition, Parameter</a></li>
+    
+
+    <li class="toctree-l3"><a href="#properties-and-conditions">Properties and Conditions</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../file-links/">File Links</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../object-templates/">Object Templates</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../objects/">Objects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../tags/">Tags</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../unique-identifiers/">Unique Identifiers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../value-types/">Value Types</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Taurus Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Specification &raquo;</li>
+        
+      
+    
+    <li>Attributes</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>Attributes</h1>
+<p><strong>Properties</strong> are characteristics of a material that could be measured, e.g. chemical composition, density, or yield strength.</p>
+<blockquote>
+<p>I recorded a measurement run of the density of my cookie.
+I measured the property to be a <a href="../value-types/#nominal-real-value">Nominal Real Value</a> of 604 kg/m³.</p>
+</blockquote>
+<p><strong>Conditions</strong> are the environmental variables (typically measured) that may affect a process or measurement: e.g. Temperature, Pressure.</p>
+<blockquote>
+<p>"The reading on the thermometer inside my oven as I bake cookies was 355 degrees, and I know that my thermometer is only accurate to +- 5 degrees, so I'll make that a <a href="../value-types/#uniform-real-value">Uniform Real Value</a> with a <code>lower_bound</code> of 350 and an <code>upper_bound</code> of 360.</p>
+</blockquote>
+<p><strong>Parameters</strong> are the non-environmental variables (typically specified and controlled) that may affect a process or measurement: e.g. Oven Dial Temperature Position for a kiln firing, or Magnification for a measurement taken with a SEM.</p>
+<blockquote>
+<p>The "Bake Cookies" Process Specification has two parameters: a <a href="../value-types/#nominal-real-value">Nominal Real Value</a> of 30 minutes for bake duration, and a <a href="../value-types/#nominal-real-value">Nominal Real Value</a> of 350 degrees for oven temperature setting </p>
+<p>I know my oven tends to run cold, so as I was baking I set my temperature setting to 360 degrees.
+I recorded this in the process run as a parameter with a <a href="../value-types/#nominal-real-value">Nominal Real Value</a> of 360 Degrees.</p>
+</blockquote>
+<p>Typically, conditions are going to apply to <em>measured</em> environmental variables in process runs and measurement runs.
+It may be appropriate to specify a Parameter attribute on a specification, and describe that attribute as a Condition on runs of that specification if the value is being measured as opposed to controlled during the run.
+It may also be appropriate to include <em>both</em> a Paramter and a Condition on the run if the value is both controlled and measured.
+The use of Conditions in specifications should be limited in favor of parameters.</p>
+<p>Attributes may be annotated with an <a href="../attribute-templates">Attribute Template</a>, which defines a canonical name and bounds on the attribute.</p>
+<hr />
+<h2 id="property-condition-parameter">Property, Condition, Parameter<a class="headerlink" href="#property-condition-parameter" title="Permanent link">#</a></h2>
+<p>All three types of attributes have the same fields.</p>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Value type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>Req.</td>
+<td>One of: <code>property</code>, <code>condition</code>, <code>parameter</code></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="../value-types">Value</a></td>
+<td>Req.</td>
+<td>Any <code>Value</code> type</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td>Req.</td>
+<td>The name of the attribute, which is used to identify it within a Data Object</td>
+</tr>
+<tr>
+<td><code>notes</code></td>
+<td>String</td>
+<td>None</td>
+<td>Some free-form notes about the attribute.</td>
+</tr>
+<tr>
+<td><code>origin</code></td>
+<td><code>measured</code>, <code>predicted</code>, <code>summary</code>,<code>specified</code>, <code>computed</code>, <code>unknown</code></td>
+<td><code>unknown</code></td>
+<td>The origin of the attribute</td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><a href="../attribute-templates">Attribute Template</a></td>
+<td>None</td>
+<td>Attribute Template which defines bounds</td>
+</tr>
+<tr>
+<td><code>file_links</code></td>
+<td>Set<a href="../file-links">[File Links</a>]</td>
+<td>Empty set</td>
+<td>Links to associated files, with resource paths into the files API</td>
+</tr>
+</tbody>
+</table>
+<h5>Constraints</h5>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th align="center">Relationship</th>
+<th>Field Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>len(<code>name</code>)</td>
+<td align="center">&lt;=</td>
+<td>128, UTF-8 Encoded</td>
+</tr>
+<tr>
+<td>len(<code>notes</code>)</td>
+<td align="center">&lt;=</td>
+<td>32,768 (32KB), UTF-8 Encoded</td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td align="center">is a</td>
+<td>template type that matches the attribute type, e.g. <code>PropertyTemplate</code> for a <code>Property</code></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td align="center">is a</td>
+<td><code>template</code>'s Value Type</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td align="center">conforms to</td>
+<td><code>template</code>.<code>bounds</code></td>
+</tr>
+</tbody>
+</table>
+<h5>Examples</h5>
+<pre><code class="json">{
+    &quot;type&quot; : &quot;property&quot;,
+    &quot;name&quot; : &quot;A Real Valued Property&quot;,
+    &quot;value&quot; : {
+        &quot;type&quot; : &quot;uniform_real&quot;,
+        &quot;lower_bound&quot; : 1.995,
+        &quot;upper_bound&quot; : 2.005,
+        &quot;units&quot;: &quot;inch&quot;
+    },
+    &quot;origin&quot; : &quot;measured&quot;,
+    &quot;template&quot; : {
+        &quot;name&quot; : &quot;A Property Template&quot;,
+        &quot;type&quot; : &quot;property_template&quot;,
+        &quot;bounds&quot; : {
+            &quot;type&quot; : &quot;real_bounds&quot;,
+            &quot;lower_bound&quot; : 0.0,
+            &quot;upper_bound&quot; : 10.0,
+            &quot;default_units&quot;: &quot;meters&quot;
+        }
+    },
+    &quot;file_links&quot; : [
+        {
+            &quot;filename&quot; : &quot;How-to-make-lucky-charms.pdf&quot;,
+            &quot;link&quot; : &quot;files/file/d8f12919-b201-4186-be95-10525eb4256a/version/2&quot;
+        }
+    ]
+}
+</code></pre>
+
+<pre><code class="json">{
+    &quot;type&quot; : &quot;condition&quot;,
+    &quot;value&quot; : {
+        &quot;type&quot; : &quot;uniform_real&quot;,
+        &quot;lower_bound&quot; : 1.0,
+        &quot;upper_bound&quot; : 2.0,
+        &quot;units&quot;: &quot;degC&quot;
+    },
+    &quot;origin&quot; : &quot;measured&quot;,
+    &quot;template&quot; : {
+        &quot;type&quot; : &quot;condition_template&quot;,
+        &quot;name&quot; : &quot;temperature&quot;,
+        &quot;bounds&quot; : {
+            &quot;type&quot; : &quot;real_bounds&quot;,
+            &quot;lower_bound&quot; : 0.0,
+            &quot;upper_bound&quot; : 1.0e6,
+            &quot;default_units&quot;: &quot;Kelvin&quot;
+        }
+    }
+}
+</code></pre>
+
+<pre><code class="json">{
+    &quot;type&quot; : &quot;parameter&quot;,
+    &quot;value&quot; : {
+        &quot;type&quot; : &quot;nominal_real&quot;,
+        &quot;nominal&quot; : 1.0,
+        &quot;units&quot;: &quot;degC&quot;
+    },
+    &quot;origin&quot; : &quot;specified&quot;,
+}
+</code></pre>
+
+<h2 id="properties-and-conditions">Properties and Conditions<a class="headerlink" href="#properties-and-conditions" title="Permanent link">#</a></h2>
+<p>In the <a href="../objects#material-specification">Material Spec</a> object,
+one may need to specify a property along with the conditions under which the property occurs.
+For example:</p>
+<ul>
+<li>Vapor pressure of 5.6 kPa <em>at</em> a temperature of 35 deg C</li>
+<li>Gas phase <em>at</em> a pressure of 1 kPa and a temperature of 300 K</li>
+</ul>
+<p>This is supported by the <code>PropertiesAndConditions</code> compound attribute.</p>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Value type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>Req.</td>
+<td><code>property_and_conditions</code></td>
+</tr>
+<tr>
+<td><code>property</code></td>
+<td>Property</td>
+<td>Req.</td>
+<td>Any <code>Property</code> attribute</td>
+</tr>
+<tr>
+<td><code>conditions</code></td>
+<td>Set[Conditions]</td>
+<td>Empty set</td>
+<td>Any conditions associated with the property</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../file-links/" class="btn btn-neutral float-right" title="File Links">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../attribute-templates/" class="btn btn-neutral" title="Attribute Templates and Bounds"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../attribute-templates/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../file-links/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

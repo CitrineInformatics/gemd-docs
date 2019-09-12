@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Value Types - Taurus Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Value Types";
+    var mkdocs_page_input_path = "specification/value-types.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Taurus Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Taurus Data Model Documentation</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../faq/">FAQ</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../high-level-overview/">High Level Overview</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../philosophy/">Taurus Philosophy</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Specification</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../attribute-templates/">Attribute Templates and Bounds</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../attributes/">Attributes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../file-links/">File Links</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../object-templates/">Object Templates</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../objects/">Objects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../tags/">Tags</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../unique-identifiers/">Unique Identifiers</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Value Types</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#real-values">Real Values</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#normal-real-value">Normal Real Value</a></li>
+        
+            <li><a class="toctree-l4" href="#uniform-real-value">Uniform Real Value</a></li>
+        
+            <li><a class="toctree-l4" href="#nominal-real-value">Nominal Real Value</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#integer-values">Integer Values</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#uniform-integer-value">Uniform Integer Value</a></li>
+        
+            <li><a class="toctree-l4" href="#nominal-integer-value">Nominal Integer Value</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#categorical">Categorical</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#discrete-categorical-value">Discrete Categorical Value</a></li>
+        
+            <li><a class="toctree-l4" href="#nominal-categorical-value">Nominal Categorical Value</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#composition">Composition</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#nominal-composition">Nominal Composition</a></li>
+        
+            <li><a class="toctree-l4" href="#empirical-formula">Empirical Formula</a></li>
+        
+            <li><a class="toctree-l4" href="#molecular-structure">Molecular Structure</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Taurus Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Specification &raquo;</li>
+        
+      
+    
+    <li>Value Types</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>Value Types</h1>
+<p>Value is a generic term for the information contained in an <a href="../attributes">attribute</a>.
+A Value may be one of the following Value Types:</p>
+<table>
+<thead>
+<tr>
+<th>Value Type</th>
+<th>Variant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RealValue</strong></td>
+<td><code>NominalReal</code><br><code>NormalReal</code><br><code>UniformReal</code></td>
+<td>A double value and a unit (e.g., 32F, 45 meters, 14 kg).<br><br>Each variation provides a different mechanism for defining uncertainty.</td>
+</tr>
+<tr>
+<td><strong>IntegerValue</strong></td>
+<td><code>NominalInteger</code><br><code>UniformInteger</code></td>
+<td>A whole integer value.</td>
+</tr>
+<tr>
+<td><strong>Categorical</strong></td>
+<td><code>NominalCategorical</code><br><code>DiscreteCategorical</code></td>
+<td>Categorical values are distributions over the valid category names representing the probability of each category.  For DiscreteCategorical, the values must sum to 1.0.</td>
+</tr>
+<tr>
+<td><strong>Composition</strong></td>
+<td><code>NominalComposition</code><br><code>EmpiricalFormula</code></td>
+<td>A value containing the composition of the material as a a map from the names of the components to their numerical quantities. The quantities are not required to be expressed on a unit or fractional basis.</td>
+</tr>
+<tr>
+<td><strong>Molecular</strong></td>
+<td><code>Smiles</code><br><code>Inchi</code></td>
+<td>Molecular structure using popular encoding schemes</td>
+</tr>
+</tbody>
+</table>
+<!-- We might add these back later, but they are currently unused
+**Boolean**  |       |A true/false value (e.g., active, deleted)
+**String**   |       |Any string value (e.g., email, notes, zip code, first name, etc.)
+-->
+
+<p>Many of these values represent probability distributions, e.g. normal and uniform distributions over
+continuous bounds or discrete distributions over categorical ones.</p>
+<p>Each of the Value Types is described below.
+Every field is required.</p>
+<hr />
+<h2 id="real-values">Real Values<a class="headerlink" href="#real-values" title="Permanent link">#</a></h2>
+<p>Two common distributions are supported: normal (i.e. Gaussian) and uniform.
+In cases when there is no distributional information, the "nominal" value type
+can be used to specify the expected value.</p>
+<h3 id="normal-real-value">Normal Real Value<a class="headerlink" href="#normal-real-value" title="Permanent link">#</a></h3>
+<p>Normally distributed value parameterized by a real-valued mean and standard deviation</p>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Value type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>"normal_real"</td>
+</tr>
+<tr>
+<td><code>mean</code></td>
+<td>Number</td>
+<td>Mean of the distribution</td>
+</tr>
+<tr>
+<td><code>std</code></td>
+<td>Number</td>
+<td>Standard deviation of the normal distribution</td>
+</tr>
+<tr>
+<td><code>units</code></td>
+<td>String</td>
+<td>A String describing the units</td>
+</tr>
+</tbody>
+</table>
+<h5>Constraints</h5>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th align="center">Relationship</th>
+<th>Field Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>std</code></td>
+<td align="center">&gt;=</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h5>Example</h5>
+<pre><code class="json">{
+    &quot;type&quot; : &quot;normal_real&quot;,
+    &quot;units&quot; : &quot;kelvin&quot;,
+    &quot;mean&quot;: 350,
+    &quot;std&quot;: 1.03
+}
+</code></pre>
+
+<h3 id="uniform-real-value">Uniform Real Value<a class="headerlink" href="#uniform-real-value" title="Permanent link">#</a></h3>
+<p>A Uniform continuous distribution value, with inclusive lower and upper bounds.
+These are especially useful for expressing uncertainty when the number of digits is truncated.
+In order to be valid, the entirety of the distribution must fall within the bounds.</p>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Value type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>"uniform_real"</td>
+</tr>
+<tr>
+<td><code>lower_bound</code></td>
+<td>Number</td>
+<td>Lower bound of the distribution</td>
+</tr>
+<tr>
+<td><code>upper_bound</code></td>
+<td>Number</td>
+<td>Upper bound of the distribution</td>
+</tr>
+<tr>
+<td><code>units</code></td>
+<td>String</td>
+<td>A String describing the units</td>
+</tr>
+<tr>
+<td>##### Constraints</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th align="center">Relationship</th>
+<th>Field Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lower_bound</code></td>
+<td align="center">&lt;=</td>
+<td><code>upper_bound</code></td>
+</tr>
+</tbody>
+</table>
+<h5>Example</h5>
+<p>A value field read off a digital display with 3 decimal points.</p>
+<pre><code class="json">{
+    &quot;type&quot; : &quot;uniform_real&quot;,
+    &quot;units&quot; : &quot;meter&quot;,
+    &quot;lower_bound&quot;: 0.9995,
+    &quot;upper_bound&quot;: 1.0005
+}
+</code></pre>
+
+<h3 id="nominal-real-value">Nominal Real Value<a class="headerlink" href="#nominal-real-value" title="Permanent link">#</a></h3>
+<p>Nominal value, which does not specify an uncertainty but is not to be assumed to be exact.</p>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Value type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>"nominal_real"</td>
+</tr>
+<tr>
+<td><code>nominal</code></td>
+<td>Number</td>
+<td>A nominal value - not assumed to be exact</td>
+</tr>
+<tr>
+<td><code>units</code></td>
+<td>String</td>
+<td>A String describing the units</td>
+</tr>
+</tbody>
+</table>
+<h5>Constraints</h5>
+<p>None</p>
+<h5>Example</h5>
+<pre><code class="json">{
+    &quot;type&quot; : &quot;nominal_real&quot;,
+    &quot;units&quot; : &quot;meter&quot;,
+    &quot;nominal&quot;: 1.0
+}
+</code></pre>
+
+<hr />
+<h2 id="integer-values">Integer Values<a class="headerlink" href="#integer-values" title="Permanent link">#</a></h2>
+<p>Currently, there are two integer types: a uniform (i.e. range) distribution and a 
+nominal (i.e. specified) value.</p>
+<h3 id="uniform-integer-value">Uniform Integer Value<a class="headerlink" href="#uniform-integer-value" title="Permanent link">#</a></h3>
+<p>A uniform integer distribution value, with inclusive lower and upper bounds.
+These are especially useful for expressing uncertainty when the number of digits is truncated.
+In order to be valid, the entirety of the distribution must fall within the bounds.</p>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Value type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>"uniform_integer"</td>
+</tr>
+<tr>
+<td><code>lower_bound</code></td>
+<td>Integer</td>
+<td>Lower bound of the distribution</td>
+</tr>
+<tr>
+<td><code>upper_bound</code></td>
+<td>Integer</td>
+<td>Upper bound of the distribution</td>
+</tr>
+</tbody>
+</table>
+<h5>Constraints</h5>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th align="center">Relationship</th>
+<th>Field Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lower_bound</code></td>
+<td align="center">&lt;=</td>
+<td><code>upper_bound</code></td>
+</tr>
+</tbody>
+</table>
+<h5>Example</h5>
+<p>A value field read off a digital display with 3 decimal points.</p>
+<pre><code class="json">{
+    &quot;type&quot; : &quot;uniform_integer&quot;,
+    &quot;lower_bound&quot;: 246,
+    &quot;upper_bound&quot;: 255
+}
+</code></pre>
+
+<h3 id="nominal-integer-value">Nominal Integer Value<a class="headerlink" href="#nominal-integer-value" title="Permanent link">#</a></h3>
+<p>Nominal value, which does not specify an uncertainty but is not to be assumed to be exact.</p>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Value type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>"nominal_integer"</td>
+</tr>
+<tr>
+<td><code>nominal</code></td>
+<td>Integer</td>
+<td>A nominal value - not assumed to be exact</td>
+</tr>
+</tbody>
+</table>
+<h5>Constraints</h5>
+<p>None</p>
+<h5>Example</h5>
+<pre><code class="json">{
+    &quot;type&quot; : &quot;nominal_integer&quot;,
+    &quot;nominal&quot;: 42
+}
+</code></pre>
+
+<hr />
+<h2 id="categorical">Categorical<a class="headerlink" href="#categorical" title="Permanent link">#</a></h2>
+<p>Categorical values are distributions over the valid category names representing the probability
+of each category.
+These are different than mixtures; 60% water and 40% ethanol is not a categorical distribution.
+For those, see <code>Composition</code>.</p>
+<p>Currently, there are two categorical types:
+a discrete (i.e. enumerated) distribution and a nominal (i.e. specified) value.</p>
+<h3 id="discrete-categorical-value">Discrete Categorical Value<a class="headerlink" href="#discrete-categorical-value" title="Permanent link">#</a></h3>
+<p>Distribution of categories stored as a map from the string label to the probability</p>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Value type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>"discrete_categorical"</td>
+</tr>
+<tr>
+<td><code>probabilities</code></td>
+<td>Map[String, Number]</td>
+<td>A map from string category names to their probability.</td>
+</tr>
+</tbody>
+</table>
+<h5>Constraints</h5>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th align="center">Relationship</th>
+<th>Field Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>abs(sum(probabilities.values()) - 1.0)</td>
+<td align="center">&lt;</td>
+<td>1.0e-9</td>
+</tr>
+<tr>
+<td>each probability value</td>
+<td align="center">&gt;=</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h5>Example</h5>
+<pre><code class="json">{
+    &quot;type&quot;:&quot;discrete_categorical&quot;,
+    &quot;probabilities&quot; : {
+        &quot;red&quot; : 0.54,
+        &quot;blue&quot; : 0.46
+    }
+}
+</code></pre>
+
+<h3 id="nominal-categorical-value">Nominal Categorical Value<a class="headerlink" href="#nominal-categorical-value" title="Permanent link">#</a></h3>
+<p>Nominal value, which does not specify an uncertainty but is not to be assumed to be exact.</p>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Value type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>"nominal_categorical"</td>
+</tr>
+<tr>
+<td><code>nominal</code></td>
+<td>String</td>
+<td>The category of the value</td>
+</tr>
+</tbody>
+</table>
+<h5>Constraints</h5>
+<p>None</p>
+<h5>Example</h5>
+<pre><code class="json">{
+    &quot;type&quot; : &quot;nominal_categorical&quot;,
+    &quot;nominal&quot; : &quot;red&quot;
+}
+</code></pre>
+
+<hr />
+<h2 id="composition">Composition<a class="headerlink" href="#composition" title="Permanent link">#</a></h2>
+<p>A value representing the composition of the material as a set of component names and their respective quantities.
+The quantities are not required to be expressed on a unit or fractional basis.
+For example "one part flour two parts sugar" is acceptable.</p>
+<h3 id="nominal-composition">Nominal Composition<a class="headerlink" href="#nominal-composition" title="Permanent link">#</a></h3>
+<p>A composition represented as a map from the component name to the quantity.
+The quantities do not express an uncertainty, but also do not imply that there is absolute certainty in their values.</p>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Value type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>"nominal_composition"</td>
+</tr>
+<tr>
+<td><code>quantities</code></td>
+<td>Map[String, Number]</td>
+<td>Map[String, Number]</td>
+</tr>
+</tbody>
+</table>
+<h5>Constraints</h5>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th align="center">Relationship</th>
+<th>Field Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>each quantity value</td>
+<td align="center">&gt;=</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h5>Example</h5>
+<pre><code class="json">{
+    &quot;type&quot; : &quot;nominal_composition&quot;,
+    &quot;quantities&quot; : {
+        &quot;water&quot; : 120,
+        &quot;ethanol&quot; : 80
+    }
+}
+</code></pre>
+
+<h3 id="empirical-formula">Empirical Formula<a class="headerlink" href="#empirical-formula" title="Permanent link">#</a></h3>
+<p>A composition represented as a chemical formula string.
+The order and grouping of the elements is ignored.</p>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Value type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>"empirical_formula"</td>
+</tr>
+<tr>
+<td><code>formula</code></td>
+<td>String</td>
+<td>Chemical formula to be parsed as an empirical formula</td>
+</tr>
+</tbody>
+</table>
+<h5>Example</h5>
+<pre><code class="json">{
+    &quot;type&quot; : &quot;empirical_formula&quot;,
+    &quot;formula&quot; : &quot;SiO2&quot;
+}
+</code></pre>
+
+<hr />
+<h3 id="molecular-structure">Molecular Structure<a class="headerlink" href="#molecular-structure" title="Permanent link">#</a></h3>
+<p>Molecular structure types are used to define attributes that contain information about 
+the structure and composition of a molecule.
+Given a molecular structure, one can infer the chemical formula, existence of functional groups,
+and local chemical environment of each atom in the molecule.
+Most commonly a molecular structure will refer to the entire material,
+but multiple molecular structures can be used to define fragments of a material, e.g. monomers of a polymer.</p>
+<p>We support two ways of representing a molecular structure:</p>
+<ul>
+<li>SMILES string</li>
+<li>InChI string</li>
+</ul>
+<h4>SMILES Value</h4>
+<p>A value containing a <a href="https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system">SMILES string</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Value type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>"smiles"</td>
+</tr>
+<tr>
+<td><code>smiles</code></td>
+<td>String</td>
+<td>A SMILES string</td>
+</tr>
+</tbody>
+</table>
+<h5>Example</h5>
+<pre><code class="json">{
+    &quot;type&quot; : &quot;smiles&quot;,
+    &quot;smiles&quot; : &quot;c1(C=O)cc(OC)c(O)cc1&quot;
+}
+</code></pre>
+
+<h4>InChI Value</h4>
+<p>A value containing an <a href="https://en.wikipedia.org/wiki/International_Chemical_Identifier">InChI string</a>.
+Note: this is not the same as the InChI key.</p>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Value type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>"inchi"</td>
+</tr>
+<tr>
+<td><code>inchi</code></td>
+<td>String</td>
+<td>An InChI string</td>
+</tr>
+</tbody>
+</table>
+<h5>Example</h5>
+<pre><code class="json">{
+    &quot;type&quot; : &quot;inchi&quot;,
+    &quot;inchi&quot; : &quot;InChI=1/C8H8O3/c1-11-8-4-6(5-9)2-3-7(8)10/h2-5,10H,1H3&quot;
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../unique-identifiers/" class="btn btn-neutral" title="Unique Identifiers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../unique-identifiers/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
