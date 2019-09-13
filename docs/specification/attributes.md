@@ -20,12 +20,13 @@ It may also be appropriate to include _both_ a Paramter and a Condition on the r
 The use of Conditions in specifications should be limited in favor of parameters.
 
 Attributes are annotated with the `origin` of the data.  This field can have the following values:
-* `measured`: The Value of this Attribute was directly measured.
-* `predicted`: The Value of this Attribute came from a model, such as a complex simulation, a machine learning-derived computation or rule-of-thumb estimation
-* `summary`: The Value of this Attribute came from a third-party source or compilation.  
-* `specified`: The Value of this Attribute was dictated, such as the oven temperature in a [Process Specification](../objects#process-specification).  This value should only appear in Specifications.
-* `computed`: The Value of this Attribute was derived directly from measured values, such as computing the yield stress from a stress-strain curve or computing the density from known mass and volume measurements.
-* `unknown`: The origin of this Value is unknown.  This is the default value.
+
+- `measured`: The Value of this Attribute was directly measured.
+- `predicted`: The Value of this Attribute came from a model, such as a complex simulation, a machine learning-derived computation or rule-of-thumb estimation
+- `summary`: The Value of this Attribute came from a third-party source or compilation.  
+- `specified`: The Value of this Attribute was dictated, such as the oven temperature in a [Process Specification](../objects#process-specification).  This value should only appear in Specifications.
+- `computed`: The Value of this Attribute was derived directly from measured values, such as computing the yield stress from a stress-strain curve or computing the density from known mass and volume measurements.
+- `unknown`: The origin of this Value is unknown.  This is the default value.
 
 Attributes may be annotated with an [Attribute Template](../attribute-templates), which defines a canonical name and bounds on the attribute.
 
