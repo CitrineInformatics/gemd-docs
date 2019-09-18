@@ -144,7 +144,7 @@ Field name | Value type | Default | Description
 `notes`       | String     | None | Some free-form notes about the process run
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
-`source`      | Optional\[[Source](./#source)] | Empty | provenance information for the process
+`source`      | [Source](./#source) | None | provenance information for the process
 `spec`| [Process Spec](./#process-specification) | Req. | Spec for this process
 `parameters`  | Set\[[Parameters](../attributes/#parameters)] | Empty | Measured parameters for the process run
 `conditions`  | Set\[[Conditions](../attributes/#conditions)] | Empty | Measured conditions for the process run
@@ -581,7 +581,7 @@ Field name | Value type | Default | Description
 `notes`       | String     | None | Some free-form notes about the measurement run
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
-`source`      | Optional\[[Source](./#source)] | Empty | provenance information for the measurement
+`source`      | [Source](./#source) | None | provenance information for the measurement
 `spec`        | [Measurement Spec](./#measurement-specification) | Req. | The measurement specification of which this is a realization
 `material`    | [Material Run](./#material-run) | Req. | The material run being measured
 `parameters`  | Set\[[Parameters](../attributes/#parameters)] | Empty | Measured parameters for the measurement
@@ -683,8 +683,9 @@ This type of information tends to have limited value for modeling and other anal
 
 At present the only type of source supported is who performed a task and when they did so.
 
-Field name | Value type | Default | Description
------------|------------|---------|-------------
+Field name    | Value type | Default | Description
+--------------|------------|---------|-------------
+`type`        | String     | Req. | "performed_source"
 `performed_by`| String | None | The person who performed the measurement
 `performed_date`| String | None | The date the measurement was performed; ISO-8601 date-formatted string (YYYY-MM-DD or YYYY-MM-DDTHH:mm:SS)
 
@@ -693,7 +694,7 @@ Field name | Value type | Default | Description
 
 ```json
 {
-    "type": "source",
+    "type": "performed_source",
     "performed_by": "joe@abc.com",
     "performed_date": "2015-03-14T15:09:27"
 }
