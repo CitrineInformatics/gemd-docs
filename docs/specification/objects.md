@@ -706,6 +706,7 @@ Field name    | Value type | Default | Description
 
 Field name | Value type | Default | Description
 -----------|------------|---------|-------------
+`type`     | String     | Req. | "procured_source"
 `procured_from`| String | None | The vendor or supplier who provided the material
 `procured_date`| String | None | The date the material was obtained; ISO-8601 date-formatted string (YYYY-MM-DD or YYYY-MM-DDTHH:mm:SS)
 `catalog_no`| String | None | The vendor-specific identification code for the material
@@ -715,9 +716,8 @@ Field name | Value type | Default | Description
 ```json
 {
     "type": "procured_source",
-    "procured_from": "joe@abc.com",
-    "procured_date": "2015-03-14T15:09:27",
+    "procured_from": "amazon.com",
+    "procured_date": "2019-07-22T08:09:27",
     "catalog_no": "B0722DW2KY",
-
 }
 ```
