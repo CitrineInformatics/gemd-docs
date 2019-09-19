@@ -93,7 +93,7 @@ condition names | must be unique | among condition names
                 "nominal" : 450,
                 "units" : "kelvin"
             }
-        }, 
+        },
         {
             "type" : "parameter",
             "name" : "Baking Time",
@@ -191,7 +191,7 @@ Same as `ProcessSpec`, but with the `template` inherited from the `spec`, i.e. `
                 "upper_bound" : 452.5,
                 "units" : "kelvin"
             }
-        }, 
+        },
         {
             "type" : "parameter",
             "name" : "Baking Time",
@@ -681,7 +681,9 @@ Provenance is the documented history of an Object.
 This includes information such as who performed a measurement, the literature source for a process specification, or the purveyor and catalog number for a purchased material.
 This type of information tends to have limited value for modeling and other analysis but is essential for verification and auditing.
 
-At present the only type of source supported is who performed a task and when they did so.
+At present the two types of source are supported: who performed a task and when they did so; and from where a material was procured
+
+### Performed Source
 
 Field name    | Value type | Default | Description
 --------------|------------|---------|-------------
@@ -700,3 +702,22 @@ Field name    | Value type | Default | Description
 }
 ```
 
+### Procured Source
+
+Field name | Value type | Default | Description
+-----------|------------|---------|-------------
+`procured_from`| String | None | The vendor or supplier who provided the material
+`procured_date`| String | None | The date the material was obtained; ISO-8601 date-formatted string (YYYY-MM-DD or YYYY-MM-DDTHH:mm:SS)
+`catalog_no`| String | None | The vendor-specific identification code for the material
+
+##### Example
+
+```json
+{
+    "type": "procured_source",
+    "procured_from": "joe@abc.com",
+    "procured_date": "2015-03-14T15:09:27",
+    "catalog_no": "B0722DW2KY",
+
+}
+```
