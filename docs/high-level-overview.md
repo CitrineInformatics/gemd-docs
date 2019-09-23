@@ -31,15 +31,15 @@ Note, Ingredient Objects cannot be represented in the Template state.
 Object      | Examples   | Linked Objects | State | Possible Attributes
 ------------|------------|----------------|:-----:|--------------------
 `Material`  | Glass, H2O | n/a | Template  | Properties
-^      |      ^     | input: Process (1); Measurement (0 or many) | Specification | Properties and Conditions
+^      |      ^     | input: Process (1); Measurement (0 or many) | Spec | Properties and Conditions
 ^      |      ^     | ^ | Run | none
 `Process` | Gas pressure sintering, Binder burnout | n/a | Template | Parameters and Conditions
-^      |      ^     | input: Ingredient (0 or many); output: Material (1) | Specification | Parameters and Conditions
+^      |      ^     | input: Ingredient (0 or many); output: Material (1) | Spec | Parameters and Conditions
 ^      |      ^     | ^ | Run | Parameters and Conditions
 `Measurement` | 3 point bend, combustion analysis | n/a | Template | Properties, Parameters, and Conditions
-^      |      ^     | Material (1) |Specification | Parameters, and Conditions
+^      |      ^     | Material (1) |Spec | Parameters, and Conditions
 ^      |      ^     | ^ | Run | Properties, Parameters, and Conditions
-`Ingredient` |      80wt%, 20lbs, solute     | Material (1) |Specification | n/a
+`Ingredient` |      80wt%, 20lbs, solute     | Material (1) |Spec | n/a
 ^      |      ^     | ^ | Run | n/a
 
 *Table1:* Shows the relation of Objects to other Objects and Attributes possible in each state.
@@ -64,7 +64,7 @@ Taurus distinguishes between the generalization of what might be done (Template)
 
 > As an example, one can have a Template for a Process Object defined as “sinter at {temperature} for {time} in kiln {id}”.
 This would be the Template used for a Spec of a kiln process used in the production of alumina.
-The Specification of the Process object might be “sinter at 2400 K for 6 hours in kiln 14”.
+The Spec of the Process object might be “sinter at 2400 K for 6 hours in kiln 14”.
 The Process Run object would be what really happened when the process was conducted.
 For example, someone may have run the kiln and it ran at 2395 K.
 The Run of the Process object would be “sinter at 2395 K for 5.75 hours in kiln 14”.
