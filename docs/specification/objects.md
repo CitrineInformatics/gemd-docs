@@ -1,29 +1,29 @@
 # Objects
 
-There are two kinds of objects: Specifications ("Spec") and Realizations ("Run").
-Specifications represent the intent and expectation of the material, process, ingredient, or measurement,
-while Realizations capture what actually happened.
-This captures natural variations and forms an association between samples as multiple realizations of the same specification.
+There are two kinds of objects: Specs and Runs.
+Specs represent the intent and expectation of the material, process, ingredient, or measurement,
+while Runs capture what actually happened.
+This captures natural variations and forms an association between samples and design as multiple Runs of the same Spec.
 
-Specifications are specific.
+Specs are specific.
 In `MaterialSpec`, `ProcessSpec`, `IngredientSpec`, and `MeasurementSpec` objects, value should be given nominal values, e.g.:
-real-valued attributes on specifications should have [Nominal](../value-types/#nominal-real-values) values.
-This is in contrast to another common usage of the term "Specification" as a range of accepted values, i.e. "The material is in spec if the nitrogen impurity concentration is below 0.1%."
+real-valued attributes on Specs should have [Nominal Values](../value-types/#nominal-real-values).
+This is in contrast to another common usage of the term "Specification" (or tolerance) as a range of accepted values, e.g. "The material is in spec if the nitrogen impurity concentration is below 0.1%."
 In this data model, that notion of a "spec" that an object can "be in" is an [Object Template](../object-templates).
 
-Specifications can have an [Object Template](../object-templates/) associated, which bounds the valid units and values of the [attributes](../attributes) on the specification.
-Object runs associated with an object specification inherit the template associated with the spec, and their attributes are thus also constrained by the template.
+Specs can have an [Object Template](../object-templates/) associated, which bounds the valid units and values of the [Attributes](../attributes) on the Spec.
+Object Runs associated with an object Spec inherit the [Object Template](../object-templates/) associated with the Spec, and their [Attributes](../attributes) are thus also constrained by the [Object Template](../object-templates/).
 
 
-Many specifications can reference the same object template.
-Each specification can be associated with at most one object template.
-Many realizations can reference the same specification.
-Each run must be associated with exactly one specification.
+* Many Specs can reference the same Object Template.
+* Each Spec can be associated with at most one Object Template.
+* Many Runs can reference the same Spec.
+* Each Run must be associated with exactly one Spec.
 
 ---
-## Process Specification
+## Process Spec
 
-A specification for a process.
+An expectation of a process.
 Processes transform zero or more input materials into exactly one output material.
 
 
@@ -31,20 +31,20 @@ Field name | Value type | Default | Description
 -----------|------------|---------|-------------
 `uids`        | Map[String, String] | Empty | A collection of [Unique Identifiers](../unique-identifiers)
 `type`        | String     | Req. | "process_spec"
-`name`| String     | Req. | The name of the specification
-`notes`       | String     | None | Some free-form notes about the specification.
+`name`| String     | Req. | The name of the spec
+`notes`       | String     | None | Some free-form notes about the spec.
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
 `template`    | [Process Template](../object-templates/#process-template) | None | A template bounding the valid values for parameters and conditions on this process.
 `parameters`  | Set\[[Parameters](../attributes/#parameters)] | Empty | Specified parameters for the process spec
 `conditions`  | Set\[[Conditions](../attributes/#conditions)] | Empty | Specified conditions for the process spec
-`ingredients` | Set\[[Ingredient Spec](./#ingredient-specification)] | Empty | Ingredient Specifications
-`output_material` | [Material Spec](./#material-specification) | Req. | Output Material Specification
+`ingredients` | Set\[[Ingredient Spec](./#ingredient-spec)] | Empty | Ingredient Specs
+`output_material` | [Material Spec](./#material-spec) | Req. | Output Material Spec
 
 
 ##### Constraints
 
-All attributes sharing an [Attribute Template](../attribute-templates) with an attribute on the associated `template` will be constrained by the (potentially tighter) bounds set in the `template` Process Template.
+All [Attributes](../attributes) sharing an [Attribute Template](../attribute-templates) with an Attribute on the associated [Object Template](../object-templates/) will be constrained by the (potentially tighter) bounds set in the `template` Process Template.
 
 Field name | Relationship | Field Name
 -----------|:------------:|------------
@@ -65,7 +65,7 @@ condition names | must be unique | among condition names
         "baking::cookies"
     ],
     "name" : "Bake Cookies",
-    "notes" : "Process Specification for baking cookies in an oven",
+    "notes" : "Process Spec for baking cookies in an oven",
     "template" : {
         "type" : "link_by_uid",
         "scope" : "cookie_templates",
@@ -93,7 +93,7 @@ condition names | must be unique | among condition names
                 "nominal" : 450,
                 "units" : "kelvin"
             }
-        }, 
+        },
         {
             "type" : "parameter",
             "name" : "Baking Time",
@@ -134,7 +134,7 @@ condition names | must be unique | among condition names
 ---
 ## Process Run
 
-A realization of a process.
+A particular instance of a process.
 
 Field name | Value type | Default | Description
 -----------|------------|---------|------------
@@ -145,7 +145,7 @@ Field name | Value type | Default | Description
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
 `source`      | [Source](./#source) | None | provenance information for the process
-`spec`| [Process Spec](./#process-specification) | Req. | Spec for this process
+`spec`| [Process Spec](./#process-spec) | Req. | Spec for this process
 `parameters`  | Set\[[Parameters](../attributes/#parameters)] | Empty | Measured parameters for the process run
 `conditions`  | Set\[[Conditions](../attributes/#conditions)] | Empty | Measured conditions for the process run
 `ingredients` | Set\[[Ingredient Run](./#ingredient-run)] | Empty | Ingredient Runs
@@ -191,7 +191,7 @@ Same as `ProcessSpec`, but with the `template` inherited from the `spec`, i.e. `
                 "upper_bound" : 452.5,
                 "units" : "kelvin"
             }
-        }, 
+        },
         {
             "type" : "parameter",
             "name" : "Baking Time",
@@ -230,9 +230,9 @@ Same as `ProcessSpec`, but with the `template` inherited from the `spec`, i.e. `
 ```
 
 ---
-## Ingredient Specification
+## Ingredient Spec
 
-A specification for an ingredient, which annotates a material with information related to its usage in an individual process.
+The intent for an ingredient, which annotates a material with information related to its usage in an individual process.
 
 Field name | Value type | Default | Description
 -----------|------------|---------|------------
@@ -240,8 +240,8 @@ Field name | Value type | Default | Description
 `type`         | String     | Req. | "ingredient_spec"
 `name`| String     | Req. | The name of the ingredient, unique within the process that contains it
 `labels`       | Set[String] | Empty | Additional labels on the ingredient for describing the type or role of the ingredient
-`material`     | [Material Spec](./#material-specification) | Req. | Material that is this ingredient
-`notes`       | String     | Empty | Some free-form notes about the specification.
+`material`     | [Material Spec](./#material-spec) | Req. | Material that is this ingredient
+`notes`       | String     | Empty | Some free-form notes about the spec.
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
 `mass_fraction` | [Real Value](../value-types#real-values) | None | The mass fraction of the ingredient in the process
@@ -289,7 +289,7 @@ len(`name`) | <=    | 128, UTF-8 Encoded
 ---
 ## Ingredient Run
 
-A realization of an ingredient spec.
+A particular instance of an ingredient spec.
 
 Field name | Value type | Default | Description
 -----------|------------|---------|------------
@@ -298,14 +298,14 @@ Field name | Value type | Default | Description
 `name`| String     | Req. | The name of the ingredient, unique within the process that contains it
 `labels`       | Set[String] | Empty | Additional labels on the ingredient for describing the type or role of the ingredient
 `material`     | [Material Run](./#material-run) | Req. | Material that is this ingredient
-`notes`       | String     | None | Some free-form notes about the specification.
+`notes`       | String     | None | Some free-form notes about the run.
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
 `mass_fraction` | [Real Value](../value-types#real-values) | None | The mass fraction of the ingredient in the process
 `volume_fraction` | [Real Value](../value-types#real-values) | None | The volume fraction of the ingredient in the process
 `number_fraction` | [Real Value](../value-types#real-values) | None | The number fraction of the ingredient in the process
 `absolute_quantity` | [Real Value](../value-types#real-values) | None | The absolute quantity of the ingredient in the process
-`spec`| [Ingredient Spec](./#ingredient-specification) | Req. | The specification of which this is a realization
+`spec`| [Ingredient Spec](./#ingredient-spec) | Req. | The spec of which this is a run
 
 ##### Constraints
 
@@ -346,13 +346,13 @@ Field name | Relationship | Field Name
 
 
 ---
-## Material Specification
+## Material Spec
 
-A specification for a material.
+The expectation for a material.
 Materials have exactly one producing process.
-Material specifications may include specified properties,
+Material specs may include expected properties,
 but do so via the [PropertiesAndConditions](../attributes#properties-and-conditions) compound attribute.
-In this way, material specifications can associate a specified property value with the conditions under which it is specified.
+In this way, material specs can associate an expected property value with the conditions under which it is expected.
 For example, if a material is purchased and its Safety Data Sheet quotes a normal boiling point of 54 C,
 a property is known even though there is never an explicit measurement of that property by a person in the lab.  It could
 therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (condition).
@@ -360,18 +360,18 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 Field name | Value type | Default | Description
 -----------|------------|---------|------------
 `uids`        | Map[String, String] | Empty | A collection of [Unique Identifiers](../unique-identifiers)
-`type`        | String     | Req. | "material\_spec"
-`name`| String     | Req. | The name of the specification
-`notes`       | String     | None | Some free-form notes about the specification.
+`type`        | String     | Req. | "material_spec"
+`name`| String     | Req. | The name of the spec
+`notes`       | String     | None | Some free-form notes about the spec.
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
 `template`    | [Material Template](../object-templates/#material-template) | None | A template bounding the valid values for properties of this material.
-`properties`  | Set\[[PropertiesAndConditions](../attributes/#properties-and-conditions)] | Empty | Specified properties for the material spec
-`process`     | [Process Spec](./#process-specification) | Req. | The process Spec that produces this material
+`properties`  | Set\[[PropertiesAndConditions](../attributes/#properties-and-conditions)] | Empty | Expected properties for the material spec
+`process`     | [Process Spec](./#process-spec) | Req. | The Process Spec that produces this material
 
 ##### Constraints
 
-All attributes sharing an [Attribute Template](../attribute-templates) with an attribute on the associated `template` will be constrained by the (potentially tighter) bounds set in the `template`.
+All Attributes sharing an [Attribute Template](../attribute-templates) with an Attribute on the associated Object Template will be constrained by the (potentially tighter) bounds set in the `template` Material Template.
 
 Field name | Relationship | Field Name
 -----------|:------------:|------------
@@ -436,7 +436,7 @@ property names | must be unique | among property names
 ---
 ## Material Run
 
-A realization of a material, e.g. a sample, ingot, or wafer.
+A particular instance of a material, e.g. a sample, ingot, or wafer.
 
 Field name | Value type | Default | Description
 -----------|------------|---------|------------
@@ -446,10 +446,10 @@ Field name | Value type | Default | Description
 `notes`       | String     | None | Some free-form notes about the material run
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
-`spec`        | [Material Spec](./#material-specification) | Req. | The material specification of which this is a realization
-`process`     | [Process Run](./#process-run) | Req. | The process run that produced this material
-`measurements`  | Set\[[Measurement Run](./#measurement-run)] | Empty | characterizations of this material run
-`sample_type`   | `experimental`, `production`, or `virtual`, `unknown` | `unknown` | Context of how this material was realized
+`spec`        | [Material Spec](./#material-spec) | Req. | The material spec of which this is a run
+`process`     | [Process Run](./#process-run) | Req. | The Process Run that produced this material
+`measurements`  | Set\[[Measurement Run](./#measurement-run)] | Empty | characterizations of this Material Run
+`sample_type`   | `experimental`, `production`, or `virtual`, `unknown` | `unknown` | Context of how this material was made to be
 
 
 ##### Constraints
@@ -489,16 +489,16 @@ Same as Material Spec, but with the `template` inherited from the `spec`, i.e. `
 
 
 ---
-## Measurement Specification
+## Measurement Spec
 
-A specification for a measurement, indicating the parameters of and conditions under which to perform the measurement.
+An expectation for a measurement, indicating the parameters of and conditions under which to perform the measurement.
 
 Field name | Value type | Default | Description
 -----------|------------|---------|------------
 `uids`        | Map[String, String] | Empty | A collection of [Unique Identifiers](../unique-identifiers)
 `type`        | String     | Req. | "measurement_spec"
-`name`| String     | Req. | The name of the specification
-`notes`       | String     | None | Some free-form notes about the specification.
+`name`| String     | Req. | The name of the spec
+`notes`       | String     | None | Some free-form notes about the spec.
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
 `template`    | [Measurement Template](../object-templates/#measurement-template) | None | A template bounding the valid values for parameter and conditions of the measurement.
@@ -507,7 +507,7 @@ Field name | Value type | Default | Description
 
 ##### Constraints
 
-All attributes sharing an [Attribute Template](../attribute-templates) with an attribute on the associated `template` will be constrained by the (potentially tighter) bounds set in the `template`.
+All attributes sharing an [Attribute Template](../attribute-templates) with an attribute on the associated Object Template will be constrained by the (potentially tighter) bounds set in the `template`.
 
 Field name      | Relationship   | Field Name
 ----------------|:--------------:|------------
@@ -571,7 +571,7 @@ parameter names | must be unique | among parameter names
 ---
 ## Measurement Run
 
-A realization of a measurement.
+A particular instance of a measurement.
 
 Field name | Value type | Default | Description
 -----------|------------|---------|------------
@@ -582,7 +582,7 @@ Field name | Value type | Default | Description
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
 `source`      | [Source](./#source) | None | provenance information for the measurement
-`spec`        | [Measurement Spec](./#measurement-specification) | Req. | The measurement specification of which this is a realization
+`spec`        | [Measurement Spec](./#measurement-spec) | Req. | The measurement spec of which this is a run
 `material`    | [Material Run](./#material-run) | Req. | The material run being measured
 `parameters`  | Set\[[Parameters](../attributes/#parameters)] | Empty | Measured parameters for the measurement
 `conditions`  | Set\[[Conditions](../attributes/#conditions)] | Empty | Measured conditions for the measurement
@@ -678,7 +678,7 @@ parameter names | must be unique | among parameter names
 ## Source
 
 Provenance is the documented history of an Object.
-This includes information such as who performed a measurement, the literature source for a process specification, or the purveyor and catalog number for a purchased material.
+This includes information such as who performed a measurement, the literature source describing the design of a process, or the purveyor and catalog number for a purchased material.
 This type of information tends to have limited value for modeling and other analysis but is essential for verification and auditing.
 
 At present the only type of source supported is who performed a task and when they did so.
@@ -699,4 +699,3 @@ Field name    | Value type | Default | Description
     "performed_date": "2015-03-14T15:09:27"
 }
 ```
-
