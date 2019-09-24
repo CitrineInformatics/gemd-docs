@@ -86,13 +86,13 @@
         </ul>
     
 
-    <li class="toctree-l2"><a href="#specifications-and-realizations">Specifications and Realizations</a></li>
+    <li class="toctree-l2"><a href="#specs-and-runs">Specs and Runs</a></li>
     
         <ul>
         
             <li><a class="toctree-l3" href="#attribute-in-specs-and-runs">Attribute in Specs and Runs</a></li>
         
-            <li><a class="toctree-l3" href="#data-object-specifications-specs-and-realizations-runs">Data Object Specifications (Specs) and Realizations (Runs)</a></li>
+            <li><a class="toctree-l3" href="#data-object-specs-and-runs">Data Object Specs and Runs</a></li>
         
         </ul>
     
@@ -179,9 +179,9 @@
                 <h1>High Level Overview</h1>
 <h2 id="how-is-data-stored">How is data stored<a class="headerlink" href="#how-is-data-stored" title="Permanent link">#</a></h2>
 <p>We have given this format the codename <code>taurus</code>.</p>
-<p>Taurus stores data via interconnected Data Objects, representing specifications and realizations of materials, processing steps, measurements, and ingredient information.
+<p>Taurus stores data via interconnected Data Objects, representing Specs and Runs of Materials, Processing steps, Measurements, and Ingredient information.
 This format is graphical rather than tabular.
-It will support a JSON-based serialization, like the 
+It will support a JSON-based serialization, like the
 <a href="http://citrineinformatics.github.io/pif-documentation/">PIF</a>, but with links as references rather than nested objects (i.e. subsystems).
 Conversely, there are many new ideas that exist in taurus that are not captured by the PIF, including:</p>
 <ul>
@@ -194,7 +194,7 @@ Conversely, there are many new ideas that exist in taurus that are not captured 
 <p>There are four categories of Data Objects in Taurus: Materials, Processes, Measurements, and Ingredients.
 These represent real world objects in the development of materials.
 The 4 categories of Data Objects can only be linked in specific ways, for example, a Process Object can only be linked to one or many Material Objects as its input, more details are explained in Table1.
-Each Object can be represented in 3 different states, these states are defined below, they are Template, Specification, and Realization.
+Each Object can be represented in 3 different states, these states are defined below, they are Template, Spec, and Run.
 Note, Ingredient Objects cannot be represented in the Template state.</p>
 <ul>
 <li><strong>Material Object:</strong> Describes a material by a name used in an organization and optional notes to describe it.</li>
@@ -224,14 +224,14 @@ Note, Ingredient Objects cannot be represented in the Template state.</p>
 <td>^</td>
 <td>^</td>
 <td>input: Process (1); Measurement (0 or many)</td>
-<td align="center">Specification</td>
+<td align="center">Spec</td>
 <td>Properties and Conditions</td>
 </tr>
 <tr>
 <td>^</td>
 <td>^</td>
 <td>^</td>
-<td align="center">Realization</td>
+<td align="center">Run</td>
 <td>none</td>
 </tr>
 <tr>
@@ -245,14 +245,14 @@ Note, Ingredient Objects cannot be represented in the Template state.</p>
 <td>^</td>
 <td>^</td>
 <td>input: Ingredient (0 or many); output: Material (1)</td>
-<td align="center">Specification</td>
+<td align="center">Spec</td>
 <td>Parameters and Conditions</td>
 </tr>
 <tr>
 <td>^</td>
 <td>^</td>
 <td>^</td>
-<td align="center">Realization</td>
+<td align="center">Run</td>
 <td>Parameters and Conditions</td>
 </tr>
 <tr>
@@ -266,28 +266,28 @@ Note, Ingredient Objects cannot be represented in the Template state.</p>
 <td>^</td>
 <td>^</td>
 <td>Material (1)</td>
-<td align="center">Specification</td>
+<td align="center">Spec</td>
 <td>Parameters, and Conditions</td>
 </tr>
 <tr>
 <td>^</td>
 <td>^</td>
 <td>^</td>
-<td align="center">Realization</td>
+<td align="center">Run</td>
 <td>Properties, Parameters, and Conditions</td>
 </tr>
 <tr>
 <td><code>Ingredient</code></td>
 <td>80wt%, 20lbs, solute</td>
 <td>Material (1)</td>
-<td align="center">Specification</td>
+<td align="center">Spec</td>
 <td>n/a</td>
 </tr>
 <tr>
 <td>^</td>
 <td>^</td>
 <td>^</td>
-<td align="center">Realization</td>
+<td align="center">Run</td>
 <td>n/a</td>
 </tr>
 </tbody>
@@ -305,15 +305,15 @@ For example, a Process Object can have Parameters and Conditions as such: “sin
 </ul>
 <p>Each Attribute has specified fields that are required or optional as defined in Table3 and Table6 below.</p>
 <h2 id="how-are-states-defined">How are States defined?<a class="headerlink" href="#how-are-states-defined" title="Permanent link">#</a></h2>
-<p>There are 3 main states in which Data Objects exist: Templates, Specification, and Realization.
-Taurus distinguishes between the generalization of what might be done (Template), the intent to do something (Specification), and the realization of doing it (Realization).</p>
+<p>There are 3 main states in which Data Objects exist: Templates, Spec, and Run.
+Taurus distinguishes between the generalization of what might be done (Template), the intent to do something (Spec), and the actual result of doing it (Run).</p>
 <blockquote>
 <p>As an example, one can have a Template for a Process Object defined as “sinter at {temperature} for {time} in kiln {id}”.
-This would be the Template used for a Specification of a kiln process used in the production of alumina.
-The Specification of the Process object might be “sinter at 2400 K for 6 hours in kiln 14”.
-The Realization Process object would be what really happened when the process was conducted.
+This would be the Template used for a Spec of a kiln process used in the production of alumina.
+The Spec of the Process object might be “sinter at 2400 K for 6 hours in kiln 14”.
+The Process Run object would be what really happened when the process was conducted.
 For example, someone may have run the kiln and it ran at 2395 K.
-The Realization of the Process object would be “sinter at 2395 K for 5.75 hours in kiln 14”.</p>
+The Run of the Process object would be “sinter at 2395 K for 5.75 hours in kiln 14”.</p>
 </blockquote>
 <p>All Data Objects (and all the Attributes that describe those Data Objects) in any State have specified fields that are required or optional, Table2 goes into further detail about the possible fields in all Data Objects and Attributes.</p>
 <table>
@@ -346,7 +346,7 @@ The Realization of the Process object would be “sinter at 2395 K for 5.75 hour
 <h2 id="templates">Templates<a class="headerlink" href="#templates" title="Permanent link">#</a></h2>
 <p>Templates are generalizations of Data Objects used to standardize data in Taurus.
 Templates are used at write time to validate data and at read time to associate groups of information together.
-Each Specification and Realization Object or Attribute (excluding Ingredient Objects and Metadata Attributes) requires a linked Template to support this read and write time association and validation respectively.</p>
+Each Spec and Run Object or Attribute (excluding Ingredient Objects and Metadata Attributes) requires a linked Template to support this read and write time association and validation respectively.</p>
 <h3 id="attribute-templates">Attribute Templates<a class="headerlink" href="#attribute-templates" title="Permanent link">#</a></h3>
 <p>An Attribute Template specifies the bounds that are acceptable for an Attribute.</p>
 <p>For example, an Attribute Template could specify a Real value bounded between -3 and +17, or it could define a Categorical bound with the following allowed categories: "salt", "not salt".
@@ -465,13 +465,13 @@ That second restriction is represented by a second bound paired with the Conditi
 </tbody>
 </table>
 <p><em>Table5</em>: Shows which Attributes can be linked to each Data Object in the Template state.</p>
-<h2 id="specifications-and-realizations">Specifications and Realizations<a class="headerlink" href="#specifications-and-realizations" title="Permanent link">#</a></h2>
-<p>Specifications (Specs) define the intent to do something, usually formalized in the format of an experiment request, the intention of an experiment, or the definition of a property.
-For example, the boiling point of water is defined as 100C, a specification.</p>
-<p>Realizations (Runs) describe how a material, process, or measurement were actually performed, defined, or evaluated and the end results of that evaluation.
-For example, the water boiled at 101C, a realization.</p>
+<h2 id="specs-and-runs">Specs and Runs<a class="headerlink" href="#specs-and-runs" title="Permanent link">#</a></h2>
+<p>Specs define the intent to do something, usually formalized in the format of an experiment request, the intention of an experiment, or the definition of a property.
+For example, the normal boiling point of pure water is 99.61 C, a spec.</p>
+<p>Runs describe how a material, process, or measurement were actually performed, defined, or evaluated and the end results of that evaluation.
+For example, a sample of water boiled at 101 C, a run.</p>
 <h3 id="attribute-in-specs-and-runs">Attribute in Specs and Runs<a class="headerlink" href="#attribute-in-specs-and-runs" title="Permanent link">#</a></h3>
-<p>Each Attribute has specified fields that are required or optional for both Specification or Realization state.
+<p>Each Attribute has specified fields that are required or optional for both Spec or Run state.
 Table6 goes into further detail about the possible fields.
 Table6 represents the Attributes in diagram.</p>
 <table>
@@ -515,7 +515,7 @@ Table6 represents the Attributes in diagram.</p>
 </tr>
 </tbody>
 </table>
-<p><em>Table6</em>: Shows the fields available for Attributes in the Specifications and Realizations states.</p>
+<p><em>Table6</em>: Shows the fields available for Attributes in the Spec and Run context.</p>
 <p>All attributes must specify the <code>origin</code> of their data as one of:
 * Specified: it is the intention to have this value
 * Measured: this was directly measured during the process or measurement run
@@ -525,15 +525,17 @@ Table6 represents the Attributes in diagram.</p>
 * Unknown: the origin is not known, typically when migrating legacy data</p>
 <p>A <code>value</code> is a complex type that may contain both central (i.e. expected) and distributional (i.e. uncertainty) information.
 It also includes units for real (i.e. continuous) values.</p>
-<h3 id="data-object-specifications-specs-and-realizations-runs">Data Object Specifications (Specs) and Realizations (Runs)<a class="headerlink" href="#data-object-specifications-specs-and-realizations-runs" title="Permanent link">#</a></h3>
-<p>Object Specifications require an associated Object Template that bounds the valid units and values of the Attributes on the Specification.</p>
-<p>With the linking of Specs to Runs, Realizations inherit associated Templates through Specs.
+<h3 id="data-object-specs-and-runs">Data Object Specs and Runs<a class="headerlink" href="#data-object-specs-and-runs" title="Permanent link">#</a></h3>
+<p>Object Specs require an associated Object Template that bounds the valid units and values of the Attributes on the Spec.</p>
+<p>With the linking of Specs to Runs, Runs inherit associated Templates through Specs.
 For example, Process Runs associated with a Process Spec inherit the Template associated with the Spec, and their Attributes are thus also constrained by the Template.</p>
-<p>Many Specifications can reference the same Object Template.
-Each Specification can be associated with at most one Object Template (for now).
-Many Runs can reference the same Specification.
-Each Run must be associated with exactly one Specification.</p>
-<p>As Object Specs define the intent to do something, they are more limited in possible fields than Realizations.
+<ul>
+<li>Many Specs can reference the same Object Template.</li>
+<li>Each Spec can be associated with at most one Object Template (for now).</li>
+<li>Many Runs can reference the same Spec.</li>
+<li>Each Run must be associated with exactly one Spec.</li>
+</ul>
+<p>As Object Specs define the intent to do something, they are more limited in possible fields than Runs.
 Table7 represents what additional fields are required or optional for Object Specs.</p>
 <table>
 <thead>
@@ -589,7 +591,7 @@ Table7 represents what additional fields are required or optional for Object Spe
 </tr>
 </tbody>
 </table>
-<p><em>Table7</em>: Shows the fields available for Material, Measurement, and Process Objects in the Specifications and Realizations states.</p>
+<p><em>Table7</em>: Shows the fields available for Material, Measurement, and Process Objects in the Spec and Run contexts.</p>
 <p>Ingredient Objects are treated a little differently from the other Objects in taurus because they are mainly used to annotate a Material with information related to its usage in a Process.
 Table8 below identifies all the fields available in Ingredient Objects for both Specs and Runs.</p>
 <table>
@@ -676,7 +678,7 @@ Table8 below identifies all the fields available in Ingredient Objects for both 
 </tr>
 </tbody>
 </table>
-<p><em>Table8</em>: Shows the fields available for Ingredient Objects in the Specifications and Realizations states.</p>
+<p><em>Table8</em>: Shows the fields available for Ingredient Objects in the Spec and Run context.</p>
               
             </div>
           </div>

@@ -164,19 +164,19 @@ I measured the property to be a <a href="../value-types/#nominal-real-value">Nom
 </blockquote>
 <p><strong>Parameters</strong> are the non-environmental variables (typically specified and controlled) that may affect a process or measurement: e.g. Oven Dial Temperature Position for a kiln firing, or Magnification for a measurement taken with a SEM.</p>
 <blockquote>
-<p>The "Bake Cookies" Process Specification has two parameters: a <a href="../value-types/#nominal-real-value">Nominal Real Value</a> of 30 minutes for bake duration, and a <a href="../value-types/#nominal-real-value">Nominal Real Value</a> of 350 degrees for oven temperature setting</p>
+<p>The "Bake Cookies" Process Spec has two parameters: a <a href="../value-types/#nominal-real-value">Nominal Real Value</a> of 30 minutes for bake duration, and a <a href="../value-types/#nominal-real-value">Nominal Real Value</a> of 350 degrees for oven temperature setting</p>
 <p>I know my oven tends to run cold, so as I was baking I set my temperature setting to 360 degrees.
 I recorded this in the process run as a parameter with a <a href="../value-types/#nominal-real-value">Nominal Real Value</a> of 360 Degrees.</p>
 </blockquote>
 <p>Typically, conditions are going to apply to <em>measured</em> environmental variables in process runs and measurement runs.
-It may be appropriate to specify a Parameter attribute on a specification, and describe that attribute as a Condition on runs of that specification if the value is being measured as opposed to controlled during the run.
-It may also be appropriate to include <em>both</em> a Paramter and a Condition on the run if the value is both controlled and measured.
-The use of Conditions in specifications should be limited in favor of parameters.</p>
+It may be appropriate to specify a Parameter attribute on a Spec, and describe that attribute as a Condition on Runs of that Spec if the value is being measured as opposed to controlled during the Run.
+It may also be appropriate to include <em>both</em> a Parameter and a Condition on the Run if the value is both controlled and measured.
+The use of Conditions in Specs should be limited in favor of parameters.</p>
 <p>Attributes are annotated with the <code>origin</code> of the data.  This field can have the following values:</p>
 <ul>
 <li><code>measured</code>: The Value of this Attribute was directly measured.</li>
 <li><code>predicted</code>: The Value of this Attribute came from a model, such as a complex simulation, a machine learning-derived computation or rule-of-thumb estimation</li>
-<li><code>specified</code>: The Value of this Attribute was dictated, such as the oven temperature in a <a href="../objects#process-specification">Process Specification</a>.  This value should only appear in Specifications.</li>
+<li><code>specified</code>: The Value of this Attribute was dictated, such as the oven temperature in a <a href="../objects#process-spec">Process Spec</a>.  This value should only appear in Specs.</li>
 <li><code>computed</code>: The Value of this Attribute was derived directly from measured values, such as computing the yield stress from a stress-strain curve or computing the density from known mass and volume measurements.</li>
 <li><code>unknown</code>: The origin of this Value is unknown.  This is the default value.</li>
 </ul>
@@ -339,7 +339,7 @@ The use of Conditions in specifications should be limited in favor of parameters
 </code></pre>
 
 <h2 id="properties-and-conditions">Properties and Conditions<a class="headerlink" href="#properties-and-conditions" title="Permanent link">#</a></h2>
-<p>In the <a href="../objects#material-specification">Material Spec</a> object,
+<p>In the <a href="../objects#material-spec">Material Spec</a> object,
 one may need to specify a property along with the conditions under which the property occurs.
 For example:</p>
 <ul>

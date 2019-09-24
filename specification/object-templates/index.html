@@ -157,13 +157,13 @@
               
                 <h1>Object Templates</h1>
 <p>Object Templates, like Attribute Templates, define a domain concept, e.g. convection baking in a standard residential oven, a cheesecake, or a taste test.
-Unlike Specifications, Object Templates define ranges validity.</p>
-<p>Object Templates contain collections of 
+Unlike Specs, Object Templates define ranges validity.</p>
+<p>Object Templates contain collections of
 <a href="../attribute-templates/">Attribute Templates</a>
 that together constrain the values of an object's associated attributes to valid ranges.
 They also define a canonical name, a description, and can be tagged.</p>
 <p>The <code>parameters</code>, <code>properties</code>, and <code>conditions</code> fields in Object Templates are defined as sets of pair.
-Each pair contains at 
+Each pair contains at
 <a href="../attribute-templates/">Attribute Template</a>
 and a Bounds that further constraints the bounds in the Attribute template.
 For example, the baking temperature might generally be defined to be between 100 degF and 1500 degF,
@@ -292,7 +292,7 @@ If those sets are empty, then no constraint is implied.</p>
                     &quot;lower_bound&quot; : 328,
                     &quot;upper_bound&quot; : 750
                 }
-            }, 
+            },
             {
                 &quot;type&quot; : &quot;real_bounds&quot;,
                 &quot;default_units&quot; : &quot;kelvin&quot;,
@@ -313,7 +313,7 @@ If those sets are empty, then no constraint is implied.</p>
                     &quot;lower_bound&quot; : 0,
                     &quot;upper_bound&quot; : 86400
                 }
-            }, 
+            },
             {
                 &quot;type&quot; : &quot;real_bounds&quot;,
                 &quot;default_units&quot; : &quot;seconds&quot;,
@@ -328,12 +328,12 @@ If those sets are empty, then no constraint is implied.</p>
 <hr />
 <h2 id="material-template">Material Template<a class="headerlink" href="#material-template" title="Permanent link">#</a></h2>
 <p>The Property Templates and Bounds contained in a material template are used to validate the properties in any
-<a href="../attributes/#properties-and-conditions"><code>PropertyAndCondition</code></a>s in the 
+<a href="../attributes/#properties-and-conditions"><code>PropertyAndCondition</code></a>s in the
 <a href="../objects/#material-spec">Material Spec</a>.
 They are not, however, used to validate the properties in any
 <a href="../objects/#measurement-run">Measurement Run</a> objects attached to the
 <a href="../objects/#material-run">Material Run</a>.
-Rather, those properties are validated by the 
+Rather, those properties are validated by the
 <a href="../object-templates/#measurement-template">Measurement Template</a>.</p>
 <table>
 <thead>

@@ -93,25 +93,25 @@
     <a class="current" href="./">Objects</a>
     <ul class="subnav">
             
-    <li class="toctree-l3"><a href="#process-specification">Process Specification</a></li>
+    <li class="toctree-l3"><a href="#process-spec">Process Spec</a></li>
     
 
     <li class="toctree-l3"><a href="#process-run">Process Run</a></li>
     
 
-    <li class="toctree-l3"><a href="#ingredient-specification">Ingredient Specification</a></li>
+    <li class="toctree-l3"><a href="#ingredient-spec">Ingredient Spec</a></li>
     
 
     <li class="toctree-l3"><a href="#ingredient-run">Ingredient Run</a></li>
     
 
-    <li class="toctree-l3"><a href="#material-specification">Material Specification</a></li>
+    <li class="toctree-l3"><a href="#material-spec">Material Spec</a></li>
     
 
     <li class="toctree-l3"><a href="#material-run">Material Run</a></li>
     
 
-    <li class="toctree-l3"><a href="#measurement-specification">Measurement Specification</a></li>
+    <li class="toctree-l3"><a href="#measurement-spec">Measurement Spec</a></li>
     
 
     <li class="toctree-l3"><a href="#measurement-run">Measurement Run</a></li>
@@ -174,24 +174,26 @@
             <div class="section">
               
                 <h1>Objects</h1>
-<p>There are two kinds of objects: Specifications ("Spec") and Realizations ("Run").
-Specifications represent the intent and expectation of the material, process, ingredient, or measurement,
-while Realizations capture what actually happened.
-This captures natural variations and forms an association between samples as multiple realizations of the same specification.</p>
-<p>Specifications are specific.
+<p>There are two kinds of objects: Specs and Runs.
+Specs represent the intent and expectation of the material, process, ingredient, or measurement,
+while Runs capture what actually happened.
+This captures natural variations and forms an association between samples and design as multiple Runs of the same Spec.</p>
+<p>Specs are specific.
 In <code>MaterialSpec</code>, <code>ProcessSpec</code>, <code>IngredientSpec</code>, and <code>MeasurementSpec</code> objects, value should be given nominal values, e.g.:
-real-valued attributes on specifications should have <a href="../value-types/#nominal-real-values">Nominal</a> values.
-This is in contrast to another common usage of the term "Specification" as a range of accepted values, i.e. "The material is in spec if the nitrogen impurity concentration is below 0.1%."
+real-valued attributes on Specs should have <a href="../value-types/#nominal-real-values">Nominal Values</a>.
+This is in contrast to another common usage of the term "Specification" (or tolerance) as a range of accepted values, e.g. "The material is in spec if the nitrogen impurity concentration is below 0.1%."
 In this data model, that notion of a "spec" that an object can "be in" is an <a href="../object-templates">Object Template</a>.</p>
-<p>Specifications can have an <a href="../object-templates/">Object Template</a> associated, which bounds the valid units and values of the <a href="../attributes">attributes</a> on the specification.
-Object runs associated with an object specification inherit the template associated with the spec, and their attributes are thus also constrained by the template.</p>
-<p>Many specifications can reference the same object template.
-Each specification can be associated with at most one object template.
-Many realizations can reference the same specification.
-Each run must be associated with exactly one specification.</p>
+<p>Specs can have an <a href="../object-templates/">Object Template</a> associated, which bounds the valid units and values of the <a href="../attributes">Attributes</a> on the Spec.
+Object Runs associated with an object Spec inherit the <a href="../object-templates/">Object Template</a> associated with the Spec, and their <a href="../attributes">Attributes</a> are thus also constrained by the <a href="../object-templates/">Object Template</a>.</p>
+<ul>
+<li>Many Specs can reference the same Object Template.</li>
+<li>Each Spec can be associated with at most one Object Template.</li>
+<li>Many Runs can reference the same Spec.</li>
+<li>Each Run must be associated with exactly one Spec.</li>
+</ul>
 <hr />
-<h2 id="process-specification">Process Specification<a class="headerlink" href="#process-specification" title="Permanent link">#</a></h2>
-<p>A specification for a process.
+<h2 id="process-spec">Process Spec<a class="headerlink" href="#process-spec" title="Permanent link">#</a></h2>
+<p>An expectation of a process.
 Processes transform zero or more input materials into exactly one output material.</p>
 <table>
 <thead>
@@ -219,13 +221,13 @@ Processes transform zero or more input materials into exactly one output materia
 <td><code>name</code></td>
 <td>String</td>
 <td>Req.</td>
-<td>The name of the specification</td>
+<td>The name of the spec</td>
 </tr>
 <tr>
 <td><code>notes</code></td>
 <td>String</td>
 <td>None</td>
-<td>Some free-form notes about the specification.</td>
+<td>Some free-form notes about the spec.</td>
 </tr>
 <tr>
 <td><code>tags</code></td>
@@ -259,20 +261,20 @@ Processes transform zero or more input materials into exactly one output materia
 </tr>
 <tr>
 <td><code>ingredients</code></td>
-<td>Set[<a href="./#ingredient-specification">Ingredient Spec</a>]</td>
+<td>Set[<a href="./#ingredient-spec">Ingredient Spec</a>]</td>
 <td>Empty</td>
-<td>Ingredient Specifications</td>
+<td>Ingredient Specs</td>
 </tr>
 <tr>
 <td><code>output_material</code></td>
-<td><a href="./#material-specification">Material Spec</a></td>
+<td><a href="./#material-spec">Material Spec</a></td>
 <td>Req.</td>
-<td>Output Material Specification</td>
+<td>Output Material Spec</td>
 </tr>
 </tbody>
 </table>
 <h5>Constraints</h5>
-<p>All attributes sharing an <a href="../attribute-templates">Attribute Template</a> with an attribute on the associated <code>template</code> will be constrained by the (potentially tighter) bounds set in the <code>template</code> Process Template.</p>
+<p>All <a href="../attributes">Attributes</a> sharing an <a href="../attribute-templates">Attribute Template</a> with an Attribute on the associated <a href="../object-templates/">Object Template</a> will be constrained by the (potentially tighter) bounds set in the <code>template</code> Process Template.</p>
 <table>
 <thead>
 <tr>
@@ -314,7 +316,7 @@ Processes transform zero or more input materials into exactly one output materia
         &quot;baking::cookies&quot;
     ],
     &quot;name&quot; : &quot;Bake Cookies&quot;,
-    &quot;notes&quot; : &quot;Process Specification for baking cookies in an oven&quot;,
+    &quot;notes&quot; : &quot;Process Spec for baking cookies in an oven&quot;,
     &quot;template&quot; : {
         &quot;type&quot; : &quot;link_by_uid&quot;,
         &quot;scope&quot; : &quot;cookie_templates&quot;,
@@ -342,7 +344,7 @@ Processes transform zero or more input materials into exactly one output materia
                 &quot;nominal&quot; : 450,
                 &quot;units&quot; : &quot;kelvin&quot;
             }
-        }, 
+        },
         {
             &quot;type&quot; : &quot;parameter&quot;,
             &quot;name&quot; : &quot;Baking Time&quot;,
@@ -382,7 +384,7 @@ Processes transform zero or more input materials into exactly one output materia
 
 <hr />
 <h2 id="process-run">Process Run<a class="headerlink" href="#process-run" title="Permanent link">#</a></h2>
-<p>A realization of a process.</p>
+<p>A particular instance of a process.</p>
 <table>
 <thead>
 <tr>
@@ -437,7 +439,7 @@ Processes transform zero or more input materials into exactly one output materia
 </tr>
 <tr>
 <td><code>spec</code></td>
-<td><a href="./#process-specification">Process Spec</a></td>
+<td><a href="./#process-spec">Process Spec</a></td>
 <td>Req.</td>
 <td>Spec for this process</td>
 </tr>
@@ -503,7 +505,7 @@ Processes transform zero or more input materials into exactly one output materia
                 &quot;upper_bound&quot; : 452.5,
                 &quot;units&quot; : &quot;kelvin&quot;
             }
-        }, 
+        },
         {
             &quot;type&quot; : &quot;parameter&quot;,
             &quot;name&quot; : &quot;Baking Time&quot;,
@@ -542,8 +544,8 @@ Processes transform zero or more input materials into exactly one output materia
 </code></pre>
 
 <hr />
-<h2 id="ingredient-specification">Ingredient Specification<a class="headerlink" href="#ingredient-specification" title="Permanent link">#</a></h2>
-<p>A specification for an ingredient, which annotates a material with information related to its usage in an individual process.</p>
+<h2 id="ingredient-spec">Ingredient Spec<a class="headerlink" href="#ingredient-spec" title="Permanent link">#</a></h2>
+<p>The intent for an ingredient, which annotates a material with information related to its usage in an individual process.</p>
 <table>
 <thead>
 <tr>
@@ -580,7 +582,7 @@ Processes transform zero or more input materials into exactly one output materia
 </tr>
 <tr>
 <td><code>material</code></td>
-<td><a href="./#material-specification">Material Spec</a></td>
+<td><a href="./#material-spec">Material Spec</a></td>
 <td>Req.</td>
 <td>Material that is this ingredient</td>
 </tr>
@@ -588,7 +590,7 @@ Processes transform zero or more input materials into exactly one output materia
 <td><code>notes</code></td>
 <td>String</td>
 <td>Empty</td>
-<td>Some free-form notes about the specification.</td>
+<td>Some free-form notes about the spec.</td>
 </tr>
 <tr>
 <td><code>tags</code></td>
@@ -687,7 +689,7 @@ Processes transform zero or more input materials into exactly one output materia
 
 <hr />
 <h2 id="ingredient-run">Ingredient Run<a class="headerlink" href="#ingredient-run" title="Permanent link">#</a></h2>
-<p>A realization of an ingredient spec.</p>
+<p>A particular instance of an ingredient spec.</p>
 <table>
 <thead>
 <tr>
@@ -732,7 +734,7 @@ Processes transform zero or more input materials into exactly one output materia
 <td><code>notes</code></td>
 <td>String</td>
 <td>None</td>
-<td>Some free-form notes about the specification.</td>
+<td>Some free-form notes about the run.</td>
 </tr>
 <tr>
 <td><code>tags</code></td>
@@ -772,9 +774,9 @@ Processes transform zero or more input materials into exactly one output materia
 </tr>
 <tr>
 <td><code>spec</code></td>
-<td><a href="./#ingredient-specification">Ingredient Spec</a></td>
+<td><a href="./#ingredient-spec">Ingredient Spec</a></td>
 <td>Req.</td>
-<td>The specification of which this is a realization</td>
+<td>The spec of which this is a run</td>
 </tr>
 </tbody>
 </table>
@@ -833,12 +835,12 @@ Processes transform zero or more input materials into exactly one output materia
 </code></pre>
 
 <hr />
-<h2 id="material-specification">Material Specification<a class="headerlink" href="#material-specification" title="Permanent link">#</a></h2>
-<p>A specification for a material.
+<h2 id="material-spec">Material Spec<a class="headerlink" href="#material-spec" title="Permanent link">#</a></h2>
+<p>The expectation for a material.
 Materials have exactly one producing process.
-Material specifications may include specified properties,
+Material specs may include expected properties,
 but do so via the <a href="../attributes#properties-and-conditions">PropertiesAndConditions</a> compound attribute.
-In this way, material specifications can associate a specified property value with the conditions under which it is specified.
+In this way, material specs can associate an expected property value with the conditions under which it is expected.
 For example, if a material is purchased and its Safety Data Sheet quotes a normal boiling point of 54 C,
 a property is known even though there is never an explicit measurement of that property by a person in the lab.  It could
 therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (condition).</p>
@@ -868,13 +870,13 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 <td><code>name</code></td>
 <td>String</td>
 <td>Req.</td>
-<td>The name of the specification</td>
+<td>The name of the spec</td>
 </tr>
 <tr>
 <td><code>notes</code></td>
 <td>String</td>
 <td>None</td>
-<td>Some free-form notes about the specification.</td>
+<td>Some free-form notes about the spec.</td>
 </tr>
 <tr>
 <td><code>tags</code></td>
@@ -898,18 +900,18 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 <td><code>properties</code></td>
 <td>Set[<a href="../attributes/#properties-and-conditions">PropertiesAndConditions</a>]</td>
 <td>Empty</td>
-<td>Specified properties for the material spec</td>
+<td>Expected properties for the material spec</td>
 </tr>
 <tr>
 <td><code>process</code></td>
-<td><a href="./#process-specification">Process Spec</a></td>
+<td><a href="./#process-spec">Process Spec</a></td>
 <td>Req.</td>
-<td>The process Spec that produces this material</td>
+<td>The Process Spec that produces this material</td>
 </tr>
 </tbody>
 </table>
 <h5>Constraints</h5>
-<p>All attributes sharing an <a href="../attribute-templates">Attribute Template</a> with an attribute on the associated <code>template</code> will be constrained by the (potentially tighter) bounds set in the <code>template</code>.</p>
+<p>All Attributes sharing an <a href="../attribute-templates">Attribute Template</a> with an Attribute on the associated Object Template will be constrained by the (potentially tighter) bounds set in the <code>template</code> Material Template.</p>
 <table>
 <thead>
 <tr>
@@ -934,7 +936,7 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
         &quot;id&quot; : &quot;18d95397-4887-48f0-bdda-94a9a4c5ef45&quot;
     },
     &quot;name&quot; : &quot;Chocolate Chip Cookie Spec&quot;,
-    &quot;notes&quot; : &quot;Material Specification for chocolate chip cookies&quot;,
+    &quot;notes&quot; : &quot;Material Spec for chocolate chip cookies&quot;,
     &quot;template&quot; : {
         &quot;type&quot; : &quot;link_by_uid&quot;,
         &quot;scope&quot; : &quot;cookie_templates&quot;,
@@ -982,7 +984,7 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 
 <hr />
 <h2 id="material-run">Material Run<a class="headerlink" href="#material-run" title="Permanent link">#</a></h2>
-<p>A realization of a material, e.g. a sample, ingot, or wafer.</p>
+<p>A particular instance of a material, e.g. a sample, ingot, or wafer.</p>
 <table>
 <thead>
 <tr>
@@ -1031,27 +1033,27 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 </tr>
 <tr>
 <td><code>spec</code></td>
-<td><a href="./#material-specification">Material Spec</a></td>
+<td><a href="./#material-spec">Material Spec</a></td>
 <td>Req.</td>
-<td>The material specification of which this is a realization</td>
+<td>The material spec of which this is a run</td>
 </tr>
 <tr>
 <td><code>process</code></td>
 <td><a href="./#process-run">Process Run</a></td>
 <td>Req.</td>
-<td>The process run that produced this material</td>
+<td>The Process Run that produced this material</td>
 </tr>
 <tr>
 <td><code>measurements</code></td>
 <td>Set[<a href="./#measurement-run">Measurement Run</a>]</td>
 <td>Empty</td>
-<td>characterizations of this material run</td>
+<td>characterizations of this Material Run</td>
 </tr>
 <tr>
 <td><code>sample_type</code></td>
 <td><code>experimental</code>, <code>production</code>, or <code>virtual</code>, <code>unknown</code></td>
 <td><code>unknown</code></td>
-<td>Context of how this material was realized</td>
+<td>Context of how this material was made to be</td>
 </tr>
 </tbody>
 </table>
@@ -1087,8 +1089,8 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 </code></pre>
 
 <hr />
-<h2 id="measurement-specification">Measurement Specification<a class="headerlink" href="#measurement-specification" title="Permanent link">#</a></h2>
-<p>A specification for a measurement, indicating the parameters of and conditions under which to perform the measurement.</p>
+<h2 id="measurement-spec">Measurement Spec<a class="headerlink" href="#measurement-spec" title="Permanent link">#</a></h2>
+<p>An expectation for a measurement, indicating the parameters of and conditions under which to perform the measurement.</p>
 <table>
 <thead>
 <tr>
@@ -1115,13 +1117,13 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 <td><code>name</code></td>
 <td>String</td>
 <td>Req.</td>
-<td>The name of the specification</td>
+<td>The name of the spec</td>
 </tr>
 <tr>
 <td><code>notes</code></td>
 <td>String</td>
 <td>None</td>
-<td>Some free-form notes about the specification.</td>
+<td>Some free-form notes about the spec.</td>
 </tr>
 <tr>
 <td><code>tags</code></td>
@@ -1156,7 +1158,7 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 </tbody>
 </table>
 <h5>Constraints</h5>
-<p>All attributes sharing an <a href="../attribute-templates">Attribute Template</a> with an attribute on the associated <code>template</code> will be constrained by the (potentially tighter) bounds set in the <code>template</code>.</p>
+<p>All attributes sharing an <a href="../attribute-templates">Attribute Template</a> with an attribute on the associated Object Template will be constrained by the (potentially tighter) bounds set in the <code>template</code>.</p>
 <table>
 <thead>
 <tr>
@@ -1190,7 +1192,7 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
         &quot;cookie_ids&quot; : &quot;choc_chip_hedonic_spec&quot;
     },
     &quot;name&quot; : &quot;Chocolate Chip Cookie Hedonic Index Measurement Spec&quot;,
-    &quot;notes&quot; : &quot;Measurement Specification for measuring the hedonic index of chocolate chip cookies&quot;,
+    &quot;notes&quot; : &quot;Measurement Specs for measuring the hedonic index of chocolate chip cookies&quot;,
     &quot;template&quot; : {
         &quot;type&quot; : &quot;link_by_uid&quot;,
         &quot;scope&quot; : &quot;cookie_templates&quot;,
@@ -1236,7 +1238,7 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 
 <hr />
 <h2 id="measurement-run">Measurement Run<a class="headerlink" href="#measurement-run" title="Permanent link">#</a></h2>
-<p>A realization of a measurement.</p>
+<p>A particular instance of a measurement.</p>
 <table>
 <thead>
 <tr>
@@ -1291,9 +1293,9 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 </tr>
 <tr>
 <td><code>spec</code></td>
-<td><a href="./#measurement-specification">Measurement Spec</a></td>
+<td><a href="./#measurement-spec">Measurement Spec</a></td>
 <td>Req.</td>
-<td>The measurement specification of which this is a realization</td>
+<td>The measurement spec of which this is a run</td>
 </tr>
 <tr>
 <td><code>material</code></td>
@@ -1427,7 +1429,7 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 <hr />
 <h2 id="source">Source<a class="headerlink" href="#source" title="Permanent link">#</a></h2>
 <p>Provenance is the documented history of an Object.
-This includes information such as who performed a measurement, the literature source for a process specification, or the purveyor and catalog number for a purchased material.
+This includes information such as who performed a measurement, the literature source describing the design of a process, or the purveyor and catalog number for a purchased material.
 This type of information tends to have limited value for modeling and other analysis but is essential for verification and auditing.</p>
 <p>At present the only type of source supported is who performed a task and when they did so.</p>
 <table>
