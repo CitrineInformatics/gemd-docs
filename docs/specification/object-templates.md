@@ -1,15 +1,15 @@
 # Object Templates
 
 Object Templates, like Attribute Templates, define a domain concept, e.g. convection baking in a standard residential oven, a cheesecake, or a taste test.
-Unlike Specifications, Object Templates define ranges validity.
+Unlike Specs, Object Templates define ranges validity.
 
-Object Templates contain collections of 
+Object Templates contain collections of
 [Attribute Templates](../attribute-templates/)
 that together constrain the values of an object's associated attributes to valid ranges.
 They also define a canonical name, a description, and can be tagged.
 
 The `parameters`, `properties`, and `conditions` fields in Object Templates are defined as sets of pair.
-Each pair contains at 
+Each pair contains at
 [Attribute Template](../attribute-templates/)
 and a Bounds that further constraints the bounds in the Attribute template.
 For example, the baking temperature might generally be defined to be between 100 degF and 1500 degF,
@@ -71,7 +71,7 @@ This is an example of a process template that has fully represented attribute te
                     "lower_bound" : 328,
                     "upper_bound" : 750
                 }
-            }, 
+            },
             {
                 "type" : "real_bounds",
                 "default_units" : "kelvin",
@@ -84,7 +84,7 @@ This is an example of a process template that has fully represented attribute te
                 "name" : "Baking Time",
                 "uids" : {"cookie_templates": "oven_time"},
                 "tags" : ["oven_settings::duration"],
-                
+
                 "description" : "A template for valid duration ranges for baking cookies.",
                 "bounds" : {
                     "default_units" : "seconds",
@@ -92,7 +92,7 @@ This is an example of a process template that has fully represented attribute te
                     "lower_bound" : 0,
                     "upper_bound" : 86400
                 }
-            }, 
+            },
             {
                 "type" : "real_bounds",
                 "default_units" : "seconds",
@@ -109,12 +109,12 @@ This is an example of a process template that has fully represented attribute te
 ## Material Template
 
 The Property Templates and Bounds contained in a material template are used to validate the properties in any
-[`PropertyAndCondition`](../attributes/#properties-and-conditions)s in the 
+[`PropertyAndCondition`](../attributes/#properties-and-conditions)s in the
 [Material Spec](../objects/#material-spec).
 They are not, however, used to validate the properties in any
 [Measurement Run](../objects/#measurement-run) objects attached to the
 [Material Run](../objects/#material-run).
-Rather, those properties are validated by the 
+Rather, those properties are validated by the
 [Measurement Template](../object-templates/#measurement-template).
 
 Field name    | Value type | Default | Description

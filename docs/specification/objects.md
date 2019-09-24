@@ -387,7 +387,7 @@ property names | must be unique | among property names
         "id" : "18d95397-4887-48f0-bdda-94a9a4c5ef45"
     },
     "name" : "Chocolate Chip Cookie Spec",
-    "notes" : "Material Specification for chocolate chip cookies",
+    "notes" : "Material Spec for chocolate chip cookies",
     "template" : {
         "type" : "link_by_uid",
         "scope" : "cookie_templates",
@@ -524,7 +524,7 @@ parameter names | must be unique | among parameter names
         "cookie_ids" : "choc_chip_hedonic_spec"
     },
     "name" : "Chocolate Chip Cookie Hedonic Index Measurement Spec",
-    "notes" : "Measurement Specification for measuring the hedonic index of chocolate chip cookies",
+    "notes" : "Measurement Specs for measuring the hedonic index of chocolate chip cookies",
     "template" : {
         "type" : "link_by_uid",
         "scope" : "cookie_templates",
