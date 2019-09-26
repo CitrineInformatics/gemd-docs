@@ -241,6 +241,7 @@ Field name | Value type | Default | Description
 `name`| String     | Req. | The name of the ingredient, unique within the process that contains it
 `labels`       | Set[String] | Empty | Additional labels on the ingredient for describing the type or role of the ingredient
 `material`     | [Material Spec](./#material-spec) | Req. | Material that is this ingredient
+`process`      | [Process Spec](./#process-spec) | Req. | Process that the ingredient is used in
 `notes`       | String     | Empty | Some free-form notes about the spec.
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
@@ -268,6 +269,11 @@ len(`name`) | <=    | 128, UTF-8 Encoded
         "type" : "link_by_uid",
         "scope" : "id",
         "id" : "18d95397-4887-48f0-bdda-94a9a4c5ef45"
+    },
+    "process" :{
+        "type" : "link_by_uid",
+        "scope" : "my_scope",
+        "id" : "a-cool-process"
     },
     "uids" : {
         "cookie_ids" : "choc_chip_spec_001_in_sandwich"
@@ -298,6 +304,7 @@ Field name | Value type | Default | Description
 `name`| String     | Req. | The name of the ingredient, unique within the process that contains it
 `labels`       | Set[String] | Empty | Additional labels on the ingredient for describing the type or role of the ingredient
 `material`     | [Material Run](./#material-run) | Req. | Material that is this ingredient
+`process`      | [Process Run](./#process-run) | Req. | Process that the ingredient is used in
 `notes`       | String     | None | Some free-form notes about the run.
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
@@ -324,6 +331,11 @@ Field name | Relationship | Field Name
         "type" : "link_by_uid",
         "scope" : "id",
         "id" : "18d95397-4887-48f0-bdda-94a9a4c5ef45"
+    },
+    "process" :{
+        "type" : "link_by_uid",
+        "scope" : "my_scope",
+        "id" : "a-cool-process"
     },
     "uids" : {
         "cookie_ids" : "choc_chip_run_4_in_sandwich_7"
