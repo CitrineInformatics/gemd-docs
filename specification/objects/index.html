@@ -587,6 +587,12 @@ Processes transform zero or more input materials into exactly one output materia
 <td>Material that is this ingredient</td>
 </tr>
 <tr>
+<td><code>process</code></td>
+<td><a href="./#process-spec">Process Spec</a></td>
+<td>Req.</td>
+<td>Process that the ingredient is used in</td>
+</tr>
+<tr>
 <td><code>notes</code></td>
 <td>String</td>
 <td>Empty</td>
@@ -670,6 +676,11 @@ Processes transform zero or more input materials into exactly one output materia
         &quot;scope&quot; : &quot;id&quot;,
         &quot;id&quot; : &quot;18d95397-4887-48f0-bdda-94a9a4c5ef45&quot;
     },
+    &quot;process&quot; :{
+        &quot;type&quot; : &quot;link_by_uid&quot;,
+        &quot;scope&quot; : &quot;my_scope&quot;,
+        &quot;id&quot; : &quot;a-cool-process&quot;
+    },
     &quot;uids&quot; : {
         &quot;cookie_ids&quot; : &quot;choc_chip_spec_001_in_sandwich&quot;
     },
@@ -729,6 +740,12 @@ Processes transform zero or more input materials into exactly one output materia
 <td><a href="./#material-run">Material Run</a></td>
 <td>Req.</td>
 <td>Material that is this ingredient</td>
+</tr>
+<tr>
+<td><code>process</code></td>
+<td><a href="./#process-run">Process Run</a></td>
+<td>Req.</td>
+<td>Process that the ingredient is used in</td>
 </tr>
 <tr>
 <td><code>notes</code></td>
@@ -814,6 +831,11 @@ Processes transform zero or more input materials into exactly one output materia
         &quot;type&quot; : &quot;link_by_uid&quot;,
         &quot;scope&quot; : &quot;id&quot;,
         &quot;id&quot; : &quot;18d95397-4887-48f0-bdda-94a9a4c5ef45&quot;
+    },
+    &quot;process&quot; :{
+        &quot;type&quot; : &quot;link_by_uid&quot;,
+        &quot;scope&quot; : &quot;my_scope&quot;,
+        &quot;id&quot; : &quot;a-cool-process&quot;
     },
     &quot;uids&quot; : {
         &quot;cookie_ids&quot; : &quot;choc_chip_run_4_in_sandwich_7&quot;
