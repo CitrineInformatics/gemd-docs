@@ -693,7 +693,7 @@ Provenance is the documented history of an Object.
 This includes information such as who performed a measurement, the literature source describing the design of a process, or the purveyor and catalog number for a purchased material.
 This type of information tends to have limited value for modeling and other analysis but is essential for verification and auditing.
 
-At present the only type of source supported is who performed a task and when they did so.
+At present the only type of source supported is who performed a task and when they did so. They can be added to Process and Measurement Objects only.
 
 Field name    | Value type | Default | Description
 --------------|------------|---------|-------------
