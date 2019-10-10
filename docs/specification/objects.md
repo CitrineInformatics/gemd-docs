@@ -694,6 +694,7 @@ This includes information such as who performed a measurement, the literature so
 This type of information tends to have limited value for modeling and other analysis but is essential for verification and auditing.
 
 At present the only type of source supported is who performed a task and when they did so.
+Sources can be added to ProcessRun and MeasurementRun Objects only.
 
 Field name    | Value type | Default | Description
 --------------|------------|---------|-------------
