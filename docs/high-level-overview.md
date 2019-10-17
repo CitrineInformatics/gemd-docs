@@ -162,6 +162,7 @@ Field | Required/Optional | Quantity Possible
 *Table6*: Shows the fields available for Attributes in the Spec and Run context.
 
 All attributes must specify the `origin` of their data as one of:
+
 * Specified: it is the intention to have this value
 * Measured: this was directly measured during the process or measurement run
 * Computed: this was calculated based on other measured or derived properties
