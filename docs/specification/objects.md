@@ -20,6 +20,14 @@ Object Runs associated with an object Spec inherit the [Object Template](../obje
 * Many Runs can reference the same Spec.
 * Each Run must be associated with exactly one Spec.
 
+
+The mechanism for [Attribute](../attributes) validation is through [Attribute Templates](../attribute-templates).  
+If the Attribute's template is set, the Attribute's [Value](../value-types) is validated against the constraints defined in that template.  
+If the [Object Template](../object-templates/) has further restricted the bounds of the Attribute Template, then those tighter constraints are enforced.  
+The Properties, Parameters and Conditions of Object Templates and of Objects are matched when they point at the same Attribute Template.
+
+An [Object](../objects) can have [Attributes](../attributes) that are not defined in its [Object Template](../object-templates), and an Object Template can have Attributes that are not defined in associated Objects.
+
 ---
 ## Process Spec
 
