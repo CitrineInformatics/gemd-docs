@@ -98,3 +98,11 @@ which must be used when recording physical information into [Attributes](../spec
 
 However, uncertainty quantification can be challenging and is often impossible in hindsight.
 Therefore, `nominal` values are permitted to express "It was nominally X, but we don't know how certain we are about it."
+
+
+#### Material history is chronological
+
+Starting from a given material, one can trace back the process that created the material, 
+the ingredients that went into the process, the materials that those ingredients were derived from, and so on.
+This history is chronological: for example, the ingredients that are involved in a process must exist *before* the process occurs.
+As a consequence, there can be no cycles in a material history.
