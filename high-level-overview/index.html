@@ -516,13 +516,15 @@ Table6 represents the Attributes in diagram.</p>
 </tbody>
 </table>
 <p><em>Table6</em>: Shows the fields available for Attributes in the Spec and Run context.</p>
-<p>All attributes must specify the <code>origin</code> of their data as one of:
-* Specified: it is the intention to have this value
-* Measured: this was directly measured during the process or measurement run
-* Computed: this was calculated based on other measured or derived properties
-* Predicted: this was calculated based on a model, e.g. machine learning or simulation
-* Summary: this was calculated based on a set of the same property at a finer level of granularity (aggregation of data)
-* Unknown: the origin is not known, typically when migrating legacy data</p>
+<p>All attributes must specify the <code>origin</code> of their data as one of:</p>
+<ul>
+<li>Specified: it is the intention to have this value</li>
+<li>Measured: this was directly measured during the process or measurement run</li>
+<li>Computed: this was calculated based on other measured or derived properties</li>
+<li>Predicted: this was calculated based on a model, e.g. machine learning or simulation</li>
+<li>Summary: this was calculated based on a set of the same property at a finer level of granularity (aggregation of data)</li>
+<li>Unknown: the origin is not known, typically when migrating legacy data</li>
+</ul>
 <p>A <code>value</code> is a complex type that may contain both central (i.e. expected) and distributional (i.e. uncertainty) information.
 It also includes units for real (i.e. continuous) values.</p>
 <h3 id="data-object-specs-and-runs">Data Object Specs and Runs<a class="headerlink" href="#data-object-specs-and-runs" title="Permanent link">#</a></h3>

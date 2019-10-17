@@ -191,6 +191,11 @@ Object Runs associated with an object Spec inherit the <a href="../object-templa
 <li>Many Runs can reference the same Spec.</li>
 <li>Each Run must be associated with exactly one Spec.</li>
 </ul>
+<p>The mechanism for <a href="../attributes">Attribute</a> validation is through <a href="../attribute-templates">Attribute Templates</a>.<br />
+If the Attribute's template is set, the Attribute's <a href="../value-types">Value</a> is validated against the constraints defined in that template.<br />
+If the <a href="../object-templates/">Object Template</a> has further restricted the bounds of the Attribute Template, then those tighter constraints are enforced.<br />
+The Properties, Parameters and Conditions of Object Templates and of Objects are matched when they point at the same Attribute Template.</p>
+<p>An <a href="../objects">Object</a> can have <a href="../attributes">Attributes</a> that are not defined in its <a href="../object-templates">Object Template</a>, and an Object Template can have Attributes that are not defined in associated Objects.</p>
 <hr />
 <h2 id="process-spec">Process Spec<a class="headerlink" href="#process-spec" title="Permanent link">#</a></h2>
 <p>An expectation of a process.
