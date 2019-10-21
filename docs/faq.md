@@ -36,7 +36,7 @@ attributes with their `origin` field set to `computed`.
 
 ## How do I represent repeated applications of the same process?
 
-Consider a situation in which a process repeatedly applied to a material, but does not substantially change the material.
+Consider a situation in which a process is repeatedly applied to a material, but does not substantially change the material.
 For example, repeated application of heat-treatment to harden a ceramic.
 Because material histories are chronological, each application must be a new process and must produce a new output material.
 The materials/processes may reference the same templates, however.
