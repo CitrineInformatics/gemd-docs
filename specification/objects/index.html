@@ -829,6 +829,30 @@ Processes transform zero or more input materials into exactly one output materia
 </tr>
 </tbody>
 </table>
+<p>An Ingredient Run and its spec must be paired with a linked Material Run/Spec pair and with a linked Process Run/Spec pair.
+The spec's process and the process's spec must point to the same Process Spec.
+The spec's material and the material's spec must point to the same Material Spec.</p>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th align="center">Relationship</th>
+<th>Field Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>process.spec</td>
+<td align="center">=</td>
+<td>spec.process</td>
+</tr>
+<tr>
+<td>material.spec</td>
+<td align="center">=</td>
+<td>spec.material</td>
+</tr>
+</tbody>
+</table>
 <h5>Example</h5>
 <pre><code class="json">{
     &quot;type&quot; : &quot;ingredient_run&quot;,
@@ -1086,6 +1110,24 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 </table>
 <h5>Constraints</h5>
 <p>Same as Material Spec, but with the <code>template</code> inherited from the <code>spec</code>, i.e. <code>spec.template</code>.</p>
+<p>A Material Run along with its spec and process must form a "square."
+That is, the spec's process and the process's spec must point to the same Process Spec.</p>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th align="center">Relationship</th>
+<th>Field Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>process.spec</td>
+<td align="center">=</td>
+<td>spec.process</td>
+</tr>
+</tbody>
+</table>
 <h5>Example</h5>
 <pre><code class="json">{
     &quot;type&quot; : &quot;material_run&quot;,
