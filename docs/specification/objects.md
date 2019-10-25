@@ -330,6 +330,15 @@ Field name | Relationship | Field Name
 `volume_fraction` | <= | 1
 `number_fraction` | <= | 1
 
+An Ingredient Run and its spec must be paired with a linked Material Run/Spec pair and with a linked Process Run/Spec pair.
+The spec's process and the process's spec must point to the same Process Spec.
+The spec's material and the material's spec must point to the same Material Spec.
+
+Field name | Relationship | Field Name
+-----------|:------------:|------------
+process.spec | = | spec.process
+material.spec | = | spec.material
+
 ##### Example
 
 ```json
@@ -475,6 +484,13 @@ Field name | Value type | Default | Description
 ##### Constraints
 
 Same as Material Spec, but with the `template` inherited from the `spec`, i.e. `spec.template`.
+
+A Material Run along with its spec and process must form a "square."
+That is, the spec's process and the process's spec must point to the same Process Spec.
+
+Field name | Relationship | Field Name
+-----------|:------------:|------------
+process.spec | = | spec.process
 
 ##### Example
 
