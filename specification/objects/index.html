@@ -191,11 +191,12 @@ Object Runs associated with an object Spec inherit the <a href="../object-templa
 <li>Many Runs can reference the same Spec.</li>
 <li>Each Run must be associated with exactly one Spec.</li>
 </ul>
-<p>The mechanism for <a href="../attributes">Attribute</a> validation is through <a href="../attribute-templates">Attribute Templates</a>.<br />
-If the Attribute's template is set, the Attribute's <a href="../value-types">Value</a> is validated against the constraints defined in that template.<br />
-If the <a href="../object-templates/">Object Template</a> has further restricted the bounds of the Attribute Template, then those tighter constraints are enforced.<br />
+<p>The mechanism for <a href="../attributes">Attribute</a> validation is through <a href="../attribute-templates">Attribute Templates</a>.
+If the Attribute's template is set, the Attribute's <a href="../value-types">Value</a> is validated against the constraints defined in that template.
+If the <a href="../object-templates/">Object Template</a> has further restricted the bounds of the Attribute Template, then those tighter constraints are enforced.
 The Properties, Parameters and Conditions of Object Templates and of Objects are matched when they point at the same Attribute Template.</p>
-<p>An <a href="../objects">Object</a> can have <a href="../attributes">Attributes</a> that are not defined in its <a href="../object-templates">Object Template</a>, and an Object Template can have Attributes that are not defined in associated Objects.</p>
+<p>An <a href="../objects">Object</a> can have <a href="../attributes">Attributes</a> that are not defined in its <a href="../object-templates">Object Template</a>, and an Object Template can have Attributes that are not defined in associated Objects.
+However, an Object cannot have two attributes of the same type (Property, Parameter, or Condition) with the same name or the same attribute template.</p>
 <hr />
 <h2 id="process-spec">Process Spec<a class="headerlink" href="#process-spec" title="Permanent link">#</a></h2>
 <p>An expectation of a process.
@@ -308,6 +309,16 @@ Processes transform zero or more input materials into exactly one output materia
 <td>condition names</td>
 <td align="center">must be unique</td>
 <td>among condition names</td>
+</tr>
+<tr>
+<td>parameter templates</td>
+<td align="center">must be unique</td>
+<td>among the templates of parameters</td>
+</tr>
+<tr>
+<td>condition templates</td>
+<td align="center">must be unique</td>
+<td>among the templates of conditions</td>
 </tr>
 </tbody>
 </table>
@@ -671,6 +682,11 @@ Processes transform zero or more input materials into exactly one output materia
 <td align="center">&lt;=</td>
 <td>1</td>
 </tr>
+<tr>
+<td>name</td>
+<td align="center">must be unique</td>
+<td>among the ingredients of process</td>
+</tr>
 </tbody>
 </table>
 <h5>Example</h5>
@@ -826,6 +842,11 @@ Processes transform zero or more input materials into exactly one output materia
 <td><code>number_fraction</code></td>
 <td align="center">&lt;=</td>
 <td>1</td>
+</tr>
+<tr>
+<td>name</td>
+<td align="center">must be unique</td>
+<td>among the ingredients of process</td>
 </tr>
 </tbody>
 </table>
@@ -1252,6 +1273,21 @@ That is, the spec's process and the process's spec must point to the same Proces
 <td align="center">must be unique</td>
 <td>among parameter names</td>
 </tr>
+<tr>
+<td>property templates</td>
+<td align="center">must be unique</td>
+<td>among the templates of properties</td>
+</tr>
+<tr>
+<td>parameter templates</td>
+<td align="center">must be unique</td>
+<td>among the templates of parameters</td>
+</tr>
+<tr>
+<td>condition templates</td>
+<td align="center">must be unique</td>
+<td>among the templates of conditions</td>
+</tr>
 </tbody>
 </table>
 <h5>Example</h5>
@@ -1416,6 +1452,21 @@ That is, the spec's process and the process's spec must point to the same Proces
 <td>parameter names</td>
 <td align="center">must be unique</td>
 <td>among parameter names</td>
+</tr>
+<tr>
+<td>property templates</td>
+<td align="center">must be unique</td>
+<td>among the templates of properties</td>
+</tr>
+<tr>
+<td>parameter templates</td>
+<td align="center">must be unique</td>
+<td>among the templates of parameters</td>
+</tr>
+<tr>
+<td>condition templates</td>
+<td align="center">must be unique</td>
+<td>among the templates of conditions</td>
 </tr>
 </tbody>
 </table>

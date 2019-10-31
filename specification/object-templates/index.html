@@ -168,7 +168,8 @@ Each pair contains at
 and a Bounds that further constraints the bounds in the Attribute template.
 For example, the baking temperature might generally be defined to be between 100 degF and 1500 degF,
 but a Process Template describing a specific oven model may constrain the baking temperature to be between 150 degF and 550 degF.
-The Bounds must fall within the Attribute Template's Bounds, and should be set to those Bounds if no further constraint is desired.</p>
+The Bounds must fall within the Attribute Template's Bounds, and should be set to those Bounds if no further constraint is desired.
+Each Attribute Template can only be included in a given Object Template's Attribute list once (e.g., once in <code>properties</code> and once in <code>conditions</code>).</p>
 <hr />
 <h2 id="process-template">Process Template<a class="headerlink" href="#process-template" title="Permanent link">#</a></h2>
 <p>Process templates are further able to constrain the names and labels on their ingredients.
@@ -263,6 +264,16 @@ If those sets are empty, then no constraint is implied.</p>
 <td>Bounds</td>
 <td align="center">contained in</td>
 <td>Attribute template bounds</td>
+</tr>
+<tr>
+<td>parameters templates</td>
+<td align="center">are unique within</td>
+<td>parameters</td>
+</tr>
+<tr>
+<td>condition templates</td>
+<td align="center">are unique within</td>
+<td>conditions</td>
 </tr>
 </tbody>
 </table>
@@ -403,6 +414,11 @@ Rather, those properties are validated by the
 <td align="center">&lt;=</td>
 <td>32,768 (32KB), UTF-8 Encoded</td>
 </tr>
+<tr>
+<td>property templates</td>
+<td align="center">are unique within</td>
+<td>properties</td>
+</tr>
 </tbody>
 </table>
 <h5>Examples</h5>
@@ -541,6 +557,21 @@ Rather, those properties are validated by the
 <td>len(<code>description</code>)</td>
 <td align="center">&lt;=</td>
 <td>32,768 (32KB), UTF-8 Encoded</td>
+</tr>
+<tr>
+<td>property templates</td>
+<td align="center">are unique within</td>
+<td>properties</td>
+</tr>
+<tr>
+<td>parameters templates</td>
+<td align="center">are unique within</td>
+<td>parameters</td>
+</tr>
+<tr>
+<td>condition templates</td>
+<td align="center">are unique within</td>
+<td>conditions</td>
 </tr>
 </tbody>
 </table>
