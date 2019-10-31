@@ -15,6 +15,7 @@ and a Bounds that further constraints the bounds in the Attribute template.
 For example, the baking temperature might generally be defined to be between 100 degF and 1500 degF,
 but a Process Template describing a specific oven model may constrain the baking temperature to be between 150 degF and 550 degF.
 The Bounds must fall within the Attribute Template's Bounds, and should be set to those Bounds if no further constraint is desired.
+Each Attribute Template can only be included in each Object Template once.
 
 ---
 ## Process Template
@@ -41,6 +42,8 @@ Field name | Relationship | Field Name
 len(`name`) | <=    | 128, UTF-8 Encoded
 len(`description`)  | <=    | 32,768 (32KB), UTF-8 Encoded
 Bounds | contained in | Attribute template bounds
+parameters templates | are unique within | parameters
+condition templates | are unique within | conditions
 
 ##### Example
 
@@ -133,6 +136,7 @@ Field name | Relationship | Field Name
 -----------|:------------:|------------
 len(`name`) | <=    | 128, UTF-8 Encoded
 len(`description`)  | <=    | 32,768 (32KB), UTF-8 Encoded
+property templates | are unique within | properties
 
 ##### Examples
 
@@ -212,6 +216,9 @@ Field name | Relationship | Field Name
 -----------|:------------:|------------
 len(`name`) | <=    | 128, UTF-8 Encoded
 len(`description`)  | <=    | 32,768 (32KB), UTF-8 Encoded
+property templates | are unique within | properties
+parameters templates | are unique within | parameters
+condition templates | are unique within | conditions
 
 ##### Examples
 
