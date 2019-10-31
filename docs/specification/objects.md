@@ -21,12 +21,13 @@ Object Runs associated with an object Spec inherit the [Object Template](../obje
 * Each Run must be associated with exactly one Spec.
 
 
-The mechanism for [Attribute](../attributes) validation is through [Attribute Templates](../attribute-templates).  
-If the Attribute's template is set, the Attribute's [Value](../value-types) is validated against the constraints defined in that template.  
-If the [Object Template](../object-templates/) has further restricted the bounds of the Attribute Template, then those tighter constraints are enforced.  
+The mechanism for [Attribute](../attributes) validation is through [Attribute Templates](../attribute-templates).
+If the Attribute's template is set, the Attribute's [Value](../value-types) is validated against the constraints defined in that template.
+If the [Object Template](../object-templates/) has further restricted the bounds of the Attribute Template, then those tighter constraints are enforced.
 The Properties, Parameters and Conditions of Object Templates and of Objects are matched when they point at the same Attribute Template.
 
 An [Object](../objects) can have [Attributes](../attributes) that are not defined in its [Object Template](../object-templates), and an Object Template can have Attributes that are not defined in associated Objects.
+However, an Object cannot have two attributes of the same type (Property, Parameter, or Condition) with the same name or the same attribute template.
 
 ---
 ## Process Spec
@@ -60,6 +61,9 @@ len(`name`) | <=    | 128, UTF-8 Encoded
 len(`description`)  | <=    | 32,768 (32KB), UTF-8 Encoded
 parameter names | must be unique | among parameter names
 condition names | must be unique | among condition names
+parameter templates | must be unique | among the templates of parameters
+condition templates | must be unique | among the templates of conditions
+
 
 ##### Example
 
@@ -267,6 +271,7 @@ len(`name`) | <=    | 128, UTF-8 Encoded
 `mass_fraction` | <= | 1
 `volume_fraction` | <= | 1
 `number_fraction` | <= | 1
+name | must be unique | among the ingredients of process 
 
 ##### Example
 
@@ -329,6 +334,7 @@ Field name | Relationship | Field Name
 `mass_fraction` | <= | 1
 `volume_fraction` | <= | 1
 `number_fraction` | <= | 1
+name | must be unique | among the ingredients of process 
 
 An Ingredient Run and its spec must be paired with a linked Material Run/Spec pair and with a linked Process Run/Spec pair.
 The spec's process and the process's spec must point to the same Process Spec.
@@ -550,6 +556,10 @@ Field name      | Relationship   | Field Name
 property names  | must be unique | among property names
 condition names | must be unique | among condition names
 parameter names | must be unique | among parameter names
+property templates | must be unique | among the templates of properties
+parameter templates | must be unique | among the templates of parameters
+condition templates | must be unique | among the templates of conditions
+
 
 ##### Example
 
@@ -632,6 +642,9 @@ Field name      | Relationship   | Field Name
 property names  | must be unique | among property names
 condition names | must be unique | among condition names
 parameter names | must be unique | among parameter names
+property templates | must be unique | among the templates of properties
+parameter templates | must be unique | among the templates of parameters
+condition templates | must be unique | among the templates of conditions
 
 ##### Example
 
