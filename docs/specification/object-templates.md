@@ -15,7 +15,7 @@ and a Bounds that further constraints the bounds in the Attribute template.
 For example, the baking temperature might generally be defined to be between 100 degF and 1500 degF,
 but a Process Template describing a specific oven model may constrain the baking temperature to be between 150 degF and 550 degF.
 The Bounds must fall within the Attribute Template's Bounds, and should be set to those Bounds if no further constraint is desired.
-Each Attribute Template can only be included in each Object Template once.
+Each Attribute Template can only be included in a given Object Template's Attribute list once (e.g., once in `properties` and once in `conditions`).
 
 ---
 ## Process Template
