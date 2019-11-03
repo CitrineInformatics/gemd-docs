@@ -6,7 +6,7 @@ while Runs capture what actually happened.
 This captures natural variations and forms an association between samples and design as multiple Runs of the same Spec.
 
 Specs are specific.
-In `MaterialSpec`, `ProcessSpec`, `IngredientSpec`, and `MeasurementSpec` objects, value should be given nominal values, e.g.:
+In `MaterialSpec`, `ProcessSpec`, `IngredientSpec`, and `MeasurementSpec` objects, `value` should be given nominal values, e.g.:
 real-valued attributes on Specs should have [Nominal Values](../value-types/#nominal-real-values).
 This is in contrast to another common usage of the term "Specification" (or tolerance) as a range of accepted values, e.g. "The material is in spec if the nitrogen impurity concentration is below 0.1%."
 In this data model, that notion of a "spec" that an object can "be in" is an [Object Template](../object-templates).
@@ -245,6 +245,8 @@ Same as `ProcessSpec`, but with the `template` inherited from the `spec`, i.e. `
 ## Ingredient Spec
 
 The intent for an ingredient, which annotates a material with information related to its usage in an individual process.
+Note that the `name` and `labels` for an Ingredient Spec are shared with all associated Ingredient Runs.
+These might be better thought of as the name of the role of a material in the process (e.g., binder) and not of the material itself (e.g., portland cement).
 
 Field name | Value type | Default | Description
 -----------|------------|---------|------------
@@ -271,7 +273,7 @@ len(`name`) | <=    | 128, UTF-8 Encoded
 `mass_fraction` | <= | 1
 `volume_fraction` | <= | 1
 `number_fraction` | <= | 1
-name | must be unique | among the ingredients of process 
+name | must be unique | among the ingredients of process
 
 ##### Example
 
@@ -314,8 +316,6 @@ Field name | Value type | Default | Description
 -----------|------------|---------|------------
 `uids`         | Map[String, String] | Empty | A collection of [Unique Identifiers](../unique-identifiers)
 `type`         | String     | Req. | "ingredient_run"
-`name`| String     | Req. | The name of the ingredient, unique within the process that contains it
-`labels`       | Set[String] | Empty | Additional labels on the ingredient for describing the type or role of the ingredient
 `material`     | [Material Run](./#material-run) | Req. | Material that is this ingredient
 `process`      | [Process Run](./#process-run) | Req. | Process that the ingredient is used in
 `notes`       | String     | None | Some free-form notes about the run.
@@ -334,7 +334,6 @@ Field name | Relationship | Field Name
 `mass_fraction` | <= | 1
 `volume_fraction` | <= | 1
 `number_fraction` | <= | 1
-name | must be unique | among the ingredients of process 
 
 An Ingredient Run and its spec must be paired with a linked Material Run/Spec pair and with a linked Process Run/Spec pair.
 The spec's process and the process's spec must point to the same Process Spec.
@@ -373,9 +372,7 @@ material.spec | = | spec.material
         "type" : "normal_real",
         "mean" : 0.347,
         "std" : 0.002
-    },
-    "name" : "cookie",
-    "labels" : ["faces"]
+    }
 }
 ```
 

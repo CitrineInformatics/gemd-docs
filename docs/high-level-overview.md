@@ -201,6 +201,7 @@ Field | Required/Optional | Quantity Possible | Spec or Run
 *Table7*: Shows the fields available for Material, Measurement, and Process Objects in the Spec and Run contexts.
 
 Ingredient Objects are treated a little differently from the other Objects in taurus because they are mainly used to annotate a Material with information related to its usage in a Process.
+Note that constraints on `name` and `labels` follow from the `allowed_names` and `allowed_labels` fields of the Process Template.
 Table8 below identifies all the fields available in Ingredient Objects for both Specs and Runs.
 
 Field | Required/Optional | Quantity Possible | In Spec or Run
@@ -209,8 +210,8 @@ Field | Required/Optional | Quantity Possible | In Spec or Run
 `tags` | Optional | many | both
 `notes` | Optional | one | both
 `file_links` | Optional | many | both
-`name` | Optional | one | both
-`labels` | Optional | many | both
+`name` | Optional | one | Spec
+`labels` | Optional | many | Spec
 `material` | Required | one | both (with material object from respective state)
 `mass_fraction` | Optional | one | both
 `volume_fraction`| Optional | one | both
