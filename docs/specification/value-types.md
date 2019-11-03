@@ -118,7 +118,7 @@ None
 
 ## Integer Values
 
-Currently, there are two integer types: a uniform (i.e. range) distribution and a 
+Currently, there are two integer types: a uniform (i.e. range) distribution and a
 nominal (i.e. specified) value.
 
 ### Uniform Integer Value
@@ -191,7 +191,7 @@ Distribution of categories stored as a map from the string label to the probabil
 Field name      | Value type | Description
 ----------------|------------|------------
 `type`          | String     | "discrete\_categorical"
-`probabilities` | Map[String, Number] | A map from string category names to their probability. 
+`probabilities` | Map[String, Number] | A map from string category names to their probability.
 
 ##### Constraints
 
@@ -246,10 +246,11 @@ For example "one part flour two parts sugar" is acceptable.
 A composition represented as a map from the component name to the quantity.
 The quantities do not express an uncertainty, but also do not imply that there is absolute certainty in their values.
 
-Field name      | Value type | Description
-----------------|------------|------------
-`type`          | String     | "nominal\_composition"
-`quantities`    | Map[String, Number]     | Map[String, Number]
+Field name      | Value type | Default | Description
+----------------|------------|---------|-----------
+`type`          | String     |  Req.   | "nominal\_composition"
+`quantities`    | Map[String, Number]| Empty set  |   | Map[String, Number]
+`basis`         | `mass`, `volume`, `number`, `unknown` | `unknown` | The type of measurement that informed the quantity
 
 ##### Constraints
 
@@ -269,7 +270,7 @@ each quantity value               | >=           | 0
 }
 ```
 
-### Empirical Formula 
+### Empirical Formula
 
 A composition represented as a chemical formula string.
 The order and grouping of the elements is ignored.
@@ -291,9 +292,9 @@ Field name      | Value type | Description
 
 ---
 
-### Molecular Structure 
+### Molecular Structure
 
-Molecular structure types are used to define attributes that contain information about 
+Molecular structure types are used to define attributes that contain information about
 the structure and composition of a molecule.
 Given a molecular structure, one can infer the chemical formula, existence of functional groups,
 and local chemical environment of each atom in the molecule.
