@@ -40,3 +40,18 @@ Consider a situation in which a process is repeatedly applied to a material, but
 For example, repeated application of heat-treatment to harden a ceramic or multiple coats of paint.
 Because material histories are chronological, each application must be a new process and must produce a new output material.
 The materials/processes may reference the same templates, however, if the same attributes are relevant for each iteration.
+
+## How do I represent repeated uses of the same material?
+
+It is perfectly fine for the same material to be used in multiple processes throughout a material history, but a new ingredient must be created for each use.
+Ingredients annotate the use of a specific material in a specific process, recording how much was used and labeling the role of the material.
+Process templates should be used to describe what types of ingredients are expected in a process.
+
+The same material can even be used multiple times in one process.
+Consider the following example: a thin film is created by thermally evaporating three materials in succession onto a substrate.
+The thermal evaporation process template specifies the allowed labels as "layer 1," "layer 2," and "layer 3."
+We have several materials to choose from for the three layers, but in one instnace we wish to evaporate a layer of material "A," then a layer of "B," then a final layer of "A."
+We create a process spec linked to the thermal evaporation process template, and create three ingredient specs each of which point to the process spec as their `process`.
+One ingredient points to "A" as its `material` and has `layer 1` as its label.
+One points to "B" as its `material` and has `layer 2` as its label.
+And the final ingredient spec _also_ points to "A" as its `material` but is differentiated because it has `layer 3` as its label.
