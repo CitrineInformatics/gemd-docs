@@ -64,6 +64,9 @@
     <li class="toctree-l2"><a href="#how-do-i-represent-repeated-applications-of-the-same-process">How do I represent repeated applications of the same process?</a></li>
     
 
+    <li class="toctree-l2"><a href="#how-do-i-represent-repeated-uses-of-the-same-material">How do I represent repeated uses of the same material?</a></li>
+    
+
     </ul>
 	    </li>
           
@@ -184,6 +187,18 @@ attributes with their <code>origin</code> field set to <code>computed</code>.</p
 For example, repeated application of heat-treatment to harden a ceramic or multiple coats of paint.
 Because material histories are chronological, each application must be a new process and must produce a new output material.
 The materials/processes may reference the same templates, however, if the same attributes are relevant for each iteration.</p>
+<h2 id="how-do-i-represent-repeated-uses-of-the-same-material">How do I represent repeated uses of the same material?<a class="headerlink" href="#how-do-i-represent-repeated-uses-of-the-same-material" title="Permanent link">#</a></h2>
+<p>It is perfectly fine for the same material to be used in multiple processes throughout a material history, but a new ingredient must be created for each use.
+Ingredients annotate the use of a specific material in a specific process, recording how much was used and labeling the role of the material.
+Process templates should be used to describe what types of ingredients are expected in a process.</p>
+<p>The same material can even be used multiple times in one process.
+Consider the following example: a thin film is created by thermally evaporating three materials in succession onto a substrate.
+The thermal evaporation process template specifies the allowed names as "layer 1," "layer 2," and "layer 3."
+We have several materials to choose from for the three layers, but in one instance we wish to evaporate a layer of material "A," then a layer of "B," then a final layer of "A."
+We create a process spec linked to the thermal evaporation process template and create three ingredient specs, each of which point to the process spec as their <code>process</code>.
+One ingredient points to "A" as its <code>material</code> and has <code>layer 1</code> as its name.
+One points to "B" as its <code>material</code> and has <code>layer 2</code> as its name.
+And the final ingredient spec <em>also</em> points to "A" as its <code>material</code> but is differentiated because it has <code>layer 3</code> as its name.</p>
               
             </div>
           </div>
