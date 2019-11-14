@@ -62,7 +62,7 @@ And the final ingredient spec _also_ points to "A" as its `material` but is diff
 It is used to describe the type of data that a template is intended to constrain; documentation of intended use.
 It is strongly encouraged to document all templates, given both how important they are in constraining data and communicating structure to analysis algorithms, and in how much reuse a template is likely to get by a range of users on a given  platform.
 
-`notes` are associated with with [Attributes](../specification/attributes) and [Objects](../specification/objects).
+`notes` are associated with [Attributes](../specification/attributes) and [Objects](../specification/objects).
 These are particular pieces of information which may be important in understanding this particular piece of data but do not naturally fit in other fields of these objects.
 This might include an annotation about something unusual about this particular sample.
 These would normally be information that is useful for a human who might review this record but would not be useful in training a machine learning model.
