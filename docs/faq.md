@@ -55,3 +55,14 @@ We create a process spec linked to the thermal evaporation process template and 
 One ingredient points to "A" as its `material` and has `layer 1` as its name.
 One points to "B" as its `material` and has `layer 2` as its name.
 And the final ingredient spec _also_ points to "A" as its `material` but is differentiated because it has `layer 3` as its name.
+
+## What are is the difference between a description and notes?
+
+`description` is a field on both [Attribute Templates](../specification/attribute-templates) and [Object Templates](../specification/object-templates).
+It is used to describe the type of data that a template is intended to constrain; documentation of intended use.
+It is strongly encouraged to document all templates, given both how important they are in constraining data and communicating structure to analysis algorithms, and in how much reuse a template is likely to get by a range of users on a given  platform.
+
+`notes` are associated with with [Attributes](../specification/attributes) and [Objects](../specification/objects).
+These are particular pieces of information which may be important in understanding this particular piece of data but do not naturally fit in other fields of these objects.
+This might include an annotation about something unusual about this particular sample.
+These would normally be information that is useful for a human who might review this record but would not be useful in training a machine learning model.
