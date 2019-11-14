@@ -56,7 +56,7 @@ One ingredient points to "A" as its `material` and has `layer 1` as its name.
 One points to "B" as its `material` and has `layer 2` as its name.
 And the final ingredient spec _also_ points to "A" as its `material` but is differentiated because it has `layer 3` as its name.
 
-## What are is the difference between a description and notes?
+## What is the difference between `description` and `notes`?
 
 `description` is a field on both [Attribute Templates](../specification/attribute-templates) and [Object Templates](../specification/object-templates).
 It is used to describe the type of data that a template is intended to constrain; documentation of intended use.
