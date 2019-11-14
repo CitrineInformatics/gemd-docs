@@ -65,4 +65,4 @@ It is strongly encouraged to document all templates, given both how important th
 `notes` are associated with [Attributes](../specification/attributes) and [Objects](../specification/objects).
 This is a place to put pieces of information that may be important to understanding this particular piece of data but do not naturally fit in the other fields.
 This might include an annotation about something unusual about this particular sample.
-These would normally be information that is useful for a human who might review this record but would not be useful in training a machine learning model.
+Notes normally contain information that is useful for a human but would not be useful in training a machine learning model.
