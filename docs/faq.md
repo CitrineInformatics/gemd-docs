@@ -60,7 +60,7 @@ And the final ingredient spec _also_ points to "A" as its `material` but is diff
 
 `description` is a field on both [Attribute Templates](../specification/attribute-templates) and [Object Templates](../specification/object-templates).
 It is used to describe the type of data that a template is intended to constrain - the documentation of its intended use.
-It is strongly encouraged to document all templates, given both how important they are in constraining data and communicating structure to analysis algorithms, and in how much reuse a template is likely to get by a range of users on a given  platform.
+We strongly encourage documenting all templates, given both how important they are in constraining data and communicating structure to analysis algorithms, and that a template is likely to be reused by multiple users.
 
 `notes` are associated with [Attributes](../specification/attributes) and [Objects](../specification/objects).
 This is a place to put pieces of information that may be important to understanding this particular piece of data but do not naturally fit in the other fields.
