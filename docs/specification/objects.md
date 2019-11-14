@@ -259,9 +259,10 @@ Field name | Value type | Default | Description
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
 `mass_fraction` | [Real Value](../value-types#real-values) | None | The mass fraction of the ingredient in the process
 `volume_fraction` | [Real Value](../value-types#real-values) | None | The volume fraction of the ingredient in the process
-`number_fraction` | [Real Value](../value-types#real-values) | None | The number fraction of the ingredient in the process
+`number_fraction` | [Real Value](../value-types#real-values) | None | The number fraction (i.e., mole fraction) of the ingredient in the process
 `absolute_quantity` | [Real Value](../value-types#real-values) | None | The absolute quantity of the ingredient in the process
 
+* Note that "fraction of the ingredient" refers to the amount of the ingredient divided by the total amount of material going into the process, not the fraction of the total amount of ingredient.material used in the process.
 
 ##### Constraints
 
@@ -271,7 +272,7 @@ len(`name`) | <=    | 128, UTF-8 Encoded
 `mass_fraction` | <= | 1
 `volume_fraction` | <= | 1
 `number_fraction` | <= | 1
-name | must be unique | among the ingredients of process 
+name | must be unique | among the ingredients of process
 
 ##### Example
 
@@ -327,6 +328,8 @@ Field name | Value type | Default | Description
 `absolute_quantity` | [Real Value](../value-types#real-values) | None | The absolute quantity of the ingredient in the process
 `spec`| [Ingredient Spec](./#ingredient-spec) | Req. | The spec of which this is a run
 
+* Note that "fraction of the ingredient" refers to the amount of the ingredient divided by the total amount of material going into the process, not the fraction of the total amount of ingredient.material used in the process.
+
 ##### Constraints
 
 Field name | Relationship | Field Name
@@ -334,7 +337,7 @@ Field name | Relationship | Field Name
 `mass_fraction` | <= | 1
 `volume_fraction` | <= | 1
 `number_fraction` | <= | 1
-name | must be unique | among the ingredients of process 
+name | must be unique | among the ingredients of process
 
 An Ingredient Run and its spec must be paired with a linked Material Run/Spec pair and with a linked Process Run/Spec pair.
 The spec's process and the process's spec must point to the same Process Spec.
