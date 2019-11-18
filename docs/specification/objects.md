@@ -272,6 +272,9 @@ len(`name`) | <=    | 128, UTF-8 Encoded
 `mass_fraction` | <= | 1
 `volume_fraction` | <= | 1
 `number_fraction` | <= | 1
+`mass_fraction.units` | == | `dimensionless`
+`volume_fraction.units` | == | `dimensionless`
+`number_fraction.units` | == | `dimensionless`
 name | must be unique | among the ingredients of process
 
 ##### Example
@@ -337,6 +340,9 @@ Field name | Relationship | Field Name
 `mass_fraction` | <= | 1
 `volume_fraction` | <= | 1
 `number_fraction` | <= | 1
+`mass_fraction.units` | == | `dimensionless`
+`volume_fraction.units` | == | `dimensionless`
+`number_fraction.units` | == | `dimensionless`
 name | must be unique | among the ingredients of process
 
 An Ingredient Run and its spec must be paired with a linked Material Run/Spec pair and with a linked Process Run/Spec pair.
