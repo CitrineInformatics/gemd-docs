@@ -63,6 +63,7 @@ parameter names | must be unique | among parameter names
 condition names | must be unique | among condition names
 parameter templates | must be unique | among the templates of parameters
 condition templates | must be unique | among the templates of conditions
+`output_material` | must be unique | globally
 
 
 ##### Example
@@ -420,6 +421,7 @@ All Attributes sharing an [Attribute Template](../attribute-templates) with an A
 Field name | Relationship | Field Name
 -----------|:------------:|------------
 property names | must be unique | among property names
+process | must be unique | globally
 
 ##### Example
 
@@ -506,6 +508,7 @@ That is, the spec's process and the process's spec must point to the same Proces
 Field name | Relationship | Field Name
 -----------|:------------:|------------
 process.spec | = | spec.process
+process | must be unique | globally
 
 ##### Example
 
