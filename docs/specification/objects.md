@@ -508,7 +508,6 @@ That is, the spec's process and the process's spec must point to the same Proces
 Field name | Relationship | Field Name
 -----------|:------------:|------------
 process.spec | = | spec.process
-process | must be unique | globally
 
 ##### Example
 
