@@ -7,7 +7,8 @@ This facilitates the backwards traversal from a measurement to the material on w
 It generalizes and matures `preparation` and `subSystems` objects within the Physical Information File (PIF).
 
 Additionally, the model makes a first-class distinction between *intent* and *realization*, captured by `Spec` and `Run` objects, respectively. 
-A single intent `Spec` can be realized into multiple `Run` objects. This generalizes and matures the `ideal` concept from the PIF's `Composition` and `Quantity` objects.
+A single intent `Spec` can be realized into multiple `Run` objects.
+This generalizes and matures the `ideal` concept from the PIF's `Composition` and `Quantity` objects.
 
 The model contains a new type of object: the [`Measurement Run`](./specification/objects/#measurement-run). 
 Measurements capture discrete measurement activity, including the parameters and conditions associated with a set of measured properties. 
@@ -29,4 +30,3 @@ The format is described in the following subsections:
 ## Getting help
 
 Check out our [FAQ](./faq.md)!
-
