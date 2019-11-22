@@ -4,7 +4,7 @@ This is the next major data model developed by Citrine, codename `taurus`.
 
 The model links together materials, the processes that produced them, and the measurements that characterize them.
 This facilitates the backwards traversal from a measurement to the material on which it was performed to the process by which it was produced to the materials which were used in that process. 
-It generalizes and matures `preparation` and `subSystems` objects within the Physical Information File (PIF).
+It generalizes and matures `preparation` and `subSystems` objects within the PIF ([Physical Information File](https://citrineinformatics.github.io/pif-documentation/)).
 
 Additionally, the model makes a first-class distinction between *intent* and *realization*, captured by `Spec` and `Run` objects, respectively. 
 A single intent `Spec` can be realized into multiple `Run` objects.
