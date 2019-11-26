@@ -179,7 +179,7 @@ Specs represent the intent and expectation of the material, process, ingredient,
 while Runs capture what actually happened.
 This captures natural variations and forms an association between samples and design as multiple Runs of the same Spec.</p>
 <p>Specs are specific.
-In <code>MaterialSpec</code>, <code>ProcessSpec</code>, <code>IngredientSpec</code>, and <code>MeasurementSpec</code> objects, value should be given nominal values, e.g.:
+In <code>MaterialSpec</code>, <code>ProcessSpec</code>, <code>IngredientSpec</code>, and <code>MeasurementSpec</code> objects, <code>value</code> should be given nominal values, e.g.:
 real-valued attributes on Specs should have <a href="../value-types/#nominal-real-values">Nominal Values</a>.
 This is in contrast to another common usage of the term "Specification" (or tolerance) as a range of accepted values, e.g. "The material is in spec if the nitrogen impurity concentration is below 0.1%."
 In this data model, that notion of a "spec" that an object can "be in" is an <a href="../object-templates">Object Template</a>.</p>
@@ -566,7 +566,9 @@ Processes transform zero or more input materials into exactly one output materia
 
 <hr />
 <h2 id="ingredient-spec">Ingredient Spec<a class="headerlink" href="#ingredient-spec" title="Permanent link">#</a></h2>
-<p>The intent for an ingredient, which annotates a material with information related to its usage in an individual process.</p>
+<p>The intent for an ingredient, which annotates a material with information related to its usage in an individual process.
+Note that the <code>name</code> and <code>labels</code> for an Ingredient Spec are shared with all associated Ingredient Runs.
+These might be better thought of as the name of the role of a material in the process (e.g., binder) and not of the material itself (e.g., portland cement).</p>
 <table>
 <thead>
 <tr>
@@ -706,9 +708,19 @@ Processes transform zero or more input materials into exactly one output materia
 <td><code>dimensionless</code></td>
 </tr>
 <tr>
-<td>name</td>
+<td><code>name</code></td>
 <td align="center">must be unique</td>
 <td>among the ingredients of process</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td align="center">must be contained</td>
+<td><code>process.template.allowed_names</code>, if <code>allowed_names</code> defined</td>
+</tr>
+<tr>
+<td><code>labels</code></td>
+<td align="center">must be contained</td>
+<td><code>process.template.allowed_labels</code>, if <code>allowed_labels</code> defined</td>
 </tr>
 </tbody>
 </table>
@@ -766,18 +778,6 @@ Processes transform zero or more input materials into exactly one output materia
 <td>String</td>
 <td>Req.</td>
 <td>"ingredient_run"</td>
-</tr>
-<tr>
-<td><code>name</code></td>
-<td>String</td>
-<td>Req.</td>
-<td>The name of the ingredient, unique within the process that contains it</td>
-</tr>
-<tr>
-<td><code>labels</code></td>
-<td>Set[String]</td>
-<td>Empty</td>
-<td>Additional labels on the ingredient for describing the type or role of the ingredient</td>
 </tr>
 <tr>
 <td><code>material</code></td>
@@ -884,11 +884,6 @@ Processes transform zero or more input materials into exactly one output materia
 <td align="center">==</td>
 <td><code>dimensionless</code></td>
 </tr>
-<tr>
-<td>name</td>
-<td align="center">must be unique</td>
-<td>among the ingredients of process</td>
-</tr>
 </tbody>
 </table>
 <p>An Ingredient Run and its spec must be paired with a linked Material Run/Spec pair and with a linked Process Run/Spec pair.
@@ -941,9 +936,7 @@ The spec's material and the material's spec must point to the same Material Spec
         &quot;type&quot; : &quot;normal_real&quot;,
         &quot;mean&quot; : 0.347,
         &quot;std&quot; : 0.002
-    },
-    &quot;name&quot; : &quot;cookie&quot;,
-    &quot;labels&quot; : [&quot;faces&quot;]
+    }
 }
 </code></pre>
 

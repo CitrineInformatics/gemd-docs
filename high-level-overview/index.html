@@ -595,6 +595,7 @@ Table7 represents what additional fields are required or optional for Object Spe
 </table>
 <p><em>Table7</em>: Shows the fields available for Material, Measurement, and Process Objects in the Spec and Run contexts.</p>
 <p>Ingredient Objects are treated a little differently from the other Objects in taurus because they are mainly used to annotate a Material with information related to its usage in a Process.
+Note that constraints on <code>name</code> and <code>labels</code> follow from the <code>allowed_names</code> and <code>allowed_labels</code> fields of the Process Template.
 Table8 below identifies all the fields available in Ingredient Objects for both Specs and Runs.</p>
 <table>
 <thead>
@@ -634,13 +635,13 @@ Table8 below identifies all the fields available in Ingredient Objects for both 
 <td><code>name</code></td>
 <td>Optional</td>
 <td>one</td>
-<td>both</td>
+<td>Spec</td>
 </tr>
 <tr>
 <td><code>labels</code></td>
 <td>Optional</td>
 <td>many</td>
-<td>both</td>
+<td>Spec</td>
 </tr>
 <tr>
 <td><code>material</code></td>
