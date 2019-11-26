@@ -279,6 +279,8 @@ len(`name`) | <=    | 128, UTF-8 Encoded
 `volume_fraction.units` | == | `dimensionless`
 `number_fraction.units` | == | `dimensionless`
 `name` | must be unique | among the ingredients of process
+`name` | must be contained | `process.template.allowed_names`, if `allowed_names` defined
+`labels` | must be contained | `process.template.allowed_labels`, if `allowed_labels` defined
 
 ##### Example
 
@@ -344,7 +346,6 @@ Field name | Relationship | Field Name
 `mass_fraction.units` | == | `dimensionless`
 `volume_fraction.units` | == | `dimensionless`
 `number_fraction.units` | == | `dimensionless`
-`name` | must be unique | among the ingredients of process
 
 An Ingredient Run and its spec must be paired with a linked Material Run/Spec pair and with a linked Process Run/Spec pair.
 The spec's process and the process's spec must point to the same Process Spec.
