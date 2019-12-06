@@ -42,7 +42,7 @@ For example:
 
 Real bounds can validate distributions over the real numbers.
 
-As a general principle, distributions do not need to be zero for all points outside the associated real bounds.
+A real-valued distribution may be non-zero for points outside of the associated real bounds and still be valid.
 This is because common distributions such as a Gaussian are greater than zero everywhere,
 and would therefore always be invalid.
 If a [Real Value](../value-types#real-values) is allowed to be non-zero outside the associated bounds,
