@@ -38,7 +38,7 @@ A normal distribution is considered valid with a set of [Real Bounds](../attribu
 if the mean lies between the upper and lower bound; the width of the distribution
 is not considered.
 From a computational perspective, this means Normal Real Values are actually
-truncated Gaussians, though this only becomes significant for a distribution
+truncated Gaussians, though this is only significant for a distribution
 near the boundary.
 
 Field name  | Value type    | Description
