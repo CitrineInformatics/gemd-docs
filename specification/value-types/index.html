@@ -248,7 +248,13 @@ Every field is required.</p>
 In cases when there is no distributional information, the "nominal" value type
 can be used to specify the expected value.</p>
 <h3 id="normal-real-value">Normal Real Value<a class="headerlink" href="#normal-real-value" title="Permanent link">#</a></h3>
-<p>Normally distributed value parameterized by a real-valued mean and standard deviation</p>
+<p>Normally distributed value parameterized by a real-valued mean and standard deviation.</p>
+<p>A normal distribution is considered valid with a set of <a href="../attribute-templates#real-bounds">Real Bounds</a>
+if the mean lies between the upper and lower bound; the width of the distribution
+is not considered.
+From a computational perspective, this means Normal Real Values are actually
+truncated Gaussians, though this is only significant for a distribution
+near the boundary.</p>
 <table>
 <thead>
 <tr>
@@ -412,7 +418,7 @@ In order to be valid, the entirety of the distribution must fall within the boun
 
 <hr />
 <h2 id="integer-values">Integer Values<a class="headerlink" href="#integer-values" title="Permanent link">#</a></h2>
-<p>Currently, there are two integer types: a uniform (i.e. range) distribution and a 
+<p>Currently, there are two integer types: a uniform (i.e. range) distribution and a
 nominal (i.e. specified) value.</p>
 <h3 id="uniform-integer-value">Uniform Integer Value<a class="headerlink" href="#uniform-integer-value" title="Permanent link">#</a></h3>
 <p>A uniform integer distribution value, with inclusive lower and upper bounds.
@@ -686,7 +692,7 @@ The order and grouping of the elements is ignored.</p>
 
 <hr />
 <h3 id="molecular-structure">Molecular Structure<a class="headerlink" href="#molecular-structure" title="Permanent link">#</a></h3>
-<p>Molecular structure types are used to define attributes that contain information about 
+<p>Molecular structure types are used to define attributes that contain information about
 the structure and composition of a molecule.
 Given a molecular structure, one can infer the chemical formula, existence of functional groups,
 and local chemical environment of each atom in the molecule.

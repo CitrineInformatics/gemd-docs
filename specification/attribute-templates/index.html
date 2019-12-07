@@ -252,6 +252,10 @@ AttributeTemplates can also be described with tags, description, and scope.</p>
 <li>The volume fraction in the austenite phase is defined from 0.0 to 1.0 and is dimensionless</li>
 </ul>
 <p>Real bounds can validate distributions over the real numbers.</p>
+<p>A real-valued distribution may be non-zero for points outside of the associated real bounds and still be valid.
+This is because common distributions such as a Gaussian are non-zero everywhere.
+If a <a href="../value-types#real-values">Real Value</a> is allowed to be non-zero outside the associated bounds,
+the conditions for validation are documented in the description of that type.</p>
 <table>
 <thead>
 <tr>
