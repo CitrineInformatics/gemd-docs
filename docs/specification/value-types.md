@@ -32,7 +32,14 @@ can be used to specify the expected value.
 
 ### Normal Real Value
 
-Normally distributed value parameterized by a real-valued mean and standard deviation
+Normally distributed value parameterized by a real-valued mean and standard deviation.
+
+A normal distribution is considered valid with a set of [Real Bounds](../attribute-templates#real-bounds)
+if the mean lies between the upper and lower bound; the width of the distribution
+is not considered.
+From a computational perspective, this means Normal Real Values are actually
+truncated Gaussians, though this is only significant for a distribution
+near the boundary.
 
 Field name  | Value type    | Description
 ------------|---------------|------------
@@ -118,7 +125,7 @@ None
 
 ## Integer Values
 
-Currently, there are two integer types: a uniform (i.e. range) distribution and a 
+Currently, there are two integer types: a uniform (i.e. range) distribution and a
 nominal (i.e. specified) value.
 
 ### Uniform Integer Value
@@ -191,7 +198,7 @@ Distribution of categories stored as a map from the string label to the probabil
 Field name      | Value type | Description
 ----------------|------------|------------
 `type`          | String     | "discrete\_categorical"
-`probabilities` | Map[String, Number] | A map from string category names to their probability. 
+`probabilities` | Map[String, Number] | A map from string category names to their probability.
 
 ##### Constraints
 
@@ -269,7 +276,7 @@ each quantity value               | >=           | 0
 }
 ```
 
-### Empirical Formula 
+### Empirical Formula
 
 A composition represented as a chemical formula string.
 The order and grouping of the elements is ignored.
@@ -291,9 +298,9 @@ Field name      | Value type | Description
 
 ---
 
-### Molecular Structure 
+### Molecular Structure
 
-Molecular structure types are used to define attributes that contain information about 
+Molecular structure types are used to define attributes that contain information about
 the structure and composition of a molecule.
 Given a molecular structure, one can infer the chemical formula, existence of functional groups,
 and local chemical environment of each atom in the molecule.
