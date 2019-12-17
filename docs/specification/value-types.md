@@ -226,7 +226,7 @@ Nominal value, which does not specify an uncertainty but is not to be assumed to
 Field name      | Value type | Description
 ----------------|------------|------------
 `type`          | String     | "nominal\_categorical"
-`category `     | String     | The category of the value
+`category`      | String     | The category of the value
 
 ##### Constraints
 
