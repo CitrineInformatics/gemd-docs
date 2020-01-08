@@ -309,7 +309,7 @@ and local chemical environment of each atom in the molecule.
 Most commonly a molecular structure will refer to the entire material,
 but multiple molecular structures can be used to define fragments of a material, e.g. monomers of a polymer.
 
-See [Known Limitations](../../known_limitations).  We plan to (**but do not yet**) support two ways of representing a molecular structure:
+There are two ways to represent a molecular structure:
 
 * SMILES string
 * InChI string
