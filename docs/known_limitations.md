@@ -6,7 +6,7 @@ This set of documentation describes the data format GEMD.  This data concept is 
 
 ## Limitations
 
-* We cannot check for cycles in the material history.  
+* The Citrine Platform cannot check for cycles in the material history.  
 
     Material histories represent a chronology, so cycles in them represent time-travel (physically disallowed).  We do not have the ability to check that writing an object doesn't create a cycle in some material history.  
 
