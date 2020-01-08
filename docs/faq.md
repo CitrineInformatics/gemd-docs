@@ -5,6 +5,11 @@ Taurus is not a simple representation, and
 we frequently get questions about how to use it to represent certain kinds of data.
 This page attempts to answer some of those questions.
 
+## I'm following the documentation, but still having validation problems
+
+Our implementation of this data model is still a work in progress.  
+You may see your issue documented in [Known Limitations](../known_limitations).  
+
 ## Where do I store statistics about my measurements
 
 Let's say that you have data for the same kind of measurement being repeated multiple times.
