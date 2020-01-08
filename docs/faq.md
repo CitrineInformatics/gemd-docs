@@ -7,7 +7,7 @@ This page attempts to answer some of those questions.
 
 ## I'm following the documentation, but still having validation problems when using the Citrine Platform.
 
-Our implementation of this data model is still a work in progress.  
+Citrine's implementation of this data model is still a work in progress.  
 You may see your issue documented in [Known Limitations](../known_limitations).  
 
 ## Where do I store statistics about my measurements
