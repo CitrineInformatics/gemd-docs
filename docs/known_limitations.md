@@ -12,7 +12,7 @@ This set of documentation describes the data format GEMD.  This data concept is 
 
 * The Citrine Platform does not yet support Molecular Values (InChI, SMILES) or Molecular Bounds.  
 
-* We have no support for Composition Values (Nominal Composition, Empirical Formula), although Composition Bounds are supported.   
+* The Citrine Platform does not yet support Composition Values (Nominal Composition, Empirical Formula), although Composition Bounds are supported.   
 
 * The values of name and labels fields of Ingredient Runs should be inherited from the associated Ingredient Specs, and thus be identically equal. However, due to implementation details, care must be taken around creating these objects:
     *  If a user invokes the IngredientRun constructor in citrine-python with either the name or labels argument, a deprecation warning will be issued
