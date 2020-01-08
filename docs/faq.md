@@ -5,7 +5,7 @@ Taurus is not a simple representation, and
 we frequently get questions about how to use it to represent certain kinds of data.
 This page attempts to answer some of those questions.
 
-## I'm following the documentation, but still having validation problems
+## I'm following the documentation, but still having validation problems when using the Citrine Platform.
 
 Our implementation of this data model is still a work in progress.  
 You may see your issue documented in [Known Limitations](../known_limitations).  
