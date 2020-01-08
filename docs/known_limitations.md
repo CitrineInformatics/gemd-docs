@@ -2,7 +2,9 @@
 
 ## Purpose
 
-This set of documentation describes the data format GEMD.  This data concept is independent of any implementation of the format.  *However*, as the Citrine platform is assumed to be the primary point of interaction between this data model and most users, known limitations of this model are documented here, with appropriate links to this page provided elsewhere in this documentation.
+This set of documentation describes the next generation Citrine data format, code-named GEMD, that is independent of any implementation of the format.  
+
+*However*, as the Citrine platform is assumed to be the primary point of interaction between this data model and most users, known limitations of this model are documented here, with appropriate links to this page provided elsewhere in this documentation.
 
 ## Limitations
 
@@ -14,15 +16,6 @@ This set of documentation describes the data format GEMD.  This data concept is 
 
 * The Citrine Platform does not yet support Composition Values (Nominal Composition, Empirical Formula), although Composition Bounds are supported.   
 
-* The values of name and labels fields of Ingredient Runs should be inherited from the associated Ingredient Specs, and thus be identically equal. However, due to implementation details, care must be taken around creating these objects:
-    *  If a user invokes the IngredientRun constructor in citrine-python with either the name or labels argument, a deprecation warning will be issued
+* The values of `name` and `labels` of Ingredient Runs are inherited from the associated Ingredient Specs, and thus are identically equal. However, this was not true in early designs.  This means some older implementations my still have those fields in Ingredient Runs and there are therefore order-of-operations concerns that might get in the way of object validation.  
 
-    * If a user invokes the spec setter on an IngredientRun and the value is an IngredientSpec (as opposed to a LinkByUID), the `name` and `labels` fields will be set to `spec.name` and `spec.labels`, respectively
-
-        * This is also true with the spec argument to the IngredientRun constructor - the spec setter is called by the constructor
-
-    * If a user attempts to register an IngredientRun whose name or labels do not match those of its spec, a validation error (HTTP 400) will be returned
-
-        * This includes if the values are None, so users should explicitly set their spec to be the appropriate IngredientSpec and not just a LinkByUID
-
-    * Any attempt to update the name or labels of an IngredientSpec that is referenced by 1 or more IngredientRuns will return a validation error (HTTP 400)
+    So long as a user uses the `spec` setter (or invokes the constructor with the `spec` argument) with an [Ingredient Spec](../specification/objects/#ingredient-spec) object (as opposed to a [LinkByUID](../specification/unique-identifiers/#linkbyuid) object), there should be no issue with validation on the platform.

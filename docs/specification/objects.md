@@ -320,7 +320,7 @@ len(`name`) | <=    | 128, UTF-8 Encoded
 A particular instance of an ingredient spec.
 Note that the `name` and `labels` for an Ingredient Run are inherited from its spec.
 
-*Due to complexities of implementation, care must be taken in constructing Ingredient Runs.*  See [Known Limitations](../../known_limitations).  
+*This is a change from the initial design of the data structure, and thus some implementations may still have `name` and `labels` associated with Ingredient Runs.*  See [Known Limitations](../../known_limitations).  
 
 Field name          | Value type                               | Default | Description
 --------------------|------------------------------------------|---------|------------
