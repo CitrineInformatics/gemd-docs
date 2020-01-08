@@ -314,6 +314,8 @@ See [Known Limitations](../../known_limitations).  We plan to (**but do not yet*
 * SMILES string
 * InChI string
 
+See [Known Limitations](../../known_limitations).  **Support for these Value Types is still pending.**
+
 #### SMILES Value
 
 A value containing a [SMILES string](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system).
