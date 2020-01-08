@@ -10,7 +10,7 @@ This set of documentation describes the data format GEMD.  This data concept is 
 
     Material histories represent a chronology, so cycles in them represent time-travel (physically disallowed).  We do not have the ability to check that writing an object doesn't create a cycle in some material history.  
 
-* We have no support for Molecular Values (InChI, SMILES) or Molecular Bounds.  
+* The Citrine Platform does not yet support Molecular Values (InChI, SMILES) or Molecular Bounds.  
 
 * We have no support for Composition Values (Nominal Composition, Empirical Formula), although Composition Bounds are supported.   
 
