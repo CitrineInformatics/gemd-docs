@@ -317,7 +317,8 @@ len(`name`) | <=    | 128, UTF-8 Encoded
 ---
 ## Ingredient Run
 
-A particular instance of an ingredient spec. Note that the `name` and `labels` for an Ingredient Spec are shared with all associated Ingredient Runs.
+A particular instance of an ingredient spec.
+Note that the `name` and `labels` for an Ingredient Run are inherited from its spec.
 
 *Due to complexities of implementation, care must be taken in constructing Ingredient Runs.*  See [Known Limitations](../../known_limitations).  
 
