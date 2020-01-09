@@ -107,4 +107,4 @@ We represent this chronological history as a directed acyclic graph where each m
 Each of those input materials must exist *before* the process occurs.
 As a consequence there can be no cycles in a well-formed material history, as that would imply a material being created and then traveling back in time to be used in one of the processes that were involved in creating it.
 Starting from a root material and following references in the material->process->ingredient->material order, one can traverse the entire history and never see the same object twice.
-Please see [Known Limitations](../known_limitations) for details about limitations in enforcing this constraint.
+Please see [Known Limitations](../known-limitations) for details about limitations in enforcing this constraint.
