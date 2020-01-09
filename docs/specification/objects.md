@@ -318,34 +318,37 @@ len(`name`) | <=    | 128, UTF-8 Encoded
 ## Ingredient Run
 
 A particular instance of an ingredient spec.
+Note that the `name` and `labels` for an Ingredient Run are inherited from its spec.
 
-Field name | Value type | Default | Description
------------|------------|---------|------------
-`uids`         | Map[String, String] | Empty | A collection of [Unique Identifiers](../unique-identifiers)
-`type`         | String     | Req. | "ingredient_run"
-`material`     | [Material Run](./#material-run) | Req. | Material that is this ingredient
-`process`      | [Process Run](./#process-run) | Req. | Process that the ingredient is used in
-`notes`       | String     | None | Some free-form notes about the run.
-`tags`        | Set[String]| Empty | [Tags](../tags)
-`file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
-`mass_fraction` | [Real Value](../value-types#real-values) | None | The mass fraction of the ingredient in the process
-`volume_fraction` | [Real Value](../value-types#real-values) | None | The volume fraction of the ingredient in the process
-`number_fraction` | [Real Value](../value-types#real-values) | None | The number fraction of the ingredient in the process
-`absolute_quantity` | [Real Value](../value-types#real-values) | None | The absolute quantity of the ingredient in the process
-`spec`| [Ingredient Spec](./#ingredient-spec) | Req. | The spec of which this is a run
+*This is a change from the initial design of the data structure, and thus some implementations may still have `name` and `labels` associated with Ingredient Runs.*  See [Known Limitations](../../known-limitations).  
+
+Field name          | Value type                               | Default | Description
+--------------------|------------------------------------------|---------|------------
+`uids`              | Map[String, String]                      | Empty   | A collection of [Unique Identifiers](../unique-identifiers)
+`type`              | String                                   | Req.    | "ingredient_run"
+`material`          | [Material Run](./#material-run)          | Req.    | Material that is this ingredient
+`process`           | [Process Run](./#process-run)            | Req.    | Process that the ingredient is used in
+`notes`             | String                                   | None    | Some free-form notes about the run.
+`tags`              | Set[String]                              | Empty   | [Tags](../tags)
+`file_links`        | Set\[[File Links](../file-links)]        | Empty   | Links to associated files, with resource paths into the files API
+`mass_fraction`     | [Real Value](../value-types#real-values) | None    | The mass fraction of the ingredient in the process
+`volume_fraction`   | [Real Value](../value-types#real-values) | None    | The volume fraction of the ingredient in the process
+`number_fraction`   | [Real Value](../value-types#real-values) | None    | The number fraction of the ingredient in the process
+`absolute_quantity` | [Real Value](../value-types#real-values) | None    | The absolute quantity of the ingredient in the process
+`spec`              | [Ingredient Spec](./#ingredient-spec)    | Req.    | The spec of which this is a run
 
 * Note that "fraction of the ingredient" refers to the amount of the ingredient divided by the total amount of material going into the process, not the fraction of the total amount of ingredient.material used in the process.
 
 ##### Constraints
 
-Field name | Relationship | Field Name
------------|:------------:|------------
-`mass_fraction` | <= | 1
-`volume_fraction` | <= | 1
-`number_fraction` | <= | 1
-`mass_fraction.units` | == | `dimensionless`
-`volume_fraction.units` | == | `dimensionless`
-`number_fraction.units` | == | `dimensionless`
+Field name              | Relationship | Field Name
+------------------------|:------------:|------------
+`mass_fraction`         |      <=      | 1
+`volume_fraction`       |      <=      | 1
+`number_fraction`       |      <=      | 1
+`mass_fraction.units`   |      ==      | `dimensionless`
+`volume_fraction.units` |      ==      | `dimensionless`
+`number_fraction.units` |      ==      | `dimensionless`
 
 An Ingredient Run and its spec must be paired with a linked Material Run/Spec pair and with a linked Process Run/Spec pair.
 The spec's process and the process's spec must point to the same Process Spec.
