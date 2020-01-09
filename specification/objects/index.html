@@ -65,6 +65,11 @@
           
             <li class="toctree-l1">
 		
+    <a class="" href="../../known-limitations/">Known Limitations</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <a class="" href="../../philosophy/">Taurus Philosophy</a>
 	    </li>
           
@@ -756,7 +761,9 @@ These might be better thought of as the name of the role of a material in the pr
 
 <hr />
 <h2 id="ingredient-run">Ingredient Run<a class="headerlink" href="#ingredient-run" title="Permanent link">#</a></h2>
-<p>A particular instance of an ingredient spec.</p>
+<p>A particular instance of an ingredient spec.
+Note that the <code>name</code> and <code>labels</code> for an Ingredient Run are inherited from its spec.</p>
+<p><em>This is a change from the initial design of the data structure, and thus some implementations may still have <code>name</code> and <code>labels</code> associated with Ingredient Runs.</em>  See <a href="../../known-limitations">Known Limitations</a>.  </p>
 <table>
 <thead>
 <tr>

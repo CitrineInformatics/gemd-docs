@@ -63,6 +63,11 @@
     <a class="" href="../high-level-overview/">High Level Overview</a>
 	    </li>
           
+            <li class="toctree-l1">
+		
+    <a class="" href="../known-limitations/">Known Limitations</a>
+	    </li>
+          
             <li class="toctree-l1 current">
 		
     <a class="current" href="./">Taurus Philosophy</a>
@@ -227,11 +232,12 @@ which must be used when recording physical information into <a href="../specific
 <p>However, uncertainty quantification can be challenging and is often impossible in hindsight.
 Therefore, <code>nominal</code> values are permitted to express "It was nominally X, but we don't know how certain we are about it."</p>
 <h4>Material history is chronological</h4>
-<p>For any given physical object, one can trace back the series of processes that generated it and the ingredient materials that went into those processes. 
+<p>For any given physical object, one can trace back the series of processes that generated it and the ingredient materials that went into those processes.
 We represent this chronological history as a directed acyclic graph where each material links to the process that created it and each process links to the materials that went into it.
 Each of those input materials must exist <em>before</em> the process occurs.
 As a consequence there can be no cycles in a well-formed material history, as that would imply a material being created and then traveling back in time to be used in one of the processes that were involved in creating it.
-Starting from a root material and following references in the material-&gt;process-&gt;ingredient-&gt;material order, one can traverse the entire history and never see the same object twice.</p>
+Starting from a root material and following references in the material-&gt;process-&gt;ingredient-&gt;material order, one can traverse the entire history and never see the same object twice.
+Please see <a href="../known-limitations">Known Limitations</a> for details about limitations in enforcing this constraint.</p>
               
             </div>
           </div>
@@ -242,7 +248,7 @@ Starting from a root material and following references in the material-&gt;proce
         <a href="../specification/attribute-templates/" class="btn btn-neutral float-right" title="Attribute Templates and Bounds">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../high-level-overview/" class="btn btn-neutral" title="High Level Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../known-limitations/" class="btn btn-neutral" title="Known Limitations"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -268,7 +274,7 @@ Starting from a root material and following references in the material-&gt;proce
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../high-level-overview/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../known-limitations/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../specification/attribute-templates/" style="color: #fcfcfc">Next &raquo;</a></span>
