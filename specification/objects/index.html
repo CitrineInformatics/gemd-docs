@@ -952,7 +952,7 @@ The spec's material and the material's spec must point to the same Material Spec
 <p>The expectation for a material.
 Materials have exactly one producing process.
 Material specs may include expected properties,
-but do so via the <a href="../attributes#properties-and-conditions">PropertiesAndConditions</a> compound attribute.
+but do so via the <a href="../attributes#properties-and-conditions">PropertyAndConditions</a> compound attribute.
 In this way, material specs can associate an expected property value with the conditions under which it is expected.
 For example, if a material is purchased and its Safety Data Sheet quotes a normal boiling point of 54 C,
 a property is known even though there is never an explicit measurement of that property by a person in the lab.  It could
@@ -1011,7 +1011,7 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 </tr>
 <tr>
 <td><code>properties</code></td>
-<td>Set[<a href="../attributes/#properties-and-conditions">PropertiesAndConditions</a>]</td>
+<td>Set[<a href="../attributes/#properties-and-conditions">PropertyAndConditions</a>]</td>
 <td>Empty</td>
 <td>Expected properties for the material spec</td>
 </tr>
