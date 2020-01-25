@@ -131,7 +131,7 @@ For example:
  - Vapor pressure of 5.6 kPa _at_ a temperature of 35 deg C
  - Gas phase _at_ a pressure of 1 kPa and a temperature of 300 K
 
-This is supported by the `PropertiesAndConditions` compound attribute.
+This is supported by the `PropertyAndConditions` compound attribute.
 
 Field name   | Value type | Default | Description
 -------------|------------|---------|-------------

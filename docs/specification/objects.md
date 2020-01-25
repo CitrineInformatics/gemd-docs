@@ -398,7 +398,7 @@ material.spec | = | spec.material
 The expectation for a material.
 Materials have exactly one producing process.
 Material specs may include expected properties,
-but do so via the [PropertiesAndConditions](../attributes#properties-and-conditions) compound attribute.
+but do so via the [PropertyAndConditions](../attributes#properties-and-conditions) compound attribute.
 In this way, material specs can associate an expected property value with the conditions under which it is expected.
 For example, if a material is purchased and its Safety Data Sheet quotes a normal boiling point of 54 C,
 a property is known even though there is never an explicit measurement of that property by a person in the lab.  It could
@@ -413,7 +413,7 @@ Field name | Value type | Default | Description
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
 `template`    | [Material Template](../object-templates/#material-template) | None | A template bounding the valid values for properties of this material.
-`properties`  | Set\[[PropertiesAndConditions](../attributes/#properties-and-conditions)] | Empty | Expected properties for the material spec
+`properties`  | Set\[[PropertyAndConditions](../attributes/#properties-and-conditions)] | Empty | Expected properties for the material spec
 `process`     | [Process Spec](./#process-spec) | Req. | The Process Spec that produces this material
 
 ##### Constraints
