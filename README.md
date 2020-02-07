@@ -1,22 +1,6 @@
-# Taurus data model documentation
+# GEMD Documentation
 
-Deployed to [https://citrineinformatics.github.io/taurus-documentation/](https://citrineinformatics.github.io/taurus-documentation/).
-Built with [mkdocs](https://www.mkdocs.org/#mkdocs)
+GEMD stands for Generalized Expression of Materials Data (or Graph Encoding of Materials Data, if you prefer). It's an open source format developed by the fine folks at Citrine Informatics. 
 
-You'll need a working python environment, with pip.
-This comes by default if you install python with homebrew. 
+The easiest way to read these docs is here:[https://citrineinformatics.github.io/gemd-docs](https://citrineinformatics.github.io/gemd-docs).
 
-```
-pip install mkdocs
-```
-
-To build the static site in `./site`:
-```
-mkdocs build
-```
-
-To serve the site, with live reloading:
-```
-mkdocs serve
-```
-This will be served at localhost:8000 by default

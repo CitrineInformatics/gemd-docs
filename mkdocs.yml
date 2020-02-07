@@ -1,4 +1,4 @@
-site_name: Taurus Documentation
+site_name: GEMD Documentation
 theme: readthedocs
 markdown_extensions:
     - toc:
