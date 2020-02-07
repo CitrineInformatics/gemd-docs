@@ -78,4 +78,4 @@ Notes normally contain information that is useful for a human but would not be u
 
 ## I found a reference to something called "taurus" - what is that?
 
-"Taurus" was the codename for GEMD when we first started work. We're in the process of migrating everying over to GEMD, but names can be surprisingly sticky.  
+"Taurus" was the codename for GEMD when we first started work. We're in the process of migrating everying over to GEMD, but names can be surprisingly persistent.  
