@@ -1,7 +1,7 @@
 # High Level Overview
 
 ## How is data stored
-GEMD stands for Generalized Expression of Materials Data (or Graph Encoding of Materials Data, if you prefer). It's an open source format initially developed by the fine folks at Citrine Informatics. 
+GEMD stands for Generalized Expression of Materials Data. It's an open source format initially developed by the fine folks at Citrine Informatics. 
 
 GEMD stores data via interconnected Data Objects, representing Specs and Runs of Materials, Processing steps, Measurements, and Ingredient information.
 This format is graphical rather than tabular.

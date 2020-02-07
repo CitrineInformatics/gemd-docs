@@ -1,6 +1,6 @@
 # GEMD Documentation
 
-GEMD stands for Generalized Expression of Materials Data (or Graph Encoding of Materials Data, if you prefer). It's an open source format initially developed by the fine folks at Citrine Informatics. 
+GEMD stands for Generalized Expression of Materials Data. It's an open source format initially developed by the fine folks at Citrine Informatics. 
 
 The model links together materials, the processes that produced them, and the measurements that characterize them.
 This facilitates the backwards traversal from a measurement to the material on which it was performed to the process by which it was produced to the materials which were used in that process. 
