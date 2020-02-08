@@ -44,6 +44,8 @@ Object      | Examples   | Linked Objects | State | Possible Attributes
 
 *Table1:* Shows the relation of Objects to other Objects and Attributes possible in each state.
 
+![Core Objects](img/core-objects.png)
+*Figure1:* A graphical depiction of the relationship between core objects in a simple material history.
 
 ## How are Attributes defined?
 

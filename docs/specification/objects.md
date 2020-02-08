@@ -762,3 +762,23 @@ Field name    | Value type | Default | Description
     "performed_date": "2015-03-14T15:09:27"
 }
 ```
+
+
+## Common Motifs
+
+### Multiple Outputs
+
+A process that produces many output Materials should be characterized through
+individual Process Runs for each output Material, even if the process occurred
+in the same piece of equipment.
+
+![Multi-output process](img/multiple-outputs.png)
+
+### Multiple Mixing Steps
+
+If a mixing process is run multiple times, for example, to incorporate "a little extra"
+of a certain ingredient, each subsequent mixing step should have a unique instance
+of an "Additional Mixing" Process Run and Spec, which, crucially, should point to a Process Template
+distinct from the initial mixing Process Template. This avoids the creation of a cycle.
+
+![Multiple Mixing](img/multiple-mixing.png)
