@@ -10,6 +10,9 @@ with an Attribute Template must conform to the bounds specified by the template.
 If the value is not compatible with the template (e.g. if the template specifies that
 the value must be in the range [0, 1] but the value is 2), then the data are invalid.
 
+![attribute templates](img/attribute-templates.png)
+*Figure1:* How Attribute Templates help relate Attributes between Specs and Runs, and provide Bounds for Values.
+
 Each AttributeTemplate is primarily defined by a `name`, `bounds`.
 AttributeTemplates can also be described with tags, description, and scope.
 
@@ -26,9 +29,6 @@ Attribute Templates are critical in defining which quantities are comparable or 
 When Attributes are added to core objects (Runs or Specs), they should be associated with
 an appropriate Attribute Template. This also determines how Values are collected and aggregated
 in Tables.
-
-![attribute templates](img/attribute-templates.png)
-*Figure1:* How Attribute Templates help relate Attributes between Specs and Runs, and provide Bounds for Values.
 
 ##### Constraints
 
