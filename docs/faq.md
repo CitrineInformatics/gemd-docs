@@ -1,9 +1,13 @@
 # FAQ
 
 It's not you; it's us.
-Taurus is not a simple representation, and
+GEMD is not a simple representation, and
 we frequently get questions about how to use it to represent certain kinds of data.
 This page attempts to answer some of those questions.
+
+## How do you pronounce GEMD?
+
+This has been a matter of some debate. Both /jemd/ and /jem-dee/ are in common use. 
 
 ## I'm following the documentation, but still having validation problems when using the Citrine Platform.
 
@@ -71,3 +75,7 @@ We strongly encourage documenting all templates, given both how important they a
 This is a place to put pieces of information that may be important to understanding this particular piece of data but do not naturally fit in the other fields.
 This might include an annotation about something unusual about this particular sample.
 Notes normally contain information that is useful for a human but would not be useful in training a machine learning model.
+
+## I found a reference to something called "taurus" - what is that?
+
+"Taurus" was the codename for GEMD when we first started work. We're in the process of migrating everying over to GEMD, but names can be surprisingly persistent.  
