@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>High Level Overview - Taurus Documentation</title>
+  <title>High Level Overview - GEMD Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -36,7 +36,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> Taurus Documentation</a>
+        <a href=".." class="icon icon-home"> GEMD Documentation</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -50,7 +50,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="..">Taurus Data Model Documentation</a>
+    <a class="" href="..">GEMD Documentation</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -107,7 +107,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../philosophy/">Taurus Philosophy</a>
+    <a class="" href="../philosophy/">GEMD Philosophy</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -159,7 +159,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">Taurus Documentation</a>
+        <a href="..">GEMD Documentation</a>
       </nav>
 
       
@@ -183,12 +183,12 @@
               
                 <h1>High Level Overview</h1>
 <h2 id="how-is-data-stored">How is data stored<a class="headerlink" href="#how-is-data-stored" title="Permanent link">#</a></h2>
-<p>We have given this format the codename <code>taurus</code>.</p>
-<p>Taurus stores data via interconnected Data Objects, representing Specs and Runs of Materials, Processing steps, Measurements, and Ingredient information.
+<p>GEMD stands for Generalized Expression of Materials Data. It's an open source format initially developed by the fine folks at Citrine Informatics. </p>
+<p>GEMD stores data via interconnected Data Objects, representing Specs and Runs of Materials, Processing steps, Measurements, and Ingredient information.
 This format is graphical rather than tabular.
 It will support a JSON-based serialization, like the
 <a href="http://citrineinformatics.github.io/pif-documentation/">PIF</a>, but with links as references rather than nested objects (i.e. subsystems).
-Conversely, there are many new ideas that exist in taurus that are not captured by the PIF, including:</p>
+Conversely, there are many new ideas that exist in GEMD that are not captured by the PIF, including:</p>
 <ul>
 <li>Process history and process order, including the input materials to process steps</li>
 <li>Conditions that are shared between properties</li>
@@ -196,7 +196,7 @@ Conversely, there are many new ideas that exist in taurus that are not captured 
 <li>Ingredient information of input materials of a process</li>
 </ul>
 <h2 id="how-are-data-objects-defined">How are Data Objects defined?<a class="headerlink" href="#how-are-data-objects-defined" title="Permanent link">#</a></h2>
-<p>There are four categories of Data Objects in Taurus: Materials, Processes, Measurements, and Ingredients.
+<p>There are four categories of Data Objects in GEMD: Materials, Processes, Measurements, and Ingredients.
 These represent real world objects in the development of materials.
 The 4 categories of Data Objects can only be linked in specific ways, for example, a Process Object can only be linked to one or many Material Objects as its input, more details are explained in Table1.
 Each Object can be represented in 3 different states, these states are defined below, they are Template, Spec, and Run.
@@ -311,7 +311,7 @@ For example, a Process Object can have Parameters and Conditions as such: “sin
 <p>Each Attribute has specified fields that are required or optional as defined in Table3 and Table6 below.</p>
 <h2 id="how-are-states-defined">How are States defined?<a class="headerlink" href="#how-are-states-defined" title="Permanent link">#</a></h2>
 <p>There are 3 main states in which Data Objects exist: Templates, Spec, and Run.
-Taurus distinguishes between the generalization of what might be done (Template), the intent to do something (Spec), and the actual result of doing it (Run).</p>
+GEMD distinguishes between the generalization of what might be done (Template), the intent to do something (Spec), and the actual result of doing it (Run).</p>
 <blockquote>
 <p>As an example, one can have a Template for a Process Object defined as “sinter at {temperature} for {time} in kiln {id}”.
 This would be the Template used for a Spec of a kiln process used in the production of alumina.
@@ -349,7 +349,7 @@ The Run of the Process object would be “sinter at 2395 K for 5.75 hours in kil
 </table>
 <p><em>Table2:</em> Defines the possible fields in all Data Objects and Attributes in all states</p>
 <h2 id="templates">Templates<a class="headerlink" href="#templates" title="Permanent link">#</a></h2>
-<p>Templates are generalizations of Data Objects used to standardize data in Taurus.
+<p>Templates are generalizations of Data Objects used to standardize data in GEMD.
 Templates are used at write time to validate data and at read time to associate groups of information together.
 Each Spec and Run Object or Attribute (excluding Ingredient Objects and Metadata Attributes) requires a linked Template to support this read and write time association and validation respectively.</p>
 <h3 id="attribute-templates">Attribute Templates<a class="headerlink" href="#attribute-templates" title="Permanent link">#</a></h3>
@@ -599,7 +599,7 @@ Table7 represents what additional fields are required or optional for Object Spe
 </tbody>
 </table>
 <p><em>Table7</em>: Shows the fields available for Material, Measurement, and Process Objects in the Spec and Run contexts.</p>
-<p>Ingredient Objects are treated a little differently from the other Objects in taurus because they are mainly used to annotate a Material with information related to its usage in a Process.
+<p>Ingredient Objects are treated a little differently from the other Objects in GEMD because they are mainly used to annotate a Material with information related to its usage in a Process.
 Note that constraints on <code>name</code> and <code>labels</code> follow from the <code>allowed_names</code> and <code>allowed_labels</code> fields of the Process Template.
 Table8 below identifies all the fields available in Ingredient Objects for both Specs and Runs.</p>
 <table>

@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Taurus Philosophy - Taurus Documentation</title>
+  <title>GEMD Philosophy - GEMD Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Taurus Philosophy";
+    var mkdocs_page_name = "GEMD Philosophy";
     var mkdocs_page_input_path = "philosophy.md";
     var mkdocs_page_url = null;
   </script>
@@ -36,7 +36,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> Taurus Documentation</a>
+        <a href=".." class="icon icon-home"> GEMD Documentation</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -50,7 +50,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="..">Taurus Data Model Documentation</a>
+    <a class="" href="..">GEMD Documentation</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -70,7 +70,7 @@
           
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">Taurus Philosophy</a>
+    <a class="current" href="./">GEMD Philosophy</a>
     <ul class="subnav">
             
     <li class="toctree-l2"><a href="#scope">Scope</a></li>
@@ -134,7 +134,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">Taurus Documentation</a>
+        <a href="..">GEMD Documentation</a>
       </nav>
 
       
@@ -146,7 +146,7 @@
     
       
     
-    <li>Taurus Philosophy</li>
+    <li>GEMD Philosophy</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -156,9 +156,9 @@
           <div role="main">
             <div class="section">
               
-                <h1>Taurus Philosophy</h1>
+                <h1>GEMD Philosophy</h1>
 <h2 id="scope">Scope<a class="headerlink" href="#scope" title="Permanent link">#</a></h2>
-<p>Taurus records physical and contextual information about materials and chemicals.
+<p>GEMD records physical and contextual information about materials and chemicals.
 This includes:</p>
 <ul>
 <li>Physical properties of materials and chemicals</li>
@@ -167,20 +167,20 @@ This includes:</p>
 <li>A controlled vocabulary for domain concepts like "vapor pressure" and "universal testing machine"</li>
 </ul>
 <h2 id="objective">Objective<a class="headerlink" href="#objective" title="Permanent link">#</a></h2>
-<p>Taurus enables information reuse and supports a material and chemicals system of record.</p>
+<p>GEMD enables information reuse and supports a material and chemicals system of record.</p>
 <h2 id="guiding-principles">Guiding principles<a class="headerlink" href="#guiding-principles" title="Permanent link">#</a></h2>
-<h4>Taurus does not define a controlled vocabulary</h4>
+<h4>GEMD does not define a controlled vocabulary</h4>
 <p>It is not the place of the data format to say "Bandgap" instead of "band gap" or "Young's modulus" instead of "Young modulus".
 <a href="../specification/objects">Objects</a> and
 <a href="../specification/attributes">Attributes</a> have <code>name</code> fields that can take any value.
 Even the notion of equivalence/comparability is abstracted away to templates (see below),
 which can be used to define controlled vocabularies in data.</p>
 <h4>Validations define a controlled vocabulary</h4>
-<p>Taurus captures validation in the form of
+<p>GEMD captures validation in the form of
 <a href="../specification/attribute-templates">Attribute Templates</a> and
 <a href="../specification/object-templates">Object Templates</a>.
 These same objects serve to define a controlled vocabulary of domain concepts.
-The way that taurus indicates that a property is a "vapor pressure" vs an "ambient pressure" vs
+The way that GEMD indicates that a property is a "vapor pressure" vs an "ambient pressure" vs
 a "pressure applied on the horizontal face" is by defining templates for each of those concepts and assigning
 those templates to their corresponding properties.</p>
 <p>This controlled vocabulary of templates supports robust comparisons.
@@ -209,7 +209,7 @@ It is better to have data with only unstructured context, e.g. notes, than to re
 This is particularly true for implementations that control the generation of templates, limiting the ability of any user to define an appropriate template.</p>
 <h4>Process is a first-class citizen</h4>
 <p>The same stuff processed in different ways results in different materials, so the process by which a material was created belongs on equal footing with the material itself.
-In taurus, they are in a 1:1 correspondence with each other: every material object has a process object that produced it.
+In GEMD, they are in a 1:1 correspondence with each other: every material object has a process object that produced it.
 It is required because a material cannot be described without describing its process.</p>
 <h4>Multiple authors can contribute to the history of a material</h4>
 <p>Over its lifetime, a material and its precursors frequently change hands.
@@ -220,9 +220,9 @@ Each individual or team owns their steps in the process, but doesn't need to wor
 The objects are linked in a chronological order from oldest to most recent.</p>
 <h4>We don't always get what we want</h4>
 <p>But if we try sometimes, we record what we'll need later.</p>
-<p>Taurus distinguishes between the intent to do something (a Spec) and the reality of what happened (a Run).
+<p>GEMD distinguishes between the intent to do something (a Spec) and the reality of what happened (a Run).
 Further, a single intent can be realized multiple times.
-This lets taurus capture both systematic and random errors.
+This lets GEMD capture both systematic and random errors.
 It also allows for the definition of intent to precede generation of physical artifacts, supporting information hand-offs to experimental groups.</p>
 <h4>Uncertainty quantification is opt-out rather than opt-in</h4>
 <p>No measurement can be absolutely certain, and no calculation derived from uncertain inputs can magically produce certain outputs.
