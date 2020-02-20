@@ -16,7 +16,7 @@ Conversely, there are many new ideas that exist in GEMD that are not captured by
 
 ![Object connectivity](img/GEMD-Object-Graph.png)
 
-Don't worry if that seems quite complicated right now.  
+Don't worry if that seems quite complicated right now.
 The details are broken out in the coming sections.
 
 ## How are Data Objects defined?
