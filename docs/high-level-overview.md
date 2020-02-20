@@ -1,7 +1,7 @@
 # High Level Overview
 
 ## How is data stored
-GEMD stands for Generalized Expression of Materials Data. It's an open source format initially developed by the fine folks at Citrine Informatics. 
+GEMD stands for Generalized Expression of Materials Data. It's an open source format initially developed by the fine folks at Citrine Informatics.
 
 GEMD stores data via interconnected Data Objects, representing Specs and Runs of Materials, Processing steps, Measurements, and Ingredient information.
 This format is graphical rather than tabular.
@@ -14,8 +14,15 @@ Conversely, there are many new ideas that exist in GEMD that are not captured by
 * Specified vs actual values
 * Ingredient information of input materials of a process
 
+![Object connectivity](img/GEMD-Object-Graph.png)
+
+Don't worry if that seems quite complicated right now.  
+The details are broken out in the coming sections.
 
 ## How are Data Objects defined?
+A picture is worth a thousand words:
+
+![Material Graph](img/FORMULATIONS_ILLS_2.png)
 
 There are four categories of Data Objects in GEMD: Materials, Processes, Measurements, and Ingredients.
 These represent real world objects in the development of materials.
