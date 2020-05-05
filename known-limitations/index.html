@@ -131,9 +131,6 @@
 <p>Material histories represent a chronology, so cycles in them represent time-travel (physically disallowed).  We do not have the ability to check that writing an object doesn't create a cycle in some material history.  </p>
 </li>
 <li>
-<p>The Citrine Platform does not yet support Molecular Values (InChI, SMILES) or Molecular Bounds.  </p>
-</li>
-<li>
 <p>The values of <code>name</code> and <code>labels</code> of Ingredient Runs are inherited from the associated Ingredient Specs, and thus are identically equal. However, this was not true in early designs.  This means some older implementations my still have those fields in Ingredient Runs and there are therefore order-of-operations concerns that might get in the way of object validation.  </p>
 <p>So long as a user uses the <code>spec</code> setter (or invokes the constructor with the <code>spec</code> argument) with an <a href="../specification/objects/#ingredient-spec">Ingredient Spec</a> object (as opposed to a <a href="../specification/unique-identifiers/#linkbyuid">LinkByUID</a> object), there should be no issue with validation on the platform.</p>
 </li>
