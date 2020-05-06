@@ -1,7 +1,7 @@
-# Taurus Philosophy
+# GEMD Philosophy
 
 ## Scope
-Taurus records physical and contextual information about materials and chemicals.
+GEMD records physical and contextual information about materials and chemicals.
 This includes:
 
  - Physical properties of materials and chemicals
@@ -10,11 +10,11 @@ This includes:
  - A controlled vocabulary for domain concepts like "vapor pressure" and "universal testing machine"
 
 ## Objective
-Taurus enables information reuse and supports a material and chemicals system of record.
+GEMD enables information reuse and supports a material and chemicals system of record.
 
 ## Guiding principles
 
-#### Taurus does not define a controlled vocabulary
+#### GEMD does not define a controlled vocabulary
 
 It is not the place of the data format to say "Bandgap" instead of "band gap" or "Young's modulus" instead of "Young modulus".
 [Objects](../specification/objects) and
@@ -24,11 +24,11 @@ which can be used to define controlled vocabularies in data.
 
 #### Validations define a controlled vocabulary
 
-Taurus captures validation in the form of
+GEMD captures validation in the form of
 [Attribute Templates](../specification/attribute-templates) and
 [Object Templates](../specification/object-templates).
 These same objects serve to define a controlled vocabulary of domain concepts.
-The way that taurus indicates that a property is a "vapor pressure" vs an "ambient pressure" vs
+The way that GEMD indicates that a property is a "vapor pressure" vs an "ambient pressure" vs
 a "pressure applied on the horizontal face" is by defining templates for each of those concepts and assigning
 those templates to their corresponding properties.
 
@@ -66,7 +66,7 @@ This is particularly true for implementations that control the generation of tem
 #### Process is a first-class citizen
 
 The same stuff processed in different ways results in different materials, so the process by which a material was created belongs on equal footing with the material itself.
-In taurus, they are in a 1:1 correspondence with each other: every material object has a process object that produced it.
+In GEMD, they are in a 1:1 correspondence with each other: every material object has a process object that produced it.
 It is required because a material cannot be described without describing its process.
 
 #### Multiple authors can contribute to the history of a material
@@ -83,9 +83,9 @@ The objects are linked in a chronological order from oldest to most recent.
 
 But if we try sometimes, we record what we'll need later.
 
-Taurus distinguishes between the intent to do something (a Spec) and the reality of what happened (a Run).
+GEMD distinguishes between the intent to do something (a Spec) and the reality of what happened (a Run).
 Further, a single intent can be realized multiple times.
-This lets taurus capture both systematic and random errors.
+This lets GEMD capture both systematic and random errors.
 It also allows for the definition of intent to precede generation of physical artifacts, supporting information hand-offs to experimental groups.
 
 

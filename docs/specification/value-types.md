@@ -248,8 +248,6 @@ A value representing the composition of the material as a set of component names
 The quantities are not required to be expressed on a unit or fractional basis.
 For example "one part flour two parts sugar" is acceptable.
 
-See [Known Limitations](../../known-limitations).  **Support for these Value Types is still pending.**
-
 ### Nominal Composition
 
 A composition represented as a map from the component name to the quantity.
@@ -313,8 +311,6 @@ There are two ways to represent a molecular structure:
 
 * SMILES string
 * InChI string
-
-See [Known Limitations](../../known-limitations).  **Support for these Value Types is still pending.**
 
 #### SMILES Value
 
