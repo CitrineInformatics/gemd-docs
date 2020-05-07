@@ -49,6 +49,8 @@ Consider a situation in which a process is repeatedly applied to a material, but
 For example, repeated application of heat-treatment to harden a ceramic or multiple coats of paint.
 Because material histories are chronological, each application must be a new process and must produce a new output material.
 The materials/processes may reference the same templates, however, if the same attributes are relevant for each iteration.
+It is strongly recomended that such processes contain an attribute describing what order that process was performed in (e.g. heat-treatment number 1, 2, 3, etc.).
+This additional attribute will allow for disambiguation between these linear processes.
 
 ## How do I represent repeated uses of the same material?
 
