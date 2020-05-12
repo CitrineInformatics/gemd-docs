@@ -160,7 +160,10 @@ attributes with their <code>origin</code> field set to <code>computed</code>.</p
 <p>Consider a situation in which a process is repeatedly applied to a material, but does not substantially change the material.
 For example, repeated application of heat-treatment to harden a ceramic or multiple coats of paint.
 Because material histories are chronological, each application must be a new process and must produce a new output material.
-The materials/processes may reference the same templates, however, if the same attributes are relevant for each iteration.</p>
+The materials/processes may reference the same templates, however, if the same attributes are relevant for each iteration.
+It is strongly recomended that such processes contain an attribute describing what order that process was performed in (e.g. heat-treatment number 1, 2, 3, etc.).
+This additional attribute will allow for disambiguation between these linear processes.
+The additional attribute should have an <a href="../specification/attribute-templates">Attribute Template</a>, but there is no requirement for it to be included in the <a href="../specification/object-templates">Object Template</a> as well.</p>
 <h2 id="how-do-i-represent-repeated-uses-of-the-same-material">How do I represent repeated uses of the same material?<a class="headerlink" href="#how-do-i-represent-repeated-uses-of-the-same-material" title="Permanent link">#</a></h2>
 <p>It is perfectly fine for the same material to be used in multiple processes throughout a material history, but a new ingredient must be created for each use.
 Ingredients annotate the use of a specific material in a specific process, recording how much was used and labeling the role of the material.
