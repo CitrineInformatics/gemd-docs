@@ -51,6 +51,7 @@ Because material histories are chronological, each application must be a new pro
 The materials/processes may reference the same templates, however, if the same attributes are relevant for each iteration.
 It is strongly recomended that such processes contain an attribute describing what order that process was performed in (e.g. heat-treatment number 1, 2, 3, etc.).
 This additional attribute will allow for disambiguation between these linear processes.
+The additional attribute should have an [Attribute Template](../specification/attribute-templates), but there is no requirement for it to be included in the [Object Template](../specification/object-templates) as well.
 
 ## How do I represent repeated uses of the same material?
 
