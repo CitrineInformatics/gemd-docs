@@ -29,6 +29,18 @@ Attributes are annotated with the `origin` of the data.  This field can have the
 
 Attributes may be annotated with an [Attribute Template](../attribute-templates), which defines a canonical name and bounds on the attribute.
 
+Attributes can be annotated with a `point` identifier to associate attributes with each other.  
+Often times, data contains series (e.g., a time/temperature curve) where it would be strange to split it across object boundaries.
+To tie different Values together, you assign the same identifier to each of the Attributes.
+These identifiers have no meaning outside the context of a particular Object.  
+Within a given object, the combination of `point` and `template` must be unique.
+> A material's Safety Data Sheet reports [Material Spec](../objects#material-spec) a vapor pressure of 11 kPa at 38 °C and a density of 0.684 g/mL at 25 °C.  
+The vapor pressure and the density are stored in 2 Properties with appropriate [Attribute Templates](../attribute-templates) and the temperature values are 2 Conditions.
+The vapor pressure and its temperature are annotated with `point = "Pvap"` and the viscosity and its temperature are annotated with `point = "Visc"`
+
+> A reactor vessel has a stirrer and temperature control, and the speed and temperature are each recorded independently with time (100 and 500 points each, respectively).
+> Using `Reaction Time`, `Vessel Temperature` and `Stirring Speed` [Attribute Templates](../attribute-templates) and `point` values for each row of the recorded values (e.g., `temp_001`, `speed_097`), you create 600 different `point` values assigned to 1200 different Conditions.
+
 ---
 
 ## Property, Condition, Parameter
@@ -39,7 +51,8 @@ Field name   | Value type | Default | Description
 -------------|------------|---------|-------------
 `type`       | String     | Req.    | One of: `property`, `condition`, `parameter`
 `value`      | [Value](../value-types) | Req. | Any `Value` type
-`name`       | String    | Req. | The name of the attribute, which is used to identify it within a Data Object
+`name`       | String     | Req. | The name of the attribute, which is used to identify it within a Data Object
+`point`      | String     | None | The name of the point this `value` is associated with
 `notes`      | String     | None | Some free-form notes about the attribute.
 `origin`     | `measured`, `predicted`, `specified`, `computed`, `unknown` | `unknown` | The origin of the attribute
 `template`   | [Attribute Template](../attribute-templates) | None | Attribute Template which defines bounds
@@ -121,20 +134,3 @@ len(`notes`)  | <=    | 32,768 (32KB), UTF-8 Encoded
     "origin" : "specified",
 }
 ```
-
-## Properties and Conditions
-
-In the [Material Spec](../objects#material-spec) object,
-one may need to specify a property along with the conditions under which the property occurs.
-For example:
-
- - Vapor pressure of 5.6 kPa _at_ a temperature of 35 deg C
- - Gas phase _at_ a pressure of 1 kPa and a temperature of 300 K
-
-This is supported by the `PropertyAndConditions` compound attribute.
-
-Field name   | Value type | Default | Description
--------------|------------|---------|-------------
-`type`       | String     | Req.    | `property_and_conditions`
-`property`   | Property   | Req.    | Any `Property` attribute
-`conditions` | Set[Conditions] | Empty set | Any conditions associated with the property

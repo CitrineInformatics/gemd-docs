@@ -413,12 +413,15 @@ Field name | Value type | Default | Description
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
 `template`    | [Material Template](../object-templates/#material-template) | None | A template bounding the valid values for properties of this material.
-`properties`  | Set\[[PropertyAndConditions](../attributes/#properties-and-conditions)] | Empty | Expected properties for the material spec
+`properties`  | Set\[[Properties](../attributes/#properties)] | Empty | Expected properties for the material spec
+`conditions`  | Set\[[Conditions](../attributes/#conditions)] | Empty | Conditions for the expected properties for the material spec
 `process`     | [Process Spec](./#process-spec) | Req. | The Process Spec that produces this material
 
 ##### Constraints
 
 All Attributes sharing an [Attribute Template](../attribute-templates) with an Attribute on the associated Object Template will be constrained by the (potentially tighter) bounds set in the `template` Material Template.
+
+All Conditions must be linked to a Property through the `point` mechanism.
 
 Field name | Relationship | Field Name
 -----------|:------------:|------------
@@ -443,34 +446,30 @@ process | must be unique | globally
     },
     "properties" : [
         {
-            "type" : "property_and_conditions",
-            "property": {
-                "type" : "property",
-                "name" : "Cookie Composition",
-                "origin" : "specified",
-                "template" : {
-                    "type" : "link_by_uid",
-                    "scope" : "cookie_templates",
-                    "id" : "choc_chip_comp_01"
-                },
-                "value" : {
-                    "type" : "nominal_composition",
-                    "quantities" : {
-                        "flour" : 355,
-                        "baking soda" : 6,
-                        "baking powder" : 9,
-                        "salt" : 8,
-                        "butter": 225,
-                        "granulated sugar" : 205,
-                        "brown sugar" : 225,
-                        "vanilla extract" : 15,
-                        "eggs" : 50,
-                        "chocolate chips" : 395,
-                        "chopped nuts" : 225
-                    }
-                }
+            "type" : "property",
+            "name" : "Cookie Composition",
+            "origin" : "specified",
+            "template" : {
+                "type" : "link_by_uid",
+                "scope" : "cookie_templates",
+                "id" : "choc_chip_comp_01"
             },
-            "conditions": []
+            "value" : {
+                "type" : "nominal_composition",
+                "quantities" : {
+                    "flour" : 355,
+                    "baking soda" : 6,
+                    "baking powder" : 9,
+                    "salt" : 8,
+                    "butter": 225,
+                    "granulated sugar" : 205,
+                    "brown sugar" : 225,
+                    "vanilla extract" : 15,
+                    "eggs" : 50,
+                    "chocolate chips" : 395,
+                    "chopped nuts" : 225
+                }
+            }
         }
     ],
     "process_spec" : {
