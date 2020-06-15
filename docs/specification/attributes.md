@@ -60,13 +60,13 @@ Field name   | Value type | Default | Description
 
 ##### Constraints
 
-Field name | Relationship | Field Name
------------|:------------:|------------
-len(`name`) | <=    | 128, UTF-8 Encoded
-len(`notes`)  | <=    | 32,768 (32KB), UTF-8 Encoded
-`template` | is a | template type that matches the attribute type, e.g. `PropertyTemplate` for a `Property`
-`value`| is a | `template`'s Value Type
-`value`| conforms to | `template`.`bounds`
+Field name    | Relationship | Field Name
+--------------|:------------:|------------
+len(`name`)   | <=           | 128, UTF-8 Encoded
+len(`notes`)  | <=           | 32,768 (32KB), UTF-8 Encoded
+`template`    | is a         | template type that matches the attribute type, e.g. `PropertyTemplate` for a `Property`
+`value`       | is a         | `template`'s Value Type
+`value`       | conforms to  | `template`.`bounds`
 
 ##### Examples
 
@@ -103,6 +103,7 @@ len(`notes`)  | <=    | 32,768 (32KB), UTF-8 Encoded
 ```json
 {
     "type" : "condition",
+    "name" : "A Real Valued Condition",
     "value" : {
         "type" : "uniform_real",
         "lower_bound" : 1.0,
@@ -126,11 +127,38 @@ len(`notes`)  | <=    | 32,768 (32KB), UTF-8 Encoded
 ```json
 {
     "type" : "parameter",
+    "name" : "A Real Valued Parameter",
     "value" : {
         "type" : "nominal_real",
         "nominal" : 1.0,
         "units": "degC"
     },
     "origin" : "specified",
+}
+```
+
+```json
+{
+    "type" : "condition",
+    "name" : "A Real Valued Property",
+    "value" : {
+        "type" : "normal_real",
+        "mean" : 573,
+        "std" : 5,
+        "units": "kelvin"
+    },
+    "cluster" : "Time_Temp_039",
+    "origin" : "measured",
+    "template" : {
+      "type" : "link_by_uid",
+      "scope" : "my_template_scope",
+      "id" : "kiln_temperature"
+    },
+    "file_links" : [
+        {
+            "filename" : "temperature-trace.csv",
+            "link" : "files/file/d8f12919-b201-4186-be95-10525eb4256a/version/2"
+        }
+    ]
 }
 ```
