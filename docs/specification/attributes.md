@@ -34,9 +34,14 @@ Often times, data contains series (e.g., a time/temperature curve) where it woul
 To tie different Values together, you assign the same identifier to each of the Attributes.
 These identifiers have no meaning outside the context of a particular Object.  
 Within a given object, the combination of `cluster` and `template` must be unique.
+
+If `cluster` is null, this is understood as applying globally to the object and the `template` must be unique to that Attribute.
+
 > A material's Safety Data Sheet reports [Material Spec](../objects#material-spec) a vapor pressure of 11 kPa at 38 °C and a density of 0.684 g/mL at 25 °C.  
 The vapor pressure and the density are stored in 2 Properties with appropriate [Attribute Templates](../attribute-templates) and the temperature values are 2 Conditions.
 The vapor pressure and its temperature are annotated with `cluster = "Pvap"` and the viscosity and its temperature are annotated with `cluster = "Visc"`
+
+> A barometer reading is taken at the start of an experiment and assumed to apply over the course of the entire experiment and thus `cluster = null`.
 
 > A reactor vessel has a stirrer and temperature control, and the speed and temperature are each recorded independently with time (100 and 500 points each, respectively).
 > Using `Reaction Time`, `Vessel Temperature` and `Stirring Speed` [Attribute Templates](../attribute-templates) and `cluster` values for each row of the recorded values (e.g., `temp_001`, `speed_097`), you create 600 different `cluster` values assigned to 1200 different Conditions.
