@@ -142,6 +142,9 @@ len(`notes`)  | <=           | 32,768 (32KB), UTF-8 Encoded
 }
 ```
 
+
+**Two points on a temperature vs time trace:**
+
 ```json
 [
   {
