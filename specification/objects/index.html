@@ -957,9 +957,15 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 </tr>
 <tr>
 <td><code>properties</code></td>
-<td>Set[<a href="../attributes/#properties-and-conditions">PropertyAndConditions</a>]</td>
+<td>Set[<a href="../attributes/#properties">Properties</a>]</td>
 <td>Empty</td>
 <td>Expected properties for the material spec</td>
+</tr>
+<tr>
+<td><code>conditions</code></td>
+<td>Set[<a href="../attributes/#conditions">Conditions</a>]</td>
+<td>Empty</td>
+<td>Conditions for the expected properties for the material spec</td>
 </tr>
 <tr>
 <td><code>process</code></td>
@@ -971,6 +977,7 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 </table>
 <h5>Constraints</h5>
 <p>All Attributes sharing an <a href="../attribute-templates">Attribute Template</a> with an Attribute on the associated Object Template will be constrained by the (potentially tighter) bounds set in the <code>template</code> Material Template.</p>
+<p>All Conditions must be linked to a Property through the <code>point</code> mechanism.</p>
 <table>
 <thead>
 <tr>
@@ -1008,34 +1015,30 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
     },
     &quot;properties&quot; : [
         {
-            &quot;type&quot; : &quot;property_and_conditions&quot;,
-            &quot;property&quot;: {
-                &quot;type&quot; : &quot;property&quot;,
-                &quot;name&quot; : &quot;Cookie Composition&quot;,
-                &quot;origin&quot; : &quot;specified&quot;,
-                &quot;template&quot; : {
-                    &quot;type&quot; : &quot;link_by_uid&quot;,
-                    &quot;scope&quot; : &quot;cookie_templates&quot;,
-                    &quot;id&quot; : &quot;choc_chip_comp_01&quot;
-                },
-                &quot;value&quot; : {
-                    &quot;type&quot; : &quot;nominal_composition&quot;,
-                    &quot;quantities&quot; : {
-                        &quot;flour&quot; : 355,
-                        &quot;baking soda&quot; : 6,
-                        &quot;baking powder&quot; : 9,
-                        &quot;salt&quot; : 8,
-                        &quot;butter&quot;: 225,
-                        &quot;granulated sugar&quot; : 205,
-                        &quot;brown sugar&quot; : 225,
-                        &quot;vanilla extract&quot; : 15,
-                        &quot;eggs&quot; : 50,
-                        &quot;chocolate chips&quot; : 395,
-                        &quot;chopped nuts&quot; : 225
-                    }
-                }
+            &quot;type&quot; : &quot;property&quot;,
+            &quot;name&quot; : &quot;Cookie Composition&quot;,
+            &quot;origin&quot; : &quot;specified&quot;,
+            &quot;template&quot; : {
+                &quot;type&quot; : &quot;link_by_uid&quot;,
+                &quot;scope&quot; : &quot;cookie_templates&quot;,
+                &quot;id&quot; : &quot;choc_chip_comp_01&quot;
             },
-            &quot;conditions&quot;: []
+            &quot;value&quot; : {
+                &quot;type&quot; : &quot;nominal_composition&quot;,
+                &quot;quantities&quot; : {
+                    &quot;flour&quot; : 355,
+                    &quot;baking soda&quot; : 6,
+                    &quot;baking powder&quot; : 9,
+                    &quot;salt&quot; : 8,
+                    &quot;butter&quot;: 225,
+                    &quot;granulated sugar&quot; : 205,
+                    &quot;brown sugar&quot; : 225,
+                    &quot;vanilla extract&quot; : 15,
+                    &quot;eggs&quot; : 50,
+                    &quot;chocolate chips&quot; : 395,
+                    &quot;chopped nuts&quot; : 225
+                }
+            }
         }
     ],
     &quot;process_spec&quot; : {
