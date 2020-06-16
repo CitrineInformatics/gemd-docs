@@ -143,27 +143,96 @@ len(`notes`)  | <=           | 32,768 (32KB), UTF-8 Encoded
 ```
 
 ```json
-{
-    "type" : "condition",
-    "name" : "A Real Valued Property",
-    "value" : {
-        "type" : "normal_real",
-        "mean" : 573,
-        "std" : 5,
-        "units": "kelvin"
-    },
-    "cluster" : "Time_Temp_039",
-    "origin" : "measured",
-    "template" : {
-      "type" : "link_by_uid",
-      "scope" : "my_template_scope",
-      "id" : "kiln_temperature"
-    },
-    "file_links" : [
-        {
-            "filename" : "temperature-trace.csv",
-            "link" : "files/file/d8f12919-b201-4186-be95-10525eb4256a/version/2"
-        }
-    ]
-}
+[
+  {
+      "type" : "condition",
+      "name" : "Time",
+      "value" : {
+          "type" : "nominal_real",
+          "nominal" : 390,
+          "units": "second"
+      },
+      "cluster" : "Time_Temp_039",
+      "origin" : "measured",
+      "template" : {
+        "type" : "link_by_uid",
+        "scope" : "my_template_scope",
+        "id" : "process_time"
+      },
+      "file_links" : [
+          {
+              "filename" : "temperature-trace.csv",
+              "link" : "files/file/d8f12919-b201-4186-be95-10525eb4256a/version/2"
+          }
+      ]
+  },
+  {
+      "type" : "condition",
+      "name" : "Temperature",
+      "value" : {
+          "type" : "normal_real",
+          "mean" : 573,
+          "std" : 5,
+          "units": "kelvin"
+      },
+      "cluster" : "Time_Temp_039",
+      "origin" : "measured",
+      "template" : {
+        "type" : "link_by_uid",
+        "scope" : "my_template_scope",
+        "id" : "kiln_temperature"
+      },
+      "file_links" : [
+          {
+              "filename" : "temperature-trace.csv",
+              "link" : "files/file/d8f12919-b201-4186-be95-10525eb4256a/version/2"
+          }
+      ]
+  },
+  {
+      "type" : "condition",
+      "name" : "Time",
+      "value" : {
+          "type" : "nominal_real",
+          "nominal" : 400,
+          "units": "second"
+      },
+      "cluster" : "Time_Temp_040",
+      "origin" : "measured",
+      "template" : {
+        "type" : "link_by_uid",
+        "scope" : "my_template_scope",
+        "id" : "kiln_temperature"
+      },
+      "file_links" : [
+          {
+              "filename" : "temperature-trace.csv",
+              "link" : "files/file/d8f12919-b201-4186-be95-10525eb4256a/version/2"
+          }
+      ]
+  },
+  {
+      "type" : "condition",
+      "name" : "Temperature",
+      "value" : {
+          "type" : "normal_real",
+          "mean" : 578,
+          "std" : 5,
+          "units": "kelvin"
+      },
+      "cluster" : "Time_Temp_040",
+      "origin" : "measured",
+      "template" : {
+        "type" : "link_by_uid",
+        "scope" : "my_template_scope",
+        "id" : "kiln_temperature"
+      },
+      "file_links" : [
+          {
+              "filename" : "temperature-trace.csv",
+              "link" : "files/file/d8f12919-b201-4186-be95-10525eb4256a/version/2"
+          }
+      ]
+  }
+]
 ```
