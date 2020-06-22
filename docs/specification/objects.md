@@ -6,7 +6,7 @@ while Runs capture what actually happened.
 This captures natural variations and forms an association between samples and design as multiple Runs of the same Spec.
 
 Specs are specific.
-In `MaterialSpec`, `ProcessSpec`, `IngredientSpec`, and `MeasurementSpec` objects, value should be given nominal values, e.g.:
+In `MaterialSpec`, `ProcessSpec`, `IngredientSpec`, and `MeasurementSpec` objects, `value` should be given nominal values, e.g.:
 real-valued attributes on Specs should have [Nominal Values](../value-types/#nominal-real-values).
 This is in contrast to another common usage of the term "Specification" (or tolerance) as a range of accepted values, e.g. "The material is in spec if the nitrogen impurity concentration is below 0.1%."
 In this data model, that notion of a "spec" that an object can "be in" is an [Object Template](../object-templates).
@@ -63,6 +63,7 @@ parameter names | must be unique | among parameter names
 condition names | must be unique | among condition names
 parameter templates | must be unique | among the templates of parameters
 condition templates | must be unique | among the templates of conditions
+`output_material` | must be unique | globally
 
 
 ##### Example
@@ -245,6 +246,8 @@ Same as `ProcessSpec`, but with the `template` inherited from the `spec`, i.e. `
 ## Ingredient Spec
 
 The intent for an ingredient, which annotates a material with information related to its usage in an individual process.
+Note that the `name` and `labels` for an Ingredient Spec are shared with all associated Ingredient Runs.
+These might be better thought of as the name of the role of a material in the process (e.g., binder) and not of the material itself (e.g., portland cement).
 
 Field name | Value type | Default | Description
 -----------|------------|---------|------------
@@ -259,9 +262,10 @@ Field name | Value type | Default | Description
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
 `mass_fraction` | [Real Value](../value-types#real-values) | None | The mass fraction of the ingredient in the process
 `volume_fraction` | [Real Value](../value-types#real-values) | None | The volume fraction of the ingredient in the process
-`number_fraction` | [Real Value](../value-types#real-values) | None | The number fraction of the ingredient in the process
+`number_fraction` | [Real Value](../value-types#real-values) | None | The number fraction (i.e., mole fraction) of the ingredient in the process
 `absolute_quantity` | [Real Value](../value-types#real-values) | None | The absolute quantity of the ingredient in the process
 
+* Note that "fraction of the ingredient" refers to the amount of the ingredient divided by the total amount of material going into the process, not the fraction of the total amount of ingredient.material used in the process.
 
 ##### Constraints
 
@@ -271,7 +275,12 @@ len(`name`) | <=    | 128, UTF-8 Encoded
 `mass_fraction` | <= | 1
 `volume_fraction` | <= | 1
 `number_fraction` | <= | 1
-name | must be unique | among the ingredients of process 
+`mass_fraction.units` | == | `dimensionless`
+`volume_fraction.units` | == | `dimensionless`
+`number_fraction.units` | == | `dimensionless`
+`name` | must be unique | among the ingredients of process
+`name` | must be contained | `process.template.allowed_names`, if `allowed_names` defined
+`labels` | must be contained | `process.template.allowed_labels`, if `allowed_labels` defined
 
 ##### Example
 
@@ -309,32 +318,37 @@ name | must be unique | among the ingredients of process
 ## Ingredient Run
 
 A particular instance of an ingredient spec.
+Note that the `name` and `labels` for an Ingredient Run are inherited from its spec.
 
-Field name | Value type | Default | Description
------------|------------|---------|------------
-`uids`         | Map[String, String] | Empty | A collection of [Unique Identifiers](../unique-identifiers)
-`type`         | String     | Req. | "ingredient_run"
-`name`| String     | Req. | The name of the ingredient, unique within the process that contains it
-`labels`       | Set[String] | Empty | Additional labels on the ingredient for describing the type or role of the ingredient
-`material`     | [Material Run](./#material-run) | Req. | Material that is this ingredient
-`process`      | [Process Run](./#process-run) | Req. | Process that the ingredient is used in
-`notes`       | String     | None | Some free-form notes about the run.
-`tags`        | Set[String]| Empty | [Tags](../tags)
-`file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
-`mass_fraction` | [Real Value](../value-types#real-values) | None | The mass fraction of the ingredient in the process
-`volume_fraction` | [Real Value](../value-types#real-values) | None | The volume fraction of the ingredient in the process
-`number_fraction` | [Real Value](../value-types#real-values) | None | The number fraction of the ingredient in the process
-`absolute_quantity` | [Real Value](../value-types#real-values) | None | The absolute quantity of the ingredient in the process
-`spec`| [Ingredient Spec](./#ingredient-spec) | Req. | The spec of which this is a run
+*This is a change from the initial design of the data structure, and thus some implementations may still have `name` and `labels` associated with Ingredient Runs.*  See [Known Limitations](../../known-limitations).  
+
+Field name          | Value type                               | Default | Description
+--------------------|------------------------------------------|---------|------------
+`uids`              | Map[String, String]                      | Empty   | A collection of [Unique Identifiers](../unique-identifiers)
+`type`              | String                                   | Req.    | "ingredient_run"
+`material`          | [Material Run](./#material-run)          | Req.    | Material that is this ingredient
+`process`           | [Process Run](./#process-run)            | Req.    | Process that the ingredient is used in
+`notes`             | String                                   | None    | Some free-form notes about the run.
+`tags`              | Set[String]                              | Empty   | [Tags](../tags)
+`file_links`        | Set\[[File Links](../file-links)]        | Empty   | Links to associated files, with resource paths into the files API
+`mass_fraction`     | [Real Value](../value-types#real-values) | None    | The mass fraction of the ingredient in the process
+`volume_fraction`   | [Real Value](../value-types#real-values) | None    | The volume fraction of the ingredient in the process
+`number_fraction`   | [Real Value](../value-types#real-values) | None    | The number fraction of the ingredient in the process
+`absolute_quantity` | [Real Value](../value-types#real-values) | None    | The absolute quantity of the ingredient in the process
+`spec`              | [Ingredient Spec](./#ingredient-spec)    | Req.    | The spec of which this is a run
+
+* Note that "fraction of the ingredient" refers to the amount of the ingredient divided by the total amount of material going into the process, not the fraction of the total amount of ingredient.material used in the process.
 
 ##### Constraints
 
-Field name | Relationship | Field Name
------------|:------------:|------------
-`mass_fraction` | <= | 1
-`volume_fraction` | <= | 1
-`number_fraction` | <= | 1
-name | must be unique | among the ingredients of process 
+Field name              | Relationship | Field Name
+------------------------|:------------:|------------
+`mass_fraction`         |      <=      | 1
+`volume_fraction`       |      <=      | 1
+`number_fraction`       |      <=      | 1
+`mass_fraction.units`   |      ==      | `dimensionless`
+`volume_fraction.units` |      ==      | `dimensionless`
+`number_fraction.units` |      ==      | `dimensionless`
 
 An Ingredient Run and its spec must be paired with a linked Material Run/Spec pair and with a linked Process Run/Spec pair.
 The spec's process and the process's spec must point to the same Process Spec.
@@ -373,9 +387,7 @@ material.spec | = | spec.material
         "type" : "normal_real",
         "mean" : 0.347,
         "std" : 0.002
-    },
-    "name" : "cookie",
-    "labels" : ["faces"]
+    }
 }
 ```
 
@@ -386,7 +398,7 @@ material.spec | = | spec.material
 The expectation for a material.
 Materials have exactly one producing process.
 Material specs may include expected properties,
-but do so via the [PropertiesAndConditions](../attributes#properties-and-conditions) compound attribute.
+but do so via the [PropertyAndConditions](../attributes#properties-and-conditions) compound attribute.
 In this way, material specs can associate an expected property value with the conditions under which it is expected.
 For example, if a material is purchased and its Safety Data Sheet quotes a normal boiling point of 54 C,
 a property is known even though there is never an explicit measurement of that property by a person in the lab.  It could
@@ -401,16 +413,20 @@ Field name | Value type | Default | Description
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
 `template`    | [Material Template](../object-templates/#material-template) | None | A template bounding the valid values for properties of this material.
-`properties`  | Set\[[PropertiesAndConditions](../attributes/#properties-and-conditions)] | Empty | Expected properties for the material spec
+`properties`  | Set\[[Properties](../attributes/#properties)] | Empty | Expected properties for the material spec
+`conditions`  | Set\[[Conditions](../attributes/#conditions)] | Empty | Conditions for the expected properties for the material spec
 `process`     | [Process Spec](./#process-spec) | Req. | The Process Spec that produces this material
 
 ##### Constraints
 
 All Attributes sharing an [Attribute Template](../attribute-templates) with an Attribute on the associated Object Template will be constrained by the (potentially tighter) bounds set in the `template` Material Template.
 
+All Conditions must be linked to a Property through the `point` mechanism.
+
 Field name | Relationship | Field Name
 -----------|:------------:|------------
 property names | must be unique | among property names
+process | must be unique | globally
 
 ##### Example
 
@@ -430,34 +446,30 @@ property names | must be unique | among property names
     },
     "properties" : [
         {
-            "type" : "property_and_conditions",
-            "property": {
-                "type" : "property",
-                "name" : "Cookie Composition",
-                "origin" : "specified",
-                "template" : {
-                    "type" : "link_by_uid",
-                    "scope" : "cookie_templates",
-                    "id" : "choc_chip_comp_01"
-                },
-                "value" : {
-                    "type" : "nominal_composition",
-                    "quantities" : {
-                        "flour" : 355,
-                        "baking soda" : 6,
-                        "baking powder" : 9,
-                        "salt" : 8,
-                        "butter": 225,
-                        "granulated sugar" : 205,
-                        "brown sugar" : 225,
-                        "vanilla extract" : 15,
-                        "eggs" : 50,
-                        "chocolate chips" : 395,
-                        "chopped nuts" : 225
-                    }
-                }
+            "type" : "property",
+            "name" : "Cookie Composition",
+            "origin" : "specified",
+            "template" : {
+                "type" : "link_by_uid",
+                "scope" : "cookie_templates",
+                "id" : "choc_chip_comp_01"
             },
-            "conditions": []
+            "value" : {
+                "type" : "nominal_composition",
+                "quantities" : {
+                    "flour" : 355,
+                    "baking soda" : 6,
+                    "baking powder" : 9,
+                    "salt" : 8,
+                    "butter": 225,
+                    "granulated sugar" : 205,
+                    "brown sugar" : 225,
+                    "vanilla extract" : 15,
+                    "eggs" : 50,
+                    "chocolate chips" : 395,
+                    "chopped nuts" : 225
+                }
+            }
         }
     ],
     "process_spec" : {

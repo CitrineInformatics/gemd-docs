@@ -42,6 +42,11 @@ For example:
 
 Real bounds can validate distributions over the real numbers.
 
+A real-valued distribution may be non-zero for points outside of the associated real bounds and still be valid.
+This is because common distributions such as a Gaussian are non-zero everywhere.
+If a [Real Value](../value-types#real-values) is allowed to be non-zero outside the associated bounds,
+the conditions for validation are documented in the description of that type.
+
 Field name      | Value type | Description
 ----------------|------------|------------
 `type`          | String | always `real_bounds`

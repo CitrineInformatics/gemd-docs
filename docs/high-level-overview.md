@@ -1,23 +1,30 @@
 # High Level Overview
 
 ## How is data stored
-We have given this format the codename `taurus`.
+GEMD stands for Graphical Expression of Materials Data. It's an open source format initially developed by the fine folks at Citrine Informatics.
 
-Taurus stores data via interconnected Data Objects, representing Specs and Runs of Materials, Processing steps, Measurements, and Ingredient information.
+GEMD stores data via interconnected Data Objects, representing Specs and Runs of Materials, Processing steps, Measurements, and Ingredient information.
 This format is graphical rather than tabular.
 It will support a JSON-based serialization, like the
 [PIF](http://citrineinformatics.github.io/pif-documentation/), but with links as references rather than nested objects (i.e. subsystems).
-Conversely, there are many new ideas that exist in taurus that are not captured by the PIF, including:
+Conversely, there are many new ideas that exist in GEMD that are not captured by the PIF, including:
 
 * Process history and process order, including the input materials to process steps
 * Conditions that are shared between properties
 * Specified vs actual values
 * Ingredient information of input materials of a process
 
+![Object connectivity](img/GEMD-Object-Graph.png)
+
+Don't worry if that seems quite complicated right now.
+The details are broken out in the coming sections.
 
 ## How are Data Objects defined?
+A picture is worth a thousand words:
 
-There are four categories of Data Objects in Taurus: Materials, Processes, Measurements, and Ingredients.
+![Material Graph](img/FORMULATIONS_ILLS_2.png)
+
+There are four categories of Data Objects in GEMD: Materials, Processes, Measurements, and Ingredients.
 These represent real world objects in the development of materials.
 The 4 categories of Data Objects can only be linked in specific ways, for example, a Process Object can only be linked to one or many Material Objects as its input, more details are explained in Table1.
 Each Object can be represented in 3 different states, these states are defined below, they are Template, Spec, and Run.
@@ -60,7 +67,7 @@ Each Attribute has specified fields that are required or optional as defined in 
 
 ## How are States defined?
 There are 3 main states in which Data Objects exist: Templates, Spec, and Run.
-Taurus distinguishes between the generalization of what might be done (Template), the intent to do something (Spec), and the actual result of doing it (Run).
+GEMD distinguishes between the generalization of what might be done (Template), the intent to do something (Spec), and the actual result of doing it (Run).
 
 > As an example, one can have a Template for a Process Object defined as “sinter at {temperature} for {time} in kiln {id}”.
 This would be the Template used for a Spec of a kiln process used in the production of alumina.
@@ -80,7 +87,7 @@ Field | Required/Optional | Quantity Possible
 *Table2:* Defines the possible fields in all Data Objects and Attributes in all states
 
 ## Templates
-Templates are generalizations of Data Objects used to standardize data in Taurus.
+Templates are generalizations of Data Objects used to standardize data in GEMD.
 Templates are used at write time to validate data and at read time to associate groups of information together.
 Each Spec and Run Object or Attribute (excluding Ingredient Objects and Metadata Attributes) requires a linked Template to support this read and write time association and validation respectively.
 
@@ -200,7 +207,8 @@ Field | Required/Optional | Quantity Possible | Spec or Run
 
 *Table7*: Shows the fields available for Material, Measurement, and Process Objects in the Spec and Run contexts.
 
-Ingredient Objects are treated a little differently from the other Objects in taurus because they are mainly used to annotate a Material with information related to its usage in a Process.
+Ingredient Objects are treated a little differently from the other Objects in GEMD because they are mainly used to annotate a Material with information related to its usage in a Process.
+Note that constraints on `name` and `labels` follow from the `allowed_names` and `allowed_labels` fields of the Process Template.
 Table8 below identifies all the fields available in Ingredient Objects for both Specs and Runs.
 
 Field | Required/Optional | Quantity Possible | In Spec or Run
@@ -209,8 +217,8 @@ Field | Required/Optional | Quantity Possible | In Spec or Run
 `tags` | Optional | many | both
 `notes` | Optional | one | both
 `file_links` | Optional | many | both
-`name` | Optional | one | both
-`labels` | Optional | many | both
+`name` | Optional | one | Spec
+`labels` | Optional | many | Spec
 `material` | Required | one | both (with material object from respective state)
 `mass_fraction` | Optional | one | both
 `volume_fraction`| Optional | one | both
