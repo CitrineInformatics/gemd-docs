@@ -207,6 +207,8 @@ Distribution of categories stored as a map from the string label to the probabil
 | abs(sum(probabilities.values()) - 1.0) |      <       | 1.0e-9     |
 | each probability value                 |      >=      | 0          |
 
+In other words, a probability cannot be negative and the probabilities sum to one.
+
 ##### Example
 
 ```json
