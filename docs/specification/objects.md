@@ -40,7 +40,7 @@ Given a dataset of relevant objects, a Material History would be collected by ch
 until one reaches a point that a process has no recorded ingredients (e.g., I purchased a bag of flour).
 The dataset itself may have a complicated web of relationships (e.g., I made 12 different loaves of bread from one bag of flour) and the material history is just one example of a way to consider that dataset.
 
-Which materials would be terminal depend on context.
+Which materials would be considered terminal depend on context.
 A steelmaker might consider a steel plate to be terminal in their process.
 A machinist might take that plate as input for the dog bone they manufacture as terminal in their process.
 A technician might take that dog bone as input to destructive testing, and then a scrapper would feed the broken dog bone back as feedstock for another steelmaker.
