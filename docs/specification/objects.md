@@ -44,7 +44,7 @@ Which materials would be considered terminal depend on context.
 A steelmaker might consider a steel plate to be terminal in their process.
 A machinist might take that plate as input for the dog bone they manufacture as terminal in their process.
 A technician might take that dog bone as input to destructive testing, and then a scrapper would feed the broken dog bone back as feedstock for another steelmaker.
-Every history has one terminal material, and a given dataset will likely have several terminal materials in that context.
+Every history has one terminal material.
 
 #### Recipe
 
