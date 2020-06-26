@@ -19,15 +19,9 @@ It may be appropriate to specify a Parameter attribute on a Spec, and describe t
 It may also be appropriate to include _both_ a Parameter and a Condition on the Run if the value is both controlled and measured.
 The use of Conditions in Specs should be limited in favor of parameters.
 
-Attributes are annotated with the `origin` of the data.  This field can have the following values:
-
-- `measured`: The Value of this Attribute was directly measured.
-- `predicted`: The Value of this Attribute came from a model, such as a complex simulation, a machine learning-derived computation or rule-of-thumb estimation
-- `specified`: The Value of this Attribute was dictated, such as the oven temperature in a [Process Spec](../objects#process-spec).  This value should only appear in Specs.
-- `computed`: The Value of this Attribute was derived directly from measured values, such as computing the yield stress from a stress-strain curve or computing the density from known mass and volume measurements.
-- `unknown`: The origin of this Value is unknown.  This is the default value.
-
 Attributes may be annotated with an [Attribute Template](../attribute-templates), which defines a canonical name and bounds on the attribute.
+
+#### Clusters
 
 Attributes can be annotated with a `cluster` identifier to associate attributes with each other.  
 Often times, data contains series (e.g., a time/temperature curve) where it would be strange to split it across object boundaries.
@@ -45,6 +39,16 @@ The vapor pressure and its temperature are annotated with `cluster = "Pvap"` and
 
 > A reactor vessel has a stirrer and temperature control, and the speed and temperature are each recorded independently with time (100 and 500 points each, respectively).
 > Using `Reaction Time`, `Vessel Temperature` and `Stirring Speed` [Attribute Templates](../attribute-templates) and `cluster` values for each row of the recorded values (e.g., `temp_001`, `speed_097`), you create 600 different `cluster` values assigned to 1200 different Conditions.
+
+#### Origin
+
+Attributes are annotated with the `origin` of the data.  This field can have the following values:
+
+- `measured`: The Value of this Attribute was directly measured.
+- `predicted`: The Value of this Attribute came from a model, such as a complex simulation, a machine learning-derived computation or rule-of-thumb estimation
+- `specified`: The Value of this Attribute was dictated, such as the oven temperature in a [Process Spec](../objects#process-spec).  This value should only appear in Specs.
+- `computed`: The Value of this Attribute was derived directly from measured values, such as computing the yield stress from a stress-strain curve or computing the density from known mass and volume measurements.
+- `unknown`: The origin of this Value is unknown.  This is the default value.
 
 ---
 
