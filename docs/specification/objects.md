@@ -29,6 +29,30 @@ The Properties, Parameters and Conditions of Object Templates and of Objects are
 An [Object](../objects) can have [Attributes](../attributes) that are not defined in its [Object Template](../object-templates), and an Object Template can have Attributes that are not defined in associated Objects.
 However, an Object cannot have two attributes of the same type (Property, Parameter, or Condition) with the same name or the same attribute template.
 
+#### Material History
+
+A material history is the complete set of objects that precede a [Material Run](#material-run) in time, as well as the associated Specs and Templates.
+That final or ultimate material is called the `Terminal Material`.
+Given a dataset of relevant objects, a Material History would be collected by choosing a Terminal Material and then recursively:
+* extracting the process that generated it
+* extracting the ingredients that went into that process
+* extracting the materials that constituted those ingredients
+until one reaches a point that a process has no recorded ingredients (e.g., I purchased a bag of flour).
+The dataset itself may have a complicated web of relationships (e.g., I made 12 different loaves of bread from one bag of flour) and the material history is just one example of a way to consider that dataset.
+
+Which materials would be considered terminal depend on context.
+A steelmaker might consider a steel plate to be terminal in their process.
+A machinist might take that plate as input for the dog bone they manufacture as terminal in their process.
+A technician might take that dog bone as input to destructive testing, and then a scrapper would feed the broken dog bone back as feedstock for another steelmaker.
+Every history has one terminal material.
+
+#### Recipe
+
+A recipe is the set of Specs and Templates that underly a Material History.  
+It represents the set of steps to be attempted to produce a target material.
+A recipe could be shared by many material histories or may just represent one.
+A recipe and any associated material histories should share the same graph structure.
+
 ---
 ## Process Spec
 
