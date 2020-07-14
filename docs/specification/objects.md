@@ -48,7 +48,7 @@ Every history has one terminal material.
 
 #### Recipe
 
-A recipe is the set of Specs and Templates that underly a Material History.  
+A recipe is the set of Specs and Templates that underlie a Material History.  
 It represents the set of steps to be attempted to produce a target material.
 A recipe could be shared by many material histories or may just represent one.
 A recipe and any associated material histories should share the same graph structure.
