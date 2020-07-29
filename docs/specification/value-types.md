@@ -148,12 +148,12 @@ In order to be valid, the entirety of the distribution must fall within the boun
 
 ##### Example
 
-A value field read off a digital display with 3 decimal points.
+A value field recorded from a digital display reading "0.245".
 ```json
 {
     "type" : "uniform_integer",
-    "lower_bound": 246,
-    "upper_bound": 255
+    "lower_bound": 0.2445,
+    "upper_bound": 0.2554
 }
 ```
 
