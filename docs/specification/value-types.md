@@ -148,7 +148,7 @@ In order to be valid, the entirety of the distribution must fall within the boun
 
 ##### Example
 
-A value field recorded from a digital display reading "0.245".
+A value field recorded from a digital display recording a number of counts (e.g., Geiger counter).
 ```json
 {
     "type" : "uniform_integer",
