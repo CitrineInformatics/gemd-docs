@@ -152,8 +152,8 @@ A value field recorded from a digital display recording a number of counts (e.g.
 ```json
 {
     "type" : "uniform_integer",
-    "lower_bound": 0.2445,
-    "upper_bound": 0.2554
+    "lower_bound": 246,
+    "upper_bound": 255
 }
 ```
 
