@@ -148,12 +148,12 @@ In order to be valid, the entirety of the distribution must fall within the boun
 
 ##### Example
 
-A value field recorded from a digital display recording a number of counts (e.g., Geiger counter).
+A value field recorded from a digital display recording an approximate number of counts (e.g. Geiger counter reading "250").
 ```json
 {
     "type" : "uniform_integer",
-    "lower_bound": 246,
-    "upper_bound": 255
+    "lower_bound": 245,
+    "upper_bound": 254
 }
 ```
 
