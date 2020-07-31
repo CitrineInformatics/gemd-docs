@@ -179,11 +179,11 @@ continuous bounds or discrete distributions over categorical ones.</p>
 <p>Each of the Value Types is described below.
 Every field is required.</p>
 <hr />
-<h2 id="real-values">Real Values<a class="headerlink" href="#real-values" title="Permanent link">#</a></h2>
+<h2 id="real-values">Real Values<a class="headerlink" href="#real-values" title="Permanent link">&para;</a></h2>
 <p>Two common distributions are supported: normal (i.e. Gaussian) and uniform.
 In cases when there is no distributional information, the "nominal" value type
 can be used to specify the expected value.</p>
-<h3 id="normal-real-value">Normal Real Value<a class="headerlink" href="#normal-real-value" title="Permanent link">#</a></h3>
+<h3 id="normal-real-value">Normal Real Value<a class="headerlink" href="#normal-real-value" title="Permanent link">&para;</a></h3>
 <p>Normally distributed value parameterized by a real-valued mean and standard deviation.</p>
 <p>A normal distribution is considered valid with a set of <a href="../attribute-templates#real-bounds">Real Bounds</a>
 if the mean lies between the upper and lower bound; the width of the distribution
@@ -248,7 +248,7 @@ near the boundary.</p>
 }
 </code></pre>
 
-<h3 id="uniform-real-value">Uniform Real Value<a class="headerlink" href="#uniform-real-value" title="Permanent link">#</a></h3>
+<h3 id="uniform-real-value">Uniform Real Value<a class="headerlink" href="#uniform-real-value" title="Permanent link">&para;</a></h3>
 <p>A Uniform continuous distribution value, with inclusive lower and upper bounds.
 These are especially useful for expressing uncertainty when the number of digits is truncated.
 In order to be valid, the entirety of the distribution must fall within the bounds.</p>
@@ -314,7 +314,7 @@ In order to be valid, the entirety of the distribution must fall within the boun
 }
 </code></pre>
 
-<h3 id="nominal-real-value">Nominal Real Value<a class="headerlink" href="#nominal-real-value" title="Permanent link">#</a></h3>
+<h3 id="nominal-real-value">Nominal Real Value<a class="headerlink" href="#nominal-real-value" title="Permanent link">&para;</a></h3>
 <p>Nominal value, which does not specify an uncertainty but is not to be assumed to be exact.</p>
 <table>
 <thead>
@@ -353,10 +353,10 @@ In order to be valid, the entirety of the distribution must fall within the boun
 </code></pre>
 
 <hr />
-<h2 id="integer-values">Integer Values<a class="headerlink" href="#integer-values" title="Permanent link">#</a></h2>
+<h2 id="integer-values">Integer Values<a class="headerlink" href="#integer-values" title="Permanent link">&para;</a></h2>
 <p>Currently, there are two integer types: a uniform (i.e. range) distribution and a
 nominal (i.e. specified) value.</p>
-<h3 id="uniform-integer-value">Uniform Integer Value<a class="headerlink" href="#uniform-integer-value" title="Permanent link">#</a></h3>
+<h3 id="uniform-integer-value">Uniform Integer Value<a class="headerlink" href="#uniform-integer-value" title="Permanent link">&para;</a></h3>
 <p>A uniform integer distribution value, with inclusive lower and upper bounds.
 These are especially useful for expressing uncertainty when the number of digits is truncated.
 In order to be valid, the entirety of the distribution must fall within the bounds.</p>
@@ -412,7 +412,7 @@ In order to be valid, the entirety of the distribution must fall within the boun
 }
 </code></pre>
 
-<h3 id="nominal-integer-value">Nominal Integer Value<a class="headerlink" href="#nominal-integer-value" title="Permanent link">#</a></h3>
+<h3 id="nominal-integer-value">Nominal Integer Value<a class="headerlink" href="#nominal-integer-value" title="Permanent link">&para;</a></h3>
 <p>Nominal value, which does not specify an uncertainty but is not to be assumed to be exact.</p>
 <table>
 <thead>
@@ -445,14 +445,14 @@ In order to be valid, the entirety of the distribution must fall within the boun
 </code></pre>
 
 <hr />
-<h2 id="categorical">Categorical<a class="headerlink" href="#categorical" title="Permanent link">#</a></h2>
+<h2 id="categorical">Categorical<a class="headerlink" href="#categorical" title="Permanent link">&para;</a></h2>
 <p>Categorical values are distributions over the valid category names representing the probability
 of each category.
 These are different than mixtures; 60% water and 40% ethanol is not a categorical distribution.
 For those, see <code>Composition</code>.</p>
 <p>Currently, there are two categorical types:
 a discrete (i.e. enumerated) distribution and a nominal (i.e. specified) value.</p>
-<h3 id="discrete-categorical-value">Discrete Categorical Value<a class="headerlink" href="#discrete-categorical-value" title="Permanent link">#</a></h3>
+<h3 id="discrete-categorical-value">Discrete Categorical Value<a class="headerlink" href="#discrete-categorical-value" title="Permanent link">&para;</a></h3>
 <p>Distribution of categories stored as a map from the string label to the probability</p>
 <table>
 <thead>
@@ -508,7 +508,7 @@ a discrete (i.e. enumerated) distribution and a nominal (i.e. specified) value.<
 }
 </code></pre>
 
-<h3 id="nominal-categorical-value">Nominal Categorical Value<a class="headerlink" href="#nominal-categorical-value" title="Permanent link">#</a></h3>
+<h3 id="nominal-categorical-value">Nominal Categorical Value<a class="headerlink" href="#nominal-categorical-value" title="Permanent link">&para;</a></h3>
 <p>Nominal value, which does not specify an uncertainty but is not to be assumed to be exact.</p>
 <table>
 <thead>
@@ -541,11 +541,11 @@ a discrete (i.e. enumerated) distribution and a nominal (i.e. specified) value.<
 </code></pre>
 
 <hr />
-<h2 id="composition">Composition<a class="headerlink" href="#composition" title="Permanent link">#</a></h2>
+<h2 id="composition">Composition<a class="headerlink" href="#composition" title="Permanent link">&para;</a></h2>
 <p>A value representing the composition of the material as a set of component names and their respective quantities.
 The quantities are not required to be expressed on a unit or fractional basis.
 For example "one part flour two parts sugar" is acceptable.</p>
-<h3 id="nominal-composition">Nominal Composition<a class="headerlink" href="#nominal-composition" title="Permanent link">#</a></h3>
+<h3 id="nominal-composition">Nominal Composition<a class="headerlink" href="#nominal-composition" title="Permanent link">&para;</a></h3>
 <p>A composition represented as a map from the component name to the quantity.
 The quantities do not express an uncertainty, but also do not imply that there is absolute certainty in their values.</p>
 <table>
@@ -596,7 +596,7 @@ The quantities do not express an uncertainty, but also do not imply that there i
 }
 </code></pre>
 
-<h3 id="empirical-formula">Empirical Formula<a class="headerlink" href="#empirical-formula" title="Permanent link">#</a></h3>
+<h3 id="empirical-formula">Empirical Formula<a class="headerlink" href="#empirical-formula" title="Permanent link">&para;</a></h3>
 <p>A composition represented as a chemical formula string.
 The order and grouping of the elements is ignored.</p>
 <table>
@@ -628,7 +628,7 @@ The order and grouping of the elements is ignored.</p>
 </code></pre>
 
 <hr />
-<h3 id="molecular-structure">Molecular Structure<a class="headerlink" href="#molecular-structure" title="Permanent link">#</a></h3>
+<h3 id="molecular-structure">Molecular Structure<a class="headerlink" href="#molecular-structure" title="Permanent link">&para;</a></h3>
 <p>Molecular structure types are used to define attributes that contain information about
 the structure and composition of a molecule.
 Given a molecular structure, one can infer the chemical formula, existence of functional groups,

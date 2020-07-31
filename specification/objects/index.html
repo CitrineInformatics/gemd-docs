@@ -168,7 +168,7 @@ It represents the set of steps to be attempted to produce a target material.
 A recipe could be shared by many material histories or may just represent one.
 A recipe and any associated material histories should share the same graph structure.</p>
 <hr />
-<h2 id="process-spec">Process Spec<a class="headerlink" href="#process-spec" title="Permanent link">#</a></h2>
+<h2 id="process-spec">Process Spec<a class="headerlink" href="#process-spec" title="Permanent link">&para;</a></h2>
 <p>An expectation of a process.
 Processes transform zero or more input materials into exactly one output material.</p>
 <table>
@@ -374,7 +374,7 @@ Processes transform zero or more input materials into exactly one output materia
 </code></pre>
 
 <hr />
-<h2 id="process-run">Process Run<a class="headerlink" href="#process-run" title="Permanent link">#</a></h2>
+<h2 id="process-run">Process Run<a class="headerlink" href="#process-run" title="Permanent link">&para;</a></h2>
 <p>A particular instance of a process.</p>
 <table>
 <thead>
@@ -535,7 +535,7 @@ Processes transform zero or more input materials into exactly one output materia
 </code></pre>
 
 <hr />
-<h2 id="ingredient-spec">Ingredient Spec<a class="headerlink" href="#ingredient-spec" title="Permanent link">#</a></h2>
+<h2 id="ingredient-spec">Ingredient Spec<a class="headerlink" href="#ingredient-spec" title="Permanent link">&para;</a></h2>
 <p>The intent for an ingredient, which annotates a material with information related to its usage in an individual process.
 Note that the <code>name</code> and <code>labels</code> for an Ingredient Spec are shared with all associated Ingredient Runs.
 These might be better thought of as the name of the role of a material in the process (e.g., binder) and not of the material itself (e.g., portland cement).</p>
@@ -725,7 +725,7 @@ These might be better thought of as the name of the role of a material in the pr
 </code></pre>
 
 <hr />
-<h2 id="ingredient-run">Ingredient Run<a class="headerlink" href="#ingredient-run" title="Permanent link">#</a></h2>
+<h2 id="ingredient-run">Ingredient Run<a class="headerlink" href="#ingredient-run" title="Permanent link">&para;</a></h2>
 <p>A particular instance of an ingredient spec.
 Note that the <code>name</code> and <code>labels</code> for an Ingredient Run are inherited from its spec.</p>
 <p><em>This is a change from the initial design of the data structure, and thus some implementations may still have <code>name</code> and <code>labels</code> associated with Ingredient Runs.</em>  See <a href="../../known-limitations">Known Limitations</a>.  </p>
@@ -913,7 +913,7 @@ The spec's material and the material's spec must point to the same Material Spec
 </code></pre>
 
 <hr />
-<h2 id="material-spec">Material Spec<a class="headerlink" href="#material-spec" title="Permanent link">#</a></h2>
+<h2 id="material-spec">Material Spec<a class="headerlink" href="#material-spec" title="Permanent link">&para;</a></h2>
 <p>The expectation for a material.
 Materials have exactly one producing process.
 Material specs may include expected properties,
@@ -1069,7 +1069,7 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 </code></pre>
 
 <hr />
-<h2 id="material-run">Material Run<a class="headerlink" href="#material-run" title="Permanent link">#</a></h2>
+<h2 id="material-run">Material Run<a class="headerlink" href="#material-run" title="Permanent link">&para;</a></h2>
 <p>A particular instance of a material, e.g. a sample, ingot, or wafer.</p>
 <table>
 <thead>
@@ -1193,7 +1193,7 @@ That is, the spec's process and the process's spec must point to the same Proces
 </code></pre>
 
 <hr />
-<h2 id="measurement-spec">Measurement Spec<a class="headerlink" href="#measurement-spec" title="Permanent link">#</a></h2>
+<h2 id="measurement-spec">Measurement Spec<a class="headerlink" href="#measurement-spec" title="Permanent link">&para;</a></h2>
 <p>An expectation for a measurement, indicating the parameters of and conditions under which to perform the measurement.</p>
 <table>
 <thead>
@@ -1356,7 +1356,7 @@ That is, the spec's process and the process's spec must point to the same Proces
 </code></pre>
 
 <hr />
-<h2 id="measurement-run">Measurement Run<a class="headerlink" href="#measurement-run" title="Permanent link">#</a></h2>
+<h2 id="measurement-run">Measurement Run<a class="headerlink" href="#measurement-run" title="Permanent link">&para;</a></h2>
 <p>A particular instance of a measurement.</p>
 <table>
 <thead>
@@ -1561,7 +1561,7 @@ That is, the spec's process and the process's spec must point to the same Proces
 </code></pre>
 
 <hr />
-<h2 id="source">Source<a class="headerlink" href="#source" title="Permanent link">#</a></h2>
+<h2 id="source">Source<a class="headerlink" href="#source" title="Permanent link">&para;</a></h2>
 <p>Provenance is the documented history of an Object.
 This includes information such as who performed a measurement, the literature source describing the design of a process, or the purveyor and catalog number for a purchased material.
 This type of information tends to have limited value for modeling and other analysis but is essential for verification and auditing.</p>

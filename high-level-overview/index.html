@@ -121,7 +121,7 @@
             <div class="section">
               
                 <h1>High Level Overview</h1>
-<h2 id="how-is-data-stored">How is data stored<a class="headerlink" href="#how-is-data-stored" title="Permanent link">#</a></h2>
+<h2 id="how-is-data-stored">How is data stored<a class="headerlink" href="#how-is-data-stored" title="Permanent link">&para;</a></h2>
 <p>GEMD stands for Graphical Expression of Materials Data. It's an open source format initially developed by the fine folks at Citrine Informatics.</p>
 <p>GEMD stores data via interconnected Data Objects, representing Specs and Runs of Materials, Processing steps, Measurements, and Ingredient information.
 This format is graphical rather than tabular.
@@ -137,7 +137,7 @@ Conversely, there are many new ideas that exist in GEMD that are not captured by
 <p><img alt="Object connectivity" src="../img/GEMD-Object-Graph.png" /></p>
 <p>Don't worry if that seems quite complicated right now.
 The details are broken out in the coming sections.</p>
-<h2 id="how-are-data-objects-defined">How are Data Objects defined?<a class="headerlink" href="#how-are-data-objects-defined" title="Permanent link">#</a></h2>
+<h2 id="how-are-data-objects-defined">How are Data Objects defined?<a class="headerlink" href="#how-are-data-objects-defined" title="Permanent link">&para;</a></h2>
 <p>A picture is worth a thousand words:</p>
 <p><img alt="Material Graph" src="../img/FORMULATIONS_ILLS_2.png" /></p>
 <p>There are four categories of Data Objects in GEMD: Materials, Processes, Measurements, and Ingredients.
@@ -242,7 +242,7 @@ Note, Ingredient Objects cannot be represented in the Template state.</p>
 </tbody>
 </table>
 <p><em>Table1:</em> Shows the relation of Objects to other Objects and Attributes possible in each state.</p>
-<h2 id="how-are-attributes-defined">How are Attributes defined?<a class="headerlink" href="#how-are-attributes-defined" title="Permanent link">#</a></h2>
+<h2 id="how-are-attributes-defined">How are Attributes defined?<a class="headerlink" href="#how-are-attributes-defined" title="Permanent link">&para;</a></h2>
 <p>Each Data Object (except Ingredient Objects) can contain Attributes that describe it.
 There are three different categories of Attributes: Properties, Parameters, and Conditions.
 Attributes contain structured materials data that is representative of an Data Object.
@@ -253,7 +253,7 @@ For example, a Process Object can have Parameters and Conditions as such: “sin
 <li><strong>Condition Attribute:</strong> Describes the aspects of the environment during a process or measurement, e.g. “the temperature of the environment during measurement”.</li>
 </ul>
 <p>Each Attribute has specified fields that are required or optional as defined in Table3 and Table6 below.</p>
-<h2 id="how-are-states-defined">How are States defined?<a class="headerlink" href="#how-are-states-defined" title="Permanent link">#</a></h2>
+<h2 id="how-are-states-defined">How are States defined?<a class="headerlink" href="#how-are-states-defined" title="Permanent link">&para;</a></h2>
 <p>There are 3 main states in which Data Objects exist: Templates, Spec, and Run.
 GEMD distinguishes between the generalization of what might be done (Template), the intent to do something (Spec), and the actual result of doing it (Run).</p>
 <blockquote>
@@ -292,11 +292,11 @@ The Run of the Process object would be “sinter at 2395 K for 5.75 hours in kil
 </tbody>
 </table>
 <p><em>Table2:</em> Defines the possible fields in all Data Objects and Attributes in all states</p>
-<h2 id="templates">Templates<a class="headerlink" href="#templates" title="Permanent link">#</a></h2>
+<h2 id="templates">Templates<a class="headerlink" href="#templates" title="Permanent link">&para;</a></h2>
 <p>Templates are generalizations of Data Objects used to standardize data in GEMD.
 Templates are used at write time to validate data and at read time to associate groups of information together.
 Each Spec and Run Object or Attribute (excluding Ingredient Objects and Metadata Attributes) requires a linked Template to support this read and write time association and validation respectively.</p>
-<h3 id="attribute-templates">Attribute Templates<a class="headerlink" href="#attribute-templates" title="Permanent link">#</a></h3>
+<h3 id="attribute-templates">Attribute Templates<a class="headerlink" href="#attribute-templates" title="Permanent link">&para;</a></h3>
 <p>An Attribute Template specifies the bounds that are acceptable for an Attribute.</p>
 <p>For example, an Attribute Template could specify a Real value bounded between -3 and +17, or it could define a Categorical bound with the following allowed categories: "salt", "not salt".
 The values of an Attribute with an Attribute Template must conform to the bounds specified by the Template.
@@ -340,7 +340,7 @@ If the value is not compatible with the Template (e.g. if the Template specifies
 </table>
 <p><em>Table3</em>: Shows the fields available for Attributes in the Template state</p>
 <p>The <code>scope</code> defines to which category of Attribute (Property, Parameter, or Condition) the Attribute Template applies.</p>
-<h3 id="object-templates">Object Templates<a class="headerlink" href="#object-templates" title="Permanent link">#</a></h3>
+<h3 id="object-templates">Object Templates<a class="headerlink" href="#object-templates" title="Permanent link">&para;</a></h3>
 <p>Object Templates are collections of Attribute Templates that together constrain the values of an Data Object's associated Attributes to valid ranges, and provide a common structure for describing similar Data Objects.</p>
 <p>Object Templates are useful for validating that all Data Objects being written or generated by a script are consistent and valid.
 In the future, Object Templates could be used to generate data input forms or similar interfaces.</p>
@@ -414,12 +414,12 @@ That second restriction is represented by a second bound paired with the Conditi
 </tbody>
 </table>
 <p><em>Table5</em>: Shows which Attributes can be linked to each Data Object in the Template state.</p>
-<h2 id="specs-and-runs">Specs and Runs<a class="headerlink" href="#specs-and-runs" title="Permanent link">#</a></h2>
+<h2 id="specs-and-runs">Specs and Runs<a class="headerlink" href="#specs-and-runs" title="Permanent link">&para;</a></h2>
 <p>Specs define the intent to do something, usually formalized in the format of an experiment request, the intention of an experiment, or the definition of a property.
 For example, the normal boiling point of pure water is 99.61 C, a spec.</p>
 <p>Runs describe how a material, process, or measurement were actually performed, defined, or evaluated and the end results of that evaluation.
 For example, a sample of water boiled at 101 C, a run.</p>
-<h3 id="attribute-in-specs-and-runs">Attribute in Specs and Runs<a class="headerlink" href="#attribute-in-specs-and-runs" title="Permanent link">#</a></h3>
+<h3 id="attribute-in-specs-and-runs">Attribute in Specs and Runs<a class="headerlink" href="#attribute-in-specs-and-runs" title="Permanent link">&para;</a></h3>
 <p>Each Attribute has specified fields that are required or optional for both Spec or Run state.
 Table6 goes into further detail about the possible fields.
 Table6 represents the Attributes in diagram.</p>
@@ -476,7 +476,7 @@ Table6 represents the Attributes in diagram.</p>
 </ul>
 <p>A <code>value</code> is a complex type that may contain both central (i.e. expected) and distributional (i.e. uncertainty) information.
 It also includes units for real (i.e. continuous) values.</p>
-<h3 id="data-object-specs-and-runs">Data Object Specs and Runs<a class="headerlink" href="#data-object-specs-and-runs" title="Permanent link">#</a></h3>
+<h3 id="data-object-specs-and-runs">Data Object Specs and Runs<a class="headerlink" href="#data-object-specs-and-runs" title="Permanent link">&para;</a></h3>
 <p>Object Specs require an associated Object Template that bounds the valid units and values of the Attributes on the Spec.</p>
 <p>With the linking of Specs to Runs, Runs inherit associated Templates through Specs.
 For example, Process Runs associated with a Process Spec inherit the Template associated with the Spec, and their Attributes are thus also constrained by the Template.</p>
