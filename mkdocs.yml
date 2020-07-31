@@ -4,7 +4,7 @@ markdown_extensions:
     - toc:
         baselevel: 1
         toc_depth: "2-3"
-        permalink: "#"
+        permalink: True
 
 extra:
     version: 0.1
