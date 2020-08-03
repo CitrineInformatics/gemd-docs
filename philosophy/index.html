@@ -66,6 +66,32 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">GEMD Philosophy</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#scope">Scope</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#objective">Objective</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#guiding-principles">Guiding principles</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#gemd-does-not-define-a-controlled-vocabulary">GEMD does not define a controlled vocabulary</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#validations-define-a-controlled-vocabulary">Validations define a controlled vocabulary</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#everything-is-bounded">Everything is bounded</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#never-turn-away-data">Never turn away data</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#process-is-a-first-class-citizen">Process is a first-class citizen</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#multiple-authors-can-contribute-to-the-history-of-a-material">Multiple authors can contribute to the history of a material</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#we-dont-always-get-what-we-want">We don't always get what we want</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#uncertainty-quantification-is-opt-out-rather-than-opt-in">Uncertainty quantification is opt-out rather than opt-in</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#material-history-is-chronological">Material history is chronological</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                     </li>
                 </ul>
@@ -120,7 +146,7 @@
           <div role="main">
             <div class="section">
               
-                <h1>GEMD Philosophy</h1>
+                <h1 id="gemd-philosophy">GEMD Philosophy<a class="headerlink" href="#gemd-philosophy" title="Permanent link">&para;</a></h1>
 <h2 id="scope">Scope<a class="headerlink" href="#scope" title="Permanent link">&para;</a></h2>
 <p>GEMD records physical and contextual information about materials and chemicals.
 This includes:</p>
@@ -133,13 +159,13 @@ This includes:</p>
 <h2 id="objective">Objective<a class="headerlink" href="#objective" title="Permanent link">&para;</a></h2>
 <p>GEMD enables information reuse and supports a material and chemicals system of record.</p>
 <h2 id="guiding-principles">Guiding principles<a class="headerlink" href="#guiding-principles" title="Permanent link">&para;</a></h2>
-<h4>GEMD does not define a controlled vocabulary</h4>
+<h4 id="gemd-does-not-define-a-controlled-vocabulary">GEMD does not define a controlled vocabulary<a class="headerlink" href="#gemd-does-not-define-a-controlled-vocabulary" title="Permanent link">&para;</a></h4>
 <p>It is not the place of the data format to say "Bandgap" instead of "band gap" or "Young's modulus" instead of "Young modulus".
 <a href="../specification/objects">Objects</a> and
 <a href="../specification/attributes">Attributes</a> have <code>name</code> fields that can take any value.
 Even the notion of equivalence/comparability is abstracted away to templates (see below),
 which can be used to define controlled vocabularies in data.</p>
-<h4>Validations define a controlled vocabulary</h4>
+<h4 id="validations-define-a-controlled-vocabulary">Validations define a controlled vocabulary<a class="headerlink" href="#validations-define-a-controlled-vocabulary" title="Permanent link">&para;</a></h4>
 <p>GEMD captures validation in the form of
 <a href="../specification/attribute-templates">Attribute Templates</a> and
 <a href="../specification/object-templates">Object Templates</a>.
@@ -151,7 +177,7 @@ those templates to their corresponding properties.</p>
 If two attributes define the same attribute template, then they should be directly comparable.
 On the other hand, if two attributes only define the same dimension (e.g. mass-length-time) then they may correspond
 to distinct and incomparable physical concepts.</p>
-<h4>Everything is bounded</h4>
+<h4 id="everything-is-bounded">Everything is bounded<a class="headerlink" href="#everything-is-bounded" title="Permanent link">&para;</a></h4>
 <p>The bounds on real, integer, and categorical values do not support infinity or wildcard categories.
 If an <a href="../specification/attributes">Attribute</a> is assigned an <a href="../specification/attribute-templates">Attribute Template</a>, then
 its values must be bounded.
@@ -164,38 +190,38 @@ More practically, the physical systems present in materials and chemicals can ra
 When defining the bounds in templates, it is important to have a broad ranges of use cases in mind.
 <a href="../specification/attribute-templates">Attribute Templates</a> should contain especially broad ranges, while
 <a href="../specification/object-templates">Object Templates</a> can refine those ranges to a tighter scope of application.</p>
-<h4>Never turn away data</h4>
+<h4 id="never-turn-away-data">Never turn away data<a class="headerlink" href="#never-turn-away-data" title="Permanent link">&para;</a></h4>
 <p>If the data is in scope, then the data model should have a place to write it.
 Catch-all fields, e.g. <code>notes</code>, are useful, but common notes patterns should be elevated into the spec.
 When linking data, the data author should be blocked by other data authors as infrequently as possible.</p>
 <p>Another consequence of never wanting to turn data away is that curation via template assignment is optional.
 It is better to have data with only unstructured context, e.g. notes, than to reject data because the user cannot or does not assign a template.
 This is particularly true for implementations that control the generation of templates, limiting the ability of any user to define an appropriate template.</p>
-<h4>Process is a first-class citizen</h4>
+<h4 id="process-is-a-first-class-citizen">Process is a first-class citizen<a class="headerlink" href="#process-is-a-first-class-citizen" title="Permanent link">&para;</a></h4>
 <p>The same stuff processed in different ways results in different materials, so the process by which a material was created belongs on equal footing with the material itself.
 In GEMD, they are in a 1:1 correspondence with each other: every material object has a process object that produced it.
 It is required because a material cannot be described without describing its process.</p>
-<h4>Multiple authors can contribute to the history of a material</h4>
+<h4 id="multiple-authors-can-contribute-to-the-history-of-a-material">Multiple authors can contribute to the history of a material<a class="headerlink" href="#multiple-authors-can-contribute-to-the-history-of-a-material" title="Permanent link">&para;</a></h4>
 <p>Over its lifetime, a material and its precursors frequently change hands.
 Consequently, the people who know about each processing and measurement step can be different.
 In extreme cases, a third party measurement might be deliberately blinded to the description of the sample being tested.</p>
 <p>The data model supports this by encoding information about a material in a set of objects, each scoped to contain the information that an individual or team would have.
 Each individual or team owns their steps in the process, but doesn't need to worry about the downstream steps.
 The objects are linked in a chronological order from oldest to most recent.</p>
-<h4>We don't always get what we want</h4>
+<h4 id="we-dont-always-get-what-we-want">We don't always get what we want<a class="headerlink" href="#we-dont-always-get-what-we-want" title="Permanent link">&para;</a></h4>
 <p>But if we try sometimes, we record what we'll need later.</p>
 <p>GEMD distinguishes between the intent to do something (a Spec) and the reality of what happened (a Run).
 Further, a single intent can be realized multiple times.
 This lets GEMD capture both systematic and random errors.
 It also allows for the definition of intent to precede generation of physical artifacts, supporting information hand-offs to experimental groups.</p>
-<h4>Uncertainty quantification is opt-out rather than opt-in</h4>
+<h4 id="uncertainty-quantification-is-opt-out-rather-than-opt-in">Uncertainty quantification is opt-out rather than opt-in<a class="headerlink" href="#uncertainty-quantification-is-opt-out-rather-than-opt-in" title="Permanent link">&para;</a></h4>
 <p>No measurement can be absolutely certain, and no calculation derived from uncertain inputs can magically produce certain outputs.
 Capturing that uncertainty is incredibly valuable as it informs a wide variety of statistical analyses.<br />
 Uncertainty can take many forms, which are represented by a variety of distribution <a href="../specification/value-types">Value Types</a>,
 which must be used when recording physical information into <a href="../specification/attributes">Attributes</a>.</p>
 <p>However, uncertainty quantification can be challenging and is often impossible in hindsight.
 Therefore, <code>nominal</code> values are permitted to express "It was nominally X, but we don't know how certain we are about it."</p>
-<h4>Material history is chronological</h4>
+<h4 id="material-history-is-chronological">Material history is chronological<a class="headerlink" href="#material-history-is-chronological" title="Permanent link">&para;</a></h4>
 <p>For any given physical object, one can trace back the series of processes that generated it and the ingredient materials that went into those processes.
 We represent this chronological history as a directed acyclic graph where each material links to the process that created it and each process links to the materials that went into it.
 Each of those input materials must exist <em>before</em> the process occurs.

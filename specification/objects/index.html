@@ -79,6 +79,28 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Objects</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#material-history">Material History</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#recipe">Recipe</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#process-spec">Process Spec</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#process-run">Process Run</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ingredient-spec">Ingredient Spec</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ingredient-run">Ingredient Run</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#material-spec">Material Spec</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#material-run">Material Run</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#measurement-spec">Measurement Spec</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#measurement-run">Measurement Run</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#source">Source</a>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../tags/">Tags</a>
@@ -124,7 +146,7 @@
           <div role="main">
             <div class="section">
               
-                <h1>Objects</h1>
+                <h1 id="objects">Objects<a class="headerlink" href="#objects" title="Permanent link">&para;</a></h1>
 <p>There are two kinds of objects: Specs and Runs.
 Specs represent the intent and expectation of the material, process, ingredient, or measurement,
 while Runs capture what actually happened.
@@ -148,7 +170,7 @@ If the <a href="../object-templates/">Object Template</a> has further restricted
 The Properties, Parameters and Conditions of Object Templates and of Objects are matched when they point at the same Attribute Template.</p>
 <p>An <a href="../objects">Object</a> can have <a href="../attributes">Attributes</a> that are not defined in its <a href="../object-templates">Object Template</a>, and an Object Template can have Attributes that are not defined in associated Objects.
 However, an Object cannot have two attributes of the same type (Property, Parameter, or Condition) with the same name or the same attribute template.</p>
-<h4>Material History</h4>
+<h4 id="material-history">Material History<a class="headerlink" href="#material-history" title="Permanent link">&para;</a></h4>
 <p>A material history is the complete set of objects that precede a <a href="#material-run">Material Run</a> in time, as well as the associated Specs and Templates.
 That final or ultimate material is called the <code>Terminal Material</code>.
 Given a dataset of relevant objects, a Material History would be collected by choosing a Terminal Material and then recursively:
@@ -162,7 +184,7 @@ A steelmaker might consider a steel plate to be terminal in their process.
 A machinist might take that plate as input for the dog bone they manufacture as terminal in their process.
 A technician might take that dog bone as input to destructive testing, and then a scrapper would feed the broken dog bone back as feedstock for another steelmaker.
 Every history has one terminal material.</p>
-<h4>Recipe</h4>
+<h4 id="recipe">Recipe<a class="headerlink" href="#recipe" title="Permanent link">&para;</a></h4>
 <p>A recipe is the set of Specs and Templates that underlie a Material History.<br />
 It represents the set of steps to be attempted to produce a target material.
 A recipe could be shared by many material histories or may just represent one.

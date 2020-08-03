@@ -81,6 +81,8 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Tags</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#tags_1">Tags</a>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../unique-identifiers/">Unique Identifiers</a>
@@ -124,7 +126,7 @@
           <div role="main">
             <div class="section">
               
-                <h1>Tags</h1>
+                <h1 id="tags">Tags<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h1>
 <p>For any identifiers that are uniquely associated with an object, we have <a href="../unique-identifiers/#alternative-ids">Alternative ID</a>.
 However, there are a number of cases where an identifier spans multiple objects.
 A great example of this would be a Batch ID for multiple outputs of something that is conceptually the same process.
@@ -134,7 +136,7 @@ They'd create two process runs - one outputting a chocolate cake material run, a
 But there is nothing recording the fact that both cakes were in the oven together.
 They can define a tag that would allow them to record this information with the id of their oven, and the date, "Oven_14::2019-04-15" and apply that tag to both of the process runs and/or material runs.</p>
 <hr />
-<h2 id="tags">Tags<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h2>
+<h2 id="tags_1">Tags<a class="headerlink" href="#tags_1" title="Permanent link">&para;</a></h2>
 <p>Tags are a flexible way to store hierarchical information about your data, or to store identifiers that span many objects.
 Each tag is string valued, but can use <code>::</code> as a delimiter define a hierarchy from broad to narrow.
 However, care should be taken to ensure that the first class in the hierarchy is sufficiently specific such that there is diversity in the first class (or <em>prefix</em>) of hierarchical tags.

@@ -73,6 +73,12 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Attributes</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#clusters">Clusters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#origin">Origin</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#property-condition-parameter">Property, Condition, Parameter</a>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../file-links/">File Links</a>
@@ -124,7 +130,7 @@
           <div role="main">
             <div class="section">
               
-                <h1>Attributes</h1>
+                <h1 id="attributes">Attributes<a class="headerlink" href="#attributes" title="Permanent link">&para;</a></h1>
 <p><strong>Properties</strong> are characteristics of a material that could be measured, e.g. chemical composition, density, or yield strength.</p>
 <blockquote>
 <p>I recorded a measurement run of the density of my cookie.
@@ -145,7 +151,7 @@ It may be appropriate to specify a Parameter attribute on a Spec, and describe t
 It may also be appropriate to include <em>both</em> a Parameter and a Condition on the Run if the value is both controlled and measured.
 The use of Conditions in Specs should be limited in favor of parameters.</p>
 <p>Attributes may be annotated with an <a href="../attribute-templates">Attribute Template</a>, which defines a canonical name and bounds on the attribute.</p>
-<h4>Clusters</h4>
+<h4 id="clusters">Clusters<a class="headerlink" href="#clusters" title="Permanent link">&para;</a></h4>
 <p>Attributes can be annotated with a <code>cluster</code> identifier to associate attributes with each other.<br />
 Often times, data contains series (e.g., a time/temperature curve) where it would be strange to split it across object boundaries.
 To tie different Values together, you assign the same identifier to each of the Attributes.
@@ -160,7 +166,7 @@ The vapor pressure and its temperature are annotated with <code>cluster = "Pvap"
 <p>A reactor vessel has a stirrer and temperature control, and the speed and temperature are each recorded independently with time (100 and 500 points each, respectively).
 Using <code>Reaction Time</code>, <code>Vessel Temperature</code> and <code>Stirring Speed</code> <a href="../attribute-templates">Attribute Templates</a> and <code>cluster</code> values for each row of the recorded values (e.g., <code>temp_001</code>, <code>speed_097</code>), you create 600 different <code>cluster</code> values assigned to 1200 different Conditions.</p>
 </blockquote>
-<h4>Origin</h4>
+<h4 id="origin">Origin<a class="headerlink" href="#origin" title="Permanent link">&para;</a></h4>
 <p>Attributes are annotated with the <code>origin</code> of the data.  This field can have the following values:</p>
 <ul>
 <li><code>measured</code>: The Value of this Attribute was directly measured.</li>

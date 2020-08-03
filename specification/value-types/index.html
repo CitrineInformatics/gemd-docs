@@ -85,11 +85,47 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Value Types</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#normal-real-value">Normal Real Value</a>
+    <li class="toctree-l2"><a class="reference internal" href="#real-values">Real Values</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#normal-real-value">Normal Real Value</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#uniform-real-value">Uniform Real Value</a>
+    <li class="toctree-l3"><a class="reference internal" href="#uniform-real-value">Uniform Real Value</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#nominal-real-value">Nominal Real Value</a>
+    <li class="toctree-l3"><a class="reference internal" href="#nominal-real-value">Nominal Real Value</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#integer-values">Integer Values</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#uniform-integer-value">Uniform Integer Value</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nominal-integer-value">Nominal Integer Value</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#categorical">Categorical</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#discrete-categorical-value">Discrete Categorical Value</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nominal-categorical-value">Nominal Categorical Value</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#composition">Composition</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#nominal-composition">Nominal Composition</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#empirical-formula">Empirical Formula</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#molecular-structure">Molecular Structure</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#smiles-value">SMILES Value</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#inchi-value">InChI Value</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
     </li>
     </ul>
                     </li>
@@ -130,7 +166,7 @@
           <div role="main">
             <div class="section">
               
-                <h1>Value Types</h1>
+                <h1 id="value-types">Value Types<a class="headerlink" href="#value-types" title="Permanent link">&para;</a></h1>
 <p>Value is a generic term for the information contained in an <a href="../attributes">attribute</a>.
 A Value may be one of the following Value Types:</p>
 <table>
@@ -640,7 +676,7 @@ but multiple molecular structures can be used to define fragments of a material,
 <li>SMILES string</li>
 <li>InChI string</li>
 </ul>
-<h4>SMILES Value</h4>
+<h4 id="smiles-value">SMILES Value<a class="headerlink" href="#smiles-value" title="Permanent link">&para;</a></h4>
 <p>A value containing a <a href="https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system">SMILES string</a>.</p>
 <table>
 <thead>
@@ -670,7 +706,7 @@ but multiple molecular structures can be used to define fragments of a material,
 }
 </code></pre>
 
-<h4>InChI Value</h4>
+<h4 id="inchi-value">InChI Value<a class="headerlink" href="#inchi-value" title="Permanent link">&para;</a></h4>
 <p>A value containing an <a href="https://en.wikipedia.org/wiki/International_Chemical_Identifier">InChI string</a>.
 Note: this is not the same as the InChI key.</p>
 <table>
