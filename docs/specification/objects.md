@@ -503,7 +503,7 @@ process | must be unique | globally
         },
     {
         "type": "property_and_conditions",
-        "conditions": None,
+        "conditions": null,
         "property": {
             "name" : "Cookie Composition",
             "origin" : "specified",
