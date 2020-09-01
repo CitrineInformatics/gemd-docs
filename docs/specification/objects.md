@@ -479,6 +479,11 @@ process | must be unique | globally
                 "type": "nominal_real",
                 "units": "degree_Celsius"
             },
+            "template" : {
+                "type" : "link_by_uid",
+                "scope" : "cookie_templates",
+                "id" : "amb_temp_01"
+            },
         },
         {
             "type": "condition",
@@ -488,7 +493,12 @@ process | must be unique | globally
                 "nominal": 1.0,
                 "type": "nominal_real",
                 "units": "atm"
-            }
+            },
+            "template" : {
+                "type" : "link_by_uid",
+                "scope" : "cookie_templates",
+                "id" : "amb_pressure_01"
+            },
         }],
         "property": {
             "type": "property",
@@ -498,7 +508,12 @@ process | must be unique | globally
                 "nominal": 1.2,
                 "type": "nominal_real",
                 "units": "gram / cubic_centimeter"
-            }
+            },
+            "template" : {
+                "type" : "link_by_uid",
+                "scope" : "cookie_templates",
+                "id" : "prop_density_01"
+            },
         }
         },
     {
