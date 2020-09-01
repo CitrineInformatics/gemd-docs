@@ -422,7 +422,7 @@ material.spec | = | spec.material
 The expectation for a material.
 Materials have exactly one producing process.
 Material specs may include expected properties,
-but do so via the [PropertyAndConditions](../attributes#properties-and-conditions) compound attribute.
+but do so via the [PropertyAndConditions](../attributes#property-and-conditions) compound attribute.
 In this way, material specs can associate an expected property value with the conditions under which it is expected.
 For example, if a material is purchased and its Safety Data Sheet quotes a normal boiling point of 54 C,
 a property is known even though there is never an explicit measurement of that property by a person in the lab.  It could
@@ -437,8 +437,7 @@ Field name | Value type | Default | Description
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
 `template`    | [Material Template](../object-templates/#material-template) | None | A template bounding the valid values for properties of this material.
-`properties`  | Set\[[Properties](../attributes/#properties)] | Empty | Expected properties for the material spec
-`conditions`  | Set\[[Conditions](../attributes/#conditions)] | Empty | Conditions for the expected properties for the material spec
+`properties`  | Set\[[PropertyAndConditions](../attributes/#property-and-conditions)] | Empty | Expected properties for the material spec at the given conditions
 `process`     | [Process Spec](./#process-spec) | Req. | The Process Spec that produces this material
 
 ##### Constraints
@@ -470,7 +469,57 @@ process | must be unique | globally
     },
     "properties" : [
         {
-            "type" : "property",
+        "type": "property_and_conditions",
+        "conditions": [{
+            "type": "condition",
+            "name": "ambient temperature",
+            "origin": "unknown",
+            "value": {
+                "nominal": 20.0,
+                "type": "nominal_real",
+                "units": "degree_Celsius"
+            },
+            "template" : {
+                "type" : "link_by_uid",
+                "scope" : "cookie_templates",
+                "id" : "amb_temp_01"
+            },
+        },
+        {
+            "type": "condition",
+            "name": "atmospheric pressure",
+            "origin": "unknown",
+            "value": {
+                "nominal": 1.0,
+                "type": "nominal_real",
+                "units": "atm"
+            },
+            "template" : {
+                "type" : "link_by_uid",
+                "scope" : "cookie_templates",
+                "id" : "amb_pressure_01"
+            },
+        }],
+        "property": {
+            "type": "property",
+            "name": "density",
+            "origin": "unknown",
+            "value": {
+                "nominal": 1.2,
+                "type": "nominal_real",
+                "units": "gram / cubic_centimeter"
+            },
+            "template" : {
+                "type" : "link_by_uid",
+                "scope" : "cookie_templates",
+                "id" : "prop_density_01"
+            },
+        }
+        },
+    {
+        "type": "property_and_conditions",
+        "conditions": null,
+        "property": {
             "name" : "Cookie Composition",
             "origin" : "specified",
             "template" : {
@@ -495,7 +544,7 @@ process | must be unique | globally
                 }
             }
         }
-    ],
+    }],
     "process_spec" : {
         "type" : "link_by_uid",
         "scope" : "id",

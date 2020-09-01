@@ -21,6 +21,13 @@ The use of Conditions in Specs should be limited in favor of parameters.
 
 Attributes may be annotated with an [Attribute Template](../attribute-templates), which defines a canonical name and bounds on the attribute.
 
+#### PropertyAndConditions 
+
+**PropertyAndConditions** are known or unmeasured Properties (at specified Conditions) of a [Material Spec](../objects/#material-spec). Typically, these will come from technical specification sheets of purchased ingredients or reference materials such as safety data sheets (SDS).
+> I purchased 100% Ethanol. According to the SDS, pure ethanol has a Density (Property) of 0.789 g/cc at 20 degC (Condition 1) and 1 atm (Condition 2). I will add this as a PropertyAndConditions to the ethanol [Material Spec](../objects/#material-spec). This PropertyAndConditions will have the density Property in the property field and a List containing both Conditions in the conditions field.
+
+> I purchased 80% Ethanol. According to the Technical Specifications, the solution is 80% ethanol and 20% water (Property). I will add this [Compositional Value](../value-types/#composition) as a PropertyAndConditions to the [Material Spec](../objects/#material-spec). However, this PropertyAndConditions will only have information in the property field, as no associated conditions are needed.
+
 #### Clusters
 
 Attributes can be annotated with a `cluster` identifier to associate attributes with each other.  
@@ -242,4 +249,54 @@ len(`notes`)  | <=           | 32,768 (32KB), UTF-8 Encoded
       ]
   }
 ]
+```
+
+## PropertyAndConditions
+
+
+Field name   | Value type | Default | Description
+-------------|------------|---------|-------------
+`type`       | String     | Req.    | `property_and_conditions`
+`property`   | Property | Req. | Property of the [Material Spec](../objects/#material-spec)
+`conditions` | Set[Condition]     | None | List of conditions the Property is valid at
+
+
+##### Examples
+
+```json
+{
+    "type": "property_and_conditions",
+    "conditions": [{
+        "type": "condition",
+        "name": "ambient temperature",
+        "origin": "unknown",
+        "value": {
+            "nominal": 20.0,
+            "type": "nominal_real",
+            "units": "degree_Celsius"
+        },
+        
+    },
+    {
+        "type": "condition",
+        "name": "atmospheric pressure",
+        "origin": "unknown",
+        "value": {
+            "nominal": 1.0,
+            "type": "nominal_real",
+            "units": "atm"
+        }
+    }],
+    "property": {
+        "type": "property",
+        "name": "density",
+        "origin": "unknown",
+        "value": {
+            "nominal": 0.7893,
+            "type": "nominal_real",
+            "units": "gram / cubic_centimeter"
+        }
+    }
+ }
+
 ```
