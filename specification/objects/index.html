@@ -939,7 +939,7 @@ The spec's material and the material's spec must point to the same Material Spec
 <p>The expectation for a material.
 Materials have exactly one producing process.
 Material specs may include expected properties,
-but do so via the <a href="../attributes#properties-and-conditions">PropertyAndConditions</a> compound attribute.
+but do so via the <a href="../attributes#property-and-conditions">PropertyAndConditions</a> compound attribute.
 In this way, material specs can associate an expected property value with the conditions under which it is expected.
 For example, if a material is purchased and its Safety Data Sheet quotes a normal boiling point of 54 C,
 a property is known even though there is never an explicit measurement of that property by a person in the lab.  It could
@@ -998,15 +998,9 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 </tr>
 <tr>
 <td><code>properties</code></td>
-<td>Set[<a href="../attributes/#properties">Properties</a>]</td>
+<td>Set[<a href="../attributes/#property-and-conditions">PropertyAndConditions</a>]</td>
 <td>Empty</td>
-<td>Expected properties for the material spec</td>
-</tr>
-<tr>
-<td><code>conditions</code></td>
-<td>Set[<a href="../attributes/#conditions">Conditions</a>]</td>
-<td>Empty</td>
-<td>Conditions for the expected properties for the material spec</td>
+<td>Expected properties for the material spec at the given conditions</td>
 </tr>
 <tr>
 <td><code>process</code></td>
@@ -1056,7 +1050,57 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
     },
     &quot;properties&quot; : [
         {
-            &quot;type&quot; : &quot;property&quot;,
+        &quot;type&quot;: &quot;property_and_conditions&quot;,
+        &quot;conditions&quot;: [{
+            &quot;type&quot;: &quot;condition&quot;,
+            &quot;name&quot;: &quot;ambient temperature&quot;,
+            &quot;origin&quot;: &quot;unknown&quot;,
+            &quot;value&quot;: {
+                &quot;nominal&quot;: 20.0,
+                &quot;type&quot;: &quot;nominal_real&quot;,
+                &quot;units&quot;: &quot;degree_Celsius&quot;
+            },
+            &quot;template&quot; : {
+                &quot;type&quot; : &quot;link_by_uid&quot;,
+                &quot;scope&quot; : &quot;cookie_templates&quot;,
+                &quot;id&quot; : &quot;amb_temp_01&quot;
+            },
+        },
+        {
+            &quot;type&quot;: &quot;condition&quot;,
+            &quot;name&quot;: &quot;atmospheric pressure&quot;,
+            &quot;origin&quot;: &quot;unknown&quot;,
+            &quot;value&quot;: {
+                &quot;nominal&quot;: 1.0,
+                &quot;type&quot;: &quot;nominal_real&quot;,
+                &quot;units&quot;: &quot;atm&quot;
+            },
+            &quot;template&quot; : {
+                &quot;type&quot; : &quot;link_by_uid&quot;,
+                &quot;scope&quot; : &quot;cookie_templates&quot;,
+                &quot;id&quot; : &quot;amb_pressure_01&quot;
+            },
+        }],
+        &quot;property&quot;: {
+            &quot;type&quot;: &quot;property&quot;,
+            &quot;name&quot;: &quot;density&quot;,
+            &quot;origin&quot;: &quot;unknown&quot;,
+            &quot;value&quot;: {
+                &quot;nominal&quot;: 1.2,
+                &quot;type&quot;: &quot;nominal_real&quot;,
+                &quot;units&quot;: &quot;gram / cubic_centimeter&quot;
+            },
+            &quot;template&quot; : {
+                &quot;type&quot; : &quot;link_by_uid&quot;,
+                &quot;scope&quot; : &quot;cookie_templates&quot;,
+                &quot;id&quot; : &quot;prop_density_01&quot;
+            },
+        }
+        },
+    {
+        &quot;type&quot;: &quot;property_and_conditions&quot;,
+        &quot;conditions&quot;: null,
+        &quot;property&quot;: {
             &quot;name&quot; : &quot;Cookie Composition&quot;,
             &quot;origin&quot; : &quot;specified&quot;,
             &quot;template&quot; : {
@@ -1081,7 +1125,7 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
                 }
             }
         }
-    ],
+    }],
     &quot;process_spec&quot; : {
         &quot;type&quot; : &quot;link_by_uid&quot;,
         &quot;scope&quot; : &quot;id&quot;,

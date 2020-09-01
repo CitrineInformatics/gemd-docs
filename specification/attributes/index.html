@@ -73,11 +73,15 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Attributes</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#propertyandconditions">PropertyAndConditions</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#clusters">Clusters</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#origin">Origin</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#property-condition-parameter">Property, Condition, Parameter</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#propertyandconditions_1">PropertyAndConditions</a>
     </li>
     </ul>
                     </li>
@@ -151,6 +155,12 @@ It may be appropriate to specify a Parameter attribute on a Spec, and describe t
 It may also be appropriate to include <em>both</em> a Parameter and a Condition on the Run if the value is both controlled and measured.
 The use of Conditions in Specs should be limited in favor of parameters.</p>
 <p>Attributes may be annotated with an <a href="../attribute-templates">Attribute Template</a>, which defines a canonical name and bounds on the attribute.</p>
+<h4 id="propertyandconditions">PropertyAndConditions<a class="headerlink" href="#propertyandconditions" title="Permanent link">&para;</a></h4>
+<p><strong>PropertyAndConditions</strong> are known or unmeasured Properties (at specified Conditions) of a <a href="../objects/#material-spec">Material Spec</a>. Typically, these will come from technical specification sheets of purchased ingredients or reference materials such as safety data sheets (SDS).</p>
+<blockquote>
+<p>I purchased 100% Ethanol. According to the SDS, pure ethanol has a Density (Property) of 0.789 g/cc at 20 degC (Condition 1) and 1 atm (Condition 2). I will add this as a PropertyAndConditions to the ethanol <a href="../objects/#material-spec">Material Spec</a>. This PropertyAndConditions will have the density Property in the property field and a List containing both Conditions in the conditions field.</p>
+<p>I purchased 80% Ethanol. According to the Technical Specifications, the solution is 80% ethanol and 20% water (Property). I will add this <a href="../value-types/#composition">Compositional Value</a> as a PropertyAndConditions to the <a href="../objects/#material-spec">Material Spec</a>. However, this PropertyAndConditions will only have information in the property field, as no associated conditions are needed.</p>
+</blockquote>
 <h4 id="clusters">Clusters<a class="headerlink" href="#clusters" title="Permanent link">&para;</a></h4>
 <p>Attributes can be annotated with a <code>cluster</code> identifier to associate attributes with each other.<br />
 Often times, data contains series (e.g., a time/temperature curve) where it would be strange to split it across object boundaries.
@@ -433,6 +443,75 @@ Using <code>Reaction Time</code>, <code>Vessel Temperature</code> and <code>Stir
       ]
   }
 ]
+</code></pre>
+
+<h2 id="propertyandconditions_1">PropertyAndConditions<a class="headerlink" href="#propertyandconditions_1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Value type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>Req.</td>
+<td><code>property_and_conditions</code></td>
+</tr>
+<tr>
+<td><code>property</code></td>
+<td>Property</td>
+<td>Req.</td>
+<td>Property of the <a href="../objects/#material-spec">Material Spec</a></td>
+</tr>
+<tr>
+<td><code>conditions</code></td>
+<td>Set[Condition]</td>
+<td>None</td>
+<td>List of conditions the Property is valid at</td>
+</tr>
+</tbody>
+</table>
+<h5>Examples</h5>
+<pre><code class="json">{
+    &quot;type&quot;: &quot;property_and_conditions&quot;,
+    &quot;conditions&quot;: [{
+        &quot;type&quot;: &quot;condition&quot;,
+        &quot;name&quot;: &quot;ambient temperature&quot;,
+        &quot;origin&quot;: &quot;unknown&quot;,
+        &quot;value&quot;: {
+            &quot;nominal&quot;: 20.0,
+            &quot;type&quot;: &quot;nominal_real&quot;,
+            &quot;units&quot;: &quot;degree_Celsius&quot;
+        },
+
+    },
+    {
+        &quot;type&quot;: &quot;condition&quot;,
+        &quot;name&quot;: &quot;atmospheric pressure&quot;,
+        &quot;origin&quot;: &quot;unknown&quot;,
+        &quot;value&quot;: {
+            &quot;nominal&quot;: 1.0,
+            &quot;type&quot;: &quot;nominal_real&quot;,
+            &quot;units&quot;: &quot;atm&quot;
+        }
+    }],
+    &quot;property&quot;: {
+        &quot;type&quot;: &quot;property&quot;,
+        &quot;name&quot;: &quot;density&quot;,
+        &quot;origin&quot;: &quot;unknown&quot;,
+        &quot;value&quot;: {
+            &quot;nominal&quot;: 0.7893,
+            &quot;type&quot;: &quot;nominal_real&quot;,
+            &quot;units&quot;: &quot;gram / cubic_centimeter&quot;
+        }
+    }
+ }
+
 </code></pre>
               
             </div>
