@@ -5,8 +5,8 @@ An `AttributeTemplate` defines a domain concept by giving it a canonical name an
 For example, an attribute template could define a real value bounded
 between -3 and +17, or it could define a Categorical with the following
 allowed categories: "salt", "not salt".
-The values of an [attributes](../attributes)
-with an Attribute Template must conform to the bounds specified by the template.
+The values of [attributes](../attributes)
+with Attribute Templates must conform to the bounds specified by the templates.
 If the value is not compatible with the template (e.g. if the template specifies that
 the value must be in the range [0, 1] but the value is 2), then the data are invalid.
 
