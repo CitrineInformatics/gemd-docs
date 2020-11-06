@@ -177,7 +177,7 @@ Field name | Value type | Description
 -----------|------------|------------
 `type`     | String     | always `molecular_structure_bounds`
 
-##### Example
+## Example
 
 ```json
 {
