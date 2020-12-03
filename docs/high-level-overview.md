@@ -32,7 +32,7 @@ Note, Ingredient Objects cannot be represented in the Template state.
 
 * **Material Object:** Describes a material by a name used in an organization and optional notes to describe it.
 * **Measurement Object:** Describes an operation used to measure or characterize one or more properties of a material and the parameters and conditions for that operations.
-* **Process Object:** Describes an operation used with the goal of transforming a material.
+* **Process Object:** Describes an operation that generates an output material from one or more material inputs.
 * **Ingredient Object:** Annotates a material with information related to its usage in a process including `name` (label on the ingredient that is unique within the process that contains it) and `labels` (additional labels on the ingredient)
 
 Object      | Examples   | Linked Objects | State | Possible Attributes
