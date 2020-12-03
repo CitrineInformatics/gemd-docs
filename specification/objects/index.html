@@ -320,7 +320,7 @@ Processes transform zero or more input materials into exactly one output materia
 </tbody>
 </table>
 <h5>Example</h5>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;type&quot; : &quot;process_spec&quot;,
     &quot;uids&quot; : {
         &quot;id&quot; : &quot;064148e6-1cce-4d89-bfde-7ecd0aa4632b&quot;
@@ -394,7 +394,6 @@ Processes transform zero or more input materials into exactly one output materia
     }
 }
 </code></pre>
-
 <hr />
 <h2 id="process-run">Process Run<a class="headerlink" href="#process-run" title="Permanent link">&para;</a></h2>
 <p>A particular instance of a process.</p>
@@ -485,7 +484,7 @@ Processes transform zero or more input materials into exactly one output materia
 <h5>Constraints</h5>
 <p>Same as <code>ProcessSpec</code>, but with the <code>template</code> inherited from the <code>spec</code>, i.e. <code>spec.template</code>.</p>
 <h5>Example</h5>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;type&quot; : &quot;process_run&quot;,
     &quot;uids&quot; : {
         &quot;cookie_ids&quot; : &quot;choc_chip_proc_001_run_006&quot;,
@@ -555,7 +554,6 @@ Processes transform zero or more input materials into exactly one output materia
     }
 }
 </code></pre>
-
 <hr />
 <h2 id="ingredient-spec">Ingredient Spec<a class="headerlink" href="#ingredient-spec" title="Permanent link">&para;</a></h2>
 <p>The intent for an ingredient, which annotates a material with information related to its usage in an individual process.
@@ -717,7 +715,7 @@ These might be better thought of as the name of the role of a material in the pr
 </tbody>
 </table>
 <h5>Example</h5>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;type&quot; : &quot;ingredient_spec&quot;,
     &quot;material&quot; :{
         &quot;type&quot; : &quot;link_by_uid&quot;,
@@ -745,7 +743,6 @@ These might be better thought of as the name of the role of a material in the pr
     &quot;labels&quot; : [&quot;faces&quot;]
 }
 </code></pre>
-
 <hr />
 <h2 id="ingredient-run">Ingredient Run<a class="headerlink" href="#ingredient-run" title="Permanent link">&para;</a></h2>
 <p>A particular instance of an ingredient spec.
@@ -905,7 +902,7 @@ The spec's material and the material's spec must point to the same Material Spec
 </tbody>
 </table>
 <h5>Example</h5>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;type&quot; : &quot;ingredient_run&quot;,
     &quot;material&quot; :{
         &quot;type&quot; : &quot;link_by_uid&quot;,
@@ -933,7 +930,6 @@ The spec's material and the material's spec must point to the same Material Spec
     }
 }
 </code></pre>
-
 <hr />
 <h2 id="material-spec">Material Spec<a class="headerlink" href="#material-spec" title="Permanent link">&para;</a></h2>
 <p>The expectation for a material.
@@ -1035,7 +1031,7 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 </tbody>
 </table>
 <h5>Example</h5>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;type&quot; : &quot;material_spec&quot;,
     &quot;uids&quot; : {
         &quot;cookie_ids&quot; : &quot;choc_chip_spec_001&quot;,
@@ -1133,7 +1129,6 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
     }
 }
 </code></pre>
-
 <hr />
 <h2 id="material-run">Material Run<a class="headerlink" href="#material-run" title="Permanent link">&para;</a></h2>
 <p>A particular instance of a material, e.g. a sample, ingot, or wafer.</p>
@@ -1230,7 +1225,7 @@ That is, the spec's process and the process's spec must point to the same Proces
 </tbody>
 </table>
 <h5>Example</h5>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;type&quot; : &quot;material_run&quot;,
     &quot;uids&quot; : {
         &quot;cookie_ids&quot; : &quot;choc_chip_001_run_006&quot;
@@ -1257,7 +1252,6 @@ That is, the spec's process and the process's spec must point to the same Proces
     ]
 }
 </code></pre>
-
 <hr />
 <h2 id="measurement-spec">Measurement Spec<a class="headerlink" href="#measurement-spec" title="Permanent link">&para;</a></h2>
 <p>An expectation for a measurement, indicating the parameters of and conditions under which to perform the measurement.</p>
@@ -1371,7 +1365,7 @@ That is, the spec's process and the process's spec must point to the same Proces
 </tbody>
 </table>
 <h5>Example</h5>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;type&quot; : &quot;measurement_spec&quot;,
     &quot;uids&quot; : {
         &quot;cookie_ids&quot; : &quot;choc_chip_hedonic_spec&quot;
@@ -1420,7 +1414,6 @@ That is, the spec's process and the process's spec must point to the same Proces
     ]
 }
 </code></pre>
-
 <hr />
 <h2 id="measurement-run">Measurement Run<a class="headerlink" href="#measurement-run" title="Permanent link">&para;</a></h2>
 <p>A particular instance of a measurement.</p>
@@ -1551,7 +1544,7 @@ That is, the spec's process and the process's spec must point to the same Proces
 </tbody>
 </table>
 <h5>Example</h5>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;type&quot; : &quot;measurement_run&quot;,
     &quot;uids&quot; : {
         &quot;cookie_ids&quot; : &quot;choc_chip_hedonic_run_006&quot;
@@ -1625,7 +1618,6 @@ That is, the spec's process and the process's spec must point to the same Proces
     ]
 }
 </code></pre>
-
 <hr />
 <h2 id="source">Source<a class="headerlink" href="#source" title="Permanent link">&para;</a></h2>
 <p>Provenance is the documented history of an Object.
@@ -1664,7 +1656,7 @@ Sources can be added to ProcessRun and MeasurementRun Objects only.</p>
 </tbody>
 </table>
 <h5>Example</h5>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;type&quot;: &quot;performed_source&quot;,
     &quot;performed_by&quot;: &quot;joe@abc.com&quot;,
     &quot;performed_date&quot;: &quot;2015-03-14T15:09:27&quot;
