@@ -71,8 +71,6 @@ Field name | Value type | Default | Description
 `template`    | [Process Template](../object-templates/#process-template) | None | A template bounding the valid values for parameters and conditions on this process.
 `parameters`  | Set\[[Parameters](../attributes/#parameters)] | Empty | Specified parameters for the process spec
 `conditions`  | Set\[[Conditions](../attributes/#conditions)] | Empty | Specified conditions for the process spec
-`ingredients` | Set\[[Ingredient Spec](./#ingredient-spec)] | Empty | Ingredient Specs
-`output_material` | [Material Spec](./#material-spec) | Req. | Output Material Spec
 
 
 ##### Constraints
@@ -185,8 +183,6 @@ Field name | Value type | Default | Description
 `spec`| [Process Spec](./#process-spec) | Req. | Spec for this process
 `parameters`  | Set\[[Parameters](../attributes/#parameters)] | Empty | Measured parameters for the process run
 `conditions`  | Set\[[Conditions](../attributes/#conditions)] | Empty | Measured conditions for the process run
-`ingredients` | Set\[[Ingredient Run](./#ingredient-run)] | Empty | Ingredient Runs
-`output_material` | [Material Run](./#material-run) | Req. | Output Material Run
 
 ##### Constraints
 
