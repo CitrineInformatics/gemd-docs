@@ -80,10 +80,6 @@
     <li class="toctree-l2"><a class="reference internal" href="#composition-bounds">Composition Bounds</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#molecular-structure-bounds">Molecular Structure Bounds</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#example-attribute-templates">Example Attribute Templates</a>
-    </li>
-        </ul>
     </li>
     </ul>
                     </li>
@@ -219,6 +215,52 @@ AttributeTemplates can also be described with tags, description, and scope.</p>
 </tr>
 </tbody>
 </table>
+<h5>Examples</h5>
+<pre><code class="language-json">{
+    &quot;type&quot; : &quot;property_template&quot;,
+    &quot;uids&quot; : {
+        &quot;id&quot; : &quot;2e1bec7e-bda4-441d-bebb-1215bfa6ee0f&quot;
+    },
+    &quot;tags&quot; : [
+        &quot;hardness::indentation::vickers&quot;,
+        &quot;Newage MT91 Tester::004&quot;,
+        &quot;astm_hardness::ASTM E-384&quot;],
+    &quot;name&quot; : &quot;Vickers Hardness on Machine 4&quot;,
+    &quot;description&quot; : &quot;A Vickers indentation hardness test on the Newage MT91 Tester with machine id #4. Conforms to ASTM standard E-384.&quot;,
+    &quot;bounds&quot; : {
+        &quot;type&quot; : &quot;real_bounds&quot;,
+        &quot;default_units&quot; : &quot;HV30/15&quot;,
+        &quot;lower_bound&quot; : 0.0,
+        &quot;upper_bound&quot; : 10000.0
+    }
+}
+</code></pre>
+<pre><code class="language-json">{
+    &quot;type&quot;: &quot;property_template&quot;,
+    &quot;id&quot; : &quot;2e1bec7e-bda4-441d-bebb-1215bfa6ee0f&quot;,
+    &quot;uids&quot; : {},
+    &quot;tags&quot; : [
+        &quot;#noindigo::newtonwaswrong&quot;,
+        &quot;taste::therainbow&quot;,
+        &quot;things_they_are_after::my_lucky_charms&quot;,
+        &quot;marketing::commercials::candy::skittles&quot;,
+        &quot;marketing::characters::cereal::leprechaun&quot;
+    ],
+    &quot;name&quot; : &quot;Rainbow Colors&quot;,
+    &quot;description&quot; : &quot;Colors in the rainbow&quot;,
+    &quot;bounds&quot; : {
+      &quot;type&quot; : &quot;categorical_bounds&quot;,
+      &quot;categories&quot; : [
+        &quot;red&quot;,
+        &quot;orange&quot;,
+        &quot;yellow&quot;,
+        &quot;green&quot;,
+        &quot;blue&quot;,
+        &quot;violet&quot;
+      ]
+    }
+}
+</code></pre>
 <hr />
 <h2 id="real-bounds">Real Bounds<a class="headerlink" href="#real-bounds" title="Permanent link">&para;</a></h2>
 <p>Real bounds are defined by a range of finite real values and a unit.</p>
@@ -459,53 +501,6 @@ For example:</p>
 <h5>Example</h5>
 <pre><code class="language-json">{
     &quot;type&quot; : &quot;molecular_structure_bounds&quot;
-}
-</code></pre>
-<hr />
-<h4 id="example-attribute-templates">Example Attribute Templates<a class="headerlink" href="#example-attribute-templates" title="Permanent link">&para;</a></h4>
-<pre><code class="language-json">{
-    &quot;type&quot; : &quot;property_template&quot;,
-    &quot;uids&quot; : {
-        &quot;id&quot; : &quot;2e1bec7e-bda4-441d-bebb-1215bfa6ee0f&quot;
-    },
-    &quot;tags&quot; : [
-        &quot;hardness::indentation::vickers&quot;,
-        &quot;Newage MT91 Tester::004&quot;,
-        &quot;astm_hardness::ASTM E-384&quot;],
-    &quot;name&quot; : &quot;Vickers Hardness on Machine 4&quot;,
-    &quot;description&quot; : &quot;A Vickers indentation hardness test on the Newage MT91 Tester with machine id #4. Conforms to ASTM standard E-384.&quot;,
-    &quot;bounds&quot; : {
-        &quot;type&quot; : &quot;real_bounds&quot;,
-        &quot;default_units&quot; : &quot;HV30/15&quot;,
-        &quot;lower_bound&quot; : 0.0,
-        &quot;upper_bound&quot; : 10000.0
-    }
-}
-</code></pre>
-<pre><code class="language-json">{
-    &quot;type&quot;: &quot;property_template&quot;,
-    &quot;id&quot; : &quot;2e1bec7e-bda4-441d-bebb-1215bfa6ee0f&quot;,
-    &quot;uids&quot; : {},
-    &quot;tags&quot; : [
-        &quot;#noindigo::newtonwaswrong&quot;,
-        &quot;taste::therainbow&quot;,
-        &quot;things_they_are_after::my_lucky_charms&quot;,
-        &quot;marketing::commercials::candy::skittles&quot;,
-        &quot;marketing::characters::cereal::leprechaun&quot;
-    ],
-    &quot;name&quot; : &quot;Rainbow Colors&quot;,
-    &quot;description&quot; : &quot;Colors in the rainbow&quot;,
-    &quot;bounds&quot; : {
-      &quot;type&quot; : &quot;categorical_bounds&quot;,
-      &quot;categories&quot; : [
-        &quot;red&quot;,
-        &quot;orange&quot;,
-        &quot;yellow&quot;,
-        &quot;green&quot;,
-        &quot;blue&quot;,
-        &quot;violet&quot;
-      ]
-    }
 }
 </code></pre>
               
