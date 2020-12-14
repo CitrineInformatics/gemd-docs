@@ -324,7 +324,7 @@ A value containing a [SMILES string](https://en.wikipedia.org/wiki/Simplified_mo
 | `smiles`   | String     | A SMILES string |
 
 
-#### Example
+##### Example
 
 ```json
 {
@@ -344,7 +344,7 @@ Note: this is not the same as the InChI key.
 | `inchi`    | String     | An InChI string |
 
 
-#### Example
+##### Example
 
 ```json
 {
