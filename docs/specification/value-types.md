@@ -300,7 +300,7 @@ The order and grouping of the elements is ignored.
 
 ---
 
-### Molecular Structure
+## Molecular Structure
 
 Molecular structure types are used to define attributes that contain information about
 the structure and composition of a molecule.
@@ -314,7 +314,7 @@ There are two ways to represent a molecular structure:
 * SMILES string
 * InChI string
 
-#### SMILES Value
+### SMILES Value
 
 A value containing a [SMILES string](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system).
 
@@ -333,7 +333,7 @@ A value containing a [SMILES string](https://en.wikipedia.org/wiki/Simplified_mo
 }
 ```
 
-#### InChI Value
+### InChI Value
 
 A value containing an [InChI string](https://en.wikipedia.org/wiki/International_Chemical_Identifier).
 Note: this is not the same as the InChI key.
