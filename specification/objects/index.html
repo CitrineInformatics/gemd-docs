@@ -185,7 +185,7 @@ A machinist might take that plate as input for the dog bone they manufacture as 
 A technician might take that dog bone as input to destructive testing, and then a scrapper would feed the broken dog bone back as feedstock for another steelmaker.
 Every history has one terminal material.</p>
 <h4 id="recipe">Recipe<a class="headerlink" href="#recipe" title="Permanent link">&para;</a></h4>
-<p>A recipe is the set of Specs and Templates that underlie a Material History.<br />
+<p>A recipe is the set of Specs and Templates that underlie a Material History.
 It represents the set of steps to be attempted to produce a target material.
 A recipe could be shared by many material histories or may just represent one.
 A recipe and any associated material histories should share the same graph structure.</p>
@@ -212,13 +212,13 @@ Processes transform zero or more input materials into exactly one output materia
 <tr>
 <td><code>type</code></td>
 <td>String</td>
-<td>Req.</td>
+<td>Required</td>
 <td>"process_spec"</td>
 </tr>
 <tr>
 <td><code>name</code></td>
 <td>String</td>
-<td>Req.</td>
+<td>Required</td>
 <td>The name of the spec</td>
 </tr>
 <tr>
@@ -260,13 +260,13 @@ Processes transform zero or more input materials into exactly one output materia
 <tr>
 <td><code>ingredients</code></td>
 <td>Set[<a href="./#ingredient-spec">Ingredient Spec</a>]</td>
-<td>Empty</td>
+<td>Implicit</td>
 <td>Ingredient Specs</td>
 </tr>
 <tr>
 <td><code>output_material</code></td>
 <td><a href="./#material-spec">Material Spec</a></td>
-<td>Req.</td>
+<td>Implicit</td>
 <td>Output Material Spec</td>
 </tr>
 </tbody>
@@ -416,13 +416,13 @@ Processes transform zero or more input materials into exactly one output materia
 <tr>
 <td><code>type</code></td>
 <td>String</td>
-<td>Req.</td>
+<td>Required</td>
 <td>"process_run"</td>
 </tr>
 <tr>
 <td><code>name</code></td>
 <td>String</td>
-<td>Req.</td>
+<td>Required</td>
 <td>The name of the process run</td>
 </tr>
 <tr>
@@ -452,7 +452,7 @@ Processes transform zero or more input materials into exactly one output materia
 <tr>
 <td><code>spec</code></td>
 <td><a href="./#process-spec">Process Spec</a></td>
-<td>Req.</td>
+<td>Required</td>
 <td>Spec for this process</td>
 </tr>
 <tr>
@@ -470,13 +470,13 @@ Processes transform zero or more input materials into exactly one output materia
 <tr>
 <td><code>ingredients</code></td>
 <td>Set[<a href="./#ingredient-run">Ingredient Run</a>]</td>
-<td>Empty</td>
+<td>Implicit</td>
 <td>Ingredient Runs</td>
 </tr>
 <tr>
 <td><code>output_material</code></td>
 <td><a href="./#material-run">Material Run</a></td>
-<td>Req.</td>
+<td>Implicit</td>
 <td>Output Material Run</td>
 </tr>
 </tbody>
@@ -578,13 +578,13 @@ These might be better thought of as the name of the role of a material in the pr
 <tr>
 <td><code>type</code></td>
 <td>String</td>
-<td>Req.</td>
+<td>Required</td>
 <td>"ingredient_spec"</td>
 </tr>
 <tr>
 <td><code>name</code></td>
 <td>String</td>
-<td>Req.</td>
+<td>Required</td>
 <td>The name of the ingredient, unique within the process that contains it</td>
 </tr>
 <tr>
@@ -596,13 +596,13 @@ These might be better thought of as the name of the role of a material in the pr
 <tr>
 <td><code>material</code></td>
 <td><a href="./#material-spec">Material Spec</a></td>
-<td>Req.</td>
+<td>Required</td>
 <td>Material that is this ingredient</td>
 </tr>
 <tr>
 <td><code>process</code></td>
 <td><a href="./#process-spec">Process Spec</a></td>
-<td>Req.</td>
+<td>Required</td>
 <td>Process that the ingredient is used in</td>
 </tr>
 <tr>
@@ -767,19 +767,31 @@ Note that the <code>name</code> and <code>labels</code> for an Ingredient Run ar
 <tr>
 <td><code>type</code></td>
 <td>String</td>
-<td>Req.</td>
+<td>Required</td>
 <td>"ingredient_run"</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td>Implicit</td>
+<td>The name of the ingredient run (inherited from spec)</td>
+</tr>
+<tr>
+<td><code>labels</code></td>
+<td>Set[String]</td>
+<td>Implicit</td>
+<td>Additional labels on the ingredient for describing the type or role of the ingredient (inherited from spec)</td>
 </tr>
 <tr>
 <td><code>material</code></td>
 <td><a href="./#material-run">Material Run</a></td>
-<td>Req.</td>
+<td>Required</td>
 <td>Material that is this ingredient</td>
 </tr>
 <tr>
 <td><code>process</code></td>
 <td><a href="./#process-run">Process Run</a></td>
-<td>Req.</td>
+<td>Required</td>
 <td>Process that the ingredient is used in</td>
 </tr>
 <tr>
@@ -827,7 +839,7 @@ Note that the <code>name</code> and <code>labels</code> for an Ingredient Run ar
 <tr>
 <td><code>spec</code></td>
 <td><a href="./#ingredient-spec">Ingredient Spec</a></td>
-<td>Req.</td>
+<td>Required</td>
 <td>The spec of which this is a run</td>
 </tr>
 </tbody>
@@ -959,13 +971,13 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 <tr>
 <td><code>type</code></td>
 <td>String</td>
-<td>Req.</td>
+<td>Required</td>
 <td>"material_spec"</td>
 </tr>
 <tr>
 <td><code>name</code></td>
 <td>String</td>
-<td>Req.</td>
+<td>Required</td>
 <td>The name of the spec</td>
 </tr>
 <tr>
@@ -1001,7 +1013,7 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 <tr>
 <td><code>process</code></td>
 <td><a href="./#process-spec">Process Spec</a></td>
-<td>Req.</td>
+<td>Required</td>
 <td>The Process Spec that produces this material</td>
 </tr>
 </tbody>
@@ -1151,13 +1163,13 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 <tr>
 <td><code>type</code></td>
 <td>String</td>
-<td>Req.</td>
+<td>Required</td>
 <td>"material_run"</td>
 </tr>
 <tr>
 <td><code>name</code></td>
 <td>String</td>
-<td>Req.</td>
+<td>Required</td>
 <td>The name of the material run</td>
 </tr>
 <tr>
@@ -1181,19 +1193,19 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 <tr>
 <td><code>spec</code></td>
 <td><a href="./#material-spec">Material Spec</a></td>
-<td>Req.</td>
+<td>Required</td>
 <td>The material spec of which this is a run</td>
 </tr>
 <tr>
 <td><code>process</code></td>
 <td><a href="./#process-run">Process Run</a></td>
-<td>Req.</td>
+<td>Required</td>
 <td>The Process Run that produced this material</td>
 </tr>
 <tr>
 <td><code>measurements</code></td>
 <td>Set[<a href="./#measurement-run">Measurement Run</a>]</td>
-<td>Empty</td>
+<td>Implicit</td>
 <td>characterizations of this Material Run</td>
 </tr>
 <tr>
@@ -1274,13 +1286,13 @@ That is, the spec's process and the process's spec must point to the same Proces
 <tr>
 <td><code>type</code></td>
 <td>String</td>
-<td>Req.</td>
+<td>Required</td>
 <td>"measurement_spec"</td>
 </tr>
 <tr>
 <td><code>name</code></td>
 <td>String</td>
-<td>Req.</td>
+<td>Required</td>
 <td>The name of the spec</td>
 </tr>
 <tr>
@@ -1436,13 +1448,13 @@ That is, the spec's process and the process's spec must point to the same Proces
 <tr>
 <td><code>type</code></td>
 <td>String</td>
-<td>Req.</td>
+<td>Required</td>
 <td>"measurement_run"</td>
 </tr>
 <tr>
 <td><code>name</code></td>
 <td>String</td>
-<td>Req.</td>
+<td>Required</td>
 <td>The name of the measurement run</td>
 </tr>
 <tr>
@@ -1472,13 +1484,13 @@ That is, the spec's process and the process's spec must point to the same Proces
 <tr>
 <td><code>spec</code></td>
 <td><a href="./#measurement-spec">Measurement Spec</a></td>
-<td>Req.</td>
+<td>Required</td>
 <td>The measurement spec of which this is a run</td>
 </tr>
 <tr>
 <td><code>material</code></td>
 <td><a href="./#material-run">Material Run</a></td>
-<td>Req.</td>
+<td>Required</td>
 <td>The material run being measured</td>
 </tr>
 <tr>
@@ -1638,7 +1650,7 @@ Sources can be added to ProcessRun and MeasurementRun Objects only.</p>
 <tr>
 <td><code>type</code></td>
 <td>String</td>
-<td>Req.</td>
+<td>Required</td>
 <td>"performed_source"</td>
 </tr>
 <tr>
