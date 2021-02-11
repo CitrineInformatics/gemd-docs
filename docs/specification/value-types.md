@@ -148,12 +148,12 @@ In order to be valid, the entirety of the distribution must fall within the boun
 
 ##### Example
 
-A value field read off a digital display with 3 decimal points.
+A value field recorded from a digital display recording an approximate number of counts (e.g. Geiger counter reading "250").
 ```json
 {
     "type" : "uniform_integer",
-    "lower_bound": 246,
-    "upper_bound": 255
+    "lower_bound": 245,
+    "upper_bound": 254
 }
 ```
 
@@ -206,6 +206,8 @@ Distribution of categories stored as a map from the string label to the probabil
 |----------------------------------------|:------------:|------------|
 | abs(sum(probabilities.values()) - 1.0) |      <       | 1.0e-9     |
 | each probability value                 |      >=      | 0          |
+
+In other words, a probability cannot be negative and the probabilities sum to one.
 
 ##### Example
 
@@ -298,7 +300,7 @@ The order and grouping of the elements is ignored.
 
 ---
 
-### Molecular Structure
+## Molecular Structure
 
 Molecular structure types are used to define attributes that contain information about
 the structure and composition of a molecule.
@@ -312,7 +314,7 @@ There are two ways to represent a molecular structure:
 * SMILES string
 * InChI string
 
-#### SMILES Value
+### SMILES Value
 
 A value containing a [SMILES string](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system).
 
@@ -331,7 +333,7 @@ A value containing a [SMILES string](https://en.wikipedia.org/wiki/Simplified_mo
 }
 ```
 
-#### InChI Value
+### InChI Value
 
 A value containing an [InChI string](https://en.wikipedia.org/wiki/International_Chemical_Identifier).
 Note: this is not the same as the InChI key.

@@ -29,6 +29,30 @@ The Properties, Parameters and Conditions of Object Templates and of Objects are
 An [Object](../objects) can have [Attributes](../attributes) that are not defined in its [Object Template](../object-templates), and an Object Template can have Attributes that are not defined in associated Objects.
 However, an Object cannot have two attributes of the same type (Property, Parameter, or Condition) with the same name or the same attribute template.
 
+#### Material History
+
+A material history is the complete set of objects that precede a [Material Run](#material-run) in time, as well as the associated Specs and Templates.
+That final or ultimate material is called the `Terminal Material`.
+Given a dataset of relevant objects, a Material History would be collected by choosing a Terminal Material and then recursively:
+* extracting the process that generated it
+* extracting the ingredients that went into that process
+* extracting the materials that constituted those ingredients
+until one reaches a point that a process has no recorded ingredients (e.g., I purchased a bag of flour).
+The dataset itself may have a complicated web of relationships (e.g., I made 12 different loaves of bread from one bag of flour) and the material history is just one example of a way to consider that dataset.
+
+Which materials would be considered terminal depend on context.
+A steelmaker might consider a steel plate to be terminal in their process.
+A machinist might take that plate as input for the dog bone they manufacture as terminal in their process.
+A technician might take that dog bone as input to destructive testing, and then a scrapper would feed the broken dog bone back as feedstock for another steelmaker.
+Every history has one terminal material.
+
+#### Recipe
+
+A recipe is the set of Specs and Templates that underlie a Material History.
+It represents the set of steps to be attempted to produce a target material.
+A recipe could be shared by many material histories or may just represent one.
+A recipe and any associated material histories should share the same graph structure.
+
 ---
 ## Process Spec
 
@@ -39,17 +63,16 @@ Processes transform zero or more input materials into exactly one output materia
 Field name | Value type | Default | Description
 -----------|------------|---------|-------------
 `uids`        | Map[String, String] | Empty | A collection of [Unique Identifiers](../unique-identifiers)
-`type`        | String     | Req. | "process_spec"
-`name`| String     | Req. | The name of the spec
+`type`        | String     | Required | "process_spec"
+`name`        | String     | Required | The name of the spec
 `notes`       | String     | None | Some free-form notes about the spec.
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
 `template`    | [Process Template](../object-templates/#process-template) | None | A template bounding the valid values for parameters and conditions on this process.
 `parameters`  | Set\[[Parameters](../attributes/#parameters)] | Empty | Specified parameters for the process spec
 `conditions`  | Set\[[Conditions](../attributes/#conditions)] | Empty | Specified conditions for the process spec
-`ingredients` | Set\[[Ingredient Spec](./#ingredient-spec)] | Empty | Ingredient Specs
-`output_material` | [Material Spec](./#material-spec) | Req. | Output Material Spec
-
+`ingredients` | Set\[[Ingredient Spec](./#ingredient-spec)] | Implicit | Ingredient Specs
+`output_material` | [Material Spec](./#material-spec) | Implicit | Output Material Spec
 
 ##### Constraints
 
@@ -152,17 +175,17 @@ A particular instance of a process.
 Field name | Value type | Default | Description
 -----------|------------|---------|------------
 `uids`        | Map[String, String] | Empty | A collection of [Unique Identifiers](../unique-identifiers)
-`type`        | String     | Req. | "process_run"
-`name`| String     | Req. | The name of the process run
+`type`        | String     | Required | "process_run"
+`name`        | String     | Required | The name of the process run
 `notes`       | String     | None | Some free-form notes about the process run
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
 `source`      | [Source](./#source) | None | provenance information for the process
-`spec`| [Process Spec](./#process-spec) | Req. | Spec for this process
+`spec`| [Process Spec](./#process-spec) | Required | Spec for this process
 `parameters`  | Set\[[Parameters](../attributes/#parameters)] | Empty | Measured parameters for the process run
 `conditions`  | Set\[[Conditions](../attributes/#conditions)] | Empty | Measured conditions for the process run
-`ingredients` | Set\[[Ingredient Run](./#ingredient-run)] | Empty | Ingredient Runs
-`output_material` | [Material Run](./#material-run) | Req. | Output Material Run
+`ingredients` | Set\[[Ingredient Run](./#ingredient-run)] | Implicit | Ingredient Runs
+`output_material` | [Material Run](./#material-run) | Implicit | Output Material Run
 
 ##### Constraints
 
@@ -252,11 +275,11 @@ These might be better thought of as the name of the role of a material in the pr
 Field name | Value type | Default | Description
 -----------|------------|---------|------------
 `uids`         | Map[String, String] | Empty | A collection of [Unique Identifiers](../unique-identifiers)
-`type`         | String     | Req. | "ingredient_spec"
-`name`| String     | Req. | The name of the ingredient, unique within the process that contains it
+`type`         | String     | Required | "ingredient_spec"
+`name`         | String     | Required | The name of the ingredient, unique within the process that contains it
 `labels`       | Set[String] | Empty | Additional labels on the ingredient for describing the type or role of the ingredient
-`material`     | [Material Spec](./#material-spec) | Req. | Material that is this ingredient
-`process`      | [Process Spec](./#process-spec) | Req. | Process that the ingredient is used in
+`material`     | [Material Spec](./#material-spec) | Required | Material that is this ingredient
+`process`      | [Process Spec](./#process-spec) | Required | Process that the ingredient is used in
 `notes`       | String     | Empty | Some free-form notes about the spec.
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
@@ -325,9 +348,11 @@ Note that the `name` and `labels` for an Ingredient Run are inherited from its s
 Field name          | Value type                               | Default | Description
 --------------------|------------------------------------------|---------|------------
 `uids`              | Map[String, String]                      | Empty   | A collection of [Unique Identifiers](../unique-identifiers)
-`type`              | String                                   | Req.    | "ingredient_run"
-`material`          | [Material Run](./#material-run)          | Req.    | Material that is this ingredient
-`process`           | [Process Run](./#process-run)            | Req.    | Process that the ingredient is used in
+`type`              | String                                   | Required| "ingredient_run"
+`name`              | String                                   | Implicit| The name of the ingredient run (inherited from spec)
+`labels`            | Set[String]                              | Implicit| Additional labels on the ingredient for describing the type or role of the ingredient (inherited from spec)
+`material`          | [Material Run](./#material-run)          | Required| Material that is this ingredient
+`process`           | [Process Run](./#process-run)            | Required| Process that the ingredient is used in
 `notes`             | String                                   | None    | Some free-form notes about the run.
 `tags`              | Set[String]                              | Empty   | [Tags](../tags)
 `file_links`        | Set\[[File Links](../file-links)]        | Empty   | Links to associated files, with resource paths into the files API
@@ -335,7 +360,7 @@ Field name          | Value type                               | Default | Descr
 `volume_fraction`   | [Real Value](../value-types#real-values) | None    | The volume fraction of the ingredient in the process
 `number_fraction`   | [Real Value](../value-types#real-values) | None    | The number fraction of the ingredient in the process
 `absolute_quantity` | [Real Value](../value-types#real-values) | None    | The absolute quantity of the ingredient in the process
-`spec`              | [Ingredient Spec](./#ingredient-spec)    | Req.    | The spec of which this is a run
+`spec`              | [Ingredient Spec](./#ingredient-spec)    | Required| The spec of which this is a run
 
 * Note that "fraction of the ingredient" refers to the amount of the ingredient divided by the total amount of material going into the process, not the fraction of the total amount of ingredient.material used in the process.
 
@@ -398,7 +423,7 @@ material.spec | = | spec.material
 The expectation for a material.
 Materials have exactly one producing process.
 Material specs may include expected properties,
-but do so via the [PropertyAndConditions](../attributes#properties-and-conditions) compound attribute.
+but do so via the [PropertyAndConditions](../attributes#property-and-conditions) compound attribute.
 In this way, material specs can associate an expected property value with the conditions under which it is expected.
 For example, if a material is purchased and its Safety Data Sheet quotes a normal boiling point of 54 C,
 a property is known even though there is never an explicit measurement of that property by a person in the lab.  It could
@@ -407,18 +432,20 @@ therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (c
 Field name | Value type | Default | Description
 -----------|------------|---------|------------
 `uids`        | Map[String, String] | Empty | A collection of [Unique Identifiers](../unique-identifiers)
-`type`        | String     | Req. | "material_spec"
-`name`| String     | Req. | The name of the spec
+`type`        | String     | Required | "material_spec"
+`name`        | String     | Required | The name of the spec
 `notes`       | String     | None | Some free-form notes about the spec.
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
 `template`    | [Material Template](../object-templates/#material-template) | None | A template bounding the valid values for properties of this material.
-`properties`  | Set\[[PropertyAndConditions](../attributes/#properties-and-conditions)] | Empty | Expected properties for the material spec
-`process`     | [Process Spec](./#process-spec) | Req. | The Process Spec that produces this material
+`properties`  | Set\[[PropertyAndConditions](../attributes/#property-and-conditions)] | Empty | Expected properties for the material spec at the given conditions
+`process`     | [Process Spec](./#process-spec) | Required | The Process Spec that produces this material
 
 ##### Constraints
 
 All Attributes sharing an [Attribute Template](../attribute-templates) with an Attribute on the associated Object Template will be constrained by the (potentially tighter) bounds set in the `template` Material Template.
+
+All Conditions must be linked to a Property through the `point` mechanism.
 
 Field name | Relationship | Field Name
 -----------|:------------:|------------
@@ -443,36 +470,82 @@ process | must be unique | globally
     },
     "properties" : [
         {
-            "type" : "property_and_conditions",
-            "property": {
-                "type" : "property",
-                "name" : "Cookie Composition",
-                "origin" : "specified",
-                "template" : {
-                    "type" : "link_by_uid",
-                    "scope" : "cookie_templates",
-                    "id" : "choc_chip_comp_01"
-                },
-                "value" : {
-                    "type" : "nominal_composition",
-                    "quantities" : {
-                        "flour" : 355,
-                        "baking soda" : 6,
-                        "baking powder" : 9,
-                        "salt" : 8,
-                        "butter": 225,
-                        "granulated sugar" : 205,
-                        "brown sugar" : 225,
-                        "vanilla extract" : 15,
-                        "eggs" : 50,
-                        "chocolate chips" : 395,
-                        "chopped nuts" : 225
-                    }
-                }
+        "type": "property_and_conditions",
+        "conditions": [{
+            "type": "condition",
+            "name": "ambient temperature",
+            "origin": "unknown",
+            "value": {
+                "nominal": 20.0,
+                "type": "nominal_real",
+                "units": "degree_Celsius"
             },
-            "conditions": []
+            "template" : {
+                "type" : "link_by_uid",
+                "scope" : "cookie_templates",
+                "id" : "amb_temp_01"
+            },
+        },
+        {
+            "type": "condition",
+            "name": "atmospheric pressure",
+            "origin": "unknown",
+            "value": {
+                "nominal": 1.0,
+                "type": "nominal_real",
+                "units": "atm"
+            },
+            "template" : {
+                "type" : "link_by_uid",
+                "scope" : "cookie_templates",
+                "id" : "amb_pressure_01"
+            },
+        }],
+        "property": {
+            "type": "property",
+            "name": "density",
+            "origin": "unknown",
+            "value": {
+                "nominal": 1.2,
+                "type": "nominal_real",
+                "units": "gram / cubic_centimeter"
+            },
+            "template" : {
+                "type" : "link_by_uid",
+                "scope" : "cookie_templates",
+                "id" : "prop_density_01"
+            },
         }
-    ],
+        },
+    {
+        "type": "property_and_conditions",
+        "conditions": null,
+        "property": {
+            "name" : "Cookie Composition",
+            "origin" : "specified",
+            "template" : {
+                "type" : "link_by_uid",
+                "scope" : "cookie_templates",
+                "id" : "choc_chip_comp_01"
+            },
+            "value" : {
+                "type" : "nominal_composition",
+                "quantities" : {
+                    "flour" : 355,
+                    "baking soda" : 6,
+                    "baking powder" : 9,
+                    "salt" : 8,
+                    "butter": 225,
+                    "granulated sugar" : 205,
+                    "brown sugar" : 225,
+                    "vanilla extract" : 15,
+                    "eggs" : 50,
+                    "chocolate chips" : 395,
+                    "chopped nuts" : 225
+                }
+            }
+        }
+    }],
     "process_spec" : {
         "type" : "link_by_uid",
         "scope" : "id",
@@ -489,14 +562,14 @@ A particular instance of a material, e.g. a sample, ingot, or wafer.
 Field name | Value type | Default | Description
 -----------|------------|---------|------------
 `uids`        | Map[String, String] | Empty | A collection of [Unique Identifiers](../unique-identifiers)
-`type`        | String     | Req. | "material_run"
-`name`| String     | Req. | The name of the material run
+`type`        | String     | Required | "material_run"
+`name`        | String     | Required | The name of the material run
 `notes`       | String     | None | Some free-form notes about the material run
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
-`spec`        | [Material Spec](./#material-spec) | Req. | The material spec of which this is a run
-`process`     | [Process Run](./#process-run) | Req. | The Process Run that produced this material
-`measurements`  | Set\[[Measurement Run](./#measurement-run)] | Empty | characterizations of this Material Run
+`spec`        | [Material Spec](./#material-spec) | Required | The material spec of which this is a run
+`process`     | [Process Run](./#process-run) | Required | The Process Run that produced this material
+`measurements`  | Set\[[Measurement Run](./#measurement-run)] | Implicit | characterizations of this Material Run
 `sample_type`   | `experimental`, `production`, or `virtual`, `unknown` | `unknown` | Context of how this material was made to be
 
 
@@ -551,8 +624,8 @@ An expectation for a measurement, indicating the parameters of and conditions un
 Field name | Value type | Default | Description
 -----------|------------|---------|------------
 `uids`        | Map[String, String] | Empty | A collection of [Unique Identifiers](../unique-identifiers)
-`type`        | String     | Req. | "measurement_spec"
-`name`| String     | Req. | The name of the spec
+`type`        | String     | Required | "measurement_spec"
+`name`        | String     | Required | The name of the spec
 `notes`       | String     | None | Some free-form notes about the spec.
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
@@ -635,14 +708,14 @@ A particular instance of a measurement.
 Field name | Value type | Default | Description
 -----------|------------|---------|------------
 `uids`        | Map[String, String] | Empty | A collection of [Unique Identifiers](../unique-identifiers)
-`type`        | String     | Req. | "measurement\_run"
-`name`| String     | Req. | The name of the measurement run
+`type`        | String     | Required | "measurement\_run"
+`name`        | String     | Required | The name of the measurement run
 `notes`       | String     | None | Some free-form notes about the measurement run
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
 `source`      | [Source](./#source) | None | provenance information for the measurement
-`spec`        | [Measurement Spec](./#measurement-spec) | Req. | The measurement spec of which this is a run
-`material`    | [Material Run](./#material-run) | Req. | The material run being measured
+`spec`        | [Measurement Spec](./#measurement-spec) | Required | The measurement spec of which this is a run
+`material`    | [Material Run](./#material-run) | Required | The material run being measured
 `parameters`  | Set\[[Parameters](../attributes/#parameters)] | Empty | Measured parameters for the measurement
 `conditions`  | Set\[[Conditions](../attributes/#conditions)] | Empty | Measured conditions for the measurement
 `properties`  | Set\[[Properties](../attributes/#properties)] | Empty | Measured properties for the measurement
@@ -748,7 +821,7 @@ Sources can be added to ProcessRun and MeasurementRun Objects only.
 
 Field name    | Value type | Default | Description
 --------------|------------|---------|-------------
-`type`        | String     | Req. | "performed_source"
+`type`        | String     | Required | "performed_source"
 `performed_by`| String | None | The person who performed the measurement
 `performed_date`| String | None | The date the measurement was performed; ISO-8601 date-formatted string (YYYY-MM-DD or YYYY-MM-DDTHH:mm:SS)
 

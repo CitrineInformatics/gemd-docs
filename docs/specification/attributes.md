@@ -19,6 +19,36 @@ It may be appropriate to specify a Parameter attribute on a Spec, and describe t
 It may also be appropriate to include _both_ a Parameter and a Condition on the Run if the value is both controlled and measured.
 The use of Conditions in Specs should be limited in favor of parameters.
 
+Attributes may be annotated with an [Attribute Template](../attribute-templates), which defines a canonical name and bounds on the attribute.
+
+#### PropertyAndConditions 
+
+**PropertyAndConditions** are known or unmeasured Properties (at specified Conditions) of a [Material Spec](../objects/#material-spec). Typically, these will come from technical specification sheets of purchased ingredients or reference materials such as safety data sheets (SDS).
+> I purchased 100% Ethanol. According to the SDS, pure ethanol has a Density (Property) of 0.789 g/cc at 20 degC (Condition 1) and 1 atm (Condition 2). I will add this as a PropertyAndConditions to the ethanol [Material Spec](../objects/#material-spec). This PropertyAndConditions will have the density Property in the property field and a List containing both Conditions in the conditions field.
+
+> I purchased 80% Ethanol. According to the Technical Specifications, the solution is 80% ethanol and 20% water (Property). I will add this [Compositional Value](../value-types/#composition) as a PropertyAndConditions to the [Material Spec](../objects/#material-spec). However, this PropertyAndConditions will only have information in the property field, as no associated conditions are needed.
+
+#### Clusters
+
+Attributes can be annotated with a `cluster` identifier to associate attributes with each other.  
+Often times, data contains series (e.g., a time/temperature curve) where it would be strange to split it across object boundaries.
+To tie different Values together, you assign the same identifier to each of the Attributes.
+These identifiers have no meaning outside the context of a particular Object.  
+Within a given object, the combination of `cluster` and `template` must be unique.
+
+If `cluster` is null, this is understood as applying globally to the object and the `template` must be unique to that Attribute.
+
+> A material's Safety Data Sheet reports [Material Spec](../objects#material-spec) a vapor pressure of 11 kPa at 38 °C and a density of 0.684 g/mL at 25 °C.  
+The vapor pressure and the density are stored in 2 Properties with appropriate [Attribute Templates](../attribute-templates) and the temperature values are 2 Conditions.
+The vapor pressure and its temperature are annotated with `cluster = "Pvap"` and the viscosity and its temperature are annotated with `cluster = "Visc"`
+
+> A barometer reading is taken at the start of an experiment and assumed to apply over the course of the entire experiment and thus `cluster = null`.
+
+> A reactor vessel has a stirrer and temperature control, and the speed and temperature are each recorded independently with time (100 and 500 points each, respectively).
+> Using `Reaction Time`, `Vessel Temperature` and `Stirring Speed` [Attribute Templates](../attribute-templates) and `cluster` values for each row of the recorded values (e.g., `temp_001`, `speed_097`), you create 600 different `cluster` values assigned to 1200 different Conditions.
+
+#### Origin
+
 Attributes are annotated with the `origin` of the data.  This field can have the following values:
 
 - `measured`: The Value of this Attribute was directly measured.
@@ -26,8 +56,6 @@ Attributes are annotated with the `origin` of the data.  This field can have the
 - `specified`: The Value of this Attribute was dictated, such as the oven temperature in a [Process Spec](../objects#process-spec).  This value should only appear in Specs.
 - `computed`: The Value of this Attribute was derived directly from measured values, such as computing the yield stress from a stress-strain curve or computing the density from known mass and volume measurements.
 - `unknown`: The origin of this Value is unknown.  This is the default value.
-
-Attributes may be annotated with an [Attribute Template](../attribute-templates), which defines a canonical name and bounds on the attribute.
 
 ---
 
@@ -39,7 +67,8 @@ Field name   | Value type | Default | Description
 -------------|------------|---------|-------------
 `type`       | String     | Req.    | One of: `property`, `condition`, `parameter`
 `value`      | [Value](../value-types) | Req. | Any `Value` type
-`name`       | String    | Req. | The name of the attribute, which is used to identify it within a Data Object
+`name`       | String     | Req. | The name of the attribute, which is used to identify it within a Data Object
+`cluster`    | String     | None | The name of the cluster this `value` is associated with
 `notes`      | String     | None | Some free-form notes about the attribute.
 `origin`     | `measured`, `predicted`, `specified`, `computed`, `unknown` | `unknown` | The origin of the attribute
 `template`   | [Attribute Template](../attribute-templates) | None | Attribute Template which defines bounds
@@ -47,13 +76,13 @@ Field name   | Value type | Default | Description
 
 ##### Constraints
 
-Field name | Relationship | Field Name
------------|:------------:|------------
-len(`name`) | <=    | 128, UTF-8 Encoded
-len(`notes`)  | <=    | 32,768 (32KB), UTF-8 Encoded
-`template` | is a | template type that matches the attribute type, e.g. `PropertyTemplate` for a `Property`
-`value`| is a | `template`'s Value Type
-`value`| conforms to | `template`.`bounds`
+Field name    | Relationship | Field Name
+--------------|:------------:|------------
+len(`name`)   | <=           | 128, UTF-8 Encoded
+len(`notes`)  | <=           | 32,768 (32KB), UTF-8 Encoded
+`template`    | is a         | template type that matches the attribute type, e.g. `PropertyTemplate` for a `Property`
+`value`       | is a         | `template`'s Value Type
+`value`       | conforms to  | `template`.`bounds`
 
 ##### Examples
 
@@ -90,6 +119,7 @@ len(`notes`)  | <=    | 32,768 (32KB), UTF-8 Encoded
 ```json
 {
     "type" : "condition",
+    "name" : "A Real Valued Condition",
     "value" : {
         "type" : "uniform_real",
         "lower_bound" : 1.0,
@@ -113,6 +143,7 @@ len(`notes`)  | <=    | 32,768 (32KB), UTF-8 Encoded
 ```json
 {
     "type" : "parameter",
+    "name" : "A Real Valued Parameter",
     "value" : {
         "type" : "nominal_real",
         "nominal" : 1.0,
@@ -122,19 +153,150 @@ len(`notes`)  | <=    | 32,768 (32KB), UTF-8 Encoded
 }
 ```
 
-## Properties and Conditions
 
-In the [Material Spec](../objects#material-spec) object,
-one may need to specify a property along with the conditions under which the property occurs.
-For example:
+**Two points on a temperature vs time trace:**
 
- - Vapor pressure of 5.6 kPa _at_ a temperature of 35 deg C
- - Gas phase _at_ a pressure of 1 kPa and a temperature of 300 K
+```json
+[
+  {
+      "type" : "condition",
+      "name" : "Time",
+      "value" : {
+          "type" : "nominal_real",
+          "nominal" : 390,
+          "units": "second"
+      },
+      "cluster" : "Time_Temp_039",
+      "origin" : "measured",
+      "template" : {
+        "type" : "link_by_uid",
+        "scope" : "my_template_scope",
+        "id" : "process_time"
+      },
+      "file_links" : [
+          {
+              "filename" : "temperature-trace.csv",
+              "link" : "files/file/d8f12919-b201-4186-be95-10525eb4256a/version/2"
+          }
+      ]
+  },
+  {
+      "type" : "condition",
+      "name" : "Temperature",
+      "value" : {
+          "type" : "normal_real",
+          "mean" : 573,
+          "std" : 5,
+          "units": "kelvin"
+      },
+      "cluster" : "Time_Temp_039",
+      "origin" : "measured",
+      "template" : {
+        "type" : "link_by_uid",
+        "scope" : "my_template_scope",
+        "id" : "kiln_temperature"
+      },
+      "file_links" : [
+          {
+              "filename" : "temperature-trace.csv",
+              "link" : "files/file/d8f12919-b201-4186-be95-10525eb4256a/version/2"
+          }
+      ]
+  },
+  {
+      "type" : "condition",
+      "name" : "Time",
+      "value" : {
+          "type" : "nominal_real",
+          "nominal" : 400,
+          "units": "second"
+      },
+      "cluster" : "Time_Temp_040",
+      "origin" : "measured",
+      "template" : {
+        "type" : "link_by_uid",
+        "scope" : "my_template_scope",
+        "id" : "kiln_temperature"
+      },
+      "file_links" : [
+          {
+              "filename" : "temperature-trace.csv",
+              "link" : "files/file/d8f12919-b201-4186-be95-10525eb4256a/version/2"
+          }
+      ]
+  },
+  {
+      "type" : "condition",
+      "name" : "Temperature",
+      "value" : {
+          "type" : "normal_real",
+          "mean" : 578,
+          "std" : 5,
+          "units": "kelvin"
+      },
+      "cluster" : "Time_Temp_040",
+      "origin" : "measured",
+      "template" : {
+        "type" : "link_by_uid",
+        "scope" : "my_template_scope",
+        "id" : "kiln_temperature"
+      },
+      "file_links" : [
+          {
+              "filename" : "temperature-trace.csv",
+              "link" : "files/file/d8f12919-b201-4186-be95-10525eb4256a/version/2"
+          }
+      ]
+  }
+]
+```
 
-This is supported by the `PropertyAndConditions` compound attribute.
+## PropertyAndConditions
+
 
 Field name   | Value type | Default | Description
 -------------|------------|---------|-------------
 `type`       | String     | Req.    | `property_and_conditions`
-`property`   | Property   | Req.    | Any `Property` attribute
-`conditions` | Set[Conditions] | Empty set | Any conditions associated with the property
+`property`   | Property | Req. | Property of the [Material Spec](../objects/#material-spec)
+`conditions` | Set[Condition]     | None | List of conditions the Property is valid at
+
+
+##### Examples
+
+```json
+{
+    "type": "property_and_conditions",
+    "conditions": [{
+        "type": "condition",
+        "name": "ambient temperature",
+        "origin": "unknown",
+        "value": {
+            "nominal": 20.0,
+            "type": "nominal_real",
+            "units": "degree_Celsius"
+        },
+        
+    },
+    {
+        "type": "condition",
+        "name": "atmospheric pressure",
+        "origin": "unknown",
+        "value": {
+            "nominal": 1.0,
+            "type": "nominal_real",
+            "units": "atm"
+        }
+    }],
+    "property": {
+        "type": "property",
+        "name": "density",
+        "origin": "unknown",
+        "value": {
+            "nominal": 0.7893,
+            "type": "nominal_real",
+            "units": "gram / cubic_centimeter"
+        }
+    }
+ }
+
+```

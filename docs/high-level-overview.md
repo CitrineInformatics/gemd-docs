@@ -1,7 +1,7 @@
 # High Level Overview
 
 ## How is data stored
-GEMD stands for Generalized Expression of Materials Data. It's an open source format initially developed by the fine folks at Citrine Informatics.
+GEMD stands for Graphical Expression of Materials Data. It's an open source format initially developed by the fine folks at Citrine Informatics.
 
 GEMD stores data via interconnected Data Objects, representing Specs and Runs of Materials, Processing steps, Measurements, and Ingredient information.
 This format is graphical rather than tabular.
@@ -32,7 +32,7 @@ Note, Ingredient Objects cannot be represented in the Template state.
 
 * **Material Object:** Describes a material by a name used in an organization and optional notes to describe it.
 * **Measurement Object:** Describes an operation used to measure or characterize one or more properties of a material and the parameters and conditions for that operations.
-* **Process Object:** Describes an operation used with the goal of transforming a material.
+* **Process Object:** Describes an operation that generates an output material from one or more material inputs.
 * **Ingredient Object:** Annotates a material with information related to its usage in a process including `name` (label on the ingredient that is unique within the process that contains it) and `labels` (additional labels on the ingredient)
 
 Object      | Examples   | Linked Objects | State | Possible Attributes
@@ -184,7 +184,7 @@ It also includes units for real (i.e. continuous) values.
 
 
 ### Data Object Specs and Runs
-Object Specs require an associated Object Template that bounds the valid units and values of the Attributes on the Spec.
+Object Specs may have an associated Object Template that bounds the valid units and values of the Attributes on the Spec.
 
 With the linking of Specs to Runs, Runs inherit associated Templates through Specs.
 For example, Process Runs associated with a Process Spec inherit the Template associated with the Spec, and their Attributes are thus also constrained by the Template.

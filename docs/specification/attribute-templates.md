@@ -5,8 +5,8 @@ An `AttributeTemplate` defines a domain concept by giving it a canonical name an
 For example, an attribute template could define a real value bounded
 between -3 and +17, or it could define a Categorical with the following
 allowed categories: "salt", "not salt".
-The values of an [attributes](../attributes)
-with an Attribute Template must conform to the bounds specified by the template.
+The values of [attributes](../attributes)
+with Attribute Templates must conform to the bounds specified by the templates.
 If the value is not compatible with the template (e.g. if the template specifies that
 the value must be in the range [0, 1] but the value is 2), then the data are invalid.
 
@@ -38,6 +38,56 @@ Field name | Relationship | Field Name
 len(`name`) | <=    | 128, UTF-8 Encoded
 len(`description`)  | <=    | 32,768 (32KB), UTF-8 Encoded
 
+##### Examples
+
+```json
+{
+    "type" : "property_template",
+    "uids" : {
+        "id" : "2e1bec7e-bda4-441d-bebb-1215bfa6ee0f"
+    },
+    "tags" : [
+        "hardness::indentation::vickers",
+        "Newage MT91 Tester::004",
+        "astm_hardness::ASTM E-384"],
+    "name" : "Vickers Hardness on Machine 4",
+    "description" : "A Vickers indentation hardness test on the Newage MT91 Tester with machine id #4. Conforms to ASTM standard E-384.",
+    "bounds" : {
+        "type" : "real_bounds",
+        "default_units" : "HV30/15",
+        "lower_bound" : 0.0,
+        "upper_bound" : 10000.0
+    }
+}
+```
+
+```json
+{
+    "type": "property_template",
+    "id" : "2e1bec7e-bda4-441d-bebb-1215bfa6ee0f",
+    "uids" : {},
+    "tags" : [
+        "#noindigo::newtonwaswrong",
+        "taste::therainbow",
+        "things_they_are_after::my_lucky_charms",
+        "marketing::commercials::candy::skittles",
+        "marketing::characters::cereal::leprechaun"
+    ],
+    "name" : "Rainbow Colors",
+    "description" : "Colors in the rainbow",
+    "bounds" : {
+      "type" : "categorical_bounds",
+      "categories" : [
+        "red",
+        "orange",
+        "yellow",
+        "green",
+        "blue",
+        "violet"
+      ]
+    }
+}
+```
 ---
 ## Real Bounds
 
@@ -191,57 +241,5 @@ Field name | Value type | Description
 ```json
 {
     "type" : "molecular_structure_bounds"
-}
-```
----
-
-#### Example Attribute Templates
-
-```json
-{
-    "type" : "property_template",
-    "uids" : {
-        "id" : "2e1bec7e-bda4-441d-bebb-1215bfa6ee0f"
-    },
-    "tags" : [
-        "hardness::indentation::vickers",
-        "Newage MT91 Tester::004",
-        "astm_hardness::ASTM E-384"],
-    "name" : "Vickers Hardness on Machine 4",
-    "description" : "A Vickers indentation hardness test on the Newage MT91 Tester with machine id #4. Conforms to ASTM standard E-384.",
-    "bounds" : {
-        "type" : "real_bounds",
-        "default_units" : "HV30/15",
-        "lower_bound" : 0.0,
-        "upper_bound" : 10000.0
-    }
-}
-```
-
-```json
-{
-    "type": "property_template",
-    "id" : "2e1bec7e-bda4-441d-bebb-1215bfa6ee0f",
-    "uids" : {},
-    "tags" : [
-        "#noindigo::newtonwaswrong",
-        "taste::therainbow",
-        "things_they_are_after::my_lucky_charms",
-        "marketing::commercials::candy::skittles",
-        "marketing::characters::cereal::leprechaun"
-    ],
-    "name" : "Rainbow Colors",
-    "description" : "Colors in the rainbow",
-    "bounds" : {
-      "type" : "categorical_bounds",
-      "categories" : [
-        "red",
-        "orange",
-        "yellow",
-        "green",
-        "blue",
-        "violet"
-      ]
-    }
 }
 ```
