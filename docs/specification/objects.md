@@ -852,6 +852,6 @@ in the same piece of equipment.
 If a mixing process is run multiple times, for example, to incorporate "a little extra"
 of a certain ingredient, each subsequent mixing step should have a unique instance
 of an "Additional Mixing" Process Run and Spec, which, crucially, should point to a Process Template
-distinct from the initial mixing Process Template. This avoids the creation of a cycle.
+distinct from the initial mixing Process Template.
 
 ![Multiple Mixing](img/multiple-mixing.png)
