@@ -10,6 +10,9 @@ with Attribute Templates must conform to the bounds specified by the templates.
 If the value is not compatible with the template (e.g. if the template specifies that
 the value must be in the range [0, 1] but the value is 2), then the data are invalid.
 
+![attribute templates](img/attribute-templates.png)
+*Figure1:* How Attribute Templates help relate Attributes between Specs and Runs, and provide Bounds for Values.
+
 Each AttributeTemplate is primarily defined by a `name`, `bounds`.
 AttributeTemplates can also be described with tags, description, and scope.
 
@@ -21,6 +24,12 @@ Field name    | Value type | Default | Description
 `uids`        | Map[String, String] | Empty | A collection of [Unique Identifiers](../unique-identifiers)
 `description` | String | None | Some text describing what this template is
 `tags`        | Set[String]| Empty set | [Tags](../tags)
+
+Attribute Templates are critical in defining which quantities are comparable or equivalent.
+When Attributes are added to core objects (Runs or Specs), they should be associated with
+an appropriate Attribute Template.
+This association is meant to inform how Values are collected and aggregated
+in downstream consumers of GEMD data.
 
 ##### Constraints
 

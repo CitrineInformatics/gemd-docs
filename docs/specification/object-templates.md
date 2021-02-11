@@ -17,6 +17,9 @@ but a Process Template describing a specific oven model may constrain the baking
 The Bounds must fall within the Attribute Template's Bounds, and should be set to those Bounds if no further constraint is desired.
 Each Attribute Template can only be included in a given Object Template's Attribute list once (e.g., once in `properties` and once in `conditions`).
 
+![All templates](img/templates.png)
+*Figure 1:* A fully-realized set of Run, Spec, Object Template, Attributes and Attribute Template, and Bounds objects.
+
 ---
 ## Process Template
 
