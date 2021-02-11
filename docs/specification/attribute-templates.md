@@ -27,8 +27,9 @@ Field name    | Value type | Default | Description
 
 Attribute Templates are critical in defining which quantities are comparable or equivalent.
 When Attributes are added to core objects (Runs or Specs), they should be associated with
-an appropriate Attribute Template. This also determines how Values are collected and aggregated
-in Tables.
+an appropriate Attribute Template.
+This association is meant to inform how Values are collected and aggregated
+in downstream consumers of GEMD data.
 
 ##### Constraints
 
