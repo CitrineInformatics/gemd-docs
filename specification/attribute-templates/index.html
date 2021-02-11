@@ -143,6 +143,8 @@ The values of <a href="../attributes">attributes</a>
 with Attribute Templates must conform to the bounds specified by the templates.
 If the value is not compatible with the template (e.g. if the template specifies that
 the value must be in the range [0, 1] but the value is 2), then the data are invalid.</p>
+<p><img alt="attribute templates" src="../img/attribute-templates.png" />
+<em>Figure1:</em> How Attribute Templates help relate Attributes between Specs and Runs, and provide Bounds for Values.</p>
 <p>Each AttributeTemplate is primarily defined by a <code>name</code>, <code>bounds</code>.
 AttributeTemplates can also be described with tags, description, and scope.</p>
 <table>
@@ -193,6 +195,11 @@ AttributeTemplates can also be described with tags, description, and scope.</p>
 </tr>
 </tbody>
 </table>
+<p>Attribute Templates are critical in defining which quantities are comparable or equivalent.
+When Attributes are added to core objects (Runs or Specs), they should be associated with
+an appropriate Attribute Template.
+This association is meant to inform how Values are collected and aggregated
+in downstream consumers of GEMD data.</p>
 <h5>Constraints</h5>
 <table>
 <thead>
