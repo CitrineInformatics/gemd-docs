@@ -258,7 +258,7 @@ near the boundary.</p>
 </tr>
 </tbody>
 </table>
-<h5>Constraints</h5>
+<h5 id="constraints">Constraints<a class="headerlink" href="#constraints" title="Permanent link">&para;</a></h5>
 <table>
 <thead>
 <tr>
@@ -275,7 +275,7 @@ near the boundary.</p>
 </tr>
 </tbody>
 </table>
-<h5>Example</h5>
+<h5 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h5>
 <pre><code class="language-json">{
     &quot;type&quot; : &quot;normal_real&quot;,
     &quot;units&quot; : &quot;kelvin&quot;,
@@ -339,7 +339,7 @@ In order to be valid, the entirety of the distribution must fall within the boun
 </tr>
 </tbody>
 </table>
-<h5>Example</h5>
+<h5 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h5>
 <p>A value field read off a digital display with 3 decimal points.</p>
 <pre><code class="language-json">{
     &quot;type&quot; : &quot;uniform_real&quot;,
@@ -376,9 +376,9 @@ In order to be valid, the entirety of the distribution must fall within the boun
 </tr>
 </tbody>
 </table>
-<h5>Constraints</h5>
+<h5 id="constraints_1">Constraints<a class="headerlink" href="#constraints_1" title="Permanent link">&para;</a></h5>
 <p>None</p>
-<h5>Example</h5>
+<h5 id="example_2">Example<a class="headerlink" href="#example_2" title="Permanent link">&para;</a></h5>
 <pre><code class="language-json">{
     &quot;type&quot; : &quot;nominal_real&quot;,
     &quot;units&quot; : &quot;meter&quot;,
@@ -419,7 +419,7 @@ In order to be valid, the entirety of the distribution must fall within the boun
 </tr>
 </tbody>
 </table>
-<h5>Constraints</h5>
+<h5 id="constraints_2">Constraints<a class="headerlink" href="#constraints_2" title="Permanent link">&para;</a></h5>
 <table>
 <thead>
 <tr>
@@ -436,7 +436,7 @@ In order to be valid, the entirety of the distribution must fall within the boun
 </tr>
 </tbody>
 </table>
-<h5>Example</h5>
+<h5 id="example_3">Example<a class="headerlink" href="#example_3" title="Permanent link">&para;</a></h5>
 <p>A value field recorded from a digital display recording an approximate number of counts (e.g. Geiger counter reading "250").</p>
 <pre><code class="language-json">{
     &quot;type&quot; : &quot;uniform_integer&quot;,
@@ -467,9 +467,9 @@ In order to be valid, the entirety of the distribution must fall within the boun
 </tr>
 </tbody>
 </table>
-<h5>Constraints</h5>
+<h5 id="constraints_3">Constraints<a class="headerlink" href="#constraints_3" title="Permanent link">&para;</a></h5>
 <p>None</p>
-<h5>Example</h5>
+<h5 id="example_4">Example<a class="headerlink" href="#example_4" title="Permanent link">&para;</a></h5>
 <pre><code class="language-json">{
     &quot;type&quot; : &quot;nominal_integer&quot;,
     &quot;nominal&quot;: 42
@@ -506,7 +506,7 @@ a discrete (i.e. enumerated) distribution and a nominal (i.e. specified) value.<
 </tr>
 </tbody>
 </table>
-<h5>Constraints</h5>
+<h5 id="constraints_4">Constraints<a class="headerlink" href="#constraints_4" title="Permanent link">&para;</a></h5>
 <table>
 <thead>
 <tr>
@@ -529,7 +529,7 @@ a discrete (i.e. enumerated) distribution and a nominal (i.e. specified) value.<
 </tbody>
 </table>
 <p>In other words, a probability cannot be negative and the probabilities sum to one.</p>
-<h5>Example</h5>
+<h5 id="example_5">Example<a class="headerlink" href="#example_5" title="Permanent link">&para;</a></h5>
 <pre><code class="language-json">{
     &quot;type&quot;:&quot;discrete_categorical&quot;,
     &quot;probabilities&quot; : {
@@ -561,9 +561,9 @@ a discrete (i.e. enumerated) distribution and a nominal (i.e. specified) value.<
 </tr>
 </tbody>
 </table>
-<h5>Constraints</h5>
+<h5 id="constraints_5">Constraints<a class="headerlink" href="#constraints_5" title="Permanent link">&para;</a></h5>
 <p>None</p>
-<h5>Example</h5>
+<h5 id="example_6">Example<a class="headerlink" href="#example_6" title="Permanent link">&para;</a></h5>
 <pre><code class="language-json">{
     &quot;type&quot; : &quot;nominal_categorical&quot;,
     &quot;category&quot; : &quot;red&quot;
@@ -598,7 +598,7 @@ The quantities do not express an uncertainty, but also do not imply that there i
 </tr>
 </tbody>
 </table>
-<h5>Constraints</h5>
+<h5 id="constraints_6">Constraints<a class="headerlink" href="#constraints_6" title="Permanent link">&para;</a></h5>
 <table>
 <thead>
 <tr>
@@ -615,7 +615,7 @@ The quantities do not express an uncertainty, but also do not imply that there i
 </tr>
 </tbody>
 </table>
-<h5>Example</h5>
+<h5 id="example_7">Example<a class="headerlink" href="#example_7" title="Permanent link">&para;</a></h5>
 <pre><code class="language-json">{
     &quot;type&quot; : &quot;nominal_composition&quot;,
     &quot;quantities&quot; : {
@@ -648,7 +648,7 @@ The order and grouping of the elements is ignored.</p>
 </tr>
 </tbody>
 </table>
-<h5>Example</h5>
+<h5 id="example_8">Example<a class="headerlink" href="#example_8" title="Permanent link">&para;</a></h5>
 <pre><code class="language-json">{
     &quot;type&quot; : &quot;empirical_formula&quot;,
     &quot;formula&quot; : &quot;SiO2&quot;
@@ -690,7 +690,7 @@ but multiple molecular structures can be used to define fragments of a material,
 </tr>
 </tbody>
 </table>
-<h5>Example</h5>
+<h5 id="example_9">Example<a class="headerlink" href="#example_9" title="Permanent link">&para;</a></h5>
 <pre><code class="language-json">{
     &quot;type&quot; : &quot;smiles&quot;,
     &quot;smiles&quot; : &quot;c1(C=O)cc(OC)c(O)cc1&quot;
@@ -720,7 +720,7 @@ Note: this is not the same as the InChI key.</p>
 </tr>
 </tbody>
 </table>
-<h5>Example</h5>
+<h5 id="example_10">Example<a class="headerlink" href="#example_10" title="Permanent link">&para;</a></h5>
 <pre><code class="language-json">{
     &quot;type&quot; : &quot;inchi&quot;,
     &quot;inchi&quot; : &quot;InChI=1/C8H8O3/c1-11-8-4-6(5-9)2-3-7(8)10/h2-5,10H,1H3&quot;
