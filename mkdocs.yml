@@ -1,5 +1,6 @@
 site_name: GEMD Documentation
 theme: readthedocs
+site_url: https://citrineinformatics.github.io/gemd-docs
 markdown_extensions:
     - toc:
         baselevel: 1
