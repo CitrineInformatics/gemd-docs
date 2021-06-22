@@ -14,7 +14,7 @@ This has been a matter of some debate. Both /jemd/ and /jem-dee/ are in common u
 Citrine's implementation of this data model is still a work in progress.  
 You may see your issue documented in [Known Limitations](../known-limitations).  
 
-## Where do I store statistics about my measurements
+## Where do I store statistics about my measurements?
 
 Let's say that you have data for the same kind of measurement being repeated multiple times.
 For example, you take a sample from your material, subdivide it 8 times, and perform the
@@ -32,9 +32,9 @@ representing the material that you sampled and sub-divided.
 
 For each property in the
 [`MeasurementRun`](../specification/objects/#measurement-run)
-objects, you may want to compute some statistics of the 8-sample distribution.
-For example: the mean and the standard deviation of each property and/or its minimum and maximum values.
-In the future, these statistics will be automatically computed on the Citrine platform.
+objects, you may want to compute some statistics of the 8-sample distribution,
+e.g., the mean and the standard deviation of each property and/or its minimum and maximum values.
+In the future, these statistics will be automatically computed on the Citrine Platform.
 For now, you can compute them yourself and record them in another
 [`MeasurementRun`](../specification/objects/#measurement-run)
 object distinct from the 8 samples.
@@ -45,11 +45,11 @@ attributes with their `origin` field set to `computed`.
 
 ## How do I represent repeated applications of the same process?
 
-Consider a situation in which a process is repeatedly applied to a material, but does not substantially change the material.
-For example, repeated application of heat-treatment to harden a ceramic or multiple coats of paint.
+Consider a situation in which a process is repeatedly applied to a material, but does not substantially change the material,
+e,g., repeated application of heat-treatment to harden a ceramic or multiple coats of paint.
 Because material histories are chronological, each application must be a new process and must produce a new output material.
-The materials/processes may reference the same templates, however, if the same attributes are relevant for each iteration.
-It is strongly recomended that such processes contain an attribute describing what order that process was performed in (e.g. heat-treatment number 1, 2, 3, etc.).
+However, the materials/processes may reference the same templates if the same attributes are relevant for each iteration.
+It is strongly recommended that such processes contain an attribute describing what order that process was performed in (e.g., heat-treatment number 1, 2, 3, etc.).
 This additional attribute will allow for disambiguation between these linear processes.
 The additional attribute should have an [Attribute Template](../specification/attribute-templates), but there is no requirement for it to be included in the [Object Template](../specification/object-templates) as well.
 
@@ -71,7 +71,7 @@ And the final ingredient spec _also_ points to "A" as its `material` but is diff
 ## What is the difference between `description` and `notes`?
 
 `description` is a field on both [Attribute Templates](../specification/attribute-templates) and [Object Templates](../specification/object-templates).
-It is used to describe the type of data that a template is intended to constrain - the documentation of its intended use.
+It is used to describe the type of data that a template is intended to constrain--the documentation of its intended use.
 We strongly encourage documenting all templates, given both how important they are in constraining data and communicating structure to analysis algorithms, and that a template is likely to be reused by multiple users.
 
 `notes` are associated with [Attributes](../specification/attributes) and [Objects](../specification/objects).
@@ -81,4 +81,4 @@ Notes normally contain information that is useful for a human but would not be u
 
 ## I found a reference to something called "taurus" - what is that?
 
-"Taurus" was the codename for GEMD when we first started work. We're in the process of migrating everying over to GEMD, but names can be surprisingly persistent.  
+"Taurus" was the codename for GEMD when we first started work. We're in the process of migrating everything over to GEMD, but names can be surprisingly persistent.  

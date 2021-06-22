@@ -1,11 +1,12 @@
 # GEMD Documentation
 
-GEMD stands for Graphical Expression of Materials Data. It's an open source format initially developed by the fine folks at Citrine Informatics.
+GEMD stands for Graphical Expression of Materials Data.
+It's an open source format initially developed by the fine folks at Citrine Informatics.
 
 ![Material Graph](img/FORMULATIONS_ILLS_2.png)
 
 The model links together materials, the processes that produced them, and the measurements that characterize them.
-This facilitates the backwards traversal from a measurement to the material on which it was performed to the process by which it was produced to the materials which were used in that process.
+This facilitates the backwards traversal from (i) a measurement to (ii) the material on which it was performed to (iii) the process by which it was produced to (iv) the materials which were used in that process.
 It generalizes and matures `preparation` and `subSystems` objects within the PIF ([Physical Information File](https://citrineinformatics.github.io/pif-documentation/)).
 
 Additionally, the model makes a first-class distinction between *intent* and *realization*, captured by `Spec` and `Run` objects, respectively.
@@ -14,7 +15,7 @@ This generalizes and matures the `ideal` concept from the PIF's `Composition` an
 
 The model contains a new type of object: the [`Measurement Run`](./specification/objects/#measurement-run).
 Measurements capture discrete measurement activity, including the parameters and conditions associated with a set of measured properties.
-This many-to-many relationship between properties, conditions, and parameters resolves a fundamental ambiguity present in the PIF; which properties were measured at the same time under the same conditions?
+This many-to-many relationship between properties, conditions, and parameters resolves a fundamental ambiguity present in the PIF -- which properties were measured at the same time under the same conditions?
 
 ## Specification of the NextGen Data format
 

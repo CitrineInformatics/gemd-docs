@@ -1,12 +1,12 @@
 # Attributes
 
-**Properties** are characteristics of a material that could be measured, e.g. chemical composition, density, or yield strength.
+**Properties** are characteristics of a material that could be measured (e.g., chemical composition, density, or yield strength).
 
 > I recorded a measurement run of the density of my cookie.
 I measured the property to be a [Nominal Real Value](../value-types/#nominal-real-value) of 604 kg/m³.
 
 **Conditions** are the environmental variables (typically measured) that may affect a process or measurement: e.g. Temperature, Pressure.
->  "The reading on the thermometer inside my oven as I bake cookies was 355 degrees, and I know that my thermometer is only accurate to +- 5 degrees, so I'll make that a [Uniform Real Value](../value-types/#uniform-real-value) with a `lower_bound` of 350 and an `upper_bound` of 360.
+>  The reading on the thermometer inside my oven as I bake cookies was 355 degrees, and I know that my thermometer is only accurate to +- 5 degrees, so I'll make that a [Uniform Real Value](../value-types/#uniform-real-value) with a `lower_bound` of 350 and an `upper_bound` of 360.
 
 **Parameters** are the non-environmental variables (typically specified and controlled) that may affect a process or measurement: e.g. Oven Dial Temperature Position for a kiln firing, or Magnification for a measurement taken with a SEM.
 >  The "Bake Cookies" Process Spec has two parameters: a [Nominal Real Value](../value-types/#nominal-real-value) of 30 minutes for bake duration, and a [Nominal Real Value](../value-types/#nominal-real-value) of 350 degrees for oven temperature setting
@@ -52,7 +52,7 @@ The vapor pressure and its temperature are annotated with `cluster = "Pvap"` and
 Attributes are annotated with the `origin` of the data.  This field can have the following values:
 
 - `measured`: The Value of this Attribute was directly measured.
-- `predicted`: The Value of this Attribute came from a model, such as a complex simulation, a machine learning-derived computation or rule-of-thumb estimation
+- `predicted`: The Value of this Attribute came from a model, such as a complex simulation, a machine learning--derived computation or rule-of-thumb estimation
 - `specified`: The Value of this Attribute was dictated, such as the oven temperature in a [Process Spec](../objects#process-spec).  This value should only appear in Specs.
 - `computed`: The Value of this Attribute was derived directly from measured values, such as computing the yield stress from a stress-strain curve or computing the density from known mass and volume measurements.
 - `unknown`: The origin of this Value is unknown.  This is the default value.

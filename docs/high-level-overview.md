@@ -6,7 +6,7 @@ GEMD stands for Graphical Expression of Materials Data. It's an open source form
 GEMD stores data via interconnected Data Objects, representing Specs and Runs of Materials, Processing steps, Measurements, and Ingredient information.
 This format is graphical rather than tabular.
 It will support a JSON-based serialization, like the
-[PIF](http://citrineinformatics.github.io/pif-documentation/), but with links as references rather than nested objects (i.e. subsystems).
+[PIF](http://citrineinformatics.github.io/pif-documentation/), but with links as references rather than nested objects (i.e., subsystems).
 Conversely, there are many new ideas that exist in GEMD that are not captured by the PIF, including:
 
 * Process history and process order, including the input materials to process steps
@@ -26,14 +26,16 @@ A picture is worth a thousand words:
 
 There are four categories of Data Objects in GEMD: Materials, Processes, Measurements, and Ingredients.
 These represent real world objects in the development of materials.
-The 4 categories of Data Objects can only be linked in specific ways, for example, a Process Object can only be linked to one or many Material Objects as its input, more details are explained in Table1.
-Each Object can be represented in 3 different states, these states are defined below, they are Template, Spec, and Run.
+The four categories of Data Objects can only be linked in specific ways; for example, a Process Object can only be linked to one or many Material Objects as its input (more details are explained in Table1).
+Each Object can be represented in three different states.
+These states are defined below.
+They are Template, Spec, and Run.
 Note, Ingredient Objects cannot be represented in the Template state.
 
-* **Material Object:** Describes a material by a name used in an organization and optional notes to describe it.
-* **Measurement Object:** Describes an operation used to measure or characterize one or more properties of a material and the parameters and conditions for that operations.
-* **Process Object:** Describes an operation that generates an output material from one or more material inputs.
-* **Ingredient Object:** Annotates a material with information related to its usage in a process including `name` (label on the ingredient that is unique within the process that contains it) and `labels` (additional labels on the ingredient)
+* **Material Object** describes a material by a name used in an organization and optional notes to describe it.
+* **Measurement Object** describes an operation used to measure or characterize one or more properties of a material and the parameters and conditions for that operation.
+* **Process Object** describes an operation that generates an output material from one or more material inputs.
+* **Ingredient Object** annotates a material with information related to its usage in a process including `name` (label on the ingredient that is unique within the process that contains it) and `labels` (additional labels on the ingredient).
 
 Object      | Examples   | Linked Objects | State | Possible Attributes
 ------------|------------|----------------|:-----:|--------------------
@@ -61,9 +63,9 @@ There are three different categories of Attributes: Properties, Parameters, and 
 Attributes contain structured materials data that is representative of an Data Object.
 For example, a Process Object can have Parameters and Conditions as such: “sinter at 2400 K for 6 hours in kiln 14”.
 
-* **Property Attribute:** Describes a property that is measured or calculated, they are aspects of a material, e.g. “the hardness of the sample”.
-* **Parameter Attribute:** Describes the settings of a tool that are set by the user for a specific purpose, e.g. “the size of the indenter” or “the grid spacing in a simulation”.
-* **Condition Attribute:** Describes the aspects of the environment during a process or measurement, e.g. “the temperature of the environment during measurement”.
+* **Property Attribute** describes a property that is measured or calculated, they are aspects of a material (e.g., “the hardness of the sample”).
+* **Parameter Attribute** describes the settings of a tool that are set by the user for a specific purpose (e.g., “the size of the indenter” or “the grid spacing in a simulation”).
+* **Condition Attribute** describes the aspects of the environment during a process or measurement (e.g., “the temperature of the environment during measurement”).
 
 Each Attribute has specified fields that are required or optional as defined in Table3 and Table6 below.
 
@@ -78,7 +80,8 @@ The Process Run object would be what really happened when the process was conduc
 For example, someone may have run the kiln and it ran at 2395 K.
 The Run of the Process object would be “sinter at 2395 K for 5.75 hours in kiln 14”.
 
-All Data Objects (and all the Attributes that describe those Data Objects) in any State have specified fields that are required or optional, Table2 goes into further detail about the possible fields in all Data Objects and Attributes.
+All Data Objects (and all the Attributes that describe those Data Objects) in any State have specified fields that are required or optional.
+Table2 goes into further detail about the possible fields in all Data Objects and Attributes.
 
 Field | Required/Optional | Quantity Possible
 ------|----------|-------------
@@ -86,7 +89,7 @@ Field | Required/Optional | Quantity Possible
 `tags` | Optional | many
 `name` | Required | one
 
-*Table2:* Defines the possible fields in all Data Objects and Attributes in all states
+*Table2:* Defines the possible fields in all Data Objects and Attributes in all states.
 
 ## Templates
 Templates are generalizations of Data Objects used to standardize data in GEMD.
@@ -98,7 +101,7 @@ An Attribute Template specifies the bounds that are acceptable for an Attribute.
 
 For example, an Attribute Template could specify a Real value bounded between -3 and +17, or it could define a Categorical bound with the following allowed categories: "salt", "not salt".
 The values of an Attribute with an Attribute Template must conform to the bounds specified by the Template.
-If the value is not compatible with the Template (e.g. if the Template specifies that the value must be in the range [0, 1] but the value is 2), an error is thrown.
+If the value is not compatible with the Template (e.g., if the Template specifies that the value must be in the range [0, 1] but the value is 2), an error is thrown.
 
 Table3 below defines the possible fields in all Attributes in the Template state.
 
@@ -110,12 +113,12 @@ Field | Required/Optional |  Quantity Possible
 `description` | Optional | one
 `bounds` | Required | one
 
-*Table3*: Shows the fields available for Attributes in the Template state
+*Table3*: Shows the fields available for Attributes in the Template state.
 
 The `scope` defines to which category of Attribute (Property, Parameter, or Condition) the Attribute Template applies.
 
 ### Object Templates
-Object Templates are collections of Attribute Templates that together constrain the values of an Data Object's associated Attributes to valid ranges, and provide a common structure for describing similar Data Objects.
+Object Templates are collections of Attribute Templates that together constrain the values of a Data Object's associated Attributes to valid ranges, and provide a common structure for describing similar Data Objects.
 
 Object Templates are useful for validating that all Data Objects being written or generated by a script are consistent and valid.
 In the future, Object Templates could be used to generate data input forms or similar interfaces.
@@ -129,7 +132,7 @@ Field | Required/Optional | Quantity Possible
 `name` | Required | one
 `description` | Optional | one
 
-*Table4*: Shows the fields available for each category of Data Object in the Template state
+*Table4*: Shows the fields available for each category of Data Object in the Template state.
 
 All Object Templates can also have additional Attribute Bounds set on defined Attributes.
 These are additional bounds that can be applied to Attributes associated with that Data Object.
@@ -172,15 +175,15 @@ Field | Required/Optional | Quantity Possible
 
 All attributes must specify the `origin` of their data as one of:
 
-* Specified: it is the intention to have this value
-* Measured: this was directly measured during the process or measurement run
-* Computed: this was calculated based on other measured or derived properties
-* Predicted: this was calculated based on a model, e.g. machine learning or simulation
-* Summary: this was calculated based on a set of the same property at a finer level of granularity (aggregation of data)
-* Unknown: the origin is not known, typically when migrating legacy data
+* Specified: it is the intention to have this value.
+* Measured: this was directly measured during the process or measurement run.
+* Computed: this was calculated based on other measured or derived properties.
+* Predicted: this was calculated based on a model, e.g., machine learning or simulation.
+* Summary: this was calculated based on a set of the same property at a finer level of granularity (aggregation of data).
+* Unknown: the origin is not known, typically when migrating legacy data.
 
-A `value` is a complex type that may contain both central (i.e. expected) and distributional (i.e. uncertainty) information.
-It also includes units for real (i.e. continuous) values.
+A `value` is a complex type that may contain both central (i.e., expected) and distributional (i.e., uncertainty) information.
+It also includes units for real (i.e., continuous) values.
 
 
 ### Data Object Specs and Runs

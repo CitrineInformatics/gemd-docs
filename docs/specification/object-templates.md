@@ -1,6 +1,6 @@
 # Object Templates
 
-Object Templates, like Attribute Templates, define a domain concept, e.g. convection baking in a standard residential oven, a cheesecake, or a taste test.
+Object Templates, like Attribute Templates, define a domain concept, such as convection baking in a standard residential oven, a cheesecake, or a taste test.
 Unlike Specs, Object Templates define ranges validity.
 
 Object Templates contain collections of
@@ -8,10 +8,10 @@ Object Templates contain collections of
 that together constrain the values of an object's associated attributes to valid ranges.
 They also define a canonical name, a description, and can be tagged.
 
-The `parameters`, `properties`, and `conditions` fields in Object Templates are defined as sets of pair.
-Each pair contains at
+The `parameters`, `properties`, and `conditions` fields in Object Templates are defined as sets of pairs.
+Each pair contains an
 [Attribute Template](../attribute-templates/)
-and a Bounds that further constraints the bounds in the Attribute template.
+and a Bounds that further constrains the bounds in the Attribute template.
 For example, the baking temperature might generally be defined to be between 100 degF and 1500 degF,
 but a Process Template describing a specific oven model may constrain the baking temperature to be between 150 degF and 550 degF.
 The Bounds must fall within the Attribute Template's Bounds, and should be set to those Bounds if no further constraint is desired.

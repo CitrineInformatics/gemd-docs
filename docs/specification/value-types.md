@@ -9,14 +9,14 @@ A Value may be one of the following Value Types:
 | **IntegerValue** | `NominalInteger`<br>`UniformInteger`           | A whole integer value.                                                                                                                                                                                     |
 | **Categorical**  | `NominalCategorical`<br>`DiscreteCategorical`  | Categorical values are distributions over the valid category names representing the probability of each category.  For DiscreteCategorical, the values must sum to 1.0.                                    |
 | **Composition**  | `NominalComposition`<br>`EmpiricalFormula`     | A value containing the composition of the material as a map from the names of the components to their numerical quantities. The quantities are not required to be expressed on a unit or fractional basis. |
-| **Molecular**    | `Smiles`<br>`Inchi`                            | Molecular structure using popular encoding schemes                                                                                                                                                         |
+| **Molecular**    | `Smiles`<br>`Inchi`                            | Molecular structure using popular encoding schemes.                                                                                                                                                        |
 
 <!-- We might add these back later, but they are currently unused
 **Boolean**	 |       |A true/false value (e.g., active, deleted)
 **String**	 |       |Any string value (e.g., email, notes, zip code, first name, etc.)
 -->
 
-Many of these values represent probability distributions, e.g. normal and uniform distributions over
+Many of these values represent probability distributions, such as normal and uniform distributions over
 continuous bounds or discrete distributions over categorical ones.
 
 Each of the Value Types is described below.
@@ -26,7 +26,7 @@ Every field is required.
 
 ## Real Values
 
-Two common distributions are supported: normal (i.e. Gaussian) and uniform.
+Two common distributions are supported: normal (i.e., Gaussian) and uniform.
 In cases when there is no distributional information, the "nominal" value type
 can be used to specify the expected value.
 
@@ -125,8 +125,8 @@ None
 
 ## Integer Values
 
-Currently, there are two integer types: a uniform (i.e. range) distribution and a
-nominal (i.e. specified) value.
+Currently, there are two integer types: a uniform (i.e., range) distribution and a
+nominal (i.e., specified) value.
 
 ### Uniform Integer Value
 
@@ -148,7 +148,7 @@ In order to be valid, the entirety of the distribution must fall within the boun
 
 ##### Example
 
-A value field recorded from a digital display recording an approximate number of counts (e.g. Geiger counter reading "250").
+A value field recorded from a digital display recording an approximate number of counts (e.g., Geiger counter reading "250").
 ```json
 {
     "type" : "uniform_integer",
@@ -189,11 +189,11 @@ These are different than mixtures; 60% water and 40% ethanol is not a categorica
 For those, see `Composition`.
 
 Currently, there are two categorical types:
-a discrete (i.e. enumerated) distribution and a nominal (i.e. specified) value.
+a discrete (i.e., enumerated) distribution and a nominal (i.e., specified) value.
 
 ### Discrete Categorical Value
 
-Distribution of categories stored as a map from the string label to the probability
+Discrete categorical values represent a distribution of categories stored as a map from the string label to the probability.
 
 | Field name      | Value type          | Description                                            |
 |-----------------|---------------------|--------------------------------------------------------|
@@ -248,7 +248,7 @@ None
 ## Composition
 A value representing the composition of the material as a set of component names and their respective quantities.
 The quantities are not required to be expressed on a unit or fractional basis.
-For example "one part flour two parts sugar" is acceptable.
+For example, "one part flour two parts sugar" is acceptable.
 
 ### Nominal Composition
 
@@ -307,7 +307,7 @@ the structure and composition of a molecule.
 Given a molecular structure, one can infer the chemical formula, existence of functional groups,
 and local chemical environment of each atom in the molecule.
 Most commonly a molecular structure will refer to the entire material,
-but multiple molecular structures can be used to define fragments of a material, e.g. monomers of a polymer.
+but multiple molecular structures can be used to define fragments of a material, e.g., monomers of a polymer.
 
 There are two ways to represent a molecular structure:
 
