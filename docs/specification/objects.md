@@ -178,14 +178,14 @@ Field name | Value type | Default | Description
 -----------|------------|---------|------------
 `uids`        | Map[String, String] | Empty | A collection of [Unique Identifiers](../unique-identifiers)
 `type`        | String     | Required | "process_run"
-`name`        | String     | Required | The name of the process run
-`notes`       | String     | None | Some free-form notes about the process run
+`name`        | String     | Required | The name of the Process Run
+`notes`       | String     | None | Some free-form notes about the Process Run
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
 `source`      | [Source](./#source) | None | provenance information for the process
 `spec`| [Process Spec](./#process-spec) | Required | Spec for this process
-`parameters`  | Set\[[Parameters](../attributes/#parameters)] | Empty | Measured parameters for the process run
-`conditions`  | Set\[[Conditions](../attributes/#conditions)] | Empty | Measured conditions for the process run
+`parameters`  | Set\[[Parameters](../attributes/#parameters)] | Empty | Measured parameters for the Process Run
+`conditions`  | Set\[[Conditions](../attributes/#conditions)] | Empty | Measured conditions for the Process Run
 `ingredients` | Set\[[Ingredient Run](./#ingredient-run)] | Implicit | Ingredient Runs
 `output_material` | [Material Run](./#material-run) | Implicit | Output Material Run
 
@@ -351,7 +351,7 @@ Field name          | Value type                               | Default | Descr
 --------------------|------------------------------------------|---------|------------
 `uids`              | Map[String, String]                      | Empty   | A collection of [Unique Identifiers](../unique-identifiers)
 `type`              | String                                   | Required| "ingredient_run"
-`name`              | String                                   | Implicit| The name of the ingredient run (inherited from spec)
+`name`              | String                                   | Implicit| The name of the Ingredient Run (inherited from spec)
 `labels`            | Set[String]                              | Implicit| Additional labels on the ingredient for describing the type or role of the ingredient (inherited from spec)
 `material`          | [Material Run](./#material-run)          | Required| Material that is this ingredient
 `process`           | [Process Run](./#process-run)            | Required| Process that the ingredient is used in
@@ -426,7 +426,7 @@ The expectation for a material.
 Materials have exactly one producing process.
 Material Specs may include expected properties,
 but do so via the [PropertyAndConditions](../attributes#property-and-conditions) compound attribute.
-In this way, material Specs can associate an expected property value with the conditions under which it is expected.
+In this way, Material Specs can associate an expected property value with the conditions under which it is expected.
 For example, if a material is purchased and its Safety Data Sheet quotes a normal boiling point of 54 C,
 a property is known even though there is never an explicit measurement of that property by a person in the lab.  It could
 therefore be annotated with a Boiling Temperature of 54 C (property) at 1 atm (condition).
@@ -440,7 +440,7 @@ Field name | Value type | Default | Description
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
 `template`    | [Material Template](../object-templates/#material-template) | None | A template bounding the valid values for properties of this material
-`properties`  | Set\[[PropertyAndConditions](../attributes/#property-and-conditions)] | Empty | Expected properties for the material Spec at the given conditions
+`properties`  | Set\[[PropertyAndConditions](../attributes/#property-and-conditions)] | Empty | Expected properties for the Material Spec at the given conditions
 `process`     | [Process Spec](./#process-spec) | Required | The Process Spec that produces this material
 
 ##### Constraints
@@ -565,8 +565,8 @@ Field name | Value type | Default | Description
 -----------|------------|---------|------------
 `uids`        | Map[String, String] | Empty | A collection of [Unique Identifiers](../unique-identifiers)
 `type`        | String     | Required | "material_run"
-`name`        | String     | Required | The name of the material run
-`notes`       | String     | None | Some free-form notes about the material run
+`name`        | String     | Required | The name of the Material Run
+`notes`       | String     | None | Some free-form notes about the Material Run
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
 `spec`        | [Material Spec](./#material-spec) | Required | The Material Spec of which this is a run
@@ -711,13 +711,13 @@ Field name | Value type | Default | Description
 -----------|------------|---------|------------
 `uids`        | Map[String, String] | Empty | A collection of [Unique Identifiers](../unique-identifiers)
 `type`        | String     | Required | "measurement\_run"
-`name`        | String     | Required | The name of the measurement run
-`notes`       | String     | None | Some free-form notes about the measurement run
+`name`        | String     | Required | The name of the Measurement Run
+`notes`       | String     | None | Some free-form notes about the Measurement Run
 `tags`        | Set[String]| Empty | [Tags](../tags)
 `file_links`  | Set\[[File Links](../file-links)] | Empty | Links to associated files, with resource paths into the files API
 `source`      | [Source](./#source) | None | provenance information for the measurement
-`spec`        | [Measurement Spec](./#measurement-spec) | Required | The measurement Spec of which this is a run
-`material`    | [Material Run](./#material-run) | Required | The material run being measured
+`spec`        | [Measurement Spec](./#measurement-spec) | Required | The Measurement Spec of which this is a run
+`material`    | [Material Run](./#material-run) | Required | The Material Run being measured
 `parameters`  | Set\[[Parameters](../attributes/#parameters)] | Empty | Measured parameters for the measurement
 `conditions`  | Set\[[Conditions](../attributes/#conditions)] | Empty | Measured conditions for the measurement
 `properties`  | Set\[[Properties](../attributes/#properties)] | Empty | Measured properties for the measurement
@@ -819,7 +819,7 @@ This includes information such as who performed a measurement, the literature so
 This type of information tends to have limited value for modeling and other analysis but is essential for verification and auditing.
 
 At present the only type of source supported is who performed a task and when they did so.
-Sources can be added to ProcessRun and MeasurementRun Objects only.
+Sources can be added to Process Run and Measurement Run Objects only.
 
 Field name    | Value type | Default | Description
 --------------|------------|---------|-------------
