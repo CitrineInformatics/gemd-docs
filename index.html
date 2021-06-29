@@ -7,27 +7,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="None">
   
-  
+  <link rel="canonical" href="https://citrineinformatics.github.io/gemd-docs/">
   <link rel="shortcut icon" href="img/favicon.ico">
   <title>GEMD Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="css/theme.css" />
   <link rel="stylesheet" href="css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
   
   <script>
     // Current page data
     var mkdocs_page_name = "GEMD Documentation";
     var mkdocs_page_input_path = "README.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/gemd-docs/";
   </script>
   
   <script src="js/jquery-2.1.1.min.js" defer></script>
   <script src="js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
-  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -41,7 +40,7 @@
         <a href="." class="icon icon-home"> GEMD Documentation</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -121,21 +120,23 @@
   
   <hr/>
 </div>
+
           <div role="main">
             <div class="section">
               
                 <h1 id="gemd-documentation">GEMD Documentation<a class="headerlink" href="#gemd-documentation" title="Permanent link">&para;</a></h1>
-<p>GEMD stands for Graphical Expression of Materials Data. It's an open source format initially developed by the fine folks at Citrine Informatics.</p>
+<p>GEMD stands for Graphical Expression of Materials Data.
+It's an open source format initially developed by the fine folks at Citrine Informatics.</p>
 <p><img alt="Material Graph" src="img/FORMULATIONS_ILLS_2.png" /></p>
 <p>The model links together materials, the processes that produced them, and the measurements that characterize them.
-This facilitates the backwards traversal from a measurement to the material on which it was performed to the process by which it was produced to the materials which were used in that process.
+This facilitates the backwards traversal from (i) a measurement to (ii) the material on which it was performed to (iii) the process by which it was produced to (iv) the materials which were used in that process.
 It generalizes and matures <code>preparation</code> and <code>subSystems</code> objects within the PIF (<a href="https://citrineinformatics.github.io/pif-documentation/">Physical Information File</a>).</p>
 <p>Additionally, the model makes a first-class distinction between <em>intent</em> and <em>realization</em>, captured by <code>Spec</code> and <code>Run</code> objects, respectively.
 A single intent <code>Spec</code> can be realized into multiple <code>Run</code> objects.
 This generalizes and matures the <code>ideal</code> concept from the PIF's <code>Composition</code> and <code>Quantity</code> objects.</p>
 <p>The model contains a new type of object: the <a href="./specification/objects/#measurement-run"><code>Measurement Run</code></a>.
 Measurements capture discrete measurement activity, including the parameters and conditions associated with a set of measured properties.
-This many-to-many relationship between properties, conditions, and parameters resolves a fundamental ambiguity present in the PIF; which properties were measured at the same time under the same conditions?</p>
+This many-to-many relationship between properties, conditions, and parameters resolves a fundamental ambiguity present in the PIF -- which properties were measured at the same time under the same conditions?</p>
 <h2 id="specification-of-the-nextgen-data-format">Specification of the NextGen Data format<a class="headerlink" href="#specification-of-the-nextgen-data-format" title="Permanent link">&para;</a></h2>
 <p>The format is described in the following subsections:</p>
 <ul>
@@ -181,15 +182,16 @@ This many-to-many relationship between properties, conditions, and parameters re
   </div>
 
   <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-      
-        <span style="margin-left: 15px"><a href="faq/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="faq/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
     <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
     <script src="js/theme.js" defer></script>
       <script src="search/main.js" defer></script>
     <script defer>
@@ -202,6 +204,6 @@ This many-to-many relationship between properties, conditions, and parameters re
 </html>
 
 <!--
-MkDocs version : 1.1.2
-Build Date UTC : 2021-03-26 20:03:18.094395+00:00
+MkDocs version : 1.2.1
+Build Date UTC : 2021-06-29 16:32:11.401238+00:00
 -->

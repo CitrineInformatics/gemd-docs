@@ -7,27 +7,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  
+  <link rel="canonical" href="https://citrineinformatics.github.io/gemd-docs/faq/">
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>FAQ - GEMD Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
   
   <script>
     // Current page data
     var mkdocs_page_name = "FAQ";
     var mkdocs_page_input_path = "faq.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/gemd-docs/faq/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
   <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
-  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -41,7 +40,7 @@
         <a href=".." class="icon icon-home"> GEMD Documentation</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -58,7 +57,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#im-following-the-documentation-but-still-having-validation-problems-when-using-the-citrine-platform">I'm following the documentation, but still having validation problems when using the Citrine Platform.</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#where-do-i-store-statistics-about-my-measurements">Where do I store statistics about my measurements</a>
+    <li class="toctree-l2"><a class="reference internal" href="#where-do-i-store-statistics-about-my-measurements">Where do I store statistics about my measurements?</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#how-do-i-represent-repeated-applications-of-the-same-process">How do I represent repeated applications of the same process?</a>
     </li>
@@ -131,6 +130,7 @@
   
   <hr/>
 </div>
+
           <div role="main">
             <div class="section">
               
@@ -140,11 +140,11 @@ GEMD is not a simple representation, and
 we frequently get questions about how to use it to represent certain kinds of data.
 This page attempts to answer some of those questions.</p>
 <h2 id="how-do-you-pronounce-gemd">How do you pronounce GEMD?<a class="headerlink" href="#how-do-you-pronounce-gemd" title="Permanent link">&para;</a></h2>
-<p>This has been a matter of some debate. Both /jemd/ and /jem-dee/ are in common use. </p>
+<p>This has been a matter of some debate. Both /jemd/ and /jem-dee/ are in common use.</p>
 <h2 id="im-following-the-documentation-but-still-having-validation-problems-when-using-the-citrine-platform">I'm following the documentation, but still having validation problems when using the Citrine Platform.<a class="headerlink" href="#im-following-the-documentation-but-still-having-validation-problems-when-using-the-citrine-platform" title="Permanent link">&para;</a></h2>
 <p>Citrine's implementation of this data model is still a work in progress.<br />
 You may see your issue documented in <a href="../known-limitations">Known Limitations</a>.  </p>
-<h2 id="where-do-i-store-statistics-about-my-measurements">Where do I store statistics about my measurements<a class="headerlink" href="#where-do-i-store-statistics-about-my-measurements" title="Permanent link">&para;</a></h2>
+<h2 id="where-do-i-store-statistics-about-my-measurements">Where do I store statistics about my measurements?<a class="headerlink" href="#where-do-i-store-statistics-about-my-measurements" title="Permanent link">&para;</a></h2>
 <p>Let's say that you have data for the same kind of measurement being repeated multiple times.
 For example, you take a sample from your material, subdivide it 8 times, and perform the
 same measurement on each of those 8 sub-samples.
@@ -160,9 +160,9 @@ is associated with the
 representing the material that you sampled and sub-divided.</p>
 <p>For each property in the
 <a href="../specification/objects/#measurement-run"><code>MeasurementRun</code></a>
-objects, you may want to compute some statistics of the 8-sample distribution.
-For example: the mean and the standard deviation of each property and/or its minimum and maximum values.
-In the future, these statistics will be automatically computed on the Citrine platform.
+objects, you may want to compute some statistics of the 8-sample distribution,
+e.g., the mean and the standard deviation of each property and/or its minimum and maximum values.
+In the future, these statistics will be automatically computed on the Citrine Platform.
 For now, you can compute them yourself and record them in another
 <a href="../specification/objects/#measurement-run"><code>MeasurementRun</code></a>
 object distinct from the 8 samples.
@@ -171,11 +171,11 @@ The statistics should be
 <a href="../specification/attributes/#property"><code>Property</code></a>
 attributes with their <code>origin</code> field set to <code>computed</code>.</p>
 <h2 id="how-do-i-represent-repeated-applications-of-the-same-process">How do I represent repeated applications of the same process?<a class="headerlink" href="#how-do-i-represent-repeated-applications-of-the-same-process" title="Permanent link">&para;</a></h2>
-<p>Consider a situation in which a process is repeatedly applied to a material, but does not substantially change the material.
-For example, repeated application of heat-treatment to harden a ceramic or multiple coats of paint.
+<p>Consider a situation in which a process is repeatedly applied to a material, but does not substantially change the material,
+e,g., repeated application of heat-treatment to harden a ceramic or multiple coats of paint.
 Because material histories are chronological, each application must be a new process and must produce a new output material.
-The materials/processes may reference the same templates, however, if the same attributes are relevant for each iteration.
-It is strongly recomended that such processes contain an attribute describing what order that process was performed in (e.g. heat-treatment number 1, 2, 3, etc.).
+However, the materials/processes may reference the same templates if the same attributes are relevant for each iteration.
+It is strongly recommended that such processes contain an attribute describing what order that process was performed in (e.g., heat-treatment number 1, 2, 3, etc.).
 This additional attribute will allow for disambiguation between these linear processes.
 The additional attribute should have an <a href="../specification/attribute-templates">Attribute Template</a>, but there is no requirement for it to be included in the <a href="../specification/object-templates">Object Template</a> as well.</p>
 <h2 id="how-do-i-represent-repeated-uses-of-the-same-material">How do I represent repeated uses of the same material?<a class="headerlink" href="#how-do-i-represent-repeated-uses-of-the-same-material" title="Permanent link">&para;</a></h2>
@@ -186,20 +186,20 @@ Process templates should be used to describe what types of ingredients are expec
 Consider the following example: a thin film is created by thermally evaporating three materials in succession onto a substrate.
 The thermal evaporation process template specifies the allowed names as "layer 1," "layer 2," and "layer 3."
 We have several materials to choose from for the three layers, but in one instance we wish to evaporate a layer of material "A," then a layer of "B," then a final layer of "A."
-We create a process spec linked to the thermal evaporation process template and create three ingredient specs, each of which point to the process spec as their <code>process</code>.
+We create a Process Spec linked to the thermal evaporation process template and create three Ingredient Specs, each of which point to the Process Spec as their <code>process</code>.
 One ingredient points to "A" as its <code>material</code> and has <code>layer 1</code> as its name.
 One points to "B" as its <code>material</code> and has <code>layer 2</code> as its name.
-And the final ingredient spec <em>also</em> points to "A" as its <code>material</code> but is differentiated because it has <code>layer 3</code> as its name.</p>
+And the final Ingredient Spec <em>also</em> points to "A" as its <code>material</code> but is differentiated because it has <code>layer 3</code> as its name.</p>
 <h2 id="what-is-the-difference-between-description-and-notes">What is the difference between <code>description</code> and <code>notes</code>?<a class="headerlink" href="#what-is-the-difference-between-description-and-notes" title="Permanent link">&para;</a></h2>
 <p><code>description</code> is a field on both <a href="../specification/attribute-templates">Attribute Templates</a> and <a href="../specification/object-templates">Object Templates</a>.
-It is used to describe the type of data that a template is intended to constrain - the documentation of its intended use.
+It is used to describe the type of data that a template is intended to constrain--the documentation of its intended use.
 We strongly encourage documenting all templates, given both how important they are in constraining data and communicating structure to analysis algorithms, and that a template is likely to be reused by multiple users.</p>
 <p><code>notes</code> are associated with <a href="../specification/attributes">Attributes</a> and <a href="../specification/objects">Objects</a>.
 This is a place to put pieces of information that may be important to understanding this particular piece of data but do not naturally fit in the other fields.
 This might include an annotation about something unusual about this particular sample.
 Notes normally contain information that is useful for a human but would not be useful in training a machine learning model.</p>
 <h2 id="i-found-a-reference-to-something-called-taurus-what-is-that">I found a reference to something called "taurus" - what is that?<a class="headerlink" href="#i-found-a-reference-to-something-called-taurus-what-is-that" title="Permanent link">&para;</a></h2>
-<p>"Taurus" was the codename for GEMD when we first started work. We're in the process of migrating everying over to GEMD, but names can be surprisingly persistent.  </p>
+<p>"Taurus" was the codename for GEMD when we first started work. We're in the process of migrating everything over to GEMD, but names can be surprisingly persistent.  </p>
               
             </div>
           </div>
@@ -233,17 +233,18 @@ Notes normally contain information that is useful for a human but would not be u
   </div>
 
   <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../high-level-overview/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../high-level-overview/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
     <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
     <script src="../js/theme.js" defer></script>
       <script src="../search/main.js" defer></script>
     <script defer>

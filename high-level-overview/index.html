@@ -7,27 +7,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  
+  <link rel="canonical" href="https://citrineinformatics.github.io/gemd-docs/high-level-overview/">
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>High Level Overview - GEMD Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
   
   <script>
     // Current page data
     var mkdocs_page_name = "High Level Overview";
     var mkdocs_page_input_path = "high-level-overview.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/gemd-docs/high-level-overview/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
   <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
-  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -41,7 +40,7 @@
         <a href=".." class="icon icon-home"> GEMD Documentation</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -141,6 +140,7 @@
   
   <hr/>
 </div>
+
           <div role="main">
             <div class="section">
               
@@ -150,7 +150,7 @@
 <p>GEMD stores data via interconnected Data Objects, representing Specs and Runs of Materials, Processing steps, Measurements, and Ingredient information.
 This format is graphical rather than tabular.
 It will support a JSON-based serialization, like the
-<a href="http://citrineinformatics.github.io/pif-documentation/">PIF</a>, but with links as references rather than nested objects (i.e. subsystems).
+<a href="http://citrineinformatics.github.io/pif-documentation/">PIF</a>, but with links as references rather than nested objects (i.e., subsystems).
 Conversely, there are many new ideas that exist in GEMD that are not captured by the PIF, including:</p>
 <ul>
 <li>Process history and process order, including the input materials to process steps</li>
@@ -166,14 +166,16 @@ The details are broken out in the coming sections.</p>
 <p><img alt="Material Graph" src="../img/FORMULATIONS_ILLS_2.png" /></p>
 <p>There are four categories of Data Objects in GEMD: Materials, Processes, Measurements, and Ingredients.
 These represent real world objects in the development of materials.
-The 4 categories of Data Objects can only be linked in specific ways, for example, a Process Object can only be linked to one or many Material Objects as its input, more details are explained in Table1.
-Each Object can be represented in 3 different states, these states are defined below, they are Template, Spec, and Run.
+The four categories of Data Objects can only be linked in specific ways; for example, a Process Object can only be linked to one or many Material Objects as its input (more details are explained in Table1).
+Each Object can be represented in three different states.
+These states are defined below.
+They are Template, Spec, and Run.
 Note, Ingredient Objects cannot be represented in the Template state.</p>
 <ul>
-<li><strong>Material Object:</strong> Describes a material by a name used in an organization and optional notes to describe it.</li>
-<li><strong>Measurement Object:</strong> Describes an operation used to measure or characterize one or more properties of a material and the parameters and conditions for that operations.</li>
-<li><strong>Process Object:</strong> Describes an operation that generates an output material from one or more material inputs.</li>
-<li><strong>Ingredient Object:</strong> Annotates a material with information related to its usage in a process including <code>name</code> (label on the ingredient that is unique within the process that contains it) and <code>labels</code> (additional labels on the ingredient)</li>
+<li><strong>Material Object</strong> describes a material by a name used in an organization and optional notes to describe it.</li>
+<li><strong>Measurement Object</strong> describes an operation used to measure or characterize one or more properties of a material and the parameters and conditions for that operation.</li>
+<li><strong>Process Object</strong> describes an operation that generates an output material from one or more material inputs.</li>
+<li><strong>Ingredient Object</strong> annotates a material with information related to its usage in a process including <code>name</code> (label on the ingredient that is unique within the process that contains it) and <code>labels</code> (additional labels on the ingredient).</li>
 </ul>
 <table>
 <thead>
@@ -274,9 +276,9 @@ There are three different categories of Attributes: Properties, Parameters, and 
 Attributes contain structured materials data that is representative of an Data Object.
 For example, a Process Object can have Parameters and Conditions as such: “sinter at 2400 K for 6 hours in kiln 14”.</p>
 <ul>
-<li><strong>Property Attribute:</strong> Describes a property that is measured or calculated, they are aspects of a material, e.g. “the hardness of the sample”.</li>
-<li><strong>Parameter Attribute:</strong> Describes the settings of a tool that are set by the user for a specific purpose, e.g. “the size of the indenter” or “the grid spacing in a simulation”.</li>
-<li><strong>Condition Attribute:</strong> Describes the aspects of the environment during a process or measurement, e.g. “the temperature of the environment during measurement”.</li>
+<li><strong>Property Attribute</strong> describes a property that is measured or calculated, they are aspects of a material (e.g., “the hardness of the sample”).</li>
+<li><strong>Parameter Attribute</strong> describes the settings of a tool that are set by the user for a specific purpose (e.g., “the size of the indenter” or “the grid spacing in a simulation”).</li>
+<li><strong>Condition Attribute</strong> describes the aspects of the environment during a process or measurement (e.g., “the temperature of the environment during measurement”).</li>
 </ul>
 <p>Each Attribute has specified fields that are required or optional as defined in Table3 and Table6 below.</p>
 <h2 id="how-are-states-defined">How are States defined?<a class="headerlink" href="#how-are-states-defined" title="Permanent link">&para;</a></h2>
@@ -290,7 +292,8 @@ The Process Run object would be what really happened when the process was conduc
 For example, someone may have run the kiln and it ran at 2395 K.
 The Run of the Process object would be “sinter at 2395 K for 5.75 hours in kiln 14”.</p>
 </blockquote>
-<p>All Data Objects (and all the Attributes that describe those Data Objects) in any State have specified fields that are required or optional, Table2 goes into further detail about the possible fields in all Data Objects and Attributes.</p>
+<p>All Data Objects (and all the Attributes that describe those Data Objects) in any State have specified fields that are required or optional.
+Table2 goes into further detail about the possible fields in all Data Objects and Attributes.</p>
 <table>
 <thead>
 <tr>
@@ -317,7 +320,7 @@ The Run of the Process object would be “sinter at 2395 K for 5.75 hours in kil
 </tr>
 </tbody>
 </table>
-<p><em>Table2:</em> Defines the possible fields in all Data Objects and Attributes in all states</p>
+<p><em>Table2:</em> Defines the possible fields in all Data Objects and Attributes in all states.</p>
 <h2 id="templates">Templates<a class="headerlink" href="#templates" title="Permanent link">&para;</a></h2>
 <p>Templates are generalizations of Data Objects used to standardize data in GEMD.
 Templates are used at write time to validate data and at read time to associate groups of information together.
@@ -326,7 +329,7 @@ Each Spec and Run Object or Attribute (excluding Ingredient Objects and Metadata
 <p>An Attribute Template specifies the bounds that are acceptable for an Attribute.</p>
 <p>For example, an Attribute Template could specify a Real value bounded between -3 and +17, or it could define a Categorical bound with the following allowed categories: "salt", "not salt".
 The values of an Attribute with an Attribute Template must conform to the bounds specified by the Template.
-If the value is not compatible with the Template (e.g. if the Template specifies that the value must be in the range [0, 1] but the value is 2), an error is thrown.</p>
+If the value is not compatible with the Template (e.g., if the Template specifies that the value must be in the range [0, 1] but the value is 2), an error is thrown.</p>
 <p>Table3 below defines the possible fields in all Attributes in the Template state.</p>
 <table>
 <thead>
@@ -364,10 +367,10 @@ If the value is not compatible with the Template (e.g. if the Template specifies
 </tr>
 </tbody>
 </table>
-<p><em>Table3</em>: Shows the fields available for Attributes in the Template state</p>
+<p><em>Table3</em>: Shows the fields available for Attributes in the Template state.</p>
 <p>The <code>scope</code> defines to which category of Attribute (Property, Parameter, or Condition) the Attribute Template applies.</p>
 <h3 id="object-templates">Object Templates<a class="headerlink" href="#object-templates" title="Permanent link">&para;</a></h3>
-<p>Object Templates are collections of Attribute Templates that together constrain the values of an Data Object's associated Attributes to valid ranges, and provide a common structure for describing similar Data Objects.</p>
+<p>Object Templates are collections of Attribute Templates that together constrain the values of a Data Object's associated Attributes to valid ranges, and provide a common structure for describing similar Data Objects.</p>
 <p>Object Templates are useful for validating that all Data Objects being written or generated by a script are consistent and valid.
 In the future, Object Templates could be used to generate data input forms or similar interfaces.</p>
 <p>Table4 below defines the possible fields in all Data Objects in the Template state.</p>
@@ -402,7 +405,7 @@ In the future, Object Templates could be used to generate data input forms or si
 </tr>
 </tbody>
 </table>
-<p><em>Table4</em>: Shows the fields available for each category of Data Object in the Template state</p>
+<p><em>Table4</em>: Shows the fields available for each category of Data Object in the Template state.</p>
 <p>All Object Templates can also have additional Attribute Bounds set on defined Attributes.
 These are additional bounds that can be applied to Attributes associated with that Data Object.
 For example, consider there exists a Condition Attribute Template called "Oven Temperature" that is defined from 0 to 10,000 Kelvin and a Process Object Template that includes the "Oven Temperature" Condition Template.
@@ -493,15 +496,15 @@ Table6 represents the Attributes in diagram.</p>
 <p><em>Table6</em>: Shows the fields available for Attributes in the Spec and Run context.</p>
 <p>All attributes must specify the <code>origin</code> of their data as one of:</p>
 <ul>
-<li>Specified: it is the intention to have this value</li>
-<li>Measured: this was directly measured during the process or measurement run</li>
-<li>Computed: this was calculated based on other measured or derived properties</li>
-<li>Predicted: this was calculated based on a model, e.g. machine learning or simulation</li>
-<li>Summary: this was calculated based on a set of the same property at a finer level of granularity (aggregation of data)</li>
-<li>Unknown: the origin is not known, typically when migrating legacy data</li>
+<li>Specified: it is the intention to have this value.</li>
+<li>Measured: this was directly measured during the Process or Measurement Run.</li>
+<li>Computed: this was calculated based on other measured or derived properties.</li>
+<li>Predicted: this was calculated based on a model, e.g., machine learning or simulation.</li>
+<li>Summary: this was calculated based on a set of the same property at a finer level of granularity (aggregation of data).</li>
+<li>Unknown: the origin is not known, typically when migrating legacy data.</li>
 </ul>
-<p>A <code>value</code> is a complex type that may contain both central (i.e. expected) and distributional (i.e. uncertainty) information.
-It also includes units for real (i.e. continuous) values.</p>
+<p>A <code>value</code> is a complex type that may contain both central (i.e., expected) and distributional (i.e., uncertainty) information.
+It also includes units for real (i.e., continuous) values.</p>
 <h3 id="data-object-specs-and-runs">Data Object Specs and Runs<a class="headerlink" href="#data-object-specs-and-runs" title="Permanent link">&para;</a></h3>
 <p>Object Specs may have an associated Object Template that bounds the valid units and values of the Attributes on the Spec.</p>
 <p>With the linking of Specs to Runs, Runs inherit associated Templates through Specs.
@@ -690,17 +693,18 @@ Table8 below identifies all the fields available in Ingredient Objects for both 
   </div>
 
   <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-        <span><a href="../faq/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../known-limitations/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../faq/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../known-limitations/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
     <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
     <script src="../js/theme.js" defer></script>
       <script src="../search/main.js" defer></script>
     <script defer>

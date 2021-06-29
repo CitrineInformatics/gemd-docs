@@ -7,27 +7,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  
+  <link rel="canonical" href="https://citrineinformatics.github.io/gemd-docs/specification/value-types/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
   <title>Value Types - GEMD Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
   <link rel="stylesheet" href="../../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
   
   <script>
     // Current page data
     var mkdocs_page_name = "Value Types";
     var mkdocs_page_input_path = "specification/value-types.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/gemd-docs/specification/value-types/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
   <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
-  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -41,7 +40,7 @@
         <a href="../.." class="icon icon-home"> GEMD Documentation</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -163,6 +162,7 @@
   
   <hr/>
 </div>
+
           <div role="main">
             <div class="section">
               
@@ -201,7 +201,7 @@ A Value may be one of the following Value Types:</p>
 <tr>
 <td><strong>Molecular</strong></td>
 <td><code>Smiles</code><br><code>Inchi</code></td>
-<td>Molecular structure using popular encoding schemes</td>
+<td>Molecular structure using popular encoding schemes.</td>
 </tr>
 </tbody>
 </table>
@@ -210,13 +210,13 @@ A Value may be one of the following Value Types:</p>
 **String**   |       |Any string value (e.g., email, notes, zip code, first name, etc.)
 -->
 
-<p>Many of these values represent probability distributions, e.g. normal and uniform distributions over
+<p>Many of these values represent probability distributions, such as normal and uniform distributions over
 continuous bounds or discrete distributions over categorical ones.</p>
 <p>Each of the Value Types is described below.
 Every field is required.</p>
 <hr />
 <h2 id="real-values">Real Values<a class="headerlink" href="#real-values" title="Permanent link">&para;</a></h2>
-<p>Two common distributions are supported: normal (i.e. Gaussian) and uniform.
+<p>Two common distributions are supported: normal (i.e., Gaussian) and uniform.
 In cases when there is no distributional information, the "nominal" value type
 can be used to specify the expected value.</p>
 <h3 id="normal-real-value">Normal Real Value<a class="headerlink" href="#normal-real-value" title="Permanent link">&para;</a></h3>
@@ -387,8 +387,8 @@ In order to be valid, the entirety of the distribution must fall within the boun
 </code></pre>
 <hr />
 <h2 id="integer-values">Integer Values<a class="headerlink" href="#integer-values" title="Permanent link">&para;</a></h2>
-<p>Currently, there are two integer types: a uniform (i.e. range) distribution and a
-nominal (i.e. specified) value.</p>
+<p>Currently, there are two integer types: a uniform (i.e., range) distribution and a
+nominal (i.e., specified) value.</p>
 <h3 id="uniform-integer-value">Uniform Integer Value<a class="headerlink" href="#uniform-integer-value" title="Permanent link">&para;</a></h3>
 <p>A uniform integer distribution value, with inclusive lower and upper bounds.
 These are especially useful for expressing uncertainty when the number of digits is truncated.
@@ -437,7 +437,7 @@ In order to be valid, the entirety of the distribution must fall within the boun
 </tbody>
 </table>
 <h5 id="example_3">Example<a class="headerlink" href="#example_3" title="Permanent link">&para;</a></h5>
-<p>A value field recorded from a digital display recording an approximate number of counts (e.g. Geiger counter reading "250").</p>
+<p>A value field recorded from a digital display recording an approximate number of counts (e.g., Geiger counter reading "250").</p>
 <pre><code class="language-json">{
     &quot;type&quot; : &quot;uniform_integer&quot;,
     &quot;lower_bound&quot;: 245,
@@ -482,9 +482,9 @@ of each category.
 These are different than mixtures; 60% water and 40% ethanol is not a categorical distribution.
 For those, see <code>Composition</code>.</p>
 <p>Currently, there are two categorical types:
-a discrete (i.e. enumerated) distribution and a nominal (i.e. specified) value.</p>
+a discrete (i.e., enumerated) distribution and a nominal (i.e., specified) value.</p>
 <h3 id="discrete-categorical-value">Discrete Categorical Value<a class="headerlink" href="#discrete-categorical-value" title="Permanent link">&para;</a></h3>
-<p>Distribution of categories stored as a map from the string label to the probability</p>
+<p>Discrete categorical values represent a distribution of categories stored as a map from the string label to the probability.</p>
 <table>
 <thead>
 <tr>
@@ -573,7 +573,7 @@ a discrete (i.e. enumerated) distribution and a nominal (i.e. specified) value.<
 <h2 id="composition">Composition<a class="headerlink" href="#composition" title="Permanent link">&para;</a></h2>
 <p>A value representing the composition of the material as a set of component names and their respective quantities.
 The quantities are not required to be expressed on a unit or fractional basis.
-For example "one part flour two parts sugar" is acceptable.</p>
+For example, "one part flour two parts sugar" is acceptable.</p>
 <h3 id="nominal-composition">Nominal Composition<a class="headerlink" href="#nominal-composition" title="Permanent link">&para;</a></h3>
 <p>A composition represented as a map from the component name to the quantity.
 The quantities do not express an uncertainty, but also do not imply that there is absolute certainty in their values.</p>
@@ -661,7 +661,7 @@ the structure and composition of a molecule.
 Given a molecular structure, one can infer the chemical formula, existence of functional groups,
 and local chemical environment of each atom in the molecule.
 Most commonly a molecular structure will refer to the entire material,
-but multiple molecular structures can be used to define fragments of a material, e.g. monomers of a polymer.</p>
+but multiple molecular structures can be used to define fragments of a material, e.g., monomers of a polymer.</p>
 <p>There are two ways to represent a molecular structure:</p>
 <ul>
 <li>SMILES string</li>
@@ -757,15 +757,16 @@ Note: this is not the same as the InChI key.</p>
   </div>
 
   <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-        <span><a href="../unique-identifiers/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-    </span>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../unique-identifiers/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
 </div>
     <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
     <script src="../../js/theme.js" defer></script>
       <script src="../../search/main.js" defer></script>
     <script defer>

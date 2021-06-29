@@ -7,27 +7,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  
+  <link rel="canonical" href="https://citrineinformatics.github.io/gemd-docs/specification/attributes/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
   <title>Attributes - GEMD Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
   <link rel="stylesheet" href="../../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
   
   <script>
     // Current page data
     var mkdocs_page_name = "Attributes";
     var mkdocs_page_input_path = "specification/attributes.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/gemd-docs/specification/attributes/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
   <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
-  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -41,7 +40,7 @@
         <a href="../.." class="icon icon-home"> GEMD Documentation</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -131,26 +130,27 @@
   
   <hr/>
 </div>
+
           <div role="main">
             <div class="section">
               
                 <h1 id="attributes">Attributes<a class="headerlink" href="#attributes" title="Permanent link">&para;</a></h1>
-<p><strong>Properties</strong> are characteristics of a material that could be measured, e.g. chemical composition, density, or yield strength.</p>
+<p><strong>Properties</strong> are characteristics of a material that could be measured (e.g., chemical composition, density, or yield strength).</p>
 <blockquote>
-<p>I recorded a measurement run of the density of my cookie.
+<p>I recorded a Measurement Run of the density of my cookie.
 I measured the property to be a <a href="../value-types/#nominal-real-value">Nominal Real Value</a> of 604 kg/m³.</p>
 </blockquote>
 <p><strong>Conditions</strong> are the environmental variables (typically measured) that may affect a process or measurement: e.g. Temperature, Pressure.</p>
 <blockquote>
-<p>"The reading on the thermometer inside my oven as I bake cookies was 355 degrees, and I know that my thermometer is only accurate to +- 5 degrees, so I'll make that a <a href="../value-types/#uniform-real-value">Uniform Real Value</a> with a <code>lower_bound</code> of 350 and an <code>upper_bound</code> of 360.</p>
+<p>The reading on the thermometer inside my oven as I bake cookies was 355 degrees, and I know that my thermometer is only accurate to +- 5 degrees, so I'll make that a <a href="../value-types/#uniform-real-value">Uniform Real Value</a> with a <code>lower_bound</code> of 350 and an <code>upper_bound</code> of 360.</p>
 </blockquote>
 <p><strong>Parameters</strong> are the non-environmental variables (typically specified and controlled) that may affect a process or measurement: e.g. Oven Dial Temperature Position for a kiln firing, or Magnification for a measurement taken with a SEM.</p>
 <blockquote>
 <p>The "Bake Cookies" Process Spec has two parameters: a <a href="../value-types/#nominal-real-value">Nominal Real Value</a> of 30 minutes for bake duration, and a <a href="../value-types/#nominal-real-value">Nominal Real Value</a> of 350 degrees for oven temperature setting</p>
 <p>I know my oven tends to run cold, so as I was baking I set my temperature setting to 360 degrees.
-I recorded this in the process run as a parameter with a <a href="../value-types/#nominal-real-value">Nominal Real Value</a> of 360 Degrees.</p>
+I recorded this in the Process Run as a parameter with a <a href="../value-types/#nominal-real-value">Nominal Real Value</a> of 360 Degrees.</p>
 </blockquote>
-<p>Typically, conditions are going to apply to <em>measured</em> environmental variables in process runs and measurement runs.
+<p>Typically, conditions are going to apply to <em>measured</em> environmental variables in Process Runs and Measurement Runs.
 It may be appropriate to specify a Parameter attribute on a Spec, and describe that attribute as a Condition on Runs of that Spec if the value is being measured as opposed to controlled during the Run.
 It may also be appropriate to include <em>both</em> a Parameter and a Condition on the Run if the value is both controlled and measured.
 The use of Conditions in Specs should be limited in favor of parameters.</p>
@@ -180,7 +180,7 @@ Using <code>Reaction Time</code>, <code>Vessel Temperature</code> and <code>Stir
 <p>Attributes are annotated with the <code>origin</code> of the data.  This field can have the following values:</p>
 <ul>
 <li><code>measured</code>: The Value of this Attribute was directly measured.</li>
-<li><code>predicted</code>: The Value of this Attribute came from a model, such as a complex simulation, a machine learning-derived computation or rule-of-thumb estimation</li>
+<li><code>predicted</code>: The Value of this Attribute came from a model, such as a complex simulation, a machine learning--derived computation or rule-of-thumb estimation</li>
 <li><code>specified</code>: The Value of this Attribute was dictated, such as the oven temperature in a <a href="../objects#process-spec">Process Spec</a>.  This value should only appear in Specs.</li>
 <li><code>computed</code>: The Value of this Attribute was derived directly from measured values, such as computing the yield stress from a stress-strain curve or computing the density from known mass and volume measurements.</li>
 <li><code>unknown</code>: The origin of this Value is unknown.  This is the default value.</li>
@@ -542,17 +542,18 @@ Using <code>Reaction Time</code>, <code>Vessel Temperature</code> and <code>Stir
   </div>
 
   <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-        <span><a href="../attribute-templates/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../file-links/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../attribute-templates/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../file-links/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
     <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
     <script src="../../js/theme.js" defer></script>
       <script src="../../search/main.js" defer></script>
     <script defer>
