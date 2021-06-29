@@ -206,7 +206,7 @@ Same as `ProcessSpec`, but with the `template` inherited from the `spec`, i.e., 
         "baking::cookies"
     ],
     "name" : "Bake Cookies Fo' Real",
-    "notes" : "Process run baking some chocolate chip cookies in an oven",
+    "notes" : "Process Run baking some chocolate chip cookies in an oven",
     "process_spec" : {
         "type" : "link_by_uid",
         "scope" : "id",

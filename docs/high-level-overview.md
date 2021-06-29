@@ -176,7 +176,7 @@ Field | Required/Optional | Quantity Possible
 All attributes must specify the `origin` of their data as one of:
 
 * Specified: it is the intention to have this value.
-* Measured: this was directly measured during the process or measurement run.
+* Measured: this was directly measured during the Process or Measurement Run.
 * Computed: this was calculated based on other measured or derived properties.
 * Predicted: this was calculated based on a model, e.g., machine learning or simulation.
 * Summary: this was calculated based on a set of the same property at a finer level of granularity (aggregation of data).

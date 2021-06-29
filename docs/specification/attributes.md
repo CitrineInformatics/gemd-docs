@@ -2,7 +2,7 @@
 
 **Properties** are characteristics of a material that could be measured (e.g., chemical composition, density, or yield strength).
 
-> I recorded a measurement run of the density of my cookie.
+> I recorded a Measurement Run of the density of my cookie.
 I measured the property to be a [Nominal Real Value](../value-types/#nominal-real-value) of 604 kg/m³.
 
 **Conditions** are the environmental variables (typically measured) that may affect a process or measurement: e.g. Temperature, Pressure.
@@ -12,16 +12,16 @@ I measured the property to be a [Nominal Real Value](../value-types/#nominal-rea
 >  The "Bake Cookies" Process Spec has two parameters: a [Nominal Real Value](../value-types/#nominal-real-value) of 30 minutes for bake duration, and a [Nominal Real Value](../value-types/#nominal-real-value) of 350 degrees for oven temperature setting
 
 > I know my oven tends to run cold, so as I was baking I set my temperature setting to 360 degrees.
-I recorded this in the process run as a parameter with a [Nominal Real Value](../value-types/#nominal-real-value) of 360 Degrees.
+I recorded this in the Process Run as a parameter with a [Nominal Real Value](../value-types/#nominal-real-value) of 360 Degrees.
 
-Typically, conditions are going to apply to _measured_ environmental variables in process runs and measurement runs.
+Typically, conditions are going to apply to _measured_ environmental variables in Process Runs and Measurement Runs.
 It may be appropriate to specify a Parameter attribute on a Spec, and describe that attribute as a Condition on Runs of that Spec if the value is being measured as opposed to controlled during the Run.
 It may also be appropriate to include _both_ a Parameter and a Condition on the Run if the value is both controlled and measured.
 The use of Conditions in Specs should be limited in favor of parameters.
 
 Attributes may be annotated with an [Attribute Template](../attribute-templates), which defines a canonical name and bounds on the attribute.
 
-#### PropertyAndConditions 
+#### PropertyAndConditions
 
 **PropertyAndConditions** are known or unmeasured Properties (at specified Conditions) of a [Material Spec](../objects/#material-spec). Typically, these will come from technical specification sheets of purchased ingredients or reference materials such as safety data sheets (SDS).
 > I purchased 100% Ethanol. According to the SDS, pure ethanol has a Density (Property) of 0.789 g/cc at 20 degC (Condition 1) and 1 atm (Condition 2). I will add this as a PropertyAndConditions to the ethanol [Material Spec](../objects/#material-spec). This PropertyAndConditions will have the density Property in the property field and a List containing both Conditions in the conditions field.
@@ -275,7 +275,7 @@ Field name   | Value type | Default | Description
             "type": "nominal_real",
             "units": "degree_Celsius"
         },
-        
+
     },
     {
         "type": "condition",
