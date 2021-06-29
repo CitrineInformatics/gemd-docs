@@ -7,7 +7,7 @@ This page attempts to answer some of those questions.
 
 ## How do you pronounce GEMD?
 
-This has been a matter of some debate. Both /jemd/ and /jem-dee/ are in common use. 
+This has been a matter of some debate. Both /jemd/ and /jem-dee/ are in common use.
 
 ## I'm following the documentation, but still having validation problems when using the Citrine Platform.
 
@@ -63,10 +63,10 @@ The same material can even be used multiple times in one process.
 Consider the following example: a thin film is created by thermally evaporating three materials in succession onto a substrate.
 The thermal evaporation process template specifies the allowed names as "layer 1," "layer 2," and "layer 3."
 We have several materials to choose from for the three layers, but in one instance we wish to evaporate a layer of material "A," then a layer of "B," then a final layer of "A."
-We create a process spec linked to the thermal evaporation process template and create three ingredient specs, each of which point to the process spec as their `process`.
+We create a Process Spec linked to the thermal evaporation process template and create three Ingredient Specs, each of which point to the Process Spec as their `process`.
 One ingredient points to "A" as its `material` and has `layer 1` as its name.
 One points to "B" as its `material` and has `layer 2` as its name.
-And the final ingredient spec _also_ points to "A" as its `material` but is differentiated because it has `layer 3` as its name.
+And the final Ingredient Spec _also_ points to "A" as its `material` but is differentiated because it has `layer 3` as its name.
 
 ## What is the difference between `description` and `notes`?
 
