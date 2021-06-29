@@ -9,7 +9,7 @@ The `id` component of customer identifiers need not be globally unique on its ow
 Equivalently, every alternative uid must be unique within its designated scope.
 
 Each `scope`, `id` pair can be associated with exactly one object. 
-Scopes should be interpreted as case-insensitive, e.g. `MyId` and `MYID` refer to the same scope.
+Scopes should be interpreted as case-insensitive, e.g., `MyId` and `MYID` refer to the same scope.
 
 ---
 ## Citrine ID
@@ -70,13 +70,13 @@ len(`id`)   | <=           | 512, UTF-8 encoded
 
 Any nested object with a unique identifier can be replaced by a LinkByUID object.
 
-In general, the SDK for the data model implementation should handle translating nested structures into LinkByUID objects at write time - users of the SDK should only need to specify a LinkByUID object under very specific circumstances.
+In general, the SDK for the data model implementation should handle translating nested structures into LinkByUID objects at write time--users of the SDK should only need to specify a LinkByUID object under very specific circumstances.
 
 Field name | Value type | Description
 -----------|------------|------------
 `type`     | String     | "link\_by\_uid"
-`scope`    | String     | The scope of the unique identifier, e.g. "ID" for the Citrine ID
-`id`       | String     | The value of the identifier within that scope, e.g. a UUID4 for the Citrine ID
+`scope`    | String     | The scope of the unique identifier, e.g., "ID" for the Citrine ID
+`id`       | String     | The value of the identifier within that scope, e.g., a UUID4 for the Citrine ID
 
 ##### Example
 

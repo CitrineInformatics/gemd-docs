@@ -34,7 +34,7 @@ those templates to their corresponding properties.
 
 This controlled vocabulary of templates supports robust comparisons.
 If two attributes define the same attribute template, then they should be directly comparable.
-On the other hand, if two attributes only define the same dimension (e.g. mass-length-time) then they may correspond
+On the other hand, if two attributes only define the same dimension (e.g., mass-length-time) then they may correspond
 to distinct and incomparable physical concepts.
 
 #### Everything is bounded
@@ -49,18 +49,18 @@ This defines a scale for evaluating how similar two attributes are set to select
 How do we get away with this requirement?
 The universe only has so much energy, so there is a practical upper limit to most physical quantities.
 More practically, the physical systems present in materials and chemicals can range considerably in size, but not infinitely so.
-When defining the bounds in templates, it is important to have a broad ranges of use cases in mind.
+When defining the bounds in templates, it is important to have a broad range of use cases in mind.
 [Attribute Templates](../specification/attribute-templates) should contain especially broad ranges, while
 [Object Templates](../specification/object-templates) can refine those ranges to a tighter scope of application.
 
 #### Never turn away data
 
 If the data is in scope, then the data model should have a place to write it.
-Catch-all fields, e.g. `notes`, are useful, but common notes patterns should be elevated into the spec.
+Catch-all fields (e.g., `notes`) are useful, but common notes patterns should be elevated into the spec.
 When linking data, the data author should be blocked by other data authors as infrequently as possible.
 
 Another consequence of never wanting to turn data away is that curation via template assignment is optional.
-It is better to have data with only unstructured context, e.g. notes, than to reject data because the user cannot or does not assign a template.
+It is better to have data with only unstructured context (e.g., notes) than to reject data because the user cannot or does not assign a template.
 This is particularly true for implementations that control the generation of templates, limiting the ability of any user to define an appropriate template.
 
 #### Process is a first-class citizen
@@ -92,7 +92,7 @@ It also allows for the definition of intent to precede generation of physical ar
 #### Uncertainty quantification is opt-out rather than opt-in
 
 No measurement can be absolutely certain, and no calculation derived from uncertain inputs can magically produce certain outputs.
-Capturing that uncertainty is incredibly valuable as it informs a wide variety of statistical analyses.  
+Capturing that uncertainty is incredibly valuable as it informs a wide variety of statistical analyses.
 Uncertainty can take many forms, which are represented by a variety of distribution [Value Types](../specification/value-types),
 which must be used when recording physical information into [Attributes](../specification/attributes).
 

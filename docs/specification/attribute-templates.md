@@ -7,7 +7,7 @@ between -3 and +17, or it could define a Categorical with the following
 allowed categories: "salt", "not salt".
 The values of [attributes](../attributes)
 with Attribute Templates must conform to the bounds specified by the templates.
-If the value is not compatible with the template (e.g. if the template specifies that
+If the value is not compatible with the template (e.g., if the template specifies that
 the value must be in the range [0, 1] but the value is 2), then the data are invalid.
 
 ![attribute templates](img/attribute-templates.png)
