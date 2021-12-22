@@ -222,6 +222,11 @@ Field name | Value type | Description
     ]
 }
 ```
+
+For users of the [gemd-python](https://github.com/CitrineInformatics/gemd-python) library,
+the [Empirical Formula](../value-types/#empirical-formula) value type has an `all_elements`
+method to easily include the entire periodic table: `CompositionBounds(components=EmpiricalFormula.all_elements())`.
+
 ---
 ## Molecular Structure Bounds
 

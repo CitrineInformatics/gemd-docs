@@ -28,25 +28,6 @@ Attributes may be annotated with an [Attribute Template](../attribute-templates)
 
 > I purchased 80% Ethanol. According to the Technical Specifications, the solution is 80% ethanol and 20% water (Property). I will add this [Compositional Value](../value-types/#composition) as a PropertyAndConditions to the [Material Spec](../objects/#material-spec). However, this PropertyAndConditions will only have information in the property field, as no associated conditions are needed.
 
-#### Clusters
-
-Attributes can be annotated with a `cluster` identifier to associate attributes with each other.  
-Often times, data contains series (e.g., a time/temperature curve) where it would be strange to split it across object boundaries.
-To tie different Values together, you assign the same identifier to each of the Attributes.
-These identifiers have no meaning outside the context of a particular Object.  
-Within a given object, the combination of `cluster` and `template` must be unique.
-
-If `cluster` is null, this is understood as applying globally to the object and the `template` must be unique to that Attribute.
-
-> A material's Safety Data Sheet reports [Material Spec](../objects#material-spec) a vapor pressure of 11 kPa at 38 °C and a density of 0.684 g/mL at 25 °C.  
-The vapor pressure and the density are stored in 2 Properties with appropriate [Attribute Templates](../attribute-templates) and the temperature values are 2 Conditions.
-The vapor pressure and its temperature are annotated with `cluster = "Pvap"` and the viscosity and its temperature are annotated with `cluster = "Visc"`
-
-> A barometer reading is taken at the start of an experiment and assumed to apply over the course of the entire experiment and thus `cluster = null`.
-
-> A reactor vessel has a stirrer and temperature control, and the speed and temperature are each recorded independently with time (100 and 500 points each, respectively).
-> Using `Reaction Time`, `Vessel Temperature` and `Stirring Speed` [Attribute Templates](../attribute-templates) and `cluster` values for each row of the recorded values (e.g., `temp_001`, `speed_097`), you create 600 different `cluster` values assigned to 1200 different Conditions.
-
 #### Origin
 
 Attributes are annotated with the `origin` of the data.  This field can have the following values:
@@ -68,7 +49,6 @@ Field name   | Value type | Default | Description
 `type`       | String     | Req.    | One of: `property`, `condition`, `parameter`
 `value`      | [Value](../value-types) | Req. | Any `Value` type
 `name`       | String     | Req. | The name of the attribute, which is used to identify it within a Data Object
-`cluster`    | String     | None | The name of the cluster this `value` is associated with
 `notes`      | String     | None | Some free-form notes about the attribute.
 `origin`     | `measured`, `predicted`, `specified`, `computed`, `unknown` | `unknown` | The origin of the attribute
 `template`   | [Attribute Template](../attribute-templates) | None | Attribute Template which defines bounds
@@ -151,104 +131,6 @@ len(`notes`)  | <=           | 32,768 (32KB), UTF-8 Encoded
     },
     "origin" : "specified",
 }
-```
-
-
-**Two points on a temperature vs time trace:**
-
-```json
-[
-  {
-      "type" : "condition",
-      "name" : "Time",
-      "value" : {
-          "type" : "nominal_real",
-          "nominal" : 390,
-          "units": "second"
-      },
-      "cluster" : "Time_Temp_039",
-      "origin" : "measured",
-      "template" : {
-        "type" : "link_by_uid",
-        "scope" : "my_template_scope",
-        "id" : "process_time"
-      },
-      "file_links" : [
-          {
-              "filename" : "temperature-trace.csv",
-              "link" : "files/file/d8f12919-b201-4186-be95-10525eb4256a/version/2"
-          }
-      ]
-  },
-  {
-      "type" : "condition",
-      "name" : "Temperature",
-      "value" : {
-          "type" : "normal_real",
-          "mean" : 573,
-          "std" : 5,
-          "units": "kelvin"
-      },
-      "cluster" : "Time_Temp_039",
-      "origin" : "measured",
-      "template" : {
-        "type" : "link_by_uid",
-        "scope" : "my_template_scope",
-        "id" : "kiln_temperature"
-      },
-      "file_links" : [
-          {
-              "filename" : "temperature-trace.csv",
-              "link" : "files/file/d8f12919-b201-4186-be95-10525eb4256a/version/2"
-          }
-      ]
-  },
-  {
-      "type" : "condition",
-      "name" : "Time",
-      "value" : {
-          "type" : "nominal_real",
-          "nominal" : 400,
-          "units": "second"
-      },
-      "cluster" : "Time_Temp_040",
-      "origin" : "measured",
-      "template" : {
-        "type" : "link_by_uid",
-        "scope" : "my_template_scope",
-        "id" : "kiln_temperature"
-      },
-      "file_links" : [
-          {
-              "filename" : "temperature-trace.csv",
-              "link" : "files/file/d8f12919-b201-4186-be95-10525eb4256a/version/2"
-          }
-      ]
-  },
-  {
-      "type" : "condition",
-      "name" : "Temperature",
-      "value" : {
-          "type" : "normal_real",
-          "mean" : 578,
-          "std" : 5,
-          "units": "kelvin"
-      },
-      "cluster" : "Time_Temp_040",
-      "origin" : "measured",
-      "template" : {
-        "type" : "link_by_uid",
-        "scope" : "my_template_scope",
-        "id" : "kiln_temperature"
-      },
-      "file_links" : [
-          {
-              "filename" : "temperature-trace.csv",
-              "link" : "files/file/d8f12919-b201-4186-be95-10525eb4256a/version/2"
-          }
-      ]
-  }
-]
 ```
 
 ## PropertyAndConditions
