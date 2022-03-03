@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This set of documentation describes the next generation Citrine data format, GEMD, that is independent of any implementation of the format.  
+This set of documentation describes the Citrine data format, GEMD, that is independent of any implementation of the format.  
 
 *However*, as the Citrine Platform is assumed to be the primary point of interaction between this data model and most users, known limitations of this model are documented here, with appropriate links to this page provided elsewhere in this documentation.
 
