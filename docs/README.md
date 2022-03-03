@@ -1,7 +1,7 @@
 # GEMD Documentation
 
 GEMD stands for Graphical Expression of Materials Data.
-It's an open source format initially developed by the fine folks at Citrine Informatics.
+It's an open-source format initially developed by [Citrine Informatics](https://citrine.io/). A version of it is used in their AI platform for materials and chemicals, but as described here it can be used independently.
 
 ![Material Graph](img/FORMULATIONS_ILLS_2.png)
 
