@@ -74,8 +74,6 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#propertyandconditions">PropertyAndConditions</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#clusters">Clusters</a>
-    </li>
     <li class="toctree-l2"><a class="reference internal" href="#origin">Origin</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#property-condition-parameter">Property, Condition, Parameter</a>
@@ -161,21 +159,6 @@ The use of Conditions in Specs should be limited in favor of parameters.</p>
 <p>I purchased 100% Ethanol. According to the SDS, pure ethanol has a Density (Property) of 0.789 g/cc at 20 degC (Condition 1) and 1 atm (Condition 2). I will add this as a PropertyAndConditions to the ethanol <a href="../objects/#material-spec">Material Spec</a>. This PropertyAndConditions will have the density Property in the property field and a List containing both Conditions in the conditions field.</p>
 <p>I purchased 80% Ethanol. According to the Technical Specifications, the solution is 80% ethanol and 20% water (Property). I will add this <a href="../value-types/#composition">Compositional Value</a> as a PropertyAndConditions to the <a href="../objects/#material-spec">Material Spec</a>. However, this PropertyAndConditions will only have information in the property field, as no associated conditions are needed.</p>
 </blockquote>
-<h4 id="clusters">Clusters<a class="headerlink" href="#clusters" title="Permanent link">&para;</a></h4>
-<p>Attributes can be annotated with a <code>cluster</code> identifier to associate attributes with each other.<br />
-Often times, data contains series (e.g., a time/temperature curve) where it would be strange to split it across object boundaries.
-To tie different Values together, you assign the same identifier to each of the Attributes.
-These identifiers have no meaning outside the context of a particular Object.<br />
-Within a given object, the combination of <code>cluster</code> and <code>template</code> must be unique.</p>
-<p>If <code>cluster</code> is null, this is understood as applying globally to the object and the <code>template</code> must be unique to that Attribute.</p>
-<blockquote>
-<p>A material's Safety Data Sheet reports <a href="../objects#material-spec">Material Spec</a> a vapor pressure of 11 kPa at 38 °C and a density of 0.684 g/mL at 25 °C.<br />
-The vapor pressure and the density are stored in 2 Properties with appropriate <a href="../attribute-templates">Attribute Templates</a> and the temperature values are 2 Conditions.
-The vapor pressure and its temperature are annotated with <code>cluster = "Pvap"</code> and the viscosity and its temperature are annotated with <code>cluster = "Visc"</code></p>
-<p>A barometer reading is taken at the start of an experiment and assumed to apply over the course of the entire experiment and thus <code>cluster = null</code>.</p>
-<p>A reactor vessel has a stirrer and temperature control, and the speed and temperature are each recorded independently with time (100 and 500 points each, respectively).
-Using <code>Reaction Time</code>, <code>Vessel Temperature</code> and <code>Stirring Speed</code> <a href="../attribute-templates">Attribute Templates</a> and <code>cluster</code> values for each row of the recorded values (e.g., <code>temp_001</code>, <code>speed_097</code>), you create 600 different <code>cluster</code> values assigned to 1200 different Conditions.</p>
-</blockquote>
 <h4 id="origin">Origin<a class="headerlink" href="#origin" title="Permanent link">&para;</a></h4>
 <p>Attributes are annotated with the <code>origin</code> of the data.  This field can have the following values:</p>
 <ul>
@@ -215,12 +198,6 @@ Using <code>Reaction Time</code>, <code>Vessel Temperature</code> and <code>Stir
 <td>String</td>
 <td>Req.</td>
 <td>The name of the attribute, which is used to identify it within a Data Object</td>
-</tr>
-<tr>
-<td><code>cluster</code></td>
-<td>String</td>
-<td>None</td>
-<td>The name of the cluster this <code>value</code> is associated with</td>
 </tr>
 <tr>
 <td><code>notes</code></td>
@@ -346,100 +323,6 @@ Using <code>Reaction Time</code>, <code>Vessel Temperature</code> and <code>Stir
     },
     &quot;origin&quot; : &quot;specified&quot;,
 }
-</code></pre>
-<p><strong>Two points on a temperature vs time trace:</strong></p>
-<pre><code class="language-json">[
-  {
-      &quot;type&quot; : &quot;condition&quot;,
-      &quot;name&quot; : &quot;Time&quot;,
-      &quot;value&quot; : {
-          &quot;type&quot; : &quot;nominal_real&quot;,
-          &quot;nominal&quot; : 390,
-          &quot;units&quot;: &quot;second&quot;
-      },
-      &quot;cluster&quot; : &quot;Time_Temp_039&quot;,
-      &quot;origin&quot; : &quot;measured&quot;,
-      &quot;template&quot; : {
-        &quot;type&quot; : &quot;link_by_uid&quot;,
-        &quot;scope&quot; : &quot;my_template_scope&quot;,
-        &quot;id&quot; : &quot;process_time&quot;
-      },
-      &quot;file_links&quot; : [
-          {
-              &quot;filename&quot; : &quot;temperature-trace.csv&quot;,
-              &quot;link&quot; : &quot;files/file/d8f12919-b201-4186-be95-10525eb4256a/version/2&quot;
-          }
-      ]
-  },
-  {
-      &quot;type&quot; : &quot;condition&quot;,
-      &quot;name&quot; : &quot;Temperature&quot;,
-      &quot;value&quot; : {
-          &quot;type&quot; : &quot;normal_real&quot;,
-          &quot;mean&quot; : 573,
-          &quot;std&quot; : 5,
-          &quot;units&quot;: &quot;kelvin&quot;
-      },
-      &quot;cluster&quot; : &quot;Time_Temp_039&quot;,
-      &quot;origin&quot; : &quot;measured&quot;,
-      &quot;template&quot; : {
-        &quot;type&quot; : &quot;link_by_uid&quot;,
-        &quot;scope&quot; : &quot;my_template_scope&quot;,
-        &quot;id&quot; : &quot;kiln_temperature&quot;
-      },
-      &quot;file_links&quot; : [
-          {
-              &quot;filename&quot; : &quot;temperature-trace.csv&quot;,
-              &quot;link&quot; : &quot;files/file/d8f12919-b201-4186-be95-10525eb4256a/version/2&quot;
-          }
-      ]
-  },
-  {
-      &quot;type&quot; : &quot;condition&quot;,
-      &quot;name&quot; : &quot;Time&quot;,
-      &quot;value&quot; : {
-          &quot;type&quot; : &quot;nominal_real&quot;,
-          &quot;nominal&quot; : 400,
-          &quot;units&quot;: &quot;second&quot;
-      },
-      &quot;cluster&quot; : &quot;Time_Temp_040&quot;,
-      &quot;origin&quot; : &quot;measured&quot;,
-      &quot;template&quot; : {
-        &quot;type&quot; : &quot;link_by_uid&quot;,
-        &quot;scope&quot; : &quot;my_template_scope&quot;,
-        &quot;id&quot; : &quot;kiln_temperature&quot;
-      },
-      &quot;file_links&quot; : [
-          {
-              &quot;filename&quot; : &quot;temperature-trace.csv&quot;,
-              &quot;link&quot; : &quot;files/file/d8f12919-b201-4186-be95-10525eb4256a/version/2&quot;
-          }
-      ]
-  },
-  {
-      &quot;type&quot; : &quot;condition&quot;,
-      &quot;name&quot; : &quot;Temperature&quot;,
-      &quot;value&quot; : {
-          &quot;type&quot; : &quot;normal_real&quot;,
-          &quot;mean&quot; : 578,
-          &quot;std&quot; : 5,
-          &quot;units&quot;: &quot;kelvin&quot;
-      },
-      &quot;cluster&quot; : &quot;Time_Temp_040&quot;,
-      &quot;origin&quot; : &quot;measured&quot;,
-      &quot;template&quot; : {
-        &quot;type&quot; : &quot;link_by_uid&quot;,
-        &quot;scope&quot; : &quot;my_template_scope&quot;,
-        &quot;id&quot; : &quot;kiln_temperature&quot;
-      },
-      &quot;file_links&quot; : [
-          {
-              &quot;filename&quot; : &quot;temperature-trace.csv&quot;,
-              &quot;link&quot; : &quot;files/file/d8f12919-b201-4186-be95-10525eb4256a/version/2&quot;
-          }
-      ]
-  }
-]
 </code></pre>
 <h2 id="propertyandconditions_1">PropertyAndConditions<a class="headerlink" href="#propertyandconditions_1" title="Permanent link">&para;</a></h2>
 <table>
