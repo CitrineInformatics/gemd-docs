@@ -51,7 +51,7 @@ Field name   | Value type | Default | Description
 `value`      | [Value](../value-types) | Req. | Any `Value` type
 `name`       | String     | Req. | The name of the attribute, which is used to identify it within a Data Object
 `notes`      | String     | None | Some free-form notes about the attribute.
-`origin`     | `measured`, `predicted`, `summary`,`specified`, `computed`, `unknown` | `unknown` | The origin of the attribute
+`origin`     | `measured`, `predicted`, `summary`, `specified`, `computed`, `unknown` | `unknown` | The origin of the attribute
 `template`   | [Attribute Template](../attribute-templates) | None | Attribute Template which defines bounds
 `file_links` | Set[\[File Links](../file-links)] | Empty set | Links to associated files, with resource paths into the files API
 
