@@ -54,6 +54,9 @@ len(`uids`) | <=           | 8
 len(`scope`)| <=           | 128, UTF-8 encoded
 len(`id`)   | <=           | 512, UTF-8 encoded
 
+Note that the 'scope' and 'id' fields can contain arbitrary characters, but cannot contain the delimiter
+sequence "::" within either of them.
+
 ##### Example
 
 ```javascript
