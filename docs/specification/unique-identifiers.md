@@ -22,7 +22,7 @@ Scope | Value type | Description
 
 ##### Constraints
 
-Field name | Relationship | Field Name
+Field name | Relationship | Description
 -----------|:------------:|------------
 len(`id`)  | ==           | 36
 `id`       | parses to    | Version 4 Random UUID
@@ -48,11 +48,13 @@ Field name | Value type | Description
 
 ##### Constraints
 
-Field name  | Relationship | Field Name
+Field name  | Relationship | Description
 ------------|:------------:|------------
-len(`uids`) | <=           | 8
-len(`scope`)| <=           | 128, UTF-8 encoded
-len(`id`)   | <=           | 512, UTF-8 encoded
+len(`uids`) |      <=      | 8
+len(`scope`)|      <=      | 128, UTF-8 encoded
+len(`id`)   |      <=      | 512, UTF-8 encoded
+`scope`     |              | cannot include "::"
+
 
 ##### Example
 
@@ -62,6 +64,18 @@ len(`id`)   | <=           | 512, UTF-8 encoded
         "NIST-SRM" : "141e"
     }
 }
+```
+
+##### Invalid Example
+This scope field is not allowed by the Citrine Platform:
+
+```javascript
+{
+    "uids": {
+        "NIST::SRM" : "141e"
+    }
+}
+
 ```
 
 ---
