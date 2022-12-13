@@ -53,7 +53,7 @@ Field name  | Relationship | Constraint
 len(`uids`) |      <=      | 8
 len(`scope`)|      <=      | 128, UTF-8 encoded
 len(`id`)   |      <=      | 512, UTF-8 encoded
-`scope`     |              | cannot include "::"
+`scope`     |              | cannot include `::`
 
 
 ##### Example
