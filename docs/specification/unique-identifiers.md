@@ -22,7 +22,7 @@ Scope | Value type | Description
 
 ##### Constraints
 
-Field name | Relationship | Description
+Field name | Relationship | Constraint
 -----------|:------------:|------------
 len(`id`)  | ==           | 36
 `id`       | parses to    | Version 4 Random UUID
@@ -48,7 +48,7 @@ Field name | Value type | Description
 
 ##### Constraints
 
-Field name  | Relationship | Description
+Field name  | Relationship | Constraint
 ------------|:------------:|------------
 len(`uids`) |      <=      | 8
 len(`scope`)|      <=      | 128, UTF-8 encoded
