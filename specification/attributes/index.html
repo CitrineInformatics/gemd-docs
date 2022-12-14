@@ -148,6 +148,7 @@ The use of Conditions in Specs should be limited in favor of parameters.</p>
 <ul>
 <li><code>measured</code>: The Value of this Attribute was directly measured.</li>
 <li><code>predicted</code>: The Value of this Attribute came from a model, such as a complex simulation, a machine learning--derived computation or rule-of-thumb estimation</li>
+<li><code>summary</code>: The Value of this Attribute is calculated based on a set of the same property at a finer level of granularity (aggregation of data).</li>
 <li><code>specified</code>: The Value of this Attribute was dictated, such as the oven temperature in a <a href="../objects#process-spec">Process Spec</a>.  This value should only appear in Specs.</li>
 <li><code>computed</code>: The Value of this Attribute was derived directly from measured values, such as computing the yield stress from a stress-strain curve or computing the density from known mass and volume measurements.</li>
 <li><code>unknown</code>: The origin of this Value is unknown.  This is the default value.</li>
@@ -191,7 +192,7 @@ The use of Conditions in Specs should be limited in favor of parameters.</p>
 </tr>
 <tr>
 <td><code>origin</code></td>
-<td><code>measured</code>, <code>predicted</code>, <code>specified</code>, <code>computed</code>, <code>unknown</code></td>
+<td><code>measured</code>, <code>predicted</code>, <code>summary</code>, <code>specified</code>, <code>computed</code>, <code>unknown</code></td>
 <td><code>unknown</code></td>
 <td>The origin of the attribute</td>
 </tr>
