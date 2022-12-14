@@ -34,7 +34,7 @@ Attributes are annotated with the `origin` of the data.  This field can have the
 
 - `measured`: The Value of this Attribute was directly measured.
 - `predicted`: The Value of this Attribute came from a model, such as a complex simulation, a machine learning--derived computation or rule-of-thumb estimation
-- `summary`: The Value of this Attribute is an aggregate of multiple values.
+- `summary`: The Value of this Attribute is calculated based on a set of the same property at a finer level of granularity (aggregation of data).
 - `specified`: The Value of this Attribute was dictated, such as the oven temperature in a [Process Spec](../objects#process-spec).  This value should only appear in Specs.
 - `computed`: The Value of this Attribute was derived directly from measured values, such as computing the yield stress from a stress-strain curve or computing the density from known mass and volume measurements.
 - `unknown`: The origin of this Value is unknown.  This is the default value.
