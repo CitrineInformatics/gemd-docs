@@ -1,39 +1,34 @@
 # Glossary
 
 ### Attribute
-A characteristic of a material, process, or measurement, which can be a property, condition, or parameter. (FIXME vs template?)
+A characteristic of a material, process, or measurement. Attributes can be a GEMD property, condition, or parameter.
 
 ### Attribute Template
-A domain concept that defines a canonical name and bounds, which describe the values that are acceptable for an attribute. (FIXME this is super circular)
-Another attempt: 
-Attribute Templates are used in Object Templates to define the ranges of validity for an object's associated attributes. The parameters, properties, and conditions fields in Object Templates are defined as sets of pairs, each containing an Attribute Template and a Bounds that further constrains the bounds in the Attribute template.
+Attribute templates define a domain concept (e.g. density, yield strength), and include bounds to define acceptable values for a given attribute.
 
 ### Bounds
-Bounds are used in Object Templates to further constrain the bounds in the Attribute templates. The Bounds must fall within the Attribute Template's Bounds, and should be set to those Bounds if no further constraint is desired.     May be real or categorical.
+Bounds are used in Object and Attribute templates. Object templates define the least constrained bounds, and attribute templates can constrain bounds to a tighter range or set.  Bounds may be real or categorical.
 
 ### Categorical Bounds
-Bounds defined by a list of categories.
-
-### Compositional Value
-A value type that represents a composition of a material, such as the composition of a solution. (FIXME look this one up)
+Bounds that are defined by a list of categories.
 
 ### Condition Attribute
-Environmental variables (typically measured) that may affect a process or measurement, such as temperature or pressure. ( FIXME Is the attribute sense correct here?)
+Environmental variables (typically measured) that may affect a process or measurement, such as temperature or pressure.
 
 ### Conditions
-Environmental aspects of a process or measurement in GEMD.
+Environmental aspects of a process or measurement.
 
 ### Data Object
-GEMD Materials, Processes, Measurements, and Ingredients (Interconnected?)
+GEMD Materials, Processes, Measurements, and Ingredients. Data objects along with attributes are linked to form a complete description of a material and how it was created.
 
 ### GEMD
 Graphical Expression of Materials Data, an open source format for storing materials data
 
 ### Ingredient
-In the context of GEMD (Graphical Expression of Materials Data), an ingredient is defined as a material that is annotated with information related to its usage in a process. This information is stored in an "Ingredient Object" in the GEMD format, which is a type of Data Object. The Ingredient Object contains information about the material's role in the process, such as its quantities, properties, and conditions. This information is used to describe the relationships between materials and processes in a comprehensive and interconnected manner.
+A material that is annotated with information related to its usage in a process. This information is stored in an "Ingredient Object" in the GEMD format, which is a type of Data Object. The Ingredient Object contains information about the material's role in the process, such as its quantities, properties, and conditions. This information is used to describe the relationships between materials and processes in a comprehensive and interconnected manner.
 
 ### Ingredient Object
-GEMD data object that annotates a material with information related to its usage in a process
+A  data object that annotates a material with information related to its usage in a process. Ingredient objects are used define how much of a material is used in a new process. Note that 'ingredient' and 'material' object definitions are not interchangeable.
 
 ### Material
 A material in GEMD is described as a physical substance that is used in processes or measurements and is characterized by its properties. The information related to a material, including its properties and usage in a process, is stored in the material object, which is a type of data object in GEMD. The material object is interconnected with other data object in GEMD, including Processes, Measurements, and Ingredients, to provide a comprehensive representation of materials data.
@@ -48,13 +43,13 @@ A specification of a material, such as a purchased ingredient or reference mater
 A recorded measurement of a property. 
 
 ### Measurement Object
-GEMD data object that describes an operation to measure or characterize properties of a material
+A data object used to describe an operation that measures or characterizes properties of a material.
 
 ### Nominal Real Value
 A value type in which the value is recorded as a specific number, with no information about the uncertainty of that number.
 
 ### Object Template
-Object Templates define a domain concept, such as baking in a standard residential oven or a taste test. They contain collections of Attribute Templates that together constrain the values of an object's associated attributes to valid ranges. They also define a canonical name, a description, and can be tagged.
+Object Templates define a domain concept. They contain collections of Attribute Templates that together constrain the values of an object's associated attributes to valid ranges.
 
 ### Parameter Attribute
 Describes the settings of a tool in a process or measurement object. Parameters are non-environmental variables (typically specified and controlled) that may affect a process or measurement, such as oven dial temperature position for a kiln firing, or magnification for a measurement taken with a SEM.
@@ -90,8 +85,3 @@ Tags are used to categorize Object Templates. (FIXME example)
 A value type in which the value is recorded as a range, with a lower bound and an upper bound, to represent the uncertainty of the measurement.
 
 
-## FIXME notes
-- Should each data object/state pair have an entry? Probably?
-- check coverage... (mabye just by types)
-- examples should be inline or as blocks?
-- -   Origin: The source of an attribute's data, which can be measured, predicted, calculated from a set of finer-level data, specified, derived from measured values, or unknown. check this
