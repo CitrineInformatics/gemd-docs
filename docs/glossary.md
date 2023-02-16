@@ -7,7 +7,7 @@ A characteristic of a material, process, or measurement. Attributes can be a GEM
 Attribute templates define a domain concept (e.g. density, yield strength), and include bounds to define acceptable values for a given attribute.
 
 ### Bounds
-Bounds are used in object and attribute templates. Object templates define the widest bounds, and attribute templates bounds further constrain values to a tighter range or set.  Bounds may be real or categorical.
+Bounds are used in object and attribute templates. An attribute template will have the widest bounds, and an object template can restrict them.  For example, the temperatures in casting will always be higher than the temperatures for annealing.  Each value type (e.g., real, categorical) has a corresponding type of bounds.
 
 ### Categorical Bounds
 Bounds that are defined by a list of categories.
