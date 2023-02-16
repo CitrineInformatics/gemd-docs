@@ -44,7 +44,7 @@ A data object used to describe an operation that measures or characterizes prope
 A recorded measurement for a specific material run object.
 
 ### Measurement Spec
-Defines the intent for how a measurement should be performed, including any parameters and conditions. 
+Defines the experimental design or standard operating procedure for a measurement, including any parameters and conditions. 
 
 ### Measurement Template
 Defines the widest set of allowable bounds for associated conditions, parameters and properties. 
