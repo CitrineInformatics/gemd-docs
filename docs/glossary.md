@@ -50,7 +50,7 @@ Defines the experimental design or standard operating procedure for a measuremen
 Defines the widest set of allowable bounds for associated conditions, parameters and properties. 
 
 ### Nominal Real Value
-A value type in which the value is recorded as a specific number, with no information about the uncertainty of that number.
+A value type in which the value is recorded as a specific number with a unit, with no information about the uncertainty of that number.
 
 ### Object Template
 Object Templates define a domain concept for a process, material or measurement. Object templates compose bounds from attribute templates into constraints that define valid ranges.
