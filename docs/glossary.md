@@ -47,7 +47,7 @@ A recorded measurement for a specific material run object.
 Defines the experimental design or standard operating procedure for a measurement, including any parameters and conditions. 
 
 ### Measurement Template
-Defines the widest set of allowable bounds for associated conditions, parameters and properties. 
+Defines which conditions, parameters and properties are expected for a class of experimental measurements. 
 
 ### Nominal Real Value
 A value type in which the value is recorded as a specific number with a unit, with no information about the uncertainty of that number.
