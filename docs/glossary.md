@@ -1,7 +1,7 @@
 # Glossary
 
 ### Attribute
-A characteristic of a material, process, or measurement. Attributes can be a GEMD property, condition, or parameter.
+A characteristic of a material, process, or measurement. Attributes can be a GEMD property, condition, or parameter and contain a value.
 
 ### Attribute Template
 Attribute templates define a domain concept (e.g. density, yield strength), and include bounds to define acceptable values for a given attribute.
