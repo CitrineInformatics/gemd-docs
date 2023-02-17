@@ -8,10 +8,11 @@ script:
 deploy:
   provider: pages
   skip_cleanup: true
-  # configured as an env var in travis CI, currently via a github personal access token for lbryan-citrine
-  # current token expires May 18, 2023
   github_token: "$GH_SECRET_TOKEN"
   keep_history: true
   local_dir: "./site/"
   on:
     branch: master
+env:
+  global:
+  - secure: ZEPZNmchOynV0pmDA9HokNM4ethP5cQBirHF+534kqv+vwZXn/FbB9reHGu3fHVjbrIXlSnXM9jm+d7JdpjCsFR0TUc1vgY+SMid2abOjRqcP3nyRwTIgDa0ySWiJUdrPM+UILRAJemHAXxqsohFTqMdrbMKzYWhjRiY3GrzzfPsufBLMyyL3u61gG9QDCwjLCLDC1Mz1lfzNhPeA219f6joS61KySWTQUncXsf8VJBbZQxmoekyZ/8sC8DeYwurY/b5QcbqduDQHYpNbk3PSuUsJ/lMEswp8WKuw8fen3qfV4/dB/wz9bwEllHnYziaxTxrFERMMkCHBQ+CrD556RRNkcQUBRPL106MfsUKvsk3fNP7K1jciPnUkwTh/909y5ITsfoJ1wSljbcA+6G5/PkW+REc/1XNn2Eh6q3zSRk6H+Lb9J0KGgF8QSjtlZAXPf9hmtNA/9ZZuq6vQclhaBPz0O7tXA18kAtNE/FHghfyvWY7xnoNbg6eJRtG59oAC9rklTsxefTOx6SnYdVigDbCUll4I1+BzaT/7xb8qyX0rvZEGnk9YT0w9eqlNiNgoW47iU2Yur6PwTr/zCNmtXaPBv3k4V9Qm/EkQF7iHEfEHhSr6xTxihY7O69yRudwknbwmb6qQS18iase3dIJd1R2aAjn/CMaJZ0d6ojLuK4=
