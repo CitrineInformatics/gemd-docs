@@ -7,6 +7,10 @@ We have adopted the following style guidelines:
    * Table rows have to be crammed into a single line
    * One sentence can be spread over multiple source lines if it is long
 
+## Deploying docs to Github Pages Site
+
+We're currently using TravisCI to deploy to Github Pages. To update the GH_SECRET_TOKEN environment variable referenced in the `.travis.yml` file, follow the [TravisCI documentation] (https://docs.travis-ci.com/user/deployment/pages/). Only master docs can be deployed to the documentation site.
+
 ## Building the Docs Locally
 
 Built with [mkdocs](https://www.mkdocs.org/#mkdocs)
