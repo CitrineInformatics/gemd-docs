@@ -91,7 +91,7 @@ len(`notes`)  | <=           | 32,768 (32KB), UTF-8 Encoded
     "file_links" : [
         {
             "filename" : "How-to-make-lucky-charms.pdf",
-            "link" : "files/file/d8f12919-b201-4186-be95-10525eb4256a/version/2"
+            "url" : "https://example.com/files/file/d8f12919-b201-4186-be95-10525eb4256a/version/2"
         }
     ]
 }
