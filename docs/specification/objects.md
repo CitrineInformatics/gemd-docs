@@ -414,7 +414,12 @@ material.spec | = | spec.material
         "type" : "normal_real",
         "mean" : 0.347,
         "std" : 0.002
-    }
+    },
+    "spec": {
+        "type" : "link_by_uid",
+        "scope" : "id",
+        "id" : "28d95397-4887-48f0-bdda-94a9a4c5ef43"
+    },
 }
 ```
 
