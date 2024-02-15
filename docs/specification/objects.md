@@ -749,12 +749,12 @@ condition templates | must be unique | among the templates of conditions
     },
     "name" : "Chocolate Chip Hedonic Measurement",
     "notes" : "Rate the cookies on a scale from 9.9-10",
-    "measurement_spec" : {
+    "spec" : {
         "type" : "link_by_uid",
         "scope" : "cookie_ids",
         "id" : "choc_chip_hedonic_spec"
     },
-    "material_run" : {
+    "material" : {
         "type" : "link_by_uid",
         "scope" : "cookie_ids",
         "id": "choc_chip_001_run_006"
