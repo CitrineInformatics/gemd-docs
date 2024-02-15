@@ -207,7 +207,7 @@ Same as `ProcessSpec`, but with the `template` inherited from the `spec`, i.e., 
     ],
     "name" : "Bake Cookies Fo' Real",
     "notes" : "Process Run baking some chocolate chip cookies in an oven",
-    "process_spec" : {
+    "process" : {
         "type" : "link_by_uid",
         "scope" : "id",
         "id" : "064148e6-1cce-4d89-bfde-7ecd0aa4632b"
@@ -548,7 +548,7 @@ process | must be unique | globally
             }
         }
     }],
-    "process_spec" : {
+    "process" : {
         "type" : "link_by_uid",
         "scope" : "id",
         "id" : "064148e6-1cce-4d89-bfde-7ecd0aa4632b"
