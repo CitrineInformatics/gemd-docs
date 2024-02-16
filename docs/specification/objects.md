@@ -207,7 +207,7 @@ Same as `ProcessSpec`, but with the `template` inherited from the `spec`, i.e., 
     ],
     "name" : "Bake Cookies Fo' Real",
     "notes" : "Process Run baking some chocolate chip cookies in an oven",
-    "process_spec" : {
+    "process" : {
         "type" : "link_by_uid",
         "scope" : "id",
         "id" : "064148e6-1cce-4d89-bfde-7ecd0aa4632b"
@@ -414,7 +414,12 @@ material.spec | = | spec.material
         "type" : "normal_real",
         "mean" : 0.347,
         "std" : 0.002
-    }
+    },
+    "spec": {
+        "type" : "link_by_uid",
+        "scope" : "id",
+        "id" : "28d95397-4887-48f0-bdda-94a9a4c5ef43"
+    },
 }
 ```
 
@@ -548,7 +553,7 @@ process | must be unique | globally
             }
         }
     }],
-    "process_spec" : {
+    "process" : {
         "type" : "link_by_uid",
         "scope" : "id",
         "id" : "064148e6-1cce-4d89-bfde-7ecd0aa4632b"
@@ -744,12 +749,12 @@ condition templates | must be unique | among the templates of conditions
     },
     "name" : "Chocolate Chip Hedonic Measurement",
     "notes" : "Rate the cookies on a scale from 9.9-10",
-    "measurement_spec" : {
+    "spec" : {
         "type" : "link_by_uid",
         "scope" : "cookie_ids",
         "id" : "choc_chip_hedonic_spec"
     },
-    "material_run" : {
+    "material" : {
         "type" : "link_by_uid",
         "scope" : "cookie_ids",
         "id": "choc_chip_001_run_006"

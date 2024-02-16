@@ -68,6 +68,7 @@ This is an example of a process template that has fully represented attribute te
         [
             {
                 "name" : "Oven Temperature",
+                "type" : "parameter_template",
                 "uids" : {"cookie_templates": "oven_temp"},
                 "tags" : ["oven_settings::temperature"],
                 "description" : "A template for valid temperature ranges for baking cookies. Below 328K you're not even pasteurizing the dough.",
@@ -88,6 +89,7 @@ This is an example of a process template that has fully represented attribute te
         [
             {
                 "name" : "Baking Time",
+                "type" : "parameter_template",
                 "uids" : {"cookie_templates": "oven_time"},
                 "tags" : ["oven_settings::duration"],
 
@@ -157,6 +159,7 @@ property templates | are unique within | properties
         [
             {
                 "uids" : {"cookie_templates" : "choc_chip_comp_01"},
+                "type" : "property_template",
                 "tags" : ["ingredients::cookies::nutsallowed"],
                 "name" : "Chocolate Chip Cookie Composition",
                 "description" : "Specifying the composition of the linked cookie",
@@ -240,6 +243,7 @@ condition templates | are unique within | conditions
             {
                 "uids" : {"cookie_templates": "hedonic_index_prop"},
                 "tags" : [],
+                "type" : "property_template",
                 "name" : "Chocolate Chip Cookie Hedonic Index",
                 "description" : "The allowable range for the hedonic index of chocolate chip cookies.",
                 "bounds" : {
@@ -263,6 +267,7 @@ condition templates | are unique within | conditions
                 "name" : "Cookie Temperature",
                 "uids" : {"cookie_templates": "cookie_eating_temp"},
                 "tags" : [],
+                "type" : "condition_template",
                 "description" : "A template for valid temperature ranges for eating cookies.",
                 "bounds" : {
                     "default_units" : "kelvin",
@@ -285,6 +290,7 @@ condition templates | are unique within | conditions
                 "name" : "Number of Cookies",
                 "uids" : {"cookie_templates": "cookie_count"},
                 "tags" : ["chocula"],
+                "type" : "parameter_template",
                 "description" : "A template for the number of cookies to eat for a hedonic index test.",
                 "bounds" : {
                     "type" : "integer_bounds",
