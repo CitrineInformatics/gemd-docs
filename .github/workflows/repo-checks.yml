@@ -1,0 +1,19 @@
+name: PR Checks
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  check-docs:
+    name: Check docs for warnings
+    runs-on: ubuntu-latest
+    steps:
+      - name: Initialize the environment
+        uses: CitrineInformatics/common-gh-actions/.github/actions/initialize@v1
+        with:
+          documentation: 'true'
+      - name: Build Docs
+        run: mkdocs build --strict --verbose
