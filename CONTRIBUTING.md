@@ -9,7 +9,8 @@ We have adopted the following style guidelines:
 
 ## Deploying docs to Github Pages Site
 
-We're currently using TravisCI to deploy to Github Pages. To update the GH_SECRET_TOKEN environment variable referenced in the `.travis.yml` file, follow the [TravisCI documentation](https://docs.travis-ci.com/user/deployment/pages/). Only master docs can be deployed to the documentation site.
+We're currently using GitHub Actions to deploy to Github Pages.
+The docs on the master branch are automatically deployed to the documentation site.
 
 ## Building the Docs Locally
 
