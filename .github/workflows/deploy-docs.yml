@@ -36,11 +36,11 @@ jobs:
       - name: Build Docs
         run: |
             mkdocs build --strict --verbose
-            touch .site/.nojekyll
+            touch site/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.site'
+          path: 'site'
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Deploy to GitHub Pages
