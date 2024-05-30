@@ -28,6 +28,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Initialize the environment
         uses: ./.github/actions/initialize
         with:
