@@ -255,10 +255,18 @@ For example, "one part flour two parts sugar" is acceptable.
 A composition represented as a map from the component name to the quantity.
 The quantities do not express an uncertainty, but also do not imply that there is absolute certainty in their values.
 
+<<<<<<< HEAD
+Field name      | Value type | Default | Description
+----------------|------------|---------|-----------
+`type`          | String     |  Req.   | "nominal\_composition"
+`quantities`    | Map[String, Number]| Empty set  |   | Map[String, Number]
+`basis`         | `mass`, `volume`, `number`, `unknown` | `unknown` | The type of measurement that informed the quantity
+=======
 | Field name   | Value type          | Description            |
 |--------------|---------------------|------------------------|
 | `type`       | String              | "nominal\_composition" |
 | `quantities` | Map[String, Number] | Map[String, Number]    |
+>>>>>>> master
 
 ##### Constraints
 
