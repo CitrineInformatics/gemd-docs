@@ -11,9 +11,8 @@ jobs:
     name: Check docs for warnings
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Initialize the environment
-        continue-on-error: true
         uses: ./.github/actions/initialize
       - name: Build Docs
-        continue-on-error: true
         run: mkdocs build --strict --verbose
