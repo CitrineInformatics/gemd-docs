@@ -1,8 +1,6 @@
 # FAQ
 
-It's not you; it's us.
-GEMD is not a simple representation, and
-we frequently get questions about how to use it to represent certain kinds of data.
+We frequently get questions about how to use GEMD to represent certain kinds of data.
 This page attempts to answer some of those questions.
 
 ## How do you pronounce GEMD?
